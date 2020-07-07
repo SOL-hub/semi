@@ -64,6 +64,7 @@
             </div>
             <div class="row-empty"></div>
             <div class="row-empty center">
+            <a href="login.jsp">
                 <button class="join-btn2" >로그인</button>
             </div>
             <div class="row-empty"></div>

@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <title>홈페이지</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/main.css">
+ 
 </head>
 <body>
      <header>
@@ -51,7 +52,7 @@
             </div>
             <div id="box_right">
                 <ul class="menu side_right">
-                    <li class="menu_right"><a href="#">로그인</a></li>
+                    <li class="menu_right"><a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a></li>
                     <li class="menu_right"><a href="<%=request.getContextPath()%>/member/join_main.jsp">회원가입</a></li>
                     <li class="menu_right"><a href="#">주문/배송</a></li>
                     <li class="menu_right"><a href="#">고객센터</a></li>

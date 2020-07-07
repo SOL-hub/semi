@@ -83,4 +83,87 @@ public class MemberDao {
 		con.close();
 		return rst;
 	}
+	
+	
+	
+	
+	//로그인 메소드
+	public MemberDto login(MemberDto mdto) throws Exception{
+		Connection con= getConnection();
+		
+		String sql = "SELECT * FROM member WHERE member_id=? AND member_pw=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, mdto.getMember_id());
+		ps.setString(2, mdto.getMember_pw());
+		ResultSet rs = ps.executeQuery();
+		
+		MemberDto user;
+		if(rs.next()) {//데이터가 있으면, 
+			user = new MemberDto();
+			
+		 user.setMember_id(rs.getString("member_id"));
+		 user.setMember_pw(rs.getString("member_pw"));
+		 user.setMember_name(rs.getString("member_name"));
+		 user.setMember_nick(rs.getString("member_nick"));
+		 user.setMember_birth(rs.getString("member_birth"));
+		 user.setMember_phone(rs.getString("member_phone"));
+		 user.setMember_email(rs.getString("member_email"));
+		 user.setMember_post(rs.getString("member_post"));
+		 user.setMember_base_addr(rs.getString("member_base_addr"));
+		 user.setMember_extra_addr(rs.getString("member_extra_addr"));
+		 	
+		}
+		
+		else {
+			user=null;
+		}
+		
+		con.close();
+		
+		return user;
+	}
+	
+	//로그인 시작 갱신 메소드
+	public void updateLoginTime(String id)throws Exception{
+		Connection con=getConnection();
+		
+		String sql="update member set member_login=sysdate where member_id=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ps.execute();
+		
+		con.close();
+	}
+	
+	//아이디 찾기 
+	public String findId(MemberDto mdto)throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "SELECT member_id From member"
+				+ "WHERE member_name=? and member_phone=?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, mdto.getMember_name());
+		ps.setString(2, mdto.getMember_phone());
+		
+		ResultSet rs = ps.executeQuery();
+		
+		String member_id;
+		if(rs.next()) {
+			member_id=rs.getString("member_id");
+		}
+		
+		else {
+			member_id=null;
+		}
+		
+				con.close();
+				
+				return member_id;
+		}
+	
+	//비밀번호 찾기
+	
+	
+	
 }
