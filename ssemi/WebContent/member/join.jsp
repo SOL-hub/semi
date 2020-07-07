@@ -4,12 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-	MemberDto udto = new MemberDto();
-	udto.setMember_id(request.getParameter("user_id"));
-	MemberDao udao = new MemberDao();
-	String result = udao.idCheck(udto);
-%>
+
 
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -176,7 +171,6 @@
 
 <body  onload="cursor.userId.focus()">
     <main>
-
         <article class="w-100">
            <form name="cursor"action="join.do" onsubmit="return check_pw_comp();" method="post" >
                 <div class="row-empty"></div>
@@ -316,7 +310,7 @@
                 </div>
             </form>
         </article>
-
+		
     </main>
 </body></html>
 <jsp:include page="/template/footer.jsp"></jsp:include>    
