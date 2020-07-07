@@ -8,7 +8,7 @@
                 <h2 class="center"></h2>
            </div>
            <div class="row center">
-                <img src="<%=request.getContextPath() %>/image/hiq.jpg" width="50%">
+                <img src="<%=request.getContextPath() %>/img/main_living.jpg" width="100%">
            </div>
      </article>
                 
