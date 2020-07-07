@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <title>홈페이지</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
      <header>
