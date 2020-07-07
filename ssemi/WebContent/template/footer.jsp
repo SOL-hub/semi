@@ -35,8 +35,8 @@
                     </ul>
                 </li>
 
-                <li class="footer_inner_item" style="width: 240px; padding-left: 100px;">
-                    <ul>
+                <li class="footer_inner_item" style="width: 240px; padding-left:200px;;">
+                    <ul style="width:150px;">
                         <li class="info_title">고객센터</li>
                         <li class="info_title_number">1544-9940</li>
                     </ul>

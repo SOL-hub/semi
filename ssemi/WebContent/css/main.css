@@ -1,10 +1,10 @@
 @charset "UTF-8";
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
     * {
         box-sizing: border-box;
         margin: 0px;
-        padding: 0px
+        padding: 0px;
+        font-family: 'Noto Sans KR', sans-serif;
     }
     
     /* 상단 메뉴 3등분 */
@@ -137,6 +137,7 @@
     .footer_inner_item {
         display: inline-block;
         padding: 0px 40px 0px;
+        
     }
 
     /* footer 폰트*/
