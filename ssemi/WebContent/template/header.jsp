@@ -44,12 +44,14 @@
                 </ul>
             </div>
             <div class="menu_logo">
+            	<a href="<%=request.getContextPath() %>">
                 <img width="50px" src="<%=request.getContextPath() %>/img/pig_logo.png">
+                </a>
             </div>
             <div id="box_right">
                 <ul class="menu side_right">
                     <li class="menu_right"><a href="#">로그인</a></li>
-                    <li class="menu_right"><a href="#">회원가입</a></li>
+                    <li class="menu_right"><a href="<%=request.getContextPath() %>/member/join_main.jsp">회원가입</a></li>
                     <li class="menu_right"><a href="#">주문/배송</a></li>
                     <li class="menu_right"><a href="#">고객센터</a></li>
 

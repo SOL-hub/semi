@@ -171,7 +171,6 @@
 
 <body  onload="cursor.userId.focus()">
     <main>
-
         <article class="w-100">
            <form name="cursor"action="join.do" onsubmit="return check_pw_comp();" method="post" >
                 <div class="row-empty"></div>
@@ -311,7 +310,7 @@
                 </div>
             </form>
         </article>
-
+		
     </main>
 </body></html>
 <jsp:include page="/template/footer.jsp"></jsp:include>    
