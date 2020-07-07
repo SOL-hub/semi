@@ -54,7 +54,6 @@
         display: inline-block;
     }
 
-
     /* 카테고리 상세 */
     .menu_left_innerMenu {
         display: none;
@@ -162,7 +161,7 @@
         height: 130px;
         background-color: #e0e0e0;
         position: absolute;
-        right: 900px;
+        right: 40%;
     }
 
     .footer_bottom {
