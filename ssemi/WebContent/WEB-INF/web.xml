@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	XML(eXtend Markup Language)
+	- 데이터를 저장하기 위한 태그 형식의 문서
+	- 1번째 줄에는 반드시 XML 헤더가 작성되어야 한다.
+	
+	web.xm;
+	- 웹 프로젝트의 운용 설정을 저장하는 파일
+	- 이곳에 등록된 설정에 의해 프로젝트가 구동된다
+	- 이곳에 등록되지 않은 내용은 server가 가진 web.xml에 의해 운용된다
+ -->
+ <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+ 
+ 	<!-- 최초 대문 페이지 설정 -->
+ 	<welcome-file-list>
+ 		<welcome-file>index.jsp</welcome-file>
+ 	</welcome-file-list>
+ 	
+ 	<!-- 세션 자동만료 시간 설정 -->
+ 	<session-config>
+ 		<session-timeout>30</session-timeout> <!-- 분단위 -->
+ 	</session-config>
+ 	
+ 	 	 
+ </web-app>

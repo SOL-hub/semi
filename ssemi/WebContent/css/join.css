@@ -1,0 +1,292 @@
+@charset "UTF-8";
+
+        * {
+            box-sizing: border-box;
+            font-family: 'NanumBarunGothic';
+            src: url("../font/NanumBarunGothic.ttf");
+
+        }
+
+        main {
+            width: 600px;
+            height: 1300px;
+            margin: auto;
+            border: 1px solid #aaa;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .line-bottom {
+            border-bottom: 1px solid #aaa;
+        }
+
+        .head {
+            font-size: 30px;
+        }
+
+        .middle-font {
+            font-size: 35px;
+        }
+
+        .small-font {
+            font-size: 25px;
+        }
+
+        .ssmall-font {
+            font-size: 16px;
+        }
+
+        article li {
+            display: inline-block;
+            list-style: none;
+            margin: 0px 20px;
+            font-size: 16px;
+        }
+
+        article li:nth-child(3) {
+            display: inline-block;
+            list-style: none;
+            color: red;
+            font-size: 16px;
+        }
+
+        article li:nth-child(n) {
+            margin: 0px 30px;
+        }
+
+        article ul:nth-child(n) {
+            margin: 0px 0px;
+            padding: 0px 0px 0px 0px;
+        }
+
+        .id-input {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 25%;
+            border: none;
+            margin-right: 25px;
+        }
+
+        .id-input:focus {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 25%;
+            border: none;
+            outline: none;
+            margin-right: 25px;
+        }
+
+        .input-btn,
+        .overlap-btn {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 18%;
+            background-color: dimgrey;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .input-btn:hover,
+        .overlap-btn:hover {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 18%;
+            background-color: #333333;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .addr-btn {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 20%;
+            background-color: dimgrey;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-right: 25px
+        }
+
+        .addr-btn:hover {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 20%;
+            background-color: #333333;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .join-btn {
+            padding: 1rem;
+            font-size: 20px;
+            width: 45%;
+            background-color: dimgrey;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .join-btn:hover {
+            padding: 1rem;
+            font-size: 20px;
+            width: 45%;
+            background-color: #333333;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .join-btn2 {
+            padding: 1rem;
+            font-size: 20px;
+            width: 45%;
+            background-color: #C80A1E;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .join-btn2:hover {
+            padding: 1rem;
+            font-size: 20px;
+            width: 45%;
+            background-color: darkred;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .pw-input {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 30%;
+            border: none;
+        }
+
+        .pw-input:focus {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 30%;
+            border: none;
+            outline: none;
+        }
+
+        .phone-input {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 50%;
+            border: none;
+        }
+
+        .phone-input:focus {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 50%;
+            border: none;
+            outline: none;
+        }
+
+        .addr-input {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 95%;
+            border: none;
+        }
+
+        .addr-input:focus {
+            padding: 0.5rem;
+            font-size: 16px;
+            width: 95%;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            outline: none;
+        }
+
+        textarea {
+            max-height: 300px;
+            max-width: 400px;
+            min-height: 300px;
+            min-width: 400px;
+            padding: 0px 0px 0px 0px;
+        }
+
+        .checkbutton {
+            margin-left: 50px;
+            cursor: pointer;
+        }
+
+        div>p {
+            float: right;
+            padding: 0.5rem;
+            margin-right: 25px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            color: #aaa;
+            border: 1px solid;
+            width: 90%;
+        }
+
+        .overlap-btn {
+
+            margin: 10px 25px 10px 10px;
+        }
+
+        .explan {
+            float: right;
+            padding: 0.5rem;
+            margin-right: 25px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            color: #aaa;
+            border: none;
+            width: 90%;
+        }
+
+        .input-calendar {
+            border: none;
+            font-size: 16px;
+            color: dimgrey;
+            padding: 0.5rem;
+        }
+
+        .input-calendar:focus {
+            border: none;
+            font-size: 16px;
+            padding: 0.5rem;
+            outline: none;
+        }
+
+        #join.gender {
+            margin-left: 25px;
+        }
+
+        div>a {
+            text-decoration: none;
+        }
+
+        .check_id.no, .check_pw.no, .check_pw_comp.no {
+
+            color: red;
+        }
+
+        .check_id.ok, .check_pw.ok, .check_pw_comp.ok {
+
+            color: blue;
+        }
+        
