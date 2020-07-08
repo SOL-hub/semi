@@ -5,6 +5,8 @@
 
 <%
 	MemberDto udto = (MemberDto) session.getAttribute("userinfo");
+
+
 %>
 
 <!DOCTYPE html>
