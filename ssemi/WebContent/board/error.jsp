@@ -21,7 +21,7 @@
         </div>
     </div>
     <div id="go_main">
-        <a href="#" class="go_main_content">
+        <a href="<%=request.getContextPath()%>/index.jsp" class="go_main_content">
             <span class="go_main_click">메인으로 이동 </span>
         </a>
     </div>
