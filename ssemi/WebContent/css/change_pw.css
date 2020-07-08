@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+* {
+	font-family: NanumGothicCoding;
+	src: url("../font/NanumGothicCoding.ttf");
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+main {
+	width: 500px;
+	text-align: center;
+	height: 450px;
+	margin: auto;
+	border: 1px solid #aaa;
+}
+
+  h1 {
+            font-size: 30px;
+        }
+
+.
+        .click-btn:hover {
+            padding: 1rem;
+            font-size: 16px;
+            width: 45%;
+            background-color: #C80A1E;
+            border: none;
+            color: white;
+        }
+
+        .form-find-id {
+            border: 1px solid #aaa;
+            padding: 10px;
+            width: 454px;
+            margin: 5px 5px 5px 5px;
+        }
+
+        /*login_id,pw*/
+        .form-phone {
+            padding: 10px;
+            font-size: 15px;
+            width: 29.5%;
+            margin: 10px 0px;
+            border: 1px solid #aaa;
+        }
+
+   
+
+        }
+
+     .font-find_id {
+        text-align: left;
+         padding: 10px;
+            
+        }
+
+       .font-find_id:hover {
+            text-align: left;
+            width: 50%;
+            border: none;
+            color: #C80A1E;
+            cursor: pointer;
+            
+        }
+
+        .font-find_pw {
+            text-align: left;
+            padding: 10px;
+            color: #C80A1E;
+        }
+
+      /*  .font-find_pw:hover {
+            text-align: left;
+            width: 50%;
+            border: none;
+            color: #C80A1E;
+            cursor: pointer;
+        }*/

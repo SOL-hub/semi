@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+* {
+	font-family: NanumGothicCoding;
+	src: url("../font/NanumGothicCoding.ttf");
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+main {
+            width: 500px;
+            text-align: center;
+            height: 450px;
+            margin: auto;
+            border: 1px solid #aaa;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        /*대표버튼*/
+        .click-btn2{
+            text-align: center;
+            padding: 0.7rem;
+            font-size: 15px;
+            width: 25%;
+            background-color: white;
+            border: none;
+            color: #C80A1E;
+            cursor: pointer;
+        }
+
+        .click-btn2:hover {
+            padding: 0.7rem;
+            font-size: 15px;
+            width: 25%;
+            background-color:antiquewhite;
+            border: none;
+            color: #C80A1E;
+            border: 1px solid white;
+        }
