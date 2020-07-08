@@ -1,7 +1,6 @@
 
 <%@page import="home.beans.dto.MemberDto"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
 	MemberDto udto = (MemberDto)session.getAttribute("userinfo");
@@ -11,12 +10,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>홈페이지</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/main.css">
  
 </head>
+
+<meta charset="UTF-8">
+<title>홈페이지</title>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/main.css">
+
 <body>
+
      <header>
         <div id="container">
             <div id="box_left">
@@ -57,14 +64,17 @@
                     <li class="menu_right"><a href="#">주문/배송</a></li>
                     <li class="menu_right"><a href="#">고객센터</a></li>
 
-                    <div id="search">
-                        <form action="#" method="get" style="float: left;">
-                            <input class="search_box" type="text" placeholder="검색" name="search">
-                            <input class="search_icon" type="submit" value="">
-                        </form>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </header>
- 
+					<div id="search">
+						<form action="#" method="get" style="float: left;">
+							<input class="search_box" type="text" placeholder="검색"
+								name="search" required> <img
+								src="<%=request.getContextPath()%>/img/search.png" width="13px"
+								style="cursor: pointer" onclick="goSearch()">
+							
+						</form>
+					</div>
+				</ul>
+			</div>
+		</div>
+	</header>
+
