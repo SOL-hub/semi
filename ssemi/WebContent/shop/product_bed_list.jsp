@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>일룸</title>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/product_list.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bed_list.css">
     <style>
  
         
