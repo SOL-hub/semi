@@ -24,6 +24,7 @@
 
     .body {
         width: 300px;
+       float:left;
     }
 
     .body_qna {
@@ -70,13 +71,13 @@
         border: 0;
     }
     .cs_bottom {
-        margin: 100px;
+        margin: 80px 0 50px 0;
     }
     .cs_bottom>.cs_phone {
         color: #333333;
     }
     .cs_bottom>.cs_phone_notice {
-        margin-top: 5px;
+        margin-top: 10px;
         color: #999999;
         font-size: 13px;
         padding: 0px 5px;
