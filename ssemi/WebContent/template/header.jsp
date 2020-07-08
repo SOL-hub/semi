@@ -65,7 +65,7 @@
 					<div id="search">
 						<form action="#" method="get" style="float: left;">
 							<input class="search_box" type="text" placeholder="검색"
-								name="search"> <img
+								name="search" required> <img
 								src="<%=request.getContextPath()%>/img/search.png" width="13px"
 								style="cursor: pointer" onclick="goSearch()">
 						</form>
