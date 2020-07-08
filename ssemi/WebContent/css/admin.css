@@ -7,6 +7,12 @@
 /*로그인 페이지 인풋  구현*/
 
 
+* {
+    box-sizing: border-box;
+
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
 
 
 main {
@@ -139,22 +145,24 @@ input[id="cb7"]:checked + label {
 
 /*어드민 회원 검색 리스트 css 임새봄*/
 
-        
-        .tsearch {
+          .tsearch {
             border: 1px solid #AAAAAA;
-            width: 600px;
+            width: 550px;
             padding: 0 0 10px 3px
         }
 
-        #stitle {
+       h2 {
             color: #C80A1E;
         }
 
         .search-wrap {
             margin: 150px 0 0 650px;
         }
-        .list-wrap{
-            margin: 0 0 0 650px;
+
+        .list-wrap {
+            margin: 50px 0 0 600px;
+
+
         }
 
         .tsearch tr th {
@@ -188,7 +196,7 @@ input[id="cb7"]:checked + label {
 
         .admin-submit {
             width: 150px;
-            margin: 20px 0 20px 450px;
+            margin: 20px 30px 30px 400px;
 
 
 
@@ -199,15 +207,23 @@ input[id="cb7"]:checked + label {
             display: inline-block;
         }
 
-        
-        
-        
+
+        #hr {
+            background-color: gainsboro;
+            size: 10px;
+        }
+
         /*리스트 스타일 */
         #Ltitle {
-        	margin-bottom:5px;
             font-size: 20px;
             color: #C80A1E;
-            
+
+        }
+
+        .Ltable {
+            margin-right: 10px;
+
+
         }
 
         #listcount {
@@ -215,22 +231,45 @@ input[id="cb7"]:checked + label {
             font-size: 13px;
         }
 
-        .list-table-wrap{
+        .list-table-wrap {
+
+
             border: 1px solid #AAAAAA;
-           border-collapse: collapse;
+            border-collapse: collapse;
             width: 650px;
-            height: auto;
+
+
+
         }
+
+
         table tr th {
+
+            width: 600px;
+            padding: 10px;
             color: #C80A1E;
         }
-       
+
+        #list-table {
+            width: 600px;
+            text-align: center;
+        }
+
+
+
         .listbtn {
-            margin-top: 10px;
-            margin-bottom: 10px;
+            display: block;
+            margin-bottom: 3px;
             background-color: #C80A1E;
             color: white;
             border: solid transparent;
             width: 80px;
             height: 30px;
+        }
+
+        .list {
+
+
+            margin-left: 17%;
+
         }
