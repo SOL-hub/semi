@@ -14,6 +14,7 @@
 <meta charset="UTF-8">
 <title>홈페이지</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/main.css">
+
 <body>
 <header>
         <div id="container">
@@ -44,14 +45,22 @@
                 </ul>
             </div>
             <div class="menu_logo">
+<<<<<<< HEAD
+            		<a href="<%=request.getContextPath()%>/index.jsp">
+=======
             	<a href="<%=request.getContextPath() %>">
+>>>>>>> refs/remotes/origin/master
                 <img width="50px" src="<%=request.getContextPath() %>/img/pig_logo.png">
                 </a>
             </div>
             <div id="box_right">
                 <ul class="menu side_right">
                     <li class="menu_right"><a href="#">로그인</a></li>
+<<<<<<< HEAD
+                    <li class="menu_right"><a href="<%=request.getContextPath() %>/member/join.jsp">회원가입</a></li>
+=======
                     <li class="menu_right"><a href="<%=request.getContextPath() %>/member/join_main.jsp">회원가입</a></li>
+>>>>>>> refs/remotes/origin/master
                     <li class="menu_right"><a href="#">주문/배송</a></li>
                     <li class="menu_right"><a href="#">고객센터</a></li>
 
