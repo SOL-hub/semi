@@ -1,25 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-    <%
-    String member_id = (String)session.getAttribute("member_id");
-    session.removeAttribute("member_id");
+	pageEncoding="UTF-8"%>
 
-    %>
-
+<link rel=stylesheet type="text/css"
+	href="<%=request.getContextPath()%>/css/find_id_result.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
+	
+	<%String member_id = (String)session.getAttribute("member_id");
+	session.removeAttribute("member_id");
+	%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<div align ="center">
 
-<h3>검색된 아이디는 <%=member_id%> 입니다</h3>
-<!-- 이 다음에 할 거 링크-->
+<main>
 
-	<h5><a href="login.jsp">로그인 하러가기</a></h5>
+        <div class="find-wrap">
+            <h1>내 계정 찾기</h1>
 
-	<h5><a href="find_id,pw.jsp">비밀번호가 기억나지 않아요</a></h5>
+            <div class="center">
+
+                <br>
+
+                <h3>검색된 아이디는 <span><%=member_id%></span>입니다</h3>
+                <br>
 
 
+                <!-- 이 다음에 할 거 링크-->
+                <div class="change_after">
+                    <a href="<%=request.getContextPath()%>/member/login.jsp"> <input class="click-btn2" type="submit" value="로그인하기"></a>
+                </div>
 
-</div>
+
+                <div class="change_after">
+                    <a href="<%=request.getContextPath()%>/member/change_pw.jsp?go=change_pw.jsp"> <input class="click-btn2" type="submit" value="비밀번호 변경"></a>
+                </div>
+
+            </div>
+        </div>
+    </main>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -139,8 +139,7 @@ public class MemberDao {
 	public String findId(MemberDto mdto)throws Exception{
 		Connection con = getConnection();
 		
-		String sql = "SELECT member_id From member"
-				+ "WHERE member_name=? and member_phone=?";
+		String sql = "SELECT member_id From member WHERE member_name=? and member_phone=?";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, mdto.getMember_name());
@@ -162,7 +161,24 @@ public class MemberDao {
 				return member_id;
 		}
 	
-	//비밀번호 찾기
+	//비밀번호 변경
+	
+	public void change_pw(MemberDto mdto) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "UPDATE member set member_pw? "
+				+ "where member_id=? and member_nick=? member_phone";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, mdto.getMember_pw());
+		ps.setString(2, mdto.getMember_id());
+		ps.setString(3, mdto.getMember_nick());
+		ps.setString(4, mdto.getMember_phone());
+		
+		ps.execute();
+		
+		con.close();
+	}
 	
 	
 	

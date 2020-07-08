@@ -4,7 +4,7 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <link rel=stylesheet type="text/css"
-	href="<%=request.getContextPath()%>/css/login_id,pw.css">
+	href="<%=request.getContextPath()%>/css/login_id.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
@@ -17,7 +17,8 @@
 <div class = "font-find"></div>
 		<div class="font-find_id">아이디찾기</div>
 
-			<div class="font-find_pw">비밀번호찾기</div>
+
+			<div class="font-find_pw"><a href="check_pw.jsp?go=change_pw.jsp">비밀번호찾기</a></div>
 
 </div>
 			<!--이름 입력창-->
@@ -43,4 +44,5 @@
 		<!--로그인버튼-->
 		<input class="click-btn" type="submit" value="아이디 검색"> <br>
 	</main>
+	
 </form>
