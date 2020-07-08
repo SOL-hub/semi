@@ -9,8 +9,7 @@
      <!-- 임새봄 -->
      
      
-   <jsp:include page="/template/header.jsp"></jsp:include>
-   
+  
 <!DOCTYPE html>
 <html>
 <head>

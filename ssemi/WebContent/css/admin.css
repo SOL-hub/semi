@@ -173,12 +173,15 @@ input[id="cb7"]:checked + label {
 
             color: #C80A1E;
 
-            font-size: 14px
+            font-size: 14px;
         }
 
         td {
             padding: 10px 10px 10px 10px;
-            color: #AAAAAA
+            color: #AAAAAA;
+            font-size: 13px;
+           
+            
         }
 
         select {
