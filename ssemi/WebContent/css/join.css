@@ -2,24 +2,18 @@
 
         * {
             box-sizing: border-box;
-            
+            font-family: 'NanumGothicCoding';
+            src: url("../font/NanumBarunGothic.ttf");
 
         }
 
         main {
             width: 600px;
-            height: 1400px;
+            height: 1300px;
             margin: auto;
-            border: none;
-            padding-top: 150px;  
-            
+            border: 1px solid #aaa;
         }
-        
-		article {
-        border: 1px solid #aaa;
-        height: 1300px;
-        }
-        
+
         .center {
             text-align: center;
         }

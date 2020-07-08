@@ -1,21 +1,15 @@
 @charset "UTF-8";
- 
  *{
-        box-sizing: border-box;
-       
+            box-sizing: border-box;
+            font-family: 'NanumBarunGothic';
+            src: url("../font/NanumBarunGothic.ttf"); 
+                
         }
-        
         main{
             width: 500px;
-            height: 800px;
+            height: 650px;
             margin: auto;
-            border: none;
-            padding-top: 150px;
-        }
-        
-        article {
-        border: 1px solid #aaa;
-        height: 650px;
+            border: 1px solid #aaa;
         }
         
         .center{

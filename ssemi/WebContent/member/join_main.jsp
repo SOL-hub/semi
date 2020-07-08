@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<jsp:include page="/template/header.jsp"></jsp:include>  
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>회원가입</title>
+ <jsp:include page="/template/header.jsp"></jsp:include>  
+
     <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/base.css">
     <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/join_main.css">
     <style>
@@ -72,6 +67,5 @@
         </article>
     </main>
     </body>
-    </html>
     <jsp:include page="/template/footer.jsp"></jsp:include> 
 
