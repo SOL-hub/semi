@@ -32,6 +32,8 @@ public class BoardDao {
 		return src.getConnection();
 	}
 
+	// 검색 메소드
+	
 	public List<BoardDto> search(String type, String keyword, int start, int finish) throws Exception {
 		Connection con = getConnection();
 

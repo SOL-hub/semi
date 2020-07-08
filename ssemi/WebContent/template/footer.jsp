@@ -23,7 +23,7 @@
                 <li class="footer_inner_item">
                     <ul id="footer1">
                         <li class="info_title">SUPPORT</li>
-                        <li class="info_title">고객센터</li>
+                        <li class="info_title"><a href=<%=request.getContextPath()%>/board/cs.jsp>고객센터</a></li>
                     </ul>
                 </li>
 
