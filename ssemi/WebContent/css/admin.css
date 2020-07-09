@@ -1,278 +1,246 @@
 @charset "EUC-KR";
 
 /*임새봄*/
-
 @charset "UTF-8";
 
 /*로그인 페이지 인풋  구현*/
-
-
 * {
-    box-sizing: border-box;
-
-    font-family: 'Noto Sans KR', sans-serif;
-
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
-
 main {
-    width: 500px;
-    height: 330px;
-    margin: auto;
-    border: 1px solid #3333;
-    padding: 50px 50px;
-
+	width: 500px;
+	height: 330px;
+	margin: auto;
+	border: 1px solid #3333;
+	padding: 50px 50px;
 }
 
 .admin-wrap {
-
-    width: 350px;
-    margin: auto;
-    border: 1px black;
-
+	width: 350px;
+	margin: auto;
+	border: 1px black;
 }
 
-.admin-id,
-.admin-pw {
-    font-size: 14px;
-    color: #AAAAAA;
-    width: 100%;
-    margin: 5px;
-    padding: 10px;
-    border: 1px solid #3333;
+.admin-id, .admin-pw {
+	font-size: 14px;
+	color: #AAAAAA;
+	width: 100%;
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid #3333;
 }
 
 .admin-pw {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 .adminT {
-    text-align: left;
-    color: #C80A1E;
-    margin: 0px 0px 10px 0px;
-
-
+	text-align: left;
+	color: #C80A1E;
+	margin: 0px 0px 10px 0px;
 }
-
 
 .admin-submit {
-    text-align: center;
-    font-size: 16px;
-    color: white;
-    background-color: #C80A1E;
-    width: 255px;
-    padding: 1rem;
-    margin-top: 23px;
-    margin-bottom: 15px;
-    margin-left: 50px;
-    margin-right: 50px;
-    ;
-    border: 1px solid transparent;
-    cursor: pointer;
+	text-align: center;
+	font-size: 16px;
+	color: white;
+	background-color: #C80A1E;
+	width: 255px;
+	padding: 1rem;
+	margin-top: 23px;
+	margin-bottom: 15px;
+	margin-left: 50px;
+	margin-right: 50px;;
+	border: 1px solid transparent;
+	cursor: pointer;
 }
-
 
 /*체크 박스 적용 
 체크박스 한개 당 id="cb1" id="cb2" 이렇게 3,4,5,6 숫자 올라가면서 정한 후 부여
 라벨 이름은 해당 체크박스 이름과 동일하게 짓기 
 
 */
-
-
-
-input[id="cb1"],
-input[id="cb2"],
-input[id="cb3"],
-input[id="cb4"],
-input[id="cb5"],
-input[id="cb6"],
-input[id="cb7"] {
-    display: none;
-
+input[id="cb1"], input[id="cb2"], input[id="cb3"], input[id="cb4"],
+	input[id="cb5"], input[id="cb6"], input[id="cb7"] {
+	display: none;
 }
 
-input[id="cb1"] + label,
-input[id="cb2"] + label,
-input[id="cb3"] + label,
-input[id="cb4"] + label,
-input[id="cb5"] + label,
-input[id="cb6"] + label,
-input[id="cb7"] + label {
-     width: 10%;
-    height: 20px;
-    padding-left: 30px;
-    height: 20px;
-    background: url("/ssemi/img/nonCheck.png") 4px no-repeat;
-
-    background-size: 20px;
-    text-align: left;
-    color: #AAAAAA;
-
-
+input[id="cb1"]+label, input[id="cb2"]+label, input[id="cb3"]+label,
+	input[id="cb4"]+label, input[id="cb5"]+label, input[id="cb6"]+label,
+	input[id="cb7"]+label {
+	width: 10%;
+	height: 20px;
+	padding-left: 30px;
+	height: 20px;
+	background: url("/ssemi/img/nonCheck.png") 4px no-repeat;
+	background-size: 20px;
+	text-align: left;
+	color: #AAAAAA;
 }
 
-input[id="cb1"] + label :after,
-input[id="cb2"] + label :after,
-input[id="cb3"] + label :after,
-input[id="cb4"] + label :after,
-input[id="cb5"] + label :after,
-input[id="cb6"] + label :after,
-input[id="cb7"] + label :after {
-    content: "";
-    display: block;
+input[id="cb1"]+label :after, input[id="cb2"]+label :after, input[id="cb3"]+label :after,
+	input[id="cb4"]+label :after, input[id="cb5"]+label :after, input[id="cb6"]+label :after,
+	input[id="cb7"]+label :after {
+	content: "";
+	display: block;
 }
 
-input[id="cb1"]:checked + label,
-input[id="cb2"]:checked + label,
-input[id="cb3"]:checked + label,
-input[id="cb4"]:checked + label,
-input[id="cb5"]:checked + label,
-input[id="cb6"]:checked + label,
-input[id="cb7"]:checked + label {
-
-    background: url("/ssemi/img/checked.png")4px no-repeat;
-    background-size: 20px;
+input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:checked+label,
+	input[id="cb4"]:checked+label, input[id="cb5"]:checked+label, input[id="cb6"]:checked+label,
+	input[id="cb7"]:checked+label {
+	background: url("/ssemi/img/checked.png") 4px no-repeat;
+	background-size: 20px;
 }
 
-
-.login-memory{
-    
-    font-size: 13px;
+.login-memory {
+	font-size: 13px;
 }
-
-
-
 
 /*어드민 회원 검색 리스트 css 임새봄*/
+.tsearch {
+	border: 1px solid #AAAAAA;
+	width: 550px;
+	padding: 0 0 10px 3px
+}
 
-          .tsearch {
-            border: 1px solid #AAAAAA;
-            width: 550px;
-            padding: 0 0 10px 3px
-        }
+h2 {
+	color: #C80A1E;
+}
 
-       h2 {
-            color: #C80A1E;
-        }
+.search-wrap {
+	margin: 150px 0 0 650px;
+}
 
-        .search-wrap {
-            margin: 150px 0 0 650px;
-        }
+.list-wrap {
+	margin: 50px 0 0 600px;
+}
 
-        .list-wrap {
-            margin: 50px 0 0 600px;
+.tsearch tr th {
+	border: 1px solid transparent;
+	width: 130px;
+	text-align: center;
+	color: #C80A1E;
+	font-size: 14px;
+}
 
+td {
+	padding: 10px 10px 10px 10px;
+	color: #AAAAAA;
+	font-size: 13px;
+}
 
-        }
+select {
+	color: black;
+}
 
-        .tsearch tr th {
+.tsearch tr td>input {
+	font-size: 10px;
+	width: 120px;
+	color: #AAAAAA;
+	padding: 5px;
+	border: 1px solid #AAAAAA;
+}
 
-            border: 1px solid transparent;
-            width: 130px;
-            text-align: center;
+.admin-submit {
+	width: 150px;
+	margin: 20px 30px 30px 400px;
+}
 
-            color: #C80A1E;
+span {
+	font-size: 13px;
+	display: inline-block;
+}
 
-            font-size: 14px;
-        }
+#hr {
+	background-color: gainsboro;
+	size: 10px;
+}
 
-        td {
-            padding: 10px 10px 10px 10px;
-            color: #AAAAAA;
-            font-size: 13px;
-           
-            
-        }
+/*리스트 스타일 */
+#Ltitle {
+	font-size: 20px;
+	color: #C80A1E;
+}
 
-        select {
-            color: black;
-        }
+.Ltable {
+	margin-right: 10px;
+}
 
-        .tsearch tr td>input {
-            font-size: 10px;
-            width: 120px;
-            color: #AAAAAA;
-            padding: 5px;
-            border: 1px solid #AAAAAA;
+#listcount {
+	color: #AAAAAA;
+	font-size: 13px;
+}
 
-        }
+.list-table-wrap {
+	border: 1px solid #AAAAAA;
+	border-collapse: collapse;
+	width: 650px;
+}
 
-        .admin-submit {
-            width: 150px;
-            margin: 20px 30px 30px 400px;
+table tr th {
+	width: 600px;
+	padding: 10px;
+	color: #C80A1E;
+}
 
+#list-table {
+	width: 600px;
+	text-align: center;
+}
 
+.listbtn {
+	display: block;
+	margin-bottom: 3px;
+	background-color: #C80A1E;
+	color: white;
+	border: solid transparent;
+	width: 80px;
+	height: 30px;
+}
 
-        }
+.list {
+	margin-left: 17%;
+}
 
-        span {
-            font-size: 13px;
-            display: inline-block;
-        }
+/*메인 페이지 카테고리 모음*/
+h3 {
+	width: 100px;
+	text-align: center;
+}
 
+/*이미지*/
+.todayimg {
+	padding: 5px;
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+}
 
-        #hr {
-            background-color: gainsboro;
-            size: 10px;
-        }
+/*동그란 회색 이미지 div*/
+.today-cart-wrap {
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	background-color: #3333;
+}
 
-        /*리스트 스타일 */
-        #Ltitle {
-            font-size: 20px;
-            color: #C80A1E;
+/*카테고리별 글씨*/
+.today-label {
+	text-align: center;
+	color: #C80A1E;
+}
 
-        }
+/*카테고리 별 글씨 div*/
+.label-wrap {
+	height: 100px;
+	width: 100px;
+}
 
-        .Ltable {
-            margin-right: 10px;
-
-
-        }
-
-        #listcount {
-            color: #AAAAAA;
-            font-size: 13px;
-        }
-
-        .list-table-wrap {
-
-
-            border: 1px solid #AAAAAA;
-            border-collapse: collapse;
-            width: 650px;
-
-
-
-        }
-
-
-        table tr th {
-
-            width: 600px;
-            padding: 10px;
-            color: #C80A1E;
-        }
-
-        #list-table {
-            width: 600px;
-            text-align: center;
-        }
-
-
-
-        .listbtn {
-            display: block;
-            margin-bottom: 3px;
-            background-color: #C80A1E;
-            color: white;
-            border: solid transparent;
-            width: 80px;
-            height: 30px;
-        }
-
-        .list {
-
-
-            margin-left: 17%;
-
-        }
+/*카테고리 전체 감쌈*/
+.category-main.fixed {
+	margin-top: 20px;
+	margin-left: 250px;
+	position: fixed;
+}
