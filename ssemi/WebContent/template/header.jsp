@@ -1,12 +1,27 @@
 
+<%@page import="home.beans.dto.ItemDto"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="home.beans.dao.ItemDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%
 	MemberDto udto = (MemberDto) session.getAttribute("userinfo");
-%>
 
+	//상품 검색 : item_type 유형 검색어 입력
+	String keyword = request.getParameter("keyword");
+	// 이 검색어를 활용하여 '상품 목록' 불러오기
+	ItemDao idao = new ItemDao();
+	if (keyword == null) {
+		List<ItemDto> list = new ArrayList<>();
+
+	} else {
+		List<ItemDto> list = idao.search(keyword);
+	}
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,10 +34,6 @@
 
 </head>
 
-<meta charset="UTF-8">
-<title>홈페이지</title>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/main.css">
 
 <body>
 
@@ -87,69 +98,59 @@
 					<li class="menu_right"><a href="#">주문/배송</a></li>
 					<li class="menu_right"><a href="#">고객센터</a></li>
 
+	
+								<%
+									} else if (isLogin && mdto.getMember_auth().equals("관리자")) {
+								%><!-- 관리자일 때-->
 
-					<div id="search">
-						<form action="#" method="get" style="float: left;">
+								<div id="box_right">
+									<ul class="menu side_right">
+
+
+										<li class="menu_right"><a
+											href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
+										<li class="menu_right"><a href="#">관리메뉴</a></li>
+										<li class="menu_right"><a href="#">주문/배송</a></li>
+										<li class="menu_right"><a href="#">고객센터</a></li>
+
+							
+												
+													<%
+														} else {
+													%>
+													<!-- 로그아웃 -->
+													<div id="box_right">
+														<ul class="menu side_right">
+															<li class="menu_right"><a
+																href="<%=request.getContextPath()%>/member/login.jsp">로그인</a></li>
+															<li class="menu_right"><a
+																href="<%=request.getContextPath()%>/member/join_main.jsp">회원가입</a></li>
+															<li class="menu_right"><a href="#">주문/배송</a></li>
+															<li class="menu_right"><a href="#">고객센터</a></li>
+
+
+													
+																	
+
+
+
+																		<%
+																			}
+																		%>
+																		
+																		<div id="search">
+
+						<form action="<%=request.getContextPath()%>/shop/product_bed_list.jsp" method="get" style="float: left;">
 							<input class="search_box" type="text" placeholder="검색"
-								name="search" required> <img
-								src="<%=request.getContextPath()%>/img/search.png" width="13px"
-								style="cursor: pointer" onclick="goSearch()">
+								name="keyword" required> <input type="image"
+								src="<%=request.getContextPath()%>/img/search.png"
+								style="width: 20px;">
 
+						</form>
 
-
-							<%
-								} else if (isLogin && mdto.getMember_auth().equals("관리자")) {
-							%><!-- 관리자일 때-->
-
-							<div id="box_right">
-								<ul class="menu side_right">
-
-
-									<li class="menu_right"><a
-										href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
-									<li class="menu_right"><a href="#">관리메뉴</a></li>
-
-
-
-									<div id="search">
-										<form action="#" method="get" style="float: left;">
-											<input class="search_box" type="text" placeholder="검색"
-												name="search" required> <img
-												src="<%=request.getContextPath()%>/img/search.png"
-												width="13px" style="cursor: pointer" onclick="goSearch()">
-
-
-											<%
-												} else {
-											%>
-											<!-- 로그아웃 -->
-											<div id="box_right">
-												<ul class="menu side_right">
-													<li class="menu_right"><a
-														href="<%=request.getContextPath()%>/member/login.jsp">로그인</a></li>
-													<li class="menu_right"><a
-														href="<%=request.getContextPath()%>/member/join_main.jsp">회원가입</a></li>
-													<li class="menu_right"><a href="#">주문/배송</a></li>
-													<li class="menu_right"><a href="#">고객센터</a></li>
-
-
-
-													<div id="search">
-														<form action="#" method="get" style="float: left;">
-															<input class="search_box" type="text" placeholder="검색"
-																name="search" required> <img
-																src="<%=request.getContextPath()%>/img/search.png"
-																width="13px" style="cursor: pointer"
-																onclick="goSearch()">
-
-
-															<%
-																}
-															%>
-
-														</form>
+																	</form>
+															</div>
+														</ul>
 													</div>
-												</ul>
-											</div>
-									</div>
+										</div>
 	</header>
