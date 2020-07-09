@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	 
+	 
 	<!-- footer -->
 <div class="footer">
     <ul class="footer_inner">
@@ -71,5 +72,10 @@
         </li>
     </ul>
 </div>
+ 
+	  <!-- 연습용 -->
+                    <h6>세션ID : <%=session.getId() %>
+                    userinfo : <%=session.getAttribute("userinfo") %></h6>
+                    userinfo : <%=session.getAttribute("userinfo")!=null %></h6>
 </body>
 </html>

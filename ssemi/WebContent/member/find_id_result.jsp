@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
+
 <link rel=stylesheet type="text/css"
 	href="<%=request.getContextPath()%>/css/find_id_result.css">
 <link
@@ -10,6 +12,11 @@
 	<%String member_id = (String)session.getAttribute("member_id");
 	session.removeAttribute("member_id");
 	%>
+	
+	<%String member_name = (String)session.getAttribute("member_name");
+	session.removeAttribute("member_name");
+	%>
+	
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 
@@ -22,7 +29,9 @@
 
                 <br>
 
-                <h3>검색된 아이디는 <span><%=member_id%></span>입니다</h3>
+                <h3>소중한 <%=member_name%>양의 아이디는 
+                <P></P>
+                <span><%=member_id%></span>입니다</h3>
                 <br>
 
 
