@@ -109,9 +109,10 @@ h2 {
 	color: #C80A1E;
 }
 
-.search-wrap {
-	margin: 150px 0 0 250px;
-}
+    .search-wrap {
+            margin: 150px 0 0 700px;
+        }
+
 
 .list-wrap {
 	margin: 50px 0 0 600px;
@@ -176,7 +177,7 @@ span {
 .list-table-wrap {
 	border: 1px solid #AAAAAA;
 	border-collapse: collapse;
-	width: 650px;
+	width: 700px;
 }
 
 table tr th {
@@ -204,9 +205,15 @@ table tr th {
 	margin-left: 17%;
 }
 
+
+.Ldata {
+	text-align: center;
+}
+
+
 /*메인 페이지 카테고리 모음*/
  /*오늘 큰글씨로 표시*/
-        h3 {
+      h3 {
             width: 100px;
             text-align: center;
         }
@@ -245,13 +252,14 @@ table tr th {
         /*카테고리 전체 감쌈*/
         .category-main.fixed {
 
-            margin-top: 250px;
+            margin-top:5px;
             margin-left: 250px;
             position: fixed;
         }
 
         .category-main {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 250px;
             margin-left: 250px;
         }
+        

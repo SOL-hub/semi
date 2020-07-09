@@ -9,7 +9,7 @@
 <!-- 임새봄 -->
 
 
-
+<jsp:include page="/template/header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,67 +24,13 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/lightpick.css">
 <script src="<%=request.getContextPath()%>/js/lightpick.js"></script>
+
 <style>
 
+    
 
-.Ldata {
-	text-align: center;
-}
 
-.list-table-wrap {
-	width: 700px;
-}
-
- h3 {
-            width: 100px;
-            text-align: center;
-        }
-
-        /*이미지*/
-        .todayimg {
-            padding: 5px;
-            height: 100px;
-            width: 100px;
-            border-radius: 100%;
-
-        }
-
-        /*동그란 회색 이미지 div*/
-        .today-cart-wrap {
-
-            height: 100px;
-            width: 100px;
-            border-radius: 100%;
-            background-color: #3333;
-
-        }
-
-        /*카테고리별 글씨*/
-        .today-label {
-            text-align: center;
-            color: #C80A1E;
-        }
-
-        /*카테고리 별 글씨 div*/
-        .label-wrap {
-            height: 100px;
-            width: 100px;
-        }
-
-        /*카테고리 전체 감쌈*/
-        .category-main.fixed {
-
-            margin-top:5px;
-            margin-left: 250px;
-            position: fixed;
-        }
-
-        .category-main {
-            text-align: center;
-            margin-top: 250px;
-            margin-left: 250px;
-        }
-        
+ 
         /*회원 검색과 리스트 전체 div*/
        
 </style>
@@ -177,34 +123,34 @@
 
         <div class="label-wrap">
             <a href="#" class="today-label">
-                주문 (0건)
+                주문 (15건)
             </a>
         </div>
 
         <div class="today-cart-wrap">
             <a href="#">
-                <img class="todayimg" src="/ssemi/img/supermarket.png">
+                <img class="todayimg" src="/ssemi/img/money.png">
             </a>
         </div>
 
 
         <div class="label-wrap">
             <a href="#" class="today-label">
-                결제 (0건)
+                결제 (9건)
             </a>
         </div>
 
 
         <div class="today-cart-wrap">
             <a href="#">
-                <img class="todayimg" src="/ssemi/img/supermarket.png">
+                <img class="todayimg" src="/ssemi/img/customer.png">
             </a>
         </div>
 
 
         <div class="label-wrap ">
             <a href="#" class="today-label">
-                회원 가입(0건)
+                회원 가입(30건)
             </a>
         </div>
 
@@ -286,12 +232,15 @@
 					%>
 
 					<tr class="Ldata">
+						
 						<td class="Ldata"><input type="checkbox" class="select-item"></td>
-						<td class="Ldata"><%=mdto.getMember_name()%></td>
-						<td class="Ldata"><%=mdto.getMember_id()%></td>
-						<td class="Ldata"><%=mdto.getMember_join_day()%></td>
-						<td class="Ldata"><%=mdto.getMember_phone()%></td>
-						<td class="Ldata"><%=mdto.getMember_age()%></td>
+						
+						<td class="Ldata"><a href = "#"><%=mdto.getMember_name()%></a></td>
+						
+						<td class="Ldata"><a href = "#"><%=mdto.getMember_id()%></a></td>
+						<td class="Ldata"><a href = "#"><%=mdto.getMember_join_day()%></a></td>
+						<td class="Ldata"><a href = "#"><%=mdto.getMember_phone()%></a></td>
+						<td class="Ldata"><a href = "#"><%=mdto.getMember_age()%></a></td>
 						<td class="Ldata"><input type="button" value="주문내역"
 							class="listbtn"> <input type="button" value="적립금"
 							class="listbtn"></td>
@@ -311,3 +260,4 @@
 
 </body>
 </html>
+<jsp:include page="/template/footer.jsp"></jsp:include>
