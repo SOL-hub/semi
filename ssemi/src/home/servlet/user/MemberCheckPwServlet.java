@@ -29,7 +29,9 @@ public class MemberCheckPwServlet extends HttpServlet{
 			String member_pw = mdao.CheckPw(mdto);
 		
 			
-			if(member_pw!=null) {
+			if(member_pw!=null) { //결과가 있으면
+				req.getSession().setAttribute("member_pw", member_pw);
+				
 			resp.sendRedirect("change_pw.jsp");
 			
 			}

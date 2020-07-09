@@ -19,15 +19,26 @@ main {
             font-size: 30px;
         }
 
-.
-        .click-btn:hover {
-            padding: 1rem;
-            font-size: 16px;
-            width: 45%;
-            background-color: #C80A1E;
-            border: none;
-            color: white;
-        }
+        /*대표버튼*/
+.click-btn {
+	text-align: center;
+	padding: 1rem;
+	font-size: 16px;
+	width: 45%;
+	background-color: #C80A1E;
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+
+.click-btn:hover {
+	padding: 1rem;
+	font-size: 16px;
+	width: 50%;
+	background-color: #C80A1E;
+	border: none;
+	color: white;
+}
 
         .form-find-id {
             border: 1px solid #aaa;
@@ -77,3 +88,6 @@ main {
             color: #C80A1E;
             cursor: pointer;
         }*/
+        
+ 
+        

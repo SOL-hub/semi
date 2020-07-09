@@ -16,6 +16,9 @@ public class MemberJoinServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			
+			req.setCharacterEncoding("UTF-8");
+			
 			MemberDto mdto = new MemberDto();
 			mdto.setMember_id(req.getParameter("member_id"));
 			mdto.setMember_pw(req.getParameter("member_pw"));
