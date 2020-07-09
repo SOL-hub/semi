@@ -46,9 +46,6 @@ public class MemberFindid_PwServlet extends HttpServlet{
 				
 				resp.sendRedirect("find_id_result.jsp");
 				
-				//출력2
-				
-				
 			}
 			else {//결과가 없으면
 				resp.sendRedirect("find_id,pw.jsp?error");

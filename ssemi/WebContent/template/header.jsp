@@ -97,7 +97,7 @@
 
 					<li class="menu_right"><a href="#">주문/배송</a></li>
 					<li class="menu_right"><a href="#">고객센터</a></li>
-
+</ul>
 	
 								<%
 									} else if (isLogin && mdto.getMember_auth().equals("관리자")) {
@@ -114,7 +114,7 @@
 										<li class="menu_right"><a href="#">고객센터</a></li>
 
 							
-												
+												</ul>
 													<%
 														} else {
 													%>

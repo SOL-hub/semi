@@ -170,7 +170,7 @@ public class MemberDao {
 	public String CheckPw(MemberDto mdto) throws Exception{
 		Connection con = getConnection();
 		
-		String sql = "SELECT member_pw FROM member where member_id=? and member_nick=? member_phone=?";
+		String sql = "SELECT member_pw FROM member where member_id=? and member_nick=? and member_phone=?";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 
