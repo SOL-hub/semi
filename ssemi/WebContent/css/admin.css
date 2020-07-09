@@ -9,7 +9,7 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-main {
+.admin-main {
 	width: 500px;
 	height: 330px;
 	margin: auto;
@@ -110,7 +110,7 @@ h2 {
 }
 
 .search-wrap {
-	margin: 150px 0 0 650px;
+	margin: 150px 0 0 250px;
 }
 
 .list-wrap {
@@ -205,42 +205,53 @@ table tr th {
 }
 
 /*메인 페이지 카테고리 모음*/
-h3 {
-	width: 100px;
-	text-align: center;
-}
+ /*오늘 큰글씨로 표시*/
+        h3 {
+            width: 100px;
+            text-align: center;
+        }
 
-/*이미지*/
-.todayimg {
-	padding: 5px;
-	height: 100px;
-	width: 100px;
-	border-radius: 100%;
-}
+        /*이미지*/
+        .todayimg {
+            padding: 5px;
+            height: 100px;
+            width: 100px;
+            border-radius: 100%;
 
-/*동그란 회색 이미지 div*/
-.today-cart-wrap {
-	height: 100px;
-	width: 100px;
-	border-radius: 100%;
-	background-color: #3333;
-}
+        }
 
-/*카테고리별 글씨*/
-.today-label {
-	text-align: center;
-	color: #C80A1E;
-}
+        /*동그란 회색 이미지 div*/
+        .today-cart-wrap {
 
-/*카테고리 별 글씨 div*/
-.label-wrap {
-	height: 100px;
-	width: 100px;
-}
+            height: 100px;
+            width: 100px;
+            border-radius: 100%;
+            background-color: #3333;
 
-/*카테고리 전체 감쌈*/
-.category-main.fixed {
-	margin-top: 20px;
-	margin-left: 250px;
-	position: fixed;
-}
+        }
+
+        /*카테고리별 글씨*/
+        .today-label {
+            text-align: center;
+            color: #C80A1E;
+        }
+
+        /*카테고리 별 글씨 div*/
+        .label-wrap {
+            height: 100px;
+            width: 100px;
+        }
+
+        /*카테고리 전체 감쌈*/
+        .category-main.fixed {
+
+            margin-top: 250px;
+            margin-left: 250px;
+            position: fixed;
+        }
+
+        .category-main {
+            text-align: center;
+            margin-top: 20px;
+            margin-left: 250px;
+        }
