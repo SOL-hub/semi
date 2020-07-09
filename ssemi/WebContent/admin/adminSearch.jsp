@@ -209,9 +209,12 @@
 			<p id="listcount">
 				검색결과<%=list.size()%>건
 			</p>
-
+		<form action="<%=request.getContextPath()%>/admin/delete.do"  method= "get">
 			<div>
-				<input type="button" value="회원 삭제" class="listbtn">
+			<%MemberDto user = new MemberDto(); %>
+			
+				<input type="submit" value="회원 삭제" class="listbtn">
+				
 			</div>
 			<div class="list-table-wrap">
 				<table class="Ltable">
@@ -227,13 +230,14 @@
 					</tr>
 
 
+
 					<%
 						for (MemberDto mdto : list) {
 					%>
 
 					<tr class="Ldata">
 						
-						<td class="Ldata"><input type="checkbox" class="select-item"></td>
+						<td class="Ldata"><input type="checkbox"  class="select-item" name="member_no"  value="<%=mdto.getMember_no()%>"></td>
 						
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_name()%></a></td>
 						
@@ -250,7 +254,9 @@
 					%>
 
 				</table>
+				
 			</div>
+			</form>
 
 		</div>
 	</div>

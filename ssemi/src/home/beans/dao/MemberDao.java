@@ -123,5 +123,17 @@ public class MemberDao {
 		return list;
 
 	}
+	
+	// 관리자가 회원 탈퇴 시키는거! -- 임새봄
+		public void exit(String member_id) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "DELETE member WHERE member_id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, member_id);
+		ps.execute();
+		
+		con.close();
+	}
 
 }
