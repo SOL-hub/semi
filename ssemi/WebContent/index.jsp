@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 
 
+
+
 <jsp:include page="/template/header.jsp"></jsp:include>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
      <article class="w-100">
