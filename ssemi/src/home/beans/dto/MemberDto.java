@@ -183,8 +183,27 @@ public class MemberDto {
 		this.member_consult_list = member_consult_list;
 	}
 	
+	//멤버 생일이 날짜만 나오게 하는 DTO -- 임새봄
+
+	public String  getMember_birth_day() {
+		
+		return member_birth.substring(0,4);
+
+	}
+	
+	// 멤버 생일로 나이를 구하는 DTO -- 임새봄 
+	public int  getMember_age() {
+		String a = getMember_birth_day();
+		int b = Integer.parseInt(a);
+		int age = 2020-b+1;
+		return age;
+	}
 	
 	
+	// 가입 날짜만 보이게 하는 DTO  -- 임새봄
+	public String getMember_join_day() {
+		return member_join.substring(0,10);
+	}
 	
 }
 	

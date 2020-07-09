@@ -9,7 +9,7 @@
      <!-- 임새봄 -->
      
      
-  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +22,13 @@
  <script src="<%=request.getContextPath() %>/js/lightpick.js"></script>
  <style>
  
+  	.Ldata {
+  	 text-align: center;
+  	}
 
-
+	.list-table-wrap{
+		width:700px;
+	}
 
  
  </style>
@@ -60,7 +65,32 @@
             
         };
     </script>
+    
+    
+    <script>
+        function changeCheckbox(){
+            //해야할 일
+            //1. .select-all의 체크상태를 불러온다.
+            var selectAll = document.querySelector(".select-all").checked;
+            
+            //2. 1번에서 불러온 값으로 모든 .select-item에 check 여부를 설정    
+            
+            //(주의) document.querySelector()로는 태그를 1개밖에 선택할 수 없다.
+            // - document.querySelectorAll()로 태그를 모두 선택할 수 있다.
+            // - 위의 명령은 사용 시 결과가 "배열"로 전달된다.
+            var selectItem = document.querySelectorAll(".select-item");
+            //for(var i=0; i < selectItem.length; i++){
+            for(var i in selectItem){
+                selectItem[i].checked = selectAll;    
+            }
+            
+        }
+    </script>
+    
   <%
+  
+  
+  // 회원 아이디 이름 검색 --임새봄
   	request.setCharacterEncoding("utf-8");
 
   
@@ -92,7 +122,6 @@
                 <td><select name="type">
                         <option value="member_name">이름</option>
                         <option value="member_id">아이디</option>
-                        <option value="member_email">이메일</option>
                         <option value="member_phone">전화번호</option>
                     </select>
                     <input type="text" name="keyword">
@@ -107,12 +136,9 @@
 
             </tr>
             <tr>
-                <th>가입일/기념일</th>
-                <td><select name="type">
-                        <option value="member_join">가입일</option>
-                        <option value="member_birth">생일</option>
-                    </select>
-                    <input type="text" class="picker-start"><span>~</span><input type="text" class="picker-end">
+                <th>가입일</th>
+                <td>
+                    <input type="text" class="picker-start"   name="member_join"><span>~</span><input type="text" class="picker-end" name="member_join">
                 </td>
 
             </tr>
@@ -149,7 +175,7 @@
     <div class="list-table-wrap">
         <table  class="Ltable">
             <tr>
-                <th><input type="checkbox"></th>
+                <th><input type="checkbox"   class="select-all"onchange="changeCheckbox();"></th>
                 <th>이름</th>
                 <th>아이디</th>
                 <th>등록일</th>
@@ -157,20 +183,24 @@
                 <th>나이</th>
                 <th>보기</th>
             </tr>
+         
+         
             <% for(MemberDto mdto : list){ %>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td><%=mdto.getMember_name() %></td>
-                <td><%=mdto.getMember_id() %></td>
-                <td><%=mdto.getMember_join() %></td>
-                <td><%=mdto.getMember_phone() %></td>
-                <td><%=mdto.getMember_birth() %></td>
-                <td>
+            
+            <tr class="Ldata">
+                <td class="Ldata"><input type="checkbox" class="select-item"></td>
+                <td class="Ldata"><%=mdto.getMember_name() %></td>
+                <td class="Ldata"><%=mdto.getMember_id() %></td>
+                <td class="Ldata"><%=mdto.getMember_join_day() %></td>
+                <td class="Ldata"><%=mdto.getMember_phone() %></td>
+                <td class="Ldata"><%=mdto.getMember_age() %></td>
+                <td class="Ldata">
                     <input type="button" value="주문내역" class="listbtn">
                     <input type="button" value="적립금" class="listbtn">
                 </td>
             </tr>
             <%}%>
+           
         </table>
     </div>
         
