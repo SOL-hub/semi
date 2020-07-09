@@ -69,19 +69,13 @@
                     <li class="menu_right"><a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a></li>
                     <li class="menu_right"><a href="<%=request.getContextPath()%>/member/join_main.jsp">회원가입</a></li>
                     <li class="menu_right"><a href="#">주문/배송</a></li>
-                    <li class="menu_right"><a href="#">고객센터</a></li>
+                    <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
 					<div id="search">
 
 						<form action="<%=request.getContextPath()%>/shop/product_bed_list.jsp" method="get" style="float: left;">
 							<input class="search_box" type="text" placeholder="검색" name="keyword" required> 
 							<input type="image" src = "<%=request.getContextPath()%>/img/search.png"  style="width:20px;">
 
-						<form action="#" method="get" style="float: left;">
-							<input class="search_box" type="text" placeholder="검색"
-								name="search" required> <img
-								src="<%=request.getContextPath()%>/img/search.png" width="13px"
-								style="cursor: pointer" onclick="goSearch()">
-							
 						</form>
 					</div>
 				</ul>
