@@ -15,8 +15,10 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
     <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/base.css">
-    <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/join.css">
+    <link href="<%=request.getContextPath() %>/css/join.css?ver=1" rel=stylesheet type="text/css" >
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <style>
+
 
     </style>
     
@@ -171,6 +173,7 @@
 
 <body  onload="cursor.userId.focus()">
     <main>
+
         <article class="w-100">
            <form name="cursor"action="join.do" onsubmit="return check_pw_comp();" method="post" >
                 <div class="row-empty"></div>
@@ -310,7 +313,7 @@
                 </div>
             </form>
         </article>
-		
+
     </main>
 </body></html>
 <jsp:include page="/template/footer.jsp"></jsp:include>    

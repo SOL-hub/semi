@@ -1,8 +1,10 @@
 @charset "UTF-8";
-   main {
+
+    main {
         width: 100%;
         height: 60%;
         margin: auto;
+        display: flex;
     }
 
     * {
@@ -14,66 +16,92 @@
     .sidebar {
         /*
         bottom: 0;
-        float: left;
-        */
-        
         position: absolute;
-        margin-top: 15px;
-        top: 325px;
-        left: 50px;
-        width: 10%;
-        height: 500px;
+        */
+        float: left;
+        margin-top: 10%;
+        margin-left: 10%;
+        width: 100px;
+
         border: solid 1px;
         border-color: darkgray;
+
+    }
+
+    aside {
+        flex: 2;
+    }
+
+    section {
+        flex: 10;
     }
 
     .container {
         width: 100%;
-        padding-top: 150px;   
+        padding-top: 150px;
     }
 
     div>p {
         margin: auto;
         margin-bottom: 5px;
+        margin-left: 10%;
         padding: 0.5rem;
-        color: #aaa;
-        border: 1px solid;
+        color: black;
+        border: none;
         width: 50%;
+        background-color: antiquewhite;
     }
 
     aside>ul>li {
         margin-top: 30px;
-        margin-right: 40px;
-        text-align: center;
-        list-style: none;    
+        margin-right: 45px;
+        text-align: left;
+        list-style: none;
     }
-    
-
+	aside li:nth-child(2) {
+        margin-top: 30px;
+        margin-right: 45px;
+       	list-style: none;
+        color: red;
+        font-size: 16px;
+	}
     .id-input,
     .pw-input,
     .input-calendar,
     .phone-input,
     .addr-input {
-        padding: 0.5rem;
+
+        padding: 0.2rem;
         width: 50%;
-        font-size: 20px;
+        font-size: 16px;
         color: dimgray;
         border: none;
+
     }
 
     div>p>span {
         font-size: 20px;
         margin-left: 20px;
     }
-
+    
+    .content{
+        margin-left: 10%;
+        border-bottom: solid 1px black;
+        width: 50%
+    }
+    
+    
+    
     aside>ul>li>a {
         text-decoration: none;
         color: black;
-        font-size: 15px;
+        font-size: 16px;
+        margin-left: 20%;
     }
 
     .font-head {
         font-size: 40px;
+        margin-right: 30%;
     }
 
     .margin-down {
@@ -83,68 +111,31 @@
     .margin-up {
         margin-bottom: 20px;
     }
-    
-	 .margin-right{
-        margin-right: 115px;
-	 }  
-	   
+
+    .margin-right {
+        margin-right: 20%;
+    }
+
     .join-btn {
         padding: 1rem;
-        font-size: 20px;
-        width: 15%;
+        font-size: 16px;
+        width: 9%;
         background-color: dimgrey;
         border: none;
         color: white;
         cursor: pointer;
+        margin-right: 30%;
+
     }
 
     .join-btn:hover {
         padding: 1rem;
         font-size: 16px;
-        width: 15%;
-        background-color: #333333;
-        border: none;
-        color: white;
-        cursor: pointer;
-    }
-
-    .join-btn2 {
-        padding: 1rem;
-        font-size: 16px;
-        width: 15%;
-        background-color: dimgrey;
-        border: none;
-        color: white;
-        cursor: pointer;
-    }
-
-    .join-btn2:hover {
-        padding: 1rem;
-        font-size: 16px;
-        width: 15%;
-        background-color: #333333;
-        border: none;
-        color: white;
-        cursor: pointer;
-    }
-
-    .addr-btn {
-        padding: 0.5rem;
-        font-size: 16px;
-        width: 10%;
-        background-color: dimgrey;
-        border: none;
-        color: white;
-        cursor: pointer;
-        margin-right: 25px
-    }
-
-    .addr-btn:hover {
-        padding: 0.5rem;
-        font-size: 16px;
         width: 10%;
         background-color: #333333;
         border: none;
         color: white;
         cursor: pointer;
+        margin-right: 30%;
+
     }

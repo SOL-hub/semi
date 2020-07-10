@@ -1,7 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 
-<!-- footer -->
+
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	 
+	 
+	<!-- footer -->
 <div class="footer">
     <ul class="footer_inner">
 
@@ -23,7 +28,7 @@
                 <li class="footer_inner_item">
                     <ul id="footer1">
                         <li class="info_title">SUPPORT</li>
-                        <li class="info_title">고객센터</li>
+                        <li class="info_title"><a href=<%=request.getContextPath()%>/board/cs.jsp>고객센터</a></li>
                     </ul>
                 </li>
 
@@ -35,8 +40,8 @@
                     </ul>
                 </li>
 
-                <li class="footer_inner_item" style="width: 240px; padding-left:200px;;">
-                    <ul style="width:150px;">
+                <li class="footer_inner_item" style="width: 240px;">
+                    <ul>
                         <li class="info_title">고객센터</li>
                         <li class="info_title_number">1544-9940</li>
                     </ul>
@@ -51,7 +56,7 @@
         <li id="second_footer">
             <ul class="footer_inner_box">
                 <li class="footer_inner_item">
-                    <div style="margin-bottom: 0px;">
+                    <div style="margin-bottom: 10px;">
                         <img width="20px" src="<%=request.getContextPath() %>/img/instagram.png">&nbsp;
                         <img width="20px" src="<%=request.getContextPath() %>/img/facebook.png">&nbsp;
                         <img width=20px src="<%=request.getContextPath() %>/img/letter-b.png">
@@ -67,4 +72,10 @@
         </li>
     </ul>
 </div>
+ 
+	  <!-- 연습용 -->
+                    <h6>세션ID : <%=session.getId() %>
+                    userinfo : <%=session.getAttribute("userinfo") %></h6>
+                    userinfo : <%=session.getAttribute("userinfo")!=null %></h6>
+</body>
 </html>

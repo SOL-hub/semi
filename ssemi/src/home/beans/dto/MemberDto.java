@@ -21,12 +21,13 @@ public class MemberDto {
 	String member_login;
 	String member_image;
 	String member_consult_list;
-	
+
 	public MemberDto() {
 		super();
 	}
-	
+
 	public MemberDto(ResultSet rs) throws SQLException {
+
 		this.setMember_no(rs.getInt("member_no"));
 		this.setMember_id(rs.getString("member_id"));
 		this.setMember_pw(rs.getString("member_pw"));
@@ -44,11 +45,7 @@ public class MemberDto {
 		this.setMember_login(rs.getString("member_login"));
 		this.setMember_image(rs.getString("member_image"));
 		this.setMember_consult_list(rs.getString("member_consult_list"));
-		
-	}
 
-	public int getMember_no() {
-		return member_no;
 	}
 
 	public void setMember_no(int member_no) {
@@ -182,28 +179,29 @@ public class MemberDto {
 	public void setMember_consult_list(String member_consult_list) {
 		this.member_consult_list = member_consult_list;
 	}
-	
-	//멤버 생일이 날짜만 나오게 하는 DTO -- 임새봄
 
-	public String  getMember_birth_day() {
-		
-		return member_birth.substring(0,4);
+	// 멤버 생일이 날짜만 나오게 하는 DTO -- 임새봄
+
+	public String getMember_birth_day() {
+
+		return member_birth.substring(0, 4);
 
 	}
-	
-	// 멤버 생일로 나이를 구하는 DTO -- 임새봄 
-	public int  getMember_age() {
+
+	// 멤버 생일로 나이를 구하는 DTO -- 임새봄
+	public int getMember_age() {
 		String a = getMember_birth_day();
 		int b = Integer.parseInt(a);
-		int age = 2020-b+1;
+		int age = 2020 - b + 1;
 		return age;
 	}
-	
-	
-	// 가입 날짜만 보이게 하는 DTO  -- 임새봄
+
+	// 가입 날짜만 보이게 하는 DTO -- 임새봄
 	public String getMember_join_day() {
-		return member_join.substring(0,10);
+		return member_join.substring(0, 10);
 	}
-	
+
+	public int getMember_no() {
+		return member_no;
+	}
 }
-	

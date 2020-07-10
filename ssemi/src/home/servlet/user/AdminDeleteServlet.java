@@ -22,16 +22,14 @@ public class AdminDeleteServlet extends HttpServlet {
 			try {
 				
 				
-				String[] member_no = req.getParameterValues("member_no");
+				String member_no = req.getParameter("member_no");
 				
 				//처리 : 삭제 처리
 				MemberDao mdao = new MemberDao();
+				mdao.exit(member_no);//회원탈퇴와 동일한 기능 사용
 				
-				for(int i=0;  i <member_no.length;   i++) {
-				mdao.exit(member_no[i]);//회원탈퇴와 동일한 기능 사용
-				}
 				//출력 : 회원 목록(list.jsp)
-				resp.sendRedirect("adminSearch.jsp");
+				resp.sendRedirect("adminSearch.jsp?member_no=");
 				
 				
 				

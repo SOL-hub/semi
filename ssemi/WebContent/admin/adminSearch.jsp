@@ -27,7 +27,7 @@
 
 <style>
 
-    
+ 
 
 
  
@@ -67,25 +67,6 @@
 </script>
 
 
-<script>
-	function changeCheckbox() {
-		//해야할 일
-		//1. .select-all의 체크상태를 불러온다.
-		var selectAll = document.querySelector(".select-all").checked;
-
-		//2. 1번에서 불러온 값으로 모든 .select-item에 check 여부를 설정    
-
-		//(주의) document.querySelector()로는 태그를 1개밖에 선택할 수 없다.
-		// - document.querySelectorAll()로 태그를 모두 선택할 수 있다.
-		// - 위의 명령은 사용 시 결과가 "배열"로 전달된다.
-		var selectItem = document.querySelectorAll(".select-item");
-		//for(var i=0; i < selectItem.length; i++){
-		for ( var i in selectItem) {
-			selectItem[i].checked = selectAll;
-		}
-
-	}
-</script>
 
 <%
 	// 회원 아이디 이름 검색 --임새봄
@@ -209,18 +190,15 @@
 			<p id="listcount">
 				검색결과<%=list.size()%>건
 			</p>
-		<form action="<%=request.getContextPath()%>/admin/delete.do"  method= "get">
-			<div>
+		
+			
 			<%MemberDto user = new MemberDto(); %>
 			
-				<input type="submit" value="회원 삭제" class="listbtn">
-				
-			</div>
+			<form action="<%=request.getContextPath()%>/admin/delete.do"  method= "get">
 			<div class="list-table-wrap">
 				<table class="Ltable">
 					<tr>
-						<th><input type="checkbox" class="select-all"
-							onchange="changeCheckbox();"></th>
+						
 						<th>이름</th>
 						<th>아이디</th>
 						<th>등록일</th>
@@ -236,18 +214,18 @@
 					%>
 
 					<tr class="Ldata">
-						
-						<td class="Ldata"><input type="checkbox"  class="select-item" name="member_no"  value="<%=mdto.getMember_no()%>"></td>
-						
+					
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_name()%></a></td>
-						
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_id()%></a></td>
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_join_day()%></a></td>
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_phone()%></a></td>
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_age()%></a></td>
-						<td class="Ldata"><input type="button" value="주문내역"
+						<td class="Ldata on"><input type="button" value="주문내역"
 							class="listbtn"> <input type="button" value="적립금"
 							class="listbtn"></td>
+							
+							<td><input type="submit" value="수정" class="listbtn">
+							<input type="submit" value="삭제" class="listbtn" name="member_no"  value="<%=mdto.getMember_no()%>"></td>
 					</tr>
 					<%
 						}

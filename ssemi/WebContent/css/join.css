@@ -2,24 +2,24 @@
 
         * {
             box-sizing: border-box;
-            
+            font-family: 'NanumGothicCoding';
+            src: url("../font/NanumBarunGothic.ttf");
 
         }
 
-        main {
+        main{
             width: 600px;
             height: 1400px;
             margin: auto;
             border: none;
-            padding-top: 150px;  
-            
+            padding-top: 150px;
         }
-        
-		article {
-        border: 1px solid #aaa;
-        height: 1300px;
+
+        article{
+            border: 1px solid #aaa;
+            height: 1300px;
         }
-        
+
         .center {
             text-align: center;
         }
@@ -286,13 +286,16 @@
             text-decoration: none;
         }
 
-        .check_id.no, .check_pw.no, .check_pw_comp.no {
+        .check_id.no,
+        .check_pw.no,
+        .check_pw_comp.no {
 
             color: red;
         }
 
-        .check_id.ok, .check_pw.ok, .check_pw_comp.ok {
+        .check_id.ok,
+        .check_pw.ok,
+        .check_pw_comp.ok {
 
             color: blue;
         }
-        
