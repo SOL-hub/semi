@@ -60,7 +60,6 @@ public class MemberDao {
 		con.close();
 		
 	}
-	
 	public String idCheck(MemberDto mdto)throws Exception{
 		
 		
@@ -101,6 +100,7 @@ public class MemberDao {
 		if(rs.next()) {//데이터가 있으면, 
 			user = new MemberDto();
 			
+			user.setMember_no(rs.getInt("member_no"));
 		 user.setMember_id(rs.getString("member_id"));
 		 user.setMember_pw(rs.getString("member_pw"));
 		 user.setMember_name(rs.getString("member_name"));
@@ -111,7 +111,12 @@ public class MemberDao {
 		 user.setMember_post(rs.getString("member_post"));
 		 user.setMember_base_addr(rs.getString("member_base_addr"));
 		 user.setMember_extra_addr(rs.getString("member_extra_addr"));
-		 	
+		user.setMember_point(rs.getInt("member_point"));
+		user.setMember_auth(rs.getString("member_auth"));
+		user.setMember_join(rs.getString("member_join"));
+		user.setMember_login(rs.getString("member_login"));
+		user.setMember_image(rs.getString("member_image"));
+		user.setMember_consult_list(rs.getNString("member_consult_list"));
 		}
 		
 		else {
@@ -139,8 +144,7 @@ public class MemberDao {
 	public String findId(MemberDto mdto)throws Exception{
 		Connection con = getConnection();
 		
-		String sql = "SELECT member_id From member WHERE member_name=? and member_phone=?";
-		
+		String sql = "SELECT member_id FROM MEMBER WHERE member_name=? AND MEMBER_PHONE =?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, mdto.getMember_name());
 		ps.setString(2, mdto.getMember_phone());
@@ -161,25 +165,56 @@ public class MemberDao {
 				return member_id;
 		}
 	
-	//비밀번호 변경
+	//비밀번호 변경 전 검사
 	
-	public void change_pw(MemberDto mdto) throws Exception{
+	public String CheckPw(MemberDto mdto) throws Exception{
 		Connection con = getConnection();
 		
-		String sql = "UPDATE member set member_pw? "
-				+ "where member_id=? and member_nick=? member_phone";
+		String sql = "SELECT member_pw FROM member where member_id=? and member_nick=? member_phone=?";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, mdto.getMember_pw());
-		ps.setString(2, mdto.getMember_id());
-		ps.setString(3, mdto.getMember_nick());
-		ps.setString(4, mdto.getMember_phone());
+
+		ps.setString(1, mdto.getMember_id());
+		ps.setString(2, mdto.getMember_nick());
+		ps.setString(3, mdto.getMember_phone());
 		
-		ps.execute();
+		ResultSet rs = ps.executeQuery();
+	
+		String member_pw;
+		if(rs.next()) {
+			member_pw=rs.getString("member_pw");
+		}
 		
-		con.close();
+		else {
+		member_pw=null;
 	}
+		con.close();
+		
+		return member_pw;
+		}
+	
+
+	
+	//비밀번호 변경
+	
+	//public String CheckPw(MemberDto mdto) throws Exception{
+	//	Connection con = getConnection();
+		
+	//	String sql = "UPDATE member set member_pw? "
+			//	+ "where member_id=? and member_nick=? member_phone";
+		
+	//	PreparedStatement ps = con.prepareStatement(sql);
+	//	ps.setString(1, mdto.getMember_pw());
+	//	ps.setString(2, mdto.getMember_id());
+	//	ps.setString(3, mdto.getMember_nick());
+	//	ps.setString(4, mdto.getMember_phone());
+	//	
+	//	ps.execute();
+		
+	//	con.close();
+	//}
 	
 	
 	
 }
+

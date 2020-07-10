@@ -10,11 +10,20 @@ public class QnaDto {
 	private String qna_content;
 	private String qna_date;
 	private String qna_modify_date;
-	private int super_no;
-	private int group_no;
-	private int depth;
-	private int qna_replycount;
-	
+//	private int super_no;
+//	private int group_no;
+//	private int depth;
+//	private int qna_replyCount;
+
+
+//	public int getQna_replyCount() {
+//		return qna_replyCount;
+//	}
+
+//	public void setQna_replyCount(int qna_replyCount) {
+//		this.qna_replyCount = qna_replyCount;
+//	}
+
 	public QnaDto(ResultSet rs) throws SQLException {
 		this.setQna_no(rs.getInt("qna_no"));
 		this.setQna_writer(rs.getString("qna_writer"));
@@ -22,10 +31,11 @@ public class QnaDto {
 		this.setQna_content(rs.getString("qna_content"));
 		this.setQna_date(rs.getString("qna_date"));
 		this.setQna_modify_date(rs.getString("qna_modify_date"));
-		this.setSuper_no(rs.getInt("super_no"));
-		this.setGroup_no(rs.getInt("group_no"));
-		this.setDepth(rs.getInt("depth"));
-		this.setQna_replycount(rs.getInt("qna_replycount"));
+//		this.setSuper_no(rs.getInt("super_no"));
+//		this.setGroup_no(rs.getInt("group_no"));
+//		this.setDepth(rs.getInt("depth"));
+//		this.setQna_replyCount(rs.getInt("qna_replyCount"));
+
 	}
 	
 	public int getQna_no() {
@@ -65,30 +75,24 @@ public class QnaDto {
 	public void setQna_modify_date(String qna_modify_date) {
 		this.qna_modify_date = qna_modify_date;
 	}
-	public int getSuper_no() {
-		return super_no;
-	}
-	public void setSuper_no(int super_no) {
-		this.super_no = super_no;
-	}
-	public int getGroup_no() {
-		return group_no;
-	}
-	public void setGroup_no(int group_no) {
-		this.group_no = group_no;
-	}
-	public int getDepth() {
-		return depth;
-	}
-	public void setDepth(int depth) {
-		this.depth = depth;
-	}
-	public int getQna_replycount() {
-		return qna_replycount;
-	}
-	public void setQna_replycount(int qna_replycount) {
-		this.qna_replycount = qna_replycount;
-	}
+//	public int getSuper_no() {
+//		return super_no;
+//	}
+//	public void setSuper_no(int super_no) {
+//		this.super_no = super_no;
+//	}
+//	public int getGroup_no() {
+//		return group_no;
+//	}
+//	public void setGroup_no(int group_no) {
+//		this.group_no = group_no;
+//	}
+//	public int getDepth() {
+//		return depth;
+//	}
+//	public void setDepth(int depth) {
+//		this.depth = depth;
+//	}
 
 	public QnaDto() {
 		super();

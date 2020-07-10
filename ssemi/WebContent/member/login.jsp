@@ -33,7 +33,7 @@
     
     <!--아이디, 비밀번호찾기버튼-->
     <div class = "form-find findid,pw-submit">
-    <button><a href="login_id,pw.jsp">아이디, 비밀번호 찾기</button>
+    <button><a href="find_id,pw.jsp">아이디, 비밀번호 찾기</button>
     </div>
     </div>
     <br><br>

@@ -1,10 +1,7 @@
 <%@page import="home.beans.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% 
-	MemberDto mdto = (MemberDto) session.getAttribute("userinfo");
-	String member_id = mdto.getMember_id();
-%>
+
 <jsp:include page="/template/header.jsp"></jsp:include>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
@@ -30,7 +27,7 @@
 			<tbody>
 				<tr>
 						<th>작성자</th>
-						<td><%=member_id%></td>
+						<td></td>
 				</tr>
 				<tr>
 						<th>제목</th>
