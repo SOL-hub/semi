@@ -70,7 +70,7 @@
 
 <%
 	// 회원 아이디 이름 검색 --임새봄
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("UTF-8");
 
 	String type = request.getParameter("type");
 	String keyword = request.getParameter("keyword");
@@ -141,7 +141,7 @@
 	<div class="search-list-wrap">
 		<div class="search-wrap">
 			<h2 id="stitle">회원 검색</h2>
-			<form action="adminSearch.jsp" method="post">
+			<form action="adminSearch.jsp" method="get">
 				<table class="tsearch">
 					<tr>
 						<th>검색어</th>
@@ -220,7 +220,7 @@
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_join_day()%></a></td>
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_phone()%></a></td>
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_age()%></a></td>
-						<td class="Ldata on"><input type="button" value="주문내역"
+						<td class="Ldata"><input type="button" value="주문내역"
 							class="listbtn"> <input type="button" value="적립금"
 							class="listbtn"></td>
 							
