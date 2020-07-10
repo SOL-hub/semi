@@ -26,7 +26,7 @@
 
 		<input class="form-find-id" type="text" name="member_name"
 			placeholder="이름" required> <input class="form-find-id"
-			type="text" name="member_phone" placeholder="비밀번호" required>
+			type="text" name="member_phone" placeholder="전화번호" required>
 
 		<!-- <select class="form-phone" name="user_phone">
 				<option value="010">010</option>

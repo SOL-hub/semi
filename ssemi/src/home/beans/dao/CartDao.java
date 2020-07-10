@@ -55,7 +55,7 @@ public class CartDao {
 		con.close();
 	}
 	
-	
+// 주석 처리 커밋용	
 //	진빈 아이디별로 장바구니 추가된 데이터 불러오는 코드
 	public List<CartDto> getList(int cart_member) throws Exception {
 		Connection con = getConnection();
