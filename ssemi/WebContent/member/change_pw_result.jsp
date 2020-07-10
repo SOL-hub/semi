@@ -31,12 +31,17 @@
 
 			<div class="change_after">
 				<a href="<%=request.getContextPath()%>/member/login.jsp"> <input
-					class="click-btn2" type="submit" value="로그인하기"></a>
+					class="click-btn2" type="submit" value="내 장바구니"></a>
 			</div>
 
 			<div class="change_after">
 				<a href="<%=request.getContextPath()%>"> <input
-					class="click-btn2" type="submit" value="홈으로 이동"></a>
+					class="click-btn2" type="submit" value="내 견적보러가기"></a>
+			</div>
+			
+			<div class="change_after">
+				<a href="<%=request.getContextPath()%>/member/info.jsp"> 
+				<input class="click-btn2" type="submit" value="회원탈퇴"></a>
 			</div>
 
 
