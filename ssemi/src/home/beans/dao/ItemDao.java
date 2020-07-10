@@ -12,26 +12,34 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import home.beans.dto.ItemDto;
+import home.beans.dto.MemberDto;
 
 public class ItemDao {
 
-	//context.xml에서 관리하는 자원 객체를 참조할 수 있도록 연결 코드 구현
-	private static DataSource src;//리모컨 선언
+//	context.xml에서 관리하는 자원 객체를 참조할 수 있도록 연결 코드 구현
+	private static DataSource src;
 	
 	//static 변수의 초기화가 복잡할 경우에 사용할 수 있는 static 전용 구문
 	static {
+//		src=context.xml에서 관리하는 자원의 정보;
 		try {
-			//src = context.xml에서 관리하는 자원의 정보;
-			Context ctx = new InitialContext();//탐색 도구
-			Context env = (Context) ctx.lookup("java:/comp/env");//Context 설정 탐색
+			Context ctx = new InitialContext();
+			Context env = (Context) ctx.lookup("java:/comp/env");//Context 설정 찾아라
 			src = (DataSource) env.lookup("jdbc/oracle");
-		} catch (NamingException e) {
+		} 
+		catch (NamingException e) {			
 			e.printStackTrace();
 		}
 	}
 	
-	//연결 메소드
-	public Connection getConnection() throws Exception {
+	public Connection getConnection() throws Exception{
+		
+//		Class.forName("oracle.jdbc.OracleDriver");
+//		
+//		Connection con = DriverManager.getConnection(
+//				"jdbc:oracle:thin:@localhost:1521:xe" , "c##kh","c##kh");
+//				
+//		return con;
 		return src.getConnection();
 	}
 	
@@ -40,7 +48,7 @@ public class ItemDao {
 	//결과 : 상품 목록 == search<ProductDto>
 	//준비물 : X
 	public List<ItemDto> search(String keyword) throws Exception {
-		Connection con = this.getConnection();
+		Connection con = getConnection();
 		
 		String sql = "SELECT * FROM item WHERE instr(item_name,?)>0 ORDER BY item_no ASC";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -59,19 +67,50 @@ public class ItemDao {
 	
 	// 목록 메소드
 	public List<ItemDto> getList() throws Exception {
-		Connection con=this.getConnection();
-		String sql="SELECT*FROM item ORDER BY item_no ASC";
-		PreparedStatement ps=con.prepareStatement(sql);
-		ResultSet rs=ps.executeQuery();
+		Connection con = getConnection();
 		
-		List<ItemDto> list = new ArrayList<ItemDto>();
+		String sql = "SELECT * FROM item ORDER BY item_no ASC";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<ItemDto> list = new ArrayList<>();
 		while(rs.next()) {
+			
 			ItemDto idto = new ItemDto(rs);
 			list.add(idto);
 		}
+		
 		con.close();
-		return list;
-				
+		
+		return list;	
 	}
+	
+//	진빈(아이템 단일조회)
+	
+	   public ItemDto item_get(int item_no)throws Exception{
+	      
+	      Connection con = getConnection();
+	      String sql = "select * from item where item_no=?";
+	      PreparedStatement ps = con.prepareStatement(sql);
+	      
+	      ps.setInt(1, item_no);
+	      ResultSet rs = ps.executeQuery();
+	      
+	      ItemDto idto;
+	      if(rs.next()) {
+	         idto = new ItemDto(rs);
+	         
+	      }
+	      else {
+	         idto = null;
+	      }
+	      
+	      con.close();
+	      
+	      return idto;
+	      
+	   }
 	
 }

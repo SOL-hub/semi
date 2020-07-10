@@ -6,11 +6,21 @@
             src: url("../font/NanumBarunGothic.ttf"); 
                 
         }
-        main{
+        
+        main {
+        
             width: 500px;
-            height: 800px;
+            height: 1000px;
             margin: auto;
-            border: 1px solid #aaa;
+            border: none;
+            padding-top: 150px;
+        }
+        
+        article {
+        
+        border: 1px solid #aaa;
+        height: 750px;
+        
         }
         
         .center{
