@@ -34,12 +34,12 @@ public class MemberChangePwServlet extends HttpServlet {
 			user.setMember_pw(member_pw);
 
 			MemberDao mdao = new MemberDao();
-			mdao.CheckPw(user);
+			mdao.ChangePw(user);
 
 			// 출력
 //			if (user != null) {
 //
-//				resp.sendRedirect("change_pw_result.jsp");
+resp.sendRedirect("change_pw_result.jsp");
 //				
 //			} else {
 //				

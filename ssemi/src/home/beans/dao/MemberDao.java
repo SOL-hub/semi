@@ -254,23 +254,23 @@ public class MemberDao {
 		return member_pw;
 	}
 
-	// 비밀번호 변경
+	// 비밀번호 변경 --솔
+	public void ChangePw(MemberDto user) throws Exception {
+		Connection con = getConnection();
+	
+		String sql = "update member set member_pw=? where member_id=?";
+				
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, user.getMember_pw());
+		ps.setString(2, user.getMember_id());
 
-	// public String CheckPw(MemberDto mdto) throws Exception{
-	// Connection con = getConnection();
+		ps.execute();
 
-	// String sql = "UPDATE member set member_pw? "
-	// + "where member_id=? and member_nick=? member_phone";
+		con.close();
+		
+	}
 
-	// PreparedStatement ps = con.prepareStatement(sql);
-	// ps.setString(1, mdto.getMember_pw());
-	// ps.setString(2, mdto.getMember_id());
-	// ps.setString(3, mdto.getMember_nick());
-	// ps.setString(4, mdto.getMember_phone());
-	//
-	// ps.execute();
-
-	// con.close();
-	// }
+	
 
 }
