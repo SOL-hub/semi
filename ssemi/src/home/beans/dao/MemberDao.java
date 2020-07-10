@@ -38,7 +38,7 @@ public class MemberDao {
 //		return con;
 		return src.getConnection();
 	}
-	
+//	진빈(회원가입 완료)
 	public void join(MemberDto mdto)throws Exception{
 		Connection con = getConnection();
 		String sql = "insert into member values(member_seq.nextval,?,?,?,?,?,?,?,?,?,?,100,'일반',sysdate,null,null,null)";
@@ -60,6 +60,8 @@ public class MemberDao {
 		con.close();
 		
 	}
+	
+	//진빈(중복확인 코드 미완성 건들지마세요)
 	public String idCheck(MemberDto mdto)throws Exception{
 		
 		
@@ -83,8 +85,70 @@ public class MemberDao {
 		return rst;
 	}
 	
-	
-	
+	//진빈(유저 단일조회)
+		public MemberDto get(int member_no)throws Exception{
+			
+			Connection con = getConnection();
+			String sql = "select * from member where member_no=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, member_no);
+			ResultSet rs = ps.executeQuery();
+			
+			MemberDto mdto;
+			if(rs.next()) {
+				mdto = new MemberDto(rs);
+				
+			}
+			else {
+				mdto = null;
+			}
+			
+			con.close();
+			
+			return mdto;
+			
+		}
+		
+		//진빈(회원정보수정)
+		public void user_info_update(MemberDto mdto) throws Exception {
+			
+			Connection con = getConnection();
+			
+			String sql = "update member set "
+					+ "member_nick=?, member_birth=?, member_phone=?, member_email=?,"
+					+ "member_post=?, member_base_addr=?, member_extra_addr=? where member_no=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setString(1, mdto.getMember_nick());
+			ps.setString(2, mdto.getMember_birth());
+			ps.setString(3, mdto.getMember_phone());
+			ps.setString(4, mdto.getMember_email());
+			ps.setString(5, mdto.getMember_post());
+			ps.setString(6, mdto.getMember_base_addr());
+			ps.setString(7, mdto.getMember_extra_addr());
+			ps.setInt(8, mdto.getMember_no());
+			
+			ps.execute();
+			
+			con.close();
+			
+		}
+		
+		//진빈(회원탈퇴)
+		
+		public void member_out(int member_no)throws Exception {
+			Connection con = getConnection();
+			
+			String sql = "delete member where member_no=?";
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, member_no);
+			ps.execute();
+			
+			con.close();
+		}
 	
 	//로그인 메소드
 	public MemberDto login(MemberDto mdto) throws Exception{

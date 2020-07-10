@@ -4,7 +4,7 @@
  <jsp:include page="/template/header.jsp"></jsp:include>  
 
     <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/base.css">
-    <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/join_main.css">
+    <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/join_main.css?ver=1">
     <style>
 
     </style>
