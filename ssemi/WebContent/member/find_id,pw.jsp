@@ -19,17 +19,14 @@
 
 
 			<div class="font-find_pw">
-				<a href="check_pw.jsp?go=change_pw.jsp">비밀번호찾기</a>
+				<a href="check_pw.jsp">비밀번호변경</a>
 			</div>
 
 		</div>
-		
-		<input class="form-find-id" type="text" name="member_name" placeholder="이름" required>
-		<br>
-		
-         <input class="form-find-id" type="text" name="member_phone" placeholder="전화번호" required>
-		
-		
+
+		<input class="form-find-id" type="text" name="member_name"
+			placeholder="이름" required> <input class="form-find-id"
+			type="text" name="member_phone" placeholder="전화번호" required>
 
 		<!-- <select class="form-phone" name="user_phone">
 				<option value="010">010</option>
