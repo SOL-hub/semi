@@ -30,7 +30,7 @@ public class MemberCheckPwServlet extends HttpServlet{
 		
 			
 			if(member_pw!=null) { //결과가 있으면
-				req.getSession().setAttribute("member_pw", member_pw);
+				//req.getSession().setAttribute("member_pw", member_pw);
 				
 			resp.sendRedirect("change_pw.jsp");
 			
