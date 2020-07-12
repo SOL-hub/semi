@@ -18,9 +18,15 @@
 main {
 	width:500px;
 	text-align: center;
-	height: 450px;
+	height: 800px;
 	margin: auto;
+	border: none;
+	padding-top: 150px;
+}
+
+article{
 	border: 1px solid #aaa;
+	height: 500px;
 }
 
 .login-wrap {

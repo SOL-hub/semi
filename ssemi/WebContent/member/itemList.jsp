@@ -53,7 +53,7 @@
 					<td><%=idto.getItem_info()%></td>
 					<td><%=idto.getItem_stock()%></td>
 					<td><%=idto.getItem_image()%></td>
-					<td><%=idto.getItem_date()%></td>
+					<td><%=idto.getItem_time()%></td>
 					<td>
 						
 					</td>

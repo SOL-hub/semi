@@ -11,7 +11,7 @@ public class ItemDto {
 	private String item_info;
 	private int item_stock;
 	private String item_image;
-	private String item_date;
+	private String item_time;
 	
 	public ItemDto() {
 		super();
@@ -26,7 +26,7 @@ public class ItemDto {
 		this.setItem_info(rs.getString("item_info"));
 		this.setItem_stock(rs.getInt("item_stock"));
 		this.setItem_image(rs.getString("item_image"));
-		this.setItem_date(rs.getString("item_date"));
+		this.setItem_time(rs.getString("item_time"));
 	}
 
 	public int getItem_no() {
@@ -85,15 +85,14 @@ public class ItemDto {
 		this.item_image = item_image;
 	}
 
-	public String getItem_date() {
-		return item_date;
+	public String getItem_time() {
+		return item_time;
 	}
 
-	public void setItem_date(String item_date) {
-		this.item_date = item_date;
+	public void setItem_time(String item_time) {
+		this.item_time = item_time;
 	}
-	
-	
 
+	
 }
 

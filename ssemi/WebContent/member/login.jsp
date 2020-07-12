@@ -3,10 +3,11 @@
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/login.css">
+<link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/login.css?ver=1">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <form action="login.do" method="post">
 <main>
+<article>
  <div class = "login-wrap">
   <h1>로그인</h1>
   
@@ -58,6 +59,7 @@
     <br>
      </form>
     </div>
+    </article>
     </main>
 </form>
 	
