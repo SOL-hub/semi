@@ -73,9 +73,6 @@
     </ul>
 </div>
  
-	  <!-- 연습용 -->
-                    <h6>세션ID : <%=session.getId() %>
-                    userinfo : <%=session.getAttribute("userinfo") %></h6>
-                    userinfo : <%=session.getAttribute("userinfo")!=null %></h6>
+	
 </body>
 </html>
