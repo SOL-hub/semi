@@ -54,7 +54,7 @@
                     </a>
                 </li>     
                 <li>
-                    <a href="#">
+                    <a href="shopBarket.jsp">
                         장바구니
                     </a>
                 </li>

@@ -11,7 +11,7 @@
 						driverClassName="oracle.jdbc.OracleDriver"
 						url="jdbc:oracle:thin:@localhost:1521:xe"
 						username="c##project"
-						password="project"
+						password="c##project"
 						
 						maxTotal="20"
 						maxIdle="5"

@@ -14,7 +14,8 @@
 %>
 <script>
 	function checkAdd() {
-		alert("추가되었습니다.");
+		
+// 		alert("추가되었습니다.");
 	}
 </script>
 <html>
@@ -51,7 +52,7 @@
 					<td><%=idto.getItem_info()%></td>
 					<td><%=idto.getItem_stock()%></td>
 					<td><%=idto.getItem_image()%></td>
-					<td><%=idto.getItem_date()%></td>
+					<td><%=idto.getItem_time()%></td>
 					<td>
 				<input type="submit"  value="장바구니에 넣기" onclick="checkAdd();">
 						
