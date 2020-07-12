@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import home.beans.dto.CartDto;
 import home.beans.dto.ItemDto;
+import home.beans.dto.MemberDto;
 
 public class CartDao {
 //	context.xml에서 관리하는 자원 객체를 참조할 수 있도록 연결 코드 구현
@@ -48,14 +49,14 @@ public class CartDao {
 		
 		String sql="insert into cart values(cart_seq.nextval,?,null,null,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, cdto.getCart_item());
+		ps.setInt(1, cdto.getCart_item_name());
 		ps.setInt(2, cdto.getCart_member());
 		ps.execute();
 		
 		con.close();
 	}
 	
-// 주석 처리 커밋용	
+// 주석 처리 커밋용ㅇㅇㅇㅇ	
 //	진빈 아이디별로 장바구니 추가된 데이터 불러오는 코드
 	public List<CartDto> getList(int cart_member) throws Exception {
 		Connection con = getConnection();
@@ -78,4 +79,60 @@ public class CartDao {
 		return list;	
 	}
 	
+	public List<CartDto> getList(int cart_member,int start, int finish) throws Exception{
+		Connection con = getConnection();
+		
+
+		String sql = "SELECT * from cart where cart_member=?";	
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, cart_member);
+		ps.setInt(2, start);
+		ps.setInt(3, finish);
+		ResultSet rs = ps.executeQuery();
+		
+		List<CartDto> list = new ArrayList<>();
+		while(rs.next()) {
+			CartDto cdto = new CartDto(rs);
+			list.add(cdto);
+		}
+		
+		con.close();
+		return list;
+	}
+	
+	
+// 장바구니 삭제
+	public void cartDelete(int cart_no)throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "delete from cart where cart_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, cart_no);
+		ps.execute();
+		
+		
+		con.close();
+	
+	}
+	
+	// 장바구니 단일조회(아이디별)
+		public CartDto get_cart(int cart_member)throws Exception{
+			Connection con = getConnection();
+			
+			String sql = "select * from cart where cart_member=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, cart_member);
+			ResultSet rs =ps.executeQuery();
+			
+			CartDto cdto;
+			if(rs.next()) {
+				cdto = new CartDto(rs);
+			}
+			else {
+				cdto = null;
+			}
+			
+			con.close();
+			return cdto;
+		}
 }

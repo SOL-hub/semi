@@ -1,6 +1,5 @@
 /*
 공용 스타일 파일(css 파일)
-
 - style 태그 내부에 작성하는 내용만 기입
 - 일룸대표색상
 빨강 : #C80A1E;
@@ -15,19 +14,18 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-
 main {
-   width:500px;
-   text-align: center;
-   height: 800px;
-   margin: auto;
-   border: none;
-   padding-top: 150px;
+	width:500px;
+	text-align: center;
+	height: 800px;
+	margin: auto;
+	border: none;
+	padding-top: 150px;
 }
 
 article{
-   border: 1px solid #aaa;
-   height: 500px;
+	border: 1px solid #aaa;
+	height: 500px;
 }
 
 .login-wrap {
@@ -115,7 +113,6 @@ h1 {
 }
 /* 로그인, 회원가입시 설정조건
 user_Id:  regex =/^[a-z0-9]{8-20}$/g;
-
 user_Pw: regex=/[a-zA-Z0-9]{8,16}/g;
 */
 
@@ -133,5 +130,4 @@ user_Pw: regex=/[a-zA-Z0-9]{8,16}/g;
 }
 .join_find_id,pw{
 	display: inline-block;
-}
 }

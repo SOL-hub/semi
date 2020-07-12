@@ -1,6 +1,7 @@
 package home.servlet.user;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,13 +30,25 @@ public class CartAddServlet extends HttpServlet{
 			int item_no = idto.getItem_no();
 			
 			CartDto cdto = new CartDto();
-			cdto.setCart_item(item_no);
+			cdto.setCart_item_name(item_no);
 			cdto.setCart_member(member_no);
 			
 			CartDao cdao = new CartDao();
-			cdao.cart_add(cdto);
+			List<CartDto> list = cdao.getList(member_no);		
 			
 			
+			
+			
+			
+//			if(list.isEmpty() && !list.contains(cdto.getCart_item_name())) {
+//				
+				cdao.cart_add(cdto);
+//			}
+			
+//			else {
+//				System.out.println("ddd");
+//			}
+//			
 			
 			resp.sendRedirect("itemInfo.jsp");
 				

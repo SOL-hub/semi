@@ -23,7 +23,7 @@
         height: 110px;
         padding-bottom:20px;
     }
-        /* 카테고리 상세 */
+        /* 카테고리 상세 */w
     .menu_left_innerMenu {
         display: none;
         position: absolute;
