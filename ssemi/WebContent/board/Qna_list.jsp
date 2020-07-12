@@ -1,3 +1,5 @@
+<%@page import="home.beans.dao.MemberDao"%>
+<%@page import="home.beans.dto.MemberDto"%>
 <%@page import="java.util.List"%>
 <%@page import="home.beans.dto.QnaDto"%>
 <%@page import="home.beans.dao.QnaDao"%>
@@ -133,10 +135,8 @@
 		list = qdao.getList();
 	}
 	
-	// mdto에서 wrtier 가져오기
-	String member_id=qdao.getWriter(1);
-	
 %>
+
 <body>
 	<div id="customer">
 		<div class="container">
@@ -144,7 +144,7 @@
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
 					<p class="notice">공지사항</p>
-					<p class="qna">Q&A</p>
+					<p class="qna"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">Q&A</a></p>
 					<p class="event">이벤트</p>
 				</div>
 
@@ -169,22 +169,33 @@
 						</tr>
 					</thead>
 					<tbody align="center">
-					<%for(QnaDto qdto : list) { %>
+	
+					<%
+					for(QnaDto qdto2 : list) { 
+						// mdto에서 writer가져오기
+						//String member_id=qdao.getWriter(25);
+						
+						// qna작성자를 표기하고 싶다면 회원 정보 필요
+						
+						MemberDao mdao = new MemberDao();
+						MemberDto mdto = mdao.get(qdto2.getQna_writer()); // qna_no로 회원아이디 조회
+
+					%>
 
 						<tr>
-							<td><%=qdto.getQna_no() %></td>
-							<td><a href="qna_content.jsp?qna_no=<%=qdto.getQna_no()%>"><%=qdto.getQna_title() %></a></td>
-							<td><%= member_id%></td>
-							<td><%=qdto.getQna_date() %></td>
+							<td><%=qdto2.getQna_no() %></td>
+							<td><a href="Qna_content.jsp?qna_no=<%=qdto2.getQna_no()%>"><%=qdto2.getQna_title() %></a></td>
+							<td><%=mdto.getMember_id()%></td>
+							<td><%=qdto2.getQna_date() %></td>
 						</tr>
 						<%} %>
 					</tbody>
 
 					<tfoot>
 						<tr>
-							<td colspan="8" align="right"><a href="Qna_write.jsp"> <input
-									type="button" value="WRITE">
-							</a></td>
+							<td colspan="8" align="right"><a href="Qna_write.jsp"> <input type="button" value="WRITE">
+								</a>
+							</td>
 						</tr>
 					</tfoot>
 				</table>
