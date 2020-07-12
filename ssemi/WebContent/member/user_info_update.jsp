@@ -39,26 +39,37 @@
                     </a>
                 </li>
                 <li>
+                    <!--
+                    진빈군, 이것도 수정하려면 먼저 비번검사하게 바꿨어요. 혹시나해서 오빠가 작성한 거 남길게용
+                    <a style="color: red" href="user_info_update.jsp">-->
                     <a style="color: red" href="user_info_update.jsp">
-                    
                         회원정보수정
                     </a>
                 </li>
               <li>
-                    <a href="user_pw_change.jsp">
+                    <a href="check_pw.jsp?go=change_pw.jsp">
            비밀번호변경                      
                     </a>
                 </li>
              <li>
-                    <a href="user_out.jsp">
+                    <a href="check_pw.jsp?go=user_out.jsp">
            회원탈퇴                      
                     </a>
                 </li>     
                 <li>
-                    <a href="#">
+                    <a href="shopBarket2.jsp">
                         장바구니
                     </a>
                 </li>
+                
+                
+                <li>
+                    <a href="wishlist.jsp">
+                        위시리스트
+                    </a>
+                </li>
+                
+                
                 <li>
                     <a href="#">
                         구매내역

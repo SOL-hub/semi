@@ -18,15 +18,21 @@ public class MemberOutServlet extends HttpServlet{
    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       
       try {
-         
+        
+        //입력 
          MemberDto mdto = (MemberDto)req.getSession().getAttribute("userinfo");
-         int member_no = mdto.getMember_no();
          
+         String member_id=mdto.getMember_id();
+         
+         
+         //처리
          MemberDao mdao = new MemberDao();
-         mdao.member_out(member_no);
+         mdao.user_out(member_id);
          
-         resp.sendRedirect("member_out_result.jsp");
+         req.getSession().removeAttribute("userinfo");
          
+         //출력
+         resp.sendRedirect("user_out.jsp");
       }
       
       catch(Exception e) {

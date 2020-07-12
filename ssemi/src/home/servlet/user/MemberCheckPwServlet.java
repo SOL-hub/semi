@@ -17,27 +17,34 @@ public class MemberCheckPwServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			//비밀번호변경하기 전 검사하는 서블릿
-			req.setCharacterEncoding("UTF-8");
+			//req.setCharacterEncoding("UTF-8");
 			
-			MemberDto mdto = new MemberDto();
-			mdto.setMember_id(req.getParameter("member_id"));
-			mdto.setMember_nick(req.getParameter("member_nick"));
-			mdto.setMember_phone(req.getParameter("member_phone"));
+			String go = req.getParameter("go");
 			
-			//처리
-			MemberDao mdao =new MemberDao();
-			String member_pw = mdao.CheckPw(mdto);
+			
+			String member_pw = req.getParameter("member_pw");
+			
+			MemberDto mdto = (MemberDto)req.getSession().getAttribute("userinfo");
+			String member_id = mdto.getMember_id();
+		
+		//기능 신규말고 
+			MemberDao mdao = new MemberDao();
+			MemberDto user = new MemberDto();
+			user.setMember_id(member_id);
+			user.setMember_pw(member_pw);
+			MemberDto result = mdao.login(user);
+			
 		
 			
-			if(member_pw!=null) { //결과가 있으면
+			if(result ==null) { //인증실패
 				//req.getSession().setAttribute("member_pw", member_pw);
 				
-			resp.sendRedirect("change_pw.jsp");
+			resp.sendRedirect("check_pw.jsp?error&go="+go);
 			
 			}
 			
-			else {
-				resp.sendRedirect("check_pw.jsp?error");
+			else {//로그인 성공
+				resp.sendRedirect(go);
 			}
 		}
 		catch(Exception e){

@@ -132,20 +132,20 @@ public class MemberDao {
 
 	}
 
-	// 진빈(회원탈퇴)
+	// 진빈(회원탈퇴) ---> 솔이가 밑에 다 씀
 
-	public void member_out(int member_no) throws Exception {
-		Connection con = getConnection();
+	//public void member_out(int member_no) throws Exception {
+		//Connection con = getConnection();
 
-		String sql = "delete member where member_no=?";
+		//String sql = "delete member where member_no=?";
 
-		PreparedStatement ps = con.prepareStatement(sql);
+		//PreparedStatement ps = con.prepareStatement(sql);
 
-		ps.setInt(1, member_no);
-		ps.execute();
+		//ps.setInt(1, member_no);
+		//ps.execute();
 
-		con.close();
-	}
+		//con.close();
+	//}
 
 	// 로그인 메소드
 	public MemberDto login(MemberDto mdto) throws Exception {
@@ -226,18 +226,17 @@ public class MemberDao {
 		return member_id;
 	}
 
-	// 비밀번호 변경 전 검사
+	// 비밀번호 변경 전 검사--솔
 
 	public String CheckPw(MemberDto mdto) throws Exception {
 		Connection con = getConnection();
 
-		String sql = "SELECT member_pw FROM member where member_id=? and member_nick=? and member_phone=?";
+		String sql = "SELECT member_pw FROM member where member_id=?";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 
 		ps.setString(1, mdto.getMember_id());
-		ps.setString(2, mdto.getMember_nick());
-		ps.setString(3, mdto.getMember_phone());
+		
 
 		ResultSet rs = ps.executeQuery();
 
@@ -255,20 +254,34 @@ public class MemberDao {
 	}
 
 	// 비밀번호 변경 --솔
-	public void ChangePw(MemberDto user) throws Exception {
+	public void ChangePw(MemberDto mdto) throws Exception {
 		Connection con = getConnection();
 	
 		String sql = "update member set member_pw=? where member_id=?";
 				
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setString(1, user.getMember_pw());
-		ps.setString(2, user.getMember_id());
+		ps.setString(1, mdto.getMember_pw());
+		ps.setString(2, mdto.getMember_id());
 
 		ps.execute();
 
 		con.close();
 		
+	}
+	
+	//탈퇴 (user_out)-- 솔
+	public void user_out(String member_id)throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "DELETE member where member_id=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, member_id);
+		
+		ps.execute();
+		
+		con.close();
 	}
 
 	

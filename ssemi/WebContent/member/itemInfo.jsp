@@ -42,7 +42,7 @@
 			
 				
 				
-				<form action="cart_add.do">
+				<form action="cart_add.do" method="post">
 				<tr>
 					<td><%=idto.getItem_no()%></td>
 					<td><%=idto.getItem_name()%></td>

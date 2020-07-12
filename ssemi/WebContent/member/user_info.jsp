@@ -37,27 +37,39 @@
                         회원정보
                     </a>
                 </li>
+                
                 <li>
-                    <a href="user_info_update.jsp">
-                    
+                   <!--<a href="user_info_update.jsp">-->
+                    <a href="check_pw.jsp?go=user_info_update.jsp">
                         회원정보수정
                     </a>
                 </li>
               <li>
-                    <a href="user_pw_change.jsp">
+                    <a href="check_pw.jsp?go=change_pw.jsp">
            비밀번호변경                      
                     </a>
                 </li>
              <li>
-                    <a href="user_out.jsp">
+                    <a href="check_pw.jsp?go=user_out.jsp">
            회원탈퇴                      
                     </a>
                 </li>     
                 <li>
-                    <a href="#">
+                    <a href="shopBarket2.jsp">
                         장바구니
                     </a>
                 </li>
+                
+                <li>
+                    <a href="wishlist.jsp">
+                       위시리스트
+                    </a>
+                </li>
+                
+                
+                
+                
+                
                 <li>
                     <a href="#">
                         구매내역

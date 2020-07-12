@@ -28,9 +28,10 @@
 
 <meta charset="UTF-8">
 <title>홈페이지</title>
+<!-- <link rel="stylesheet" type="text/css"
+   href="<%=request.getContextPath()%>/css/main.css">-->
 <link rel="stylesheet" type="text/css"
-   href="<%=request.getContextPath()%>/css/main.css">
-
+   href="<%=request.getContextPath()%>/css/main.css?ver=1">
 </head>
 
 
@@ -44,7 +45,7 @@
                   <ul class="menu_left_innerMenu">
                      <li>QnA</li>
                      <li>Review</li>
-                     <li>Event</li>
+                     <li>  <a href="<%=request.getContextPath()%>/event/event.jsp">Event</a></li>
                   </ul>
                </li>
                <li class="menu_left">스토어
@@ -88,7 +89,9 @@
 
                <li class="menu_right"><a
                   href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
-               <li class="menu_right"><a href="#">마이페이지</a></li>
+               <li class="menu_right">
+               <a href="<%=request.getContextPath()%>/member/user_info.jsp">
+               마이페이지</a></li>
                <li class="menu_right"><a href="#">주문/배송 조회</a></li>
                <li class="menu_right"><a href="#">장바구니</a></li>
                <li class="menu_right"><a href="#">회원탈퇴</a></li>
@@ -108,6 +111,7 @@
 
                               <li class="menu_right"><a
                                  href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
+                                 <li class="<%=request.getContextPath()%>/member/shopBarket2.jsp">장바구니</a></li>
                               <li class="menu_right"><a href="#">관리메뉴</a></li>
                               <li class="menu_right"><a href="#">주문/배송</a></li>
                               <li class="menu_right"><a href="#">고객센터</a></li>

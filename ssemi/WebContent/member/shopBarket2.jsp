@@ -56,32 +56,7 @@
     
     <script type="text/javascript" src="/JaueryStudy/js/jquery-3.3.1.min.js"></script>
     
-       <script type="text/javascript">
-           
-           $(document).ready(function(){
-                    $(".calculation1 thead input:checkbox[id=check]").click(function(){
-               var bool=$(this).prop("checked");
-                        $(".calculation1 tbody input:checkbox[name=checkbox]").prop("checked", bool);
-           });
-           
-           $(".calulation1 tbody input:checkbox[name=checkbox]").click(function(){
-               var bool = $(this).prop("checked");
-               
-               if(!bool){
-                   $(".calculation1 thead input:checkbox[id=check]").prop("checked", false);
-                   flag = true;
-                   return false;
-               }
-           });
-        if(!flag){
-            $(".calculation1 thead input:checkbox[id=check]").prop("checked",true);
-        }
-               
-           });
-           
-           }); //end of$(document).ready()----------------
-           
-    </script>
+      
 
 
 <body class="Body">

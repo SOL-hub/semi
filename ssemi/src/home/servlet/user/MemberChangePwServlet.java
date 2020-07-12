@@ -37,13 +37,9 @@ public class MemberChangePwServlet extends HttpServlet {
 			mdao.ChangePw(user);
 
 			// 출력
-//			if (user != null) {
-//
+
 resp.sendRedirect("change_pw_result.jsp");
-//				
-//			} else {
-//				
-//			}
+		
 			
 		} catch (Exception e) {
 			e.printStackTrace();

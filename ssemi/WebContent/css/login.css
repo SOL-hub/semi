@@ -15,12 +15,19 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
+
 main {
-	width:500px;
-	text-align: center;
-	height: 450px;
-	margin: auto;
-	border: 1px solid #aaa;
+   width:500px;
+   text-align: center;
+   height: 800px;
+   margin: auto;
+   border: none;
+   padding-top: 150px;
+}
+
+article{
+   border: 1px solid #aaa;
+   height: 500px;
 }
 
 .login-wrap {
