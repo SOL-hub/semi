@@ -117,7 +117,6 @@ public class QnaDao {
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, qna_no);
 		ResultSet rs = ps.executeQuery();
-
 		QnaDto qdto = rs.next() ? new QnaDto(rs) : null;	// 3항 연산자
 		con.close();
 		return qdto;
@@ -133,7 +132,21 @@ public class QnaDao {
 		
 		rs.next();
 		String member_id=rs.getString(1);
+		
 		con.close();
 		return member_id;
+	}
+	
+	public void write(QnaDto qdto) throws Exception {
+		Connection con = getConnection();
+		String sql = "INSERT INTO qna(qna_no, qna_title, qna_writer, qna_content) VALUES(?,?,?,?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, qdto.getQna_no());
+		ps.setString(2, qdto.getQna_title());
+		ps.setInt(3, qdto.getQna_writer());
+		ps.setString(4, qdto.getQna_content());
+		ps.execute();
+		
+		con.close();
 	}
 }

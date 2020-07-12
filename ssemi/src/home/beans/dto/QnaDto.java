@@ -5,7 +5,8 @@ import java.sql.SQLException;
 
 public class QnaDto {
 	private int qna_no;
-	private String qna_writer;
+	private int qna_writer;
+
 	private String qna_title;
 	private String qna_content;
 	private String qna_date;
@@ -26,11 +27,12 @@ public class QnaDto {
 
 	public QnaDto(ResultSet rs) throws SQLException {
 		this.setQna_no(rs.getInt("qna_no"));
-		this.setQna_writer(rs.getString("qna_writer"));
+		this.setQna_writer(rs.getInt("qna_writer"));
 		this.setQna_title(rs.getString("qna_title"));
 		this.setQna_content(rs.getString("qna_content"));
 		this.setQna_date(rs.getString("qna_date"));
 		this.setQna_modify_date(rs.getString("qna_modify_date"));
+		
 //		this.setSuper_no(rs.getInt("super_no"));
 //		this.setGroup_no(rs.getInt("group_no"));
 //		this.setDepth(rs.getInt("depth"));
@@ -44,10 +46,11 @@ public class QnaDto {
 	public void setQna_no(int qna_no) {
 		this.qna_no = qna_no;
 	}
-	public String getQna_writer() {
+	public int getQna_writer() {
 		return qna_writer;
 	}
-	public void setQna_writer(String qna_writer) {
+	
+	public void setQna_writer(int qna_writer) {
 		this.qna_writer = qna_writer;
 	}
 
