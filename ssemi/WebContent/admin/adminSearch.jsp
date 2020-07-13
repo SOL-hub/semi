@@ -96,27 +96,27 @@
         <h3>Today</h3>
 
         <div class="today-cart-wrap">
-            <a href="#">
+            <a href="total_before_pay.jsp">
                 <img class="todayimg" src="/ssemi/img/supermarket.png">
             </a>
         </div>
 
-
+ 
         <div class="label-wrap">
-            <a href="#" class="today-label">
+        <a href="total_before_pay.jsp" class="today-label">
                 주문 (15건)
-            </a>
+        </a>
         </div>
 
         <div class="today-cart-wrap">
-            <a href="#">
+            <a href="total_after_pay.jsp">
                 <img class="todayimg" src="/ssemi/img/money.png">
             </a>
         </div>
 
 
         <div class="label-wrap">
-            <a href="#" class="today-label">
+            <a href="total_after_pay.jsp" class="today-label">
                 결제 (9건)
             </a>
         </div>
