@@ -15,13 +15,13 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/admin.css">
+	href="<%=request.getContextPath()%>/css/admin.css?ver=1">
 	
  <style>
  
  		.totaldiv{
  			margin-top:150px;
- 			margin-left: 650px;
+ 			margin-left: 750px;
  		}
  
  
@@ -51,6 +51,29 @@
             width: 150px;
             margin-left: 350px;
         }
+        
+        
+        
+        .list-table-wrap {
+        	width:900px;
+        	margin-right:1000px;
+        	
+        }
+        
+        
+        
+    .beforetable{
+    	
+    	color:white;
+    	border: 1px solid transparent; 
+    }
+
+	    #totalcolor{
+    	
+    	color:#AAAAAA;
+    }
+    
+
     </style>
 </head>
 <body>
@@ -133,7 +156,52 @@
     </form>
     
     
-    
+    <!--  검색 결과 -->
+    <div class="list-wrap">
+
+			<h2 id="Ltitle">회원 주문 목록</h2>
+			<p id="listcount">
+				검색결과 0건
+			</p>
+		
+			<div class="list-table-wrap">
+				<table class="Ltable">
+					<tr>
+						
+						<th>주문번호</th>
+						<th>상품번호</th>
+						<th >상품명</th>
+						<th> 수량 </th>
+						<th>결제 예정 금액</th>
+						<th>결제 상태</th>
+						
+					</tr>
+
+
+
+					<tr class="Ldata">
+					
+						<td class="Ldata"><a href = "#">123456</a></td>
+						<td class="Ldata"><a href = "#">T12345</a></td>
+						<td class="Ldata" ><a href = "#">예쁜 서랍 <br> <span id="totalcolor">화이트</span></a></td>
+						<td class="Ldata"><a href = "#">3</a></td>
+						<td class="Ldata"><a href = "#">562,150원</a></td>
+						<td class="Ldata"><a href = "#">미결제</a></td>
+						
+				
+						
+							
+					</tr>
+				
+				</table>
+				
+			</div>
+		
+
+		</div>
+
+	
+
 </body>
 </html>
 
