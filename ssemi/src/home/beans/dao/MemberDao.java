@@ -3,6 +3,8 @@ package home.beans.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -10,6 +12,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import home.beans.dto.MemberDto;
+import sun.text.normalizer.Replaceable;
 
 public class MemberDao {
 //	context.xml에서 관리하는 자원 객체를 참조할 수 있도록 연결 코드 구현
@@ -84,6 +87,28 @@ public class MemberDao {
 
 	}
 
+
+
+
+
+	// 진빈(회원탈퇴) ---> 솔이가 밑에 다 씀
+
+	//public void member_out(int member_no) throws Exception {
+		//Connection con = getConnection();
+
+		//String sql = "delete member where member_no=?";
+
+		//PreparedStatement ps = con.prepareStatement(sql);
+
+		//ps.setInt(1, member_no);
+		//ps.execute();
+
+		//con.close();
+	//}
+
+
+
+
 	// 진빈(유저 단일조회)
 	public MemberDto get(int member_no) throws Exception {
 
@@ -132,20 +157,21 @@ public class MemberDao {
 
 	}
 
-	// 진빈(회원탈퇴) ---> 솔이가 밑에 다 씀
+	// 진빈(회원탈퇴)
 
-	//public void member_out(int member_no) throws Exception {
-		//Connection con = getConnection();
+	public void member_out(int member_no) throws Exception {
+		Connection con = getConnection();
 
-		//String sql = "delete member where member_no=?";
+		String sql = "delete member where member_no=?";
 
-		//PreparedStatement ps = con.prepareStatement(sql);
+		PreparedStatement ps = con.prepareStatement(sql);
 
-		//ps.setInt(1, member_no);
-		//ps.execute();
+		ps.setInt(1, member_no);
+		ps.execute();
 
-		//con.close();
-	//}
+		con.close();
+	}
+
 
 	// 로그인 메소드
 	public MemberDto login(MemberDto mdto) throws Exception {
@@ -226,32 +252,38 @@ public class MemberDao {
 		return member_id;
 	}
 
+
 	// 비밀번호 변경 전 검사--솔
 
-	public String CheckPw(MemberDto mdto) throws Exception {
-		Connection con = getConnection();
+	// 비밀번호 변경 전 검사
 
-		String sql = "SELECT member_pw FROM member where member_id=?";
 
-		PreparedStatement ps = con.prepareStatement(sql);
+	 public String CheckPw(MemberDto mdto) throws Exception {
+	      Connection con = getConnection();
 
-		ps.setString(1, mdto.getMember_id());
-		
+	      String sql = "SELECT member_pw FROM member where member_id=?";
 
-		ResultSet rs = ps.executeQuery();
+	      PreparedStatement ps = con.prepareStatement(sql);
 
-		String member_pw;
-		if (rs.next()) {
-			member_pw = rs.getString("member_pw");
-		}
+	      ps.setString(1, mdto.getMember_id());
+	      
 
-		else {
-			member_pw = null;
-		}
-		con.close();
+	      ResultSet rs = ps.executeQuery();
 
-		return member_pw;
-	}
+	      String member_pw;
+	      if (rs.next()) {
+	         member_pw = rs.getString("member_pw");
+	      }
+
+	      else {
+	         member_pw = null;
+	      }
+	      con.close();
+
+	      return member_pw;
+	   }
+
+
 
 	// 비밀번호 변경 --솔
 	public void ChangePw(MemberDto mdto) throws Exception {
@@ -282,8 +314,69 @@ public class MemberDao {
 		ps.execute();
 		
 		con.close();
+		
 	}
-
 	
 
+	
+//관리자 회원 검색 --임새봄
+	public List<MemberDto> search(String type, String keyword) throws Exception {
+		Connection con = getConnection();
+		String sql = "SELECT * FROM member WHERE instr(#1, ?)>0 ORDER BY #1 ASC";
+		sql = sql.replace("#1", type);
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ResultSet rs = ps.executeQuery();
+
+		List<MemberDto> list = new ArrayList<>();
+		while (rs.next()) {
+			MemberDto mdto = new MemberDto(rs);
+			list.add(mdto);
+		}
+
+		con.close();
+
+		return list;
+
 }
+	
+	// 관리자가 회원 날짜로 검색 -- 임새봄 
+		public List<MemberDto> search_join(String keyword) throws Exception {
+
+			Connection con = getConnection();
+
+			String sql = "SELECT* FROM member WHERE to_date(?,'YYYY-MM-DD')";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, keyword);
+			ResultSet rs = ps.executeQuery();
+
+			List<MemberDto> list = new ArrayList<>();
+			while (rs.next()) {
+				MemberDto mdto = new MemberDto(rs);
+				list.add(mdto);
+			}
+			con.close();
+			return list;
+
+		}
+
+		// 관리자가 회원 탈퇴 시키는거! -- 임새봄
+		public void exit(String member_id) throws Exception {
+			Connection con = getConnection();
+
+			String sql = "DELETE member WHERE member_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, member_id);
+			ps.execute();
+
+			con.close();
+		}
+
+	
+	
+	
+}
+	
+
+
