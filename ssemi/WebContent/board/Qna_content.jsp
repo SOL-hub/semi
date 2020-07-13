@@ -125,6 +125,12 @@ QnaDto qdto = qdao.get(qna_no);
 MemberDao mdao=new MemberDao();
 MemberDto mdto = mdao.get(qdto.getQna_writer());
 
+MemberDto user =(MemberDto) session.getAttribute("userinfo");
+boolean isAdmin = user.getMember_auth().equals("관리자");
+
+// - 내글 : 게시글(bdto)의 작성자와 로그인 된 사용자(user)의 아이디가 같아야 함
+boolean isMine = user.getMember_id().equals(qdto.getQna_writer());
+
 %>
 
 <body>
@@ -162,10 +168,16 @@ MemberDto mdto = mdao.get(qdto.getQna_writer());
 					</tbody>
 				</table>
 				<div class="button_box">
-				<input class="button" type="button" value="WRITE">
+				
+				<a href="Qna_edit.jsp?qna_no=<%=qna_no%>">
 				<input class="button"  type="button" value="EDIT">
+				</a>
+				<a href="<%=request.getContextPath()%>/ssemi/member/check_pw.jsp?go=<%=request.getContextPath()%>/ssemi/board/Qna_delete.do?qna_no=<%=qna_no%>">
 				<input class="button"  type="button" value="DELETE">
-				<input class="button"  type="button" value="LIST">
+				</a>
+				<a href="Qna_list.jsp">
+				<input  class="button"  type="button" value="LIST" >
+				</a>
 				<input class="button"  type="button" value="REPLY">			
 				</div>
 			</div>
