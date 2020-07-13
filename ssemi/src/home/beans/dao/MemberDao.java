@@ -373,6 +373,33 @@ public class MemberDao {
 			con.close();
 		}
 
+		
+		// 관리자가 회원 수정 -- 임새봄 
+		
+		public void editByAdmin(MemberDto mdto) throws Exception{
+			Connection con = getConnection();
+			
+			String sql = "update member set " + "member_pw=? ,member_nick=?, member_birth=?, member_phone=?, member_email=?,"
+					+ "member_post=?, member_base_addr=?, member_extra_addr=?, member_auth=? where member_no=?";
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setString(1, mdto.getMember_pw());
+			ps.setString(2, mdto.getMember_nick());
+			ps.setString(3, mdto.getMember_birth());
+			ps.setString(4, mdto.getMember_phone());
+			ps.setString(5, mdto.getMember_email());
+			ps.setString(6, mdto.getMember_post());
+			ps.setString(7, mdto.getMember_base_addr());
+			ps.setString(8, mdto.getMember_extra_addr());
+			ps.setString(9, mdto.getMember_auth());
+			ps.setInt(10, mdto.getMember_no());
+			
+
+			ps.execute();
+
+			con.close();
+		}
 	
 	
 	
