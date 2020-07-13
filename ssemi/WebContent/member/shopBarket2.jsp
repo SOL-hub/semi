@@ -88,6 +88,8 @@
                         <th style="width: 280px; height: 50px;"><span>이미지</span></th>
                         <th style="width: 450px;"><span>상품정보</span></th>
                         <th style="width: 80px;">판매가</th>
+                        
+                      
                         <th style="width: 20px;">수량</th>
                         <th style="width: 80px;">적립금</th>
                      
@@ -109,13 +111,29 @@
                           
                           <td><span style="padding-left: 10px;">0</span>원</td>
                           
-                          <td style="width:90px;">
-                              <input type="number" style="text-align: right; width: 40px; margin-bottom: 3px;" min="1" max="99" step="1" value="1">
-                              <button class="btn default" style="border-radius: 3px; size: 10px;">변경</button>
-                          </td>
-                          
-                           <td><%%></td>
+                         
                            
+                          
+                       <td style="width:90px;">
+                       <form action="cart_add.do" name="form1" method="post">
+                        <input type="hidden" name="item_no" value="goodbed">
+                        <select name="amount">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        </select>&nbsp;개
+                        <input type="submit" value="장바구니에 담기">
+                         </form>
+                           </td>
+                           
+                           <td style="width:90px;"></td>
                            <td>2,500원<br/>고정</td>
                                                     
                       
