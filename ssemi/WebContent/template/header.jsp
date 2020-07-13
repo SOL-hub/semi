@@ -94,7 +94,7 @@ href="<%=request.getContextPath()%>/css/main.css">
 					<li class="menu_right"><a href="#">마이페이지</a></li>
 					<li class="menu_right"><a href="#">주문/배송 조회</a></li>
 					<li class="menu_right"><a href="#">장바구니</a></li>
-					<li class="menu_right"><a href="#">회원탈퇴</a></li>
+					<li class="menu_right"><a href="<%=request.getContextPath()%>/member/user_out.jsp">회원탈퇴</a></li>
 
 
 					<li class="menu_right"><a href="#">주문/배송</a></li>

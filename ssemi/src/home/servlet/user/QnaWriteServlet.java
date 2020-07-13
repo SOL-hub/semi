@@ -33,6 +33,11 @@ public class QnaWriteServlet extends HttpServlet {
 			qdto.setQna_writer(Integer.parseInt(req.getParameter("member_no")));
 			qdto.setQna_title(req.getParameter("qna_title"));
 			qdto.setQna_content(req.getParameter("qna_content"));
+			
+			//	게시글 번호(qna_no)가 있을때만 받음
+			if(req.getParameter("qna_no")!=null) {
+				qdto.setSuper_no(Integer.parseInt(req.getParameter("qna_no")));
+			}
 
 			qdao.write(qdto);
 			
