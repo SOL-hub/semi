@@ -194,7 +194,7 @@
 			
 			<%MemberDto user = new MemberDto(); %>
 			
-			<form action="<%=request.getContextPath()%>/admin/delete.do"  method= "get">
+			
 			<div class="list-table-wrap">
 				<table class="Ltable">
 					<tr>
@@ -220,12 +220,12 @@
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_join_day()%></a></td>
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_phone()%></a></td>
 						<td class="Ldata"><a href = "#"><%=mdto.getMember_age()%></a></td>
-						<td class="Ldata"><input type="button" value="주문내역"
-							class="listbtn"> <input type="button" value="적립금"
-							class="listbtn"></td>
+						<td class="Ldata"><a href ="#"><input type="button" value="주문내역"
+							class="listbtn"></a> <a href ="#"><input type="button" value="적립금"
+							class="listbtn"></a></td>
 							
-							<td><input type="submit" value="수정" class="listbtn">
-							<input type="submit" value="삭제" class="listbtn" name="member_no"  value="<%=mdto.getMember_no()%>"></td>
+							<td><a href="#"><input type="button" value="수정" class="listbtn"></a>
+							<a href="<%=request.getContextPath()%>/admin/delete.do?member_no=<%=mdto.getMember_no()%>"><input type="button" value="삭제"  class="listbtn" ></a></td>
 					</tr>
 					<%
 						}
@@ -234,7 +234,7 @@
 				</table>
 				
 			</div>
-			</form>
+		
 
 		</div>
 	</div>
