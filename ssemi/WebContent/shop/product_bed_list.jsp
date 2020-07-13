@@ -1,5 +1,31 @@
+<%@page import="home.beans.dto.ItemDto"%>
+<%@page import="java.util.List"%>
+<%@page import="home.beans.dao.ItemDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	//이 페이지를 출력하기 위한 프로그래밍 처리
+	//1. 준비물(입력) : 검색창의 입력값 - type, keyword (둘다 있으면 검색)
+	//2. 처리
+	//		- isSearch라는 변수에 검색인지 아닌지 판정하여 저장
+	//		- isSearch의 값에 따라 "목록" 또는 "검색" 결과를 저장
+	//3. 결과물(출력) : 게시글 리스트 - List<BoardDto>
+	
+	String keyword = request.getParameter("keyword");
+	
+	boolean isSearch = keyword != null;
+	
+	ItemDao idao = new ItemDao();
+// 	List<BoardDto> list = 목록 or 검색;
+	List<ItemDto> list;
+	if(isSearch){
+		list = idao.search(keyword);
+	}
+	else{
+		list = idao.getList();
+	}
+%> 
+    <jsp:include page="/template/header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +33,7 @@
     <title>일룸</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bed_list.css">
     <style>
- 
-        
+
     </style>
 </head>
 
@@ -63,33 +88,34 @@
                 </div>
             </div>
             <article>
+            <%for(ItemDto idto : list){ %>
                 <div class="ln4">
                     <ul>
 
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
@@ -97,62 +123,31 @@
 
                     </ul>
                     <ul>
-                       <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
-                            <p class="icon"><a onclick="changeimg()">
-                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
-                                </a></p>
-                        </li>
-                        <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
-                            <p class="icon"><a onclick="changeimg()">
-                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
-                                </a></p>
-                        </li>
-                        <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
-                            <p class="icon"><a onclick="changeimg()">
-                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
-                                </a></p>
-                        </li>
-                        <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
-                            <p class="icon"><a onclick="changeimg()">
-                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
-                                </a></p>
-                        </li>
 
-
-                    </ul>
-                    <ul>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
@@ -160,30 +155,63 @@
 
                     </ul>
                     <ul>
-                       <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+
+                        <li>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
-                            <p><span>이름</span><br><span>설명</span><br><span class="price">0&nbsp;원</span></p>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
+                            <p class="icon"><a onclick="changeimg()">
+                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
+                                </a></p>
+                        </li>
+
+                    </ul>
+                    <ul>
+
+                        <li>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
+                            <p class="icon"><a onclick="changeimg()">
+                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
+                                </a></p>
+                        </li>
+                        <li>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
+                            <p class="icon"><a onclick="changeimg()">
+                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
+                                </a></p>
+                        </li>
+                        <li>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
+                            <p class="icon"><a onclick="changeimg()">
+                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
+                                </a></p>
+                        </li>
+                        <li>
+                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                            <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info() %></span><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
@@ -191,6 +219,8 @@
 
                     </ul>
                 </div>
+                <%} %>
+                <!-- 네비게이터 -->
                 <div class="page center_wlwjd">
                     <ul>
                         <li class="on"><a href="#">1</a></li>
@@ -205,4 +235,4 @@
         </div>
     </main>
 </body></html> 
-
+<jsp:include page="/template/footer.jsp"></jsp:include>  
