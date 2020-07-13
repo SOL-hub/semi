@@ -137,6 +137,7 @@ public class QnaDao {
 		return member_id;
 	}
 	
+	// 게시글 등록 메소드
 	public void write(QnaDto qdto) throws Exception {
 		Connection con = getConnection();
 		String sql = "INSERT INTO qna(qna_no, qna_title, qna_writer, qna_content) VALUES(?,?,?,?)";
@@ -149,4 +150,28 @@ public class QnaDao {
 		
 		con.close();
 	}
+	
+	// 수정 메소드
+	public void edit(QnaDto qdto) throws Exception {
+		Connection con = getConnection();
+		
+		String sql="UPDATE qna SET qna_title=?, qna_content=? WHERE qna_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, qdto.getQna_title());
+		ps.setString(2, qdto.getQna_content());
+		ps.setInt(3, qdto.getQna_no());
+		ps.execute();
+		con.close();
+	}
+	
+	// 게시글 삭제
+	public void delete(int qna_no) throws Exception {
+		Connection con = getConnection();
+		String sql="DELETE qna WHERE qna_no=?";
+		PreparedStatement ps=con.prepareStatement(sql);
+		ps.setInt(1, qna_no);
+		ps.execute();
+		con.close();
+	}
+	
 }
