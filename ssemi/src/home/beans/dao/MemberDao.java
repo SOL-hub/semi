@@ -43,10 +43,7 @@ public class MemberDao {
 
 //	진빈(회원가입 완료)
 	public void join(MemberDto mdto) throws Exception {
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/saebom
 		Connection con = getConnection();
 		String sql = "insert into member values(member_seq.nextval,?,?,?,?,?,?,?,?,?,?,100,'일반',sysdate,null,null,null)";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -90,71 +87,9 @@ public class MemberDao {
 
 	}
 
-<<<<<<< HEAD
-	// 진빈(유저 단일조회)
-	public MemberDto get(int member_no) throws Exception {
 
-		Connection con = getConnection();
-		String sql = "select * from member where member_no=?";
-		PreparedStatement ps = con.prepareStatement(sql);
 
-		ps.setInt(1, member_no);
-		ResultSet rs = ps.executeQuery();
 
-		MemberDto mdto;
-		if (rs.next()) {
-			mdto = new MemberDto(rs);
-
-		} else {
-			mdto = null;
-=======
-	// 관리자 회원 검색 --임새봄
-	public List<MemberDto> search(String type, String keyword) throws Exception {
-		Connection con = getConnection();
-		String sql = "SELECT * FROM member WHERE instr(#1, ?)>0 ORDER BY #1 ASC";
-		sql = sql.replace("#1", type);
-
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, keyword);
-		ResultSet rs = ps.executeQuery();
-
-		List<MemberDto> list = new ArrayList<>();
-		while (rs.next()) {
-			MemberDto mdto = new MemberDto(rs);
-			list.add(mdto);
->>>>>>> refs/remotes/origin/saebom
-		}
-<<<<<<< HEAD
-
-		con.close();
-
-		return mdto;
-
-	}
-
-	// 진빈(회원정보수정)
-	public void user_info_update(MemberDto mdto) throws Exception {
-
-		Connection con = getConnection();
-
-		String sql = "update member set " + "member_nick=?, member_birth=?, member_phone=?, member_email=?,"
-				+ "member_post=?, member_base_addr=?, member_extra_addr=? where member_no=?";
-		PreparedStatement ps = con.prepareStatement(sql);
-
-		ps.setString(1, mdto.getMember_nick());
-		ps.setString(2, mdto.getMember_birth());
-		ps.setString(3, mdto.getMember_phone());
-		ps.setString(4, mdto.getMember_email());
-		ps.setString(5, mdto.getMember_post());
-		ps.setString(6, mdto.getMember_base_addr());
-		ps.setString(7, mdto.getMember_extra_addr());
-		ps.setInt(8, mdto.getMember_no());
-
-		ps.execute();
-
-		con.close();
-
-	}
 
 	// 진빈(회원탈퇴) ---> 솔이가 밑에 다 씀
 
@@ -170,42 +105,9 @@ public class MemberDao {
 
 		//con.close();
 	//}
-=======
-		con.close();
-		return list;
-	}
 
-// 관리자가 회원 날짜로 검색 -- 임새봄 
-	public List<MemberDto> search_join(String keyword) throws Exception {
 
-		Connection con = getConnection();
 
-		String sql = "SELECT* FROM member WHERE to_date(?,'YYYY-MM-DD')";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, keyword);
-		ResultSet rs = ps.executeQuery();
-
-		List<MemberDto> list = new ArrayList<>();
-		while (rs.next()) {
-			MemberDto mdto = new MemberDto(rs);
-			list.add(mdto);
-		}
-		con.close();
-		return list;
-
-	}
-
-	// 관리자가 회원 탈퇴 시키는거! -- 임새봄
-	public void exit(String member_id) throws Exception {
-		Connection con = getConnection();
-
-		String sql = "DELETE member WHERE member_id = ?";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, member_id);
-		ps.execute();
-
-		con.close();
-	}
 
 	// 진빈(유저 단일조회)
 	public MemberDto get(int member_no) throws Exception {
@@ -269,7 +171,7 @@ public class MemberDao {
 
 		con.close();
 	}
->>>>>>> refs/remotes/origin/saebom
+
 
 	// 로그인 메소드
 	public MemberDto login(MemberDto mdto) throws Exception {
@@ -350,46 +252,38 @@ public class MemberDao {
 		return member_id;
 	}
 
-<<<<<<< HEAD
+
 	// 비밀번호 변경 전 검사--솔
-=======
+
 	// 비밀번호 변경 전 검사
->>>>>>> refs/remotes/origin/saebom
 
-	public String CheckPw(MemberDto mdto) throws Exception {
-		Connection con = getConnection();
 
-<<<<<<< HEAD
-		String sql = "SELECT member_pw FROM member where member_id=?";
-=======
-		String sql = "SELECT member_pw FROM member where member_id=? and member_nick=? and member_phone=?";
->>>>>>> refs/remotes/origin/saebom
+	 public String CheckPw(MemberDto mdto) throws Exception {
+	      Connection con = getConnection();
 
-		PreparedStatement ps = con.prepareStatement(sql);
+	      String sql = "SELECT member_pw FROM member where member_id=?";
 
-		ps.setString(1, mdto.getMember_id());
-<<<<<<< HEAD
-		
-=======
-		ps.setString(2, mdto.getMember_nick());
-		ps.setString(3, mdto.getMember_phone());
->>>>>>> refs/remotes/origin/saebom
+	      PreparedStatement ps = con.prepareStatement(sql);
 
-		ResultSet rs = ps.executeQuery();
+	      ps.setString(1, mdto.getMember_id());
+	      
 
-		String member_pw;
-		if (rs.next()) {
-			member_pw = rs.getString("member_pw");
-		}
+	      ResultSet rs = ps.executeQuery();
 
-		else {
-			member_pw = null;
-		}
-		con.close();
-<<<<<<< HEAD
+	      String member_pw;
+	      if (rs.next()) {
+	         member_pw = rs.getString("member_pw");
+	      }
 
-		return member_pw;
-	}
+	      else {
+	         member_pw = null;
+	      }
+	      con.close();
+
+	      return member_pw;
+	   }
+
+
 
 	// 비밀번호 변경 --솔
 	public void ChangePw(MemberDto mdto) throws Exception {
@@ -420,36 +314,69 @@ public class MemberDao {
 		ps.execute();
 		
 		con.close();
+		
 	}
-=======
->>>>>>> refs/remotes/origin/saebom
-
-<<<<<<< HEAD
 	
 
-}
-=======
-		return member_pw;
-	}
+	
+//관리자 회원 검색 --임새봄
+	public List<MemberDto> search(String type, String keyword) throws Exception {
+		Connection con = getConnection();
+		String sql = "SELECT * FROM member WHERE instr(#1, ?)>0 ORDER BY #1 ASC";
+		sql = sql.replace("#1", type);
 
-	// 비밀번호 변경
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ResultSet rs = ps.executeQuery();
 
-	// public String CheckPw(MemberDto mdto) throws Exception{
-	// Connection con = getConnection();
+		List<MemberDto> list = new ArrayList<>();
+		while (rs.next()) {
+			MemberDto mdto = new MemberDto(rs);
+			list.add(mdto);
+		}
 
-	// String sql = "UPDATE member set member_pw? "
-	// + "where member_id=? and member_nick=? member_phone";
+		con.close();
 
-	// PreparedStatement ps = con.prepareStatement(sql);
-	// ps.setString(1, mdto.getMember_pw());
-	// ps.setString(2, mdto.getMember_id());
-	// ps.setString(3, mdto.getMember_nick());
-	// ps.setString(4, mdto.getMember_phone());
-	//
-	// ps.execute();
-
-	// con.close();
-	// }
+		return list;
 
 }
->>>>>>> refs/remotes/origin/saebom
+	
+	// 관리자가 회원 날짜로 검색 -- 임새봄 
+		public List<MemberDto> search_join(String keyword) throws Exception {
+
+			Connection con = getConnection();
+
+			String sql = "SELECT* FROM member WHERE to_date(?,'YYYY-MM-DD')";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, keyword);
+			ResultSet rs = ps.executeQuery();
+
+			List<MemberDto> list = new ArrayList<>();
+			while (rs.next()) {
+				MemberDto mdto = new MemberDto(rs);
+				list.add(mdto);
+			}
+			con.close();
+			return list;
+
+		}
+
+		// 관리자가 회원 탈퇴 시키는거! -- 임새봄
+		public void exit(String member_id) throws Exception {
+			Connection con = getConnection();
+
+			String sql = "DELETE member WHERE member_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, member_id);
+			ps.execute();
+
+			con.close();
+		}
+
+	
+	
+	
+}
+	
+
+
