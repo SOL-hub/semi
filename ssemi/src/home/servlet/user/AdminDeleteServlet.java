@@ -29,7 +29,7 @@ public class AdminDeleteServlet extends HttpServlet {
 				mdao.exit(member_no);//회원탈퇴와 동일한 기능 사용
 				
 				//출력 : 회원 목록(list.jsp)
-				resp.sendRedirect("adminSearch.jsp?member_no=");
+				resp.sendRedirect("admin_search.jsp?member_no=");
 				
 				
 				

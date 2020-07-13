@@ -141,7 +141,7 @@
 	<div class="search-list-wrap">
 		<div class="search-wrap">
 			<h2 id="stitle">회원 검색</h2>
-			<form action="adminSearch.jsp" method="get">
+			<form action="admin_search.jsp" method="get">
 				<table class="tsearch">
 					<tr>
 						<th>검색어</th>

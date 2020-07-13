@@ -33,7 +33,7 @@ public class AdminLoginServlet extends HttpServlet {
 				resp.sendRedirect("admin_login.jsp?error");
 			}else {
 				req.getSession().setAttribute("admininfo", admin);
-				resp.sendRedirect("adminSearch.jsp");
+				resp.sendRedirect("admin_search.jsp");
 			}
 			
 			
