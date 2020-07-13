@@ -122,6 +122,20 @@ public class QnaDao {
 		return qdto;
 	}
 	
+	// 단일조회2 (Qna_content.jsp)
+		public QnaDto get_id(int qna_writer) throws Exception {
+			Connection con = getConnection();
+			String sql = "SELECT*FROM qna WHERE qna_writer=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, qna_writer);
+			ResultSet rs = ps.executeQuery();
+			
+				QnaDto qdto = rs.next() ? new QnaDto(rs) : null;	// 3항 연산자	
+			
+			con.close();
+			return qdto;
+		}
+	
 	// 아이디 단일조회 (member_no 대신 아이디 불러오기)
 	public String getWriter(int member_no) throws Exception {
 		Connection con = getConnection();
