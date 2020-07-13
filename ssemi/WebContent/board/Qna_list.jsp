@@ -115,9 +115,13 @@
 	width: 80%;
 }
 /* 페이지 네비게이션 */
+.page_navi {
+margin:auto;
+	text-align: center;
+}
 .page_navi li {
 	display: inline-block;
-	text-align: center;
+
 }
 </style>
 </head>
@@ -134,6 +138,48 @@
 	} else {
 		list = qdao.getList();
 	}
+	
+	// 페이지네이션
+	int pageSize=10;
+	
+	// 오류값 -> 1 
+	String pageStr = request.getParameter("page");
+	int pageNo;
+	try {
+		pageNo = Integer.parseInt(pageStr);
+		if(pageNo<=0) {
+			throw new Exception();
+		}
+	}
+		catch(Exception e) {
+			pageNo=1;
+		}
+		
+		//시작 글 순서와 종료 글 순서를 계산
+		int finish = pageNo * pageSize;
+		int start = finish - (pageSize - 1);
+		
+		//////////////////////////////////////////////////////////////////
+		// 페이지 네비게이터 계산 코드
+		//////////////////////////////////////////////////////////////////
+		int blockSize = 10;//이 페이지에는 네비게이터 블록을 10개씩 배치하겠다!
+		int startBlock = (pageNo - 1) / blockSize * blockSize + 1;
+		int finishBlock = startBlock + blockSize - 1;
+		
+		//QnaDao qdao = new QnaDao();
+		//		(주의!) 다음 버튼의 경우 계산을 통하여 페이지 개수를 구해야 출력 여부 판단이 가능
+		int count;		//	목록 개수 or 검색 개수
+		if(isSearch) {		//		검색
+			count=qdao.getCount(type, keyword);
+		} 
+		else {		//		목록
+			count=qdao.getCount();
+		}
+		int pageCount=(count+pageSize-1)/pageSize;
+		//	만약 finishBlock이 pageCount보다 크다면 수정해야 한다
+		if(finishBlock>pageCount) {
+			finishBlock=pageCount;
+		}
 	
 %>
 
@@ -184,9 +230,22 @@
 
 						<tr>
 							<td><%=qdto2.getQna_no() %></td>
-							<td><a href="Qna_content.jsp?qna_no=<%=qdto2.getQna_no()%>"><%=qdto2.getQna_title() %></a></td>
+							<td align="left">
+							
+												<!-- 
+						답글은 띄어쓰기 구현
+						- 답글인 경우는 super_no > 0 , depth > 0 
+					-->
+					<%if(qdto2.getDepth() > 0){ %>
+						<%for(int i=0; i < qdto2.getDepth(); i++){ %>
+							&emsp;
+						<%} %>
+						<img src="<%=request.getContextPath()%>/img/reply.png" width="20" height="15">
+					<%} %>
+						<a href="Qna_content.jsp?qna_no=<%=qdto2.getQna_no()%>"><%=qdto2.getQna_title() %>
+						</a></td>
 							<td><%=mdto.getMember_id()%></td>
-							<td><%=qdto2.getQna_date() %></td>
+							<td><%=qdto2.getQna_autotime() %></td>
 						</tr>
 						<%} %>
 					</tbody>
@@ -202,7 +261,7 @@
 
 
 				<!-- 검색창 -->
-				<form action="qna.jsp" method="get">
+				<form action="Qna_list.jsp" method="get">
 					<!-- 검색분류 -->
 					<select name="type">
 						<option value="Qna_title">제목만</option>
@@ -221,9 +280,16 @@
 
 		<div>
 			<ul class="page_navi">
-				<li>이전</li>
-				<li>1</li>
-				<li>2</li>
+				<li><img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13">	<!-- 이전 -->
+				
+				<%for(int i=1; i<=10;i++) {%>
+				<%if(!isSearch) {%>
+				<a href = "Qna_list?page=<%=i %>"><%=i %></a>
+				<%} else { %>
+				<a href="Qna_list?page=<%=i %>&type=<%=type %>&keyword=<%=keyword %>"><%=i %></a>
+				<%} %>
+				<%} %>
+				</li>
 				<li>다음</li>
 			</ul>
 		</div>

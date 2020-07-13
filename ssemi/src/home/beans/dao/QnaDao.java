@@ -36,7 +36,7 @@ public class QnaDao {
 	public List<QnaDto> getList() throws Exception {
 		Connection con = getConnection();
 
-		String sql = "SELECT*FROM qna ORDER BY qna_no DESC ";
+		String sql = "SELECT*FROM qna CONNECT BY PRIOR qna_no=super_no START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no DESC ";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 
@@ -117,59 +117,75 @@ public class QnaDao {
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, qna_no);
 		ResultSet rs = ps.executeQuery();
-		QnaDto qdto = rs.next() ? new QnaDto(rs) : null;	// 3항 연산자
+		QnaDto qdto = rs.next() ? new QnaDto(rs) : null; // 3항 연산자
 		con.close();
 		return qdto;
 	}
-	
+
 	// 단일조회2 (Qna_content.jsp)
-		public QnaDto get_id(int qna_writer) throws Exception {
-			Connection con = getConnection();
-			String sql = "SELECT*FROM qna WHERE qna_writer=?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, qna_writer);
-			ResultSet rs = ps.executeQuery();
-			
-				QnaDto qdto = rs.next() ? new QnaDto(rs) : null;	// 3항 연산자	
-			
-			con.close();
-			return qdto;
-		}
-	
+	public QnaDto get_id(int qna_writer) throws Exception {
+		Connection con = getConnection();
+		String sql = "SELECT*FROM qna WHERE qna_writer=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, qna_writer);
+		ResultSet rs = ps.executeQuery();
+
+		QnaDto qdto = rs.next() ? new QnaDto(rs) : null; // 3항 연산자
+
+		con.close();
+		return qdto;
+	}
+
 	// 아이디 단일조회 (member_no 대신 아이디 불러오기)
 	public String getWriter(int member_no) throws Exception {
 		Connection con = getConnection();
-		String sql="SELECT member.member_id FROM member inner join qna on member.member_no=qna.qna_writer WHERE member_no=?";
-		PreparedStatement ps=con.prepareStatement(sql);
+		String sql = "SELECT member.member_id FROM member inner join qna on member.member_no=qna.qna_writer WHERE member_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, member_no);
-		ResultSet rs=ps.executeQuery();
-		
+		ResultSet rs = ps.executeQuery();
+
 		rs.next();
-		String member_id=rs.getString(1);
-		
+		String member_id = rs.getString(1);
+
 		con.close();
 		return member_id;
 	}
-	
+
 	// 게시글 등록 메소드
 	public void write(QnaDto qdto) throws Exception {
+		if (qdto.getSuper_no() == 0) {
+			qdto.setGroup_no(qdto.getQna_no());
+		} else {
+			QnaDto find = this.get(qdto.getSuper_no());
+			qdto.setGroup_no(find.getGroup_no());
+			qdto.setDepth(find.getDepth() + 1);
+		}
+
 		Connection con = getConnection();
-		String sql = "INSERT INTO qna(qna_no, qna_title, qna_writer, qna_content) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO qna(qna_no, qna_writer, qna_title,  qna_content, group_no, depth, super_no) VALUES(?, ?, ?, ?, ?, ?, ?) ";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, qdto.getQna_no());
-		ps.setString(2, qdto.getQna_title());
-		ps.setInt(3, qdto.getQna_writer());
+		ps.setInt(2, qdto.getQna_writer());
+		ps.setString(3, qdto.getQna_title());
 		ps.setString(4, qdto.getQna_content());
-		ps.execute();
+		ps.setInt(5, qdto.getGroup_no());
+		ps.setInt(6, qdto.getDepth());
 		
+		if (qdto.getSuper_no() == 0) {	// 새글이면
+			ps.setNull(7, Types.NULL);
+		} else {		// 답글이면
+			ps.setInt(7, qdto.getSuper_no());
+		}
+		ps.execute();
+
 		con.close();
 	}
-	
+
 	// 수정 메소드
 	public void edit(QnaDto qdto) throws Exception {
 		Connection con = getConnection();
-		
-		String sql="UPDATE qna SET qna_title=?, qna_content=? WHERE qna_no=?";
+
+		String sql = "UPDATE qna SET qna_title=?, qna_content=? WHERE qna_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, qdto.getQna_title());
 		ps.setString(2, qdto.getQna_content());
@@ -177,15 +193,15 @@ public class QnaDao {
 		ps.execute();
 		con.close();
 	}
-	
+
 	// 게시글 삭제
 	public void delete(int qna_no) throws Exception {
 		Connection con = getConnection();
-		String sql="DELETE qna WHERE qna_no=?";
-		PreparedStatement ps=con.prepareStatement(sql);
+		String sql = "DELETE qna WHERE qna_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, qna_no);
 		ps.execute();
 		con.close();
 	}
-	
+
 }

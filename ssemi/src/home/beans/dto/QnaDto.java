@@ -2,6 +2,9 @@ package home.beans.dto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class QnaDto {
 	private int qna_no;
@@ -11,9 +14,10 @@ public class QnaDto {
 	private String qna_content;
 	private String qna_date;
 	private String qna_modify_date;
-//	private int super_no;
-//	private int group_no;
-//	private int depth;
+	private int super_no;
+	private int group_no;
+	private int depth;
+
 //	private int qna_replyCount;
 
 
@@ -25,6 +29,7 @@ public class QnaDto {
 //		this.qna_replyCount = qna_replyCount;
 //	}
 
+
 	public QnaDto(ResultSet rs) throws SQLException {
 		this.setQna_no(rs.getInt("qna_no"));
 		this.setQna_writer(rs.getInt("qna_writer"));
@@ -32,10 +37,10 @@ public class QnaDto {
 		this.setQna_content(rs.getString("qna_content"));
 		this.setQna_date(rs.getString("qna_date"));
 		this.setQna_modify_date(rs.getString("qna_modify_date"));
+		this.setSuper_no(rs.getInt("super_no"));
+		this.setGroup_no(rs.getInt("group_no"));
+		this.setDepth(rs.getInt("depth"));
 		
-//		this.setSuper_no(rs.getInt("super_no"));
-//		this.setGroup_no(rs.getInt("group_no"));
-//		this.setDepth(rs.getInt("depth"));
 //		this.setQna_replyCount(rs.getInt("qna_replyCount"));
 
 	}
@@ -78,28 +83,56 @@ public class QnaDto {
 	public void setQna_modify_date(String qna_modify_date) {
 		this.qna_modify_date = qna_modify_date;
 	}
-//	public int getSuper_no() {
-//		return super_no;
-//	}
-//	public void setSuper_no(int super_no) {
-//		this.super_no = super_no;
-//	}
-//	public int getGroup_no() {
-//		return group_no;
-//	}
-//	public void setGroup_no(int group_no) {
-//		this.group_no = group_no;
-//	}
-//	public int getDepth() {
-//		return depth;
-//	}
-//	public void setDepth(int depth) {
-//		this.depth = depth;
-//	}
+	public int getSuper_no() {
+		return super_no;
+	}
+	
+	public void setSuper_no(int super_no) {
+		this.super_no = super_no;
+	}
+	
+	public int getGroup_no() {
+		return group_no;
+	}
+	
+	public void setGroup_no(int group_no) {
+		this.group_no = group_no;
+	}
+	
+	public int getDepth() {
+		return depth;
+	}
+	
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
 
 	public QnaDto() {
 		super();
 
 	}
+	
+	// 시간 표현을 위한 메소드 추가
+	
+	// [1] 시간만
+	public String getQna_time() {
+		return qna_date.substring(11, 16);
+	}
+	// [2] 날짜만
+	public String getQna_day() {
+		return qna_date.substring(0, 10);
+	}
+	// [3] 자동으로 오늘 -> 시간 / 오늘X-> 날짜
+	public String getQna_autotime() {
+		Date d = new Date();
+		Format f = new SimpleDateFormat("yyyy-MM-dd");
+		String today = f.format(d);
+		if(getQna_day().equals(today)) {
+			return getQna_time();
+		} else {
+			return getQna_day();
+		}
+	}
+	
 	
 }

@@ -33,17 +33,19 @@ font-size:13px
 
 </style>
 
-
-
 <div align="center" class="container">
 	<span class="write_title">WRITE</span>
 	<form class="write_box" action="QnaWrite.do" method="post" >
-	<!-- 회원번호 히든으로 넘기기 -->
-	<input type="hidden" value="<%=mdto.getMember_no() %>" name="member_no">
+	
+		<!-- 회원번호 히든으로 넘기기 -->
+			
+			<input type="hidden" value="<%=mdto.getMember_no() %>" name="member_no">
+		 
 		<!-- 원본 글 번호가 넘어온다면 (즉, 답글이라면) 원본글번호를 hidden으로 첨부 -->
 		<%if(request.getParameter("qna_no")!=null) {%>
 		<input type="hidden" name="qna_no" value="<%=request.getParameter("qna_no")%>">
 		<%} %>
+		
 		<table>
 			<tbody>
 
