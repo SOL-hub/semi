@@ -12,7 +12,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import home.beans.dto.MemberDto;
-import sun.text.normalizer.Replaceable;
+
 
 public class MemberDao {
 //	context.xml에서 관리하는 자원 객체를 참조할 수 있도록 연결 코드 구현
@@ -362,12 +362,12 @@ public class MemberDao {
 		}
 
 		// 관리자가 회원 탈퇴 시키는거! -- 임새봄
-		public void exit(String member_id) throws Exception {
+		public void exit(String member_no) throws Exception {
 			Connection con = getConnection();
 
-			String sql = "DELETE member WHERE member_id = ?";
+			String sql = "DELETE member WHERE member_no=?";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, member_id);
+			ps.setString(1, member_no);
 			ps.execute();
 
 			con.close();
