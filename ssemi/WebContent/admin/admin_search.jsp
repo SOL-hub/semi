@@ -224,8 +224,8 @@
 							class="listbtn"></a> <a href ="#"><input type="button" value="적립금"
 							class="listbtn"></a></td>
 							
-							<td><a href="<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input type="button" value="수정" class="listbtn"></a>
-							<a href="<%=request.getContextPath()%>/admin/delete.do?member_no=<%=mdto.getMember_no()%>"><input type="button" value="삭제"  class="listbtn" ></a></td>
+							<td><a href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input type="button" value="수정" class="listbtn"></a>
+							<a href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/delete.do?member_no=<%=mdto.getMember_no()%>"><input type="button" value="삭제"  class="listbtn" ></a></td>
 					</tr>
 					<%
 						}
