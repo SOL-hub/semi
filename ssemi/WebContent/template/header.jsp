@@ -88,9 +88,9 @@ if (keyword == null) {
 					<li class="menu_right"><a
 						href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
 					<li class="menu_right"><a href="<%=request.getContextPath()%>/admin/admin_search.jsp">관리메뉴</a></li>
-					<li class="menu_right"><a href="#">마이페이지</a></li>
+					<li class="menu_right"><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
 					<li class="menu_right"><a href="#">주문/배송 조회</a></li>
-					<li class="menu_right"><a href="#">장바구니</a></li>
+					<li class="menu_right"><a href="<%=request.getContextPath()%>/member/shopBarket3.jsp">장바구니</a></li>
 					<li class="menu_right"><a href="<%=request.getContextPath()%>/member/user_out.jsp">회원탈퇴</a></li>
 					<li class="menu_right"><a href="#">주문/배송</a></li>
 					<li class="menu_right"><a href="#">고객센터</a></li>
@@ -112,9 +112,9 @@ if (keyword == null) {
 
 						<li class="menu_right"><a
 							href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
-						<li class="menu_right"><a href="<%=request.getContextPath()%>/member/user_info.jsp">마이페이지</a></li>
+						<li class="menu_right"><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
 						<li class="menu_right"><a href="#">주문/배송 조회</a></li>
-						<li class="menu_right"><a href="#">장바구니</a></li>
+						<li class="menu_right"><a href="<%=request.getContextPath()%>/member/shopBarket3.jsp">장바구니</a></li>
 						<li class="menu_right"><a href="#">회원탈퇴</a></li>
 
 

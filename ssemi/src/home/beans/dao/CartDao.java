@@ -135,4 +135,20 @@ public class CartDao {
 			con.close();
 			return cdto;
 		}
+		
+//		장바구니 수량 변경 
+		public void cart_cnt_change(int cart_cnt,int cart_no) throws Exception{
+			Connection con = getConnection();
+			
+			String sql = "update cart set cart_cnt=? where cart_no=? ";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, cart_cnt);
+			ps.setInt(2, cart_no);
+			
+			ps.execute();
+			
+			con.close();
+			
+		}
+		
 }
