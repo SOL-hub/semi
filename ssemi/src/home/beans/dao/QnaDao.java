@@ -12,7 +12,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import home.beans.dto.MemberDto;
 import home.beans.dto.QnaDto;
+import home.beans.dto.QnaWithMemberDto;
 import home.beans.dto.QnaDto;
 
 public class QnaDao {
@@ -32,23 +34,63 @@ public class QnaDao {
 		return src.getConnection();
 	}
 
-	// 목록 메소드
-	public List<QnaDto> getList() throws Exception {
+	 // 목록 메소드
+	public List<QnaWithMemberDto> getList(int start, int finish) throws Exception{
 		Connection con = getConnection();
 
-		String sql = "SELECT*FROM qna CONNECT BY PRIOR qna_no=super_no START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no DESC ";
+		String sql = "SELECT * FROM(SELECT  T.* FROM(SELECT q.*, m.MEMBER_NO, m.MEMBER_ID FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no CONNECT BY PRIOR qna_no=super_no START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC)T ) WHERE ROWNUM BETWEEN ? and ?";			
 		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, start);
+		ps.setInt(2, finish);
 		ResultSet rs = ps.executeQuery();
-
-		List<QnaDto> list = new ArrayList<>();
-		while (rs.next()) {
-			QnaDto qdto = new QnaDto(rs);
-			list.add(qdto);
+		
+		List<QnaWithMemberDto> list = new ArrayList<>();
+		while(rs.next()) {
+			QnaWithMemberDto qmdto = new QnaWithMemberDto(rs);
+			list.add(qmdto);
+		}
+		
+		con.close();
+		return list;
+	}
+	
+	// 검색 메소드
+	public List<QnaWithMemberDto> search(String type, String keyword, int start, int finish) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "SELECT * FROM(SELECT  T.* FROM(SELECT q.*, m.MEMBER_NO, m.MEMBER_ID FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no WHERE Instr(m.member_id, ?)>0 CONNECT BY PRIOR qna_no=super_no START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC)T ) WHERE ROWNUM BETWEEN ? and ?";
+		
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ps.setInt(2, start);
+		ps.setInt(3, finish);
+		ResultSet rs = ps.executeQuery();
+		
+		List<QnaWithMemberDto> list = new ArrayList<>();
+		while(rs.next()) {
+			QnaWithMemberDto qmdto = new QnaWithMemberDto(rs);
+			list.add(qmdto);
 		}
 		con.close();
 		return list;
 	}
-
+		
+//	public List<QnaWithMemberDto> getList() throws Exception {
+//		Connection con = getConnection();
+// 		String sql = "SELECT*FROM qna ORDER BY qna_no DESC ";
+//		PreparedStatement ps = con.prepareStatement(sql);
+//		ResultSet rs = ps.executeQuery();
+// 
+//		List<QnaWithMemberDto> list = new ArrayList<>();
+//		while (rs.next()) {
+//			QnaWithMemberDto qmdto = new QnaWithMemberDto(rs);
+//		list.add(qmdto);
+//		}
+//		con.close();
+//		return list;
+//	}
+	
 	// 개수 조회 메소드
 	public int getCount() throws Exception {
 		Connection con = getConnection();
@@ -73,26 +115,9 @@ public class QnaDao {
 		con.close();
 		return count;
 	}
+		
 
-	// 검색 메소드
-	public List<QnaDto> search(String type, String keyword) throws Exception {
-		Connection con = getConnection();
 
-		String sql = "SELECT*FROM qna WHERE instr(#1, ?) > 0 ";
-		sql = sql.replace("#1", type);
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, keyword);
-		ResultSet rs = ps.executeQuery();
-
-		List<QnaDto> list = new ArrayList<>();
-		while (rs.next()) {
-			QnaDto qdto = new QnaDto(rs);
-			list.add(qdto);
-		}
-
-		con.close();
-		return list;
-	}
 
 	// 시퀀스 생성
 	// - dual 테이블은 오라클이 제공하는 임시 테이블

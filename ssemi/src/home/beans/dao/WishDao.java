@@ -12,10 +12,9 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import home.beans.dto.CartDto;
-import home.beans.dto.ItemDto;
-import home.beans.dto.MemberDto;
+import home.beans.dto.WishDto;
 
-public class CartDao {
+public class WishDao {
 //	context.xml에서 관리하는 자원 객체를 참조할 수 있도록 연결 코드 구현
 	private static DataSource src;
 	
@@ -43,112 +42,111 @@ public class CartDao {
 		return src.getConnection();
 	}
 	
-//	진빈 장바구니 db데이터 추가 코드
-	public void cart_add(CartDto cdto) throws Exception{
+//	진빈 위시리스트 db데이터 추가 코드
+	public void wish_add(WishDto wdto) throws Exception{
 		Connection con = getConnection();
 		
-		String sql="insert into cart values(cart_seq.nextval,?,1,null,?)";
+		String sql="insert into wish values(wish_seq.nextval, ?, ?, sysdate)";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, cdto.getCart_item_name());
-		ps.setInt(2, cdto.getCart_member());
+		ps.setInt(1, wdto.getWish_item_name());
+		ps.setInt(2, wdto.getWish_member());
 		ps.execute();
 		
 		con.close();
 	}
 	
-// 주석 처리 커밋용ㅇㅇㅇㅇ	
-//	진빈 아이디별로 장바구니 추가된 데이터 불러오는 코드
-	public List<CartDto> getList(int cart_member) throws Exception {
+//	진빈 위시리스트 리스트 조회(로그인한 아이디별)
+	public List<WishDto> get_wishList(int wish_member) throws Exception{
 		Connection con = getConnection();
 		
-		String sql = "SELECT * FROM cart WHERE cart_member=? ORDER BY cart_no ASC";
-		
+		String sql="select * from wish where wish_member=?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, cart_member);
+		ps.setInt(1, wish_member);
+		
 		ResultSet rs = ps.executeQuery();
 		
-		List<CartDto> list = new ArrayList<>();
+		List<WishDto> list = new ArrayList<>();
 		while(rs.next()) {
+			WishDto wdto = new WishDto(rs);
 			
-			CartDto cdto = new CartDto(rs);
-			list.add(cdto);
+			list.add(wdto);
 		}
 		
 		con.close();
 		
-		return list;	
-	}
-	
-	public List<CartDto> getList(int cart_member,int start, int finish) throws Exception{
-		Connection con = getConnection();
-		
-
-		String sql = "SELECT rownum rn, cart.* from cart where cart_member=? and rownum between ? and ?";	
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, cart_member);
-		ps.setInt(2, start);
-		ps.setInt(3, finish);
-		ResultSet rs = ps.executeQuery();
-		
-		List<CartDto> list = new ArrayList<>();
-		while(rs.next()) {
-			CartDto cdto = new CartDto(rs);
-			list.add(cdto);
-		}
-		
-		con.close();
 		return list;
 	}
 	
-	
-// 장바구니 삭제
-	public void cartDelete(int cart_no)throws Exception{
+//	진빈 위시리스트 리스트 조회(로그인한 아이디별)
+	public List<WishDto> get_wishList(int wish_member, int start, int finish) throws Exception{
 		Connection con = getConnection();
 		
-		String sql = "delete from cart where cart_no=?";
+		String sql="SELECT * FROM (SELECT rownum rn, T.* from(select * from wish where wish_member=?)T )where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, cart_no);
-		ps.execute();
+		ps.setInt(1, wish_member);
+		ps.setInt(2, start);
+		ps.setInt(3, finish);
 		
+		ResultSet rs = ps.executeQuery();
+		
+		List<WishDto> list = new ArrayList<>();
+		while(rs.next()) {
+			WishDto wdto = new WishDto(rs);
+			
+			list.add(wdto);
+		}
 		
 		con.close();
-	
+		
+		return list;
 	}
 	
-	// 장바구니 단일조회(아이디별)
-		public CartDto get_cart(int cart_member)throws Exception{
-			Connection con = getConnection();
-			
-			String sql = "select * from cart where cart_member=?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, cart_member);
-			ResultSet rs =ps.executeQuery();
-			
-			CartDto cdto;
-			if(rs.next()) {
-				cdto = new CartDto(rs);
-			}
-			else {
-				cdto = null;
-			}
-			
-			con.close();
-			return cdto;
+//	진빈 위시리스트 단일조회(로그인한 아이디별)	
+	public WishDto get_wish(int wish_member)throws Exception {
+		Connection con = getConnection();
+		
+		String sql = "select * from wish where wish_member=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, wish_member);
+		ResultSet rs = ps.executeQuery();
+		
+		WishDto wdto;
+		if(rs.next()) {
+			wdto = new WishDto(rs);
+		}
+		else {
+			wdto = null;
 		}
 		
-//		장바구니 수량 변경 
-		public void cart_cnt_change(int cart_cnt,int cart_no) throws Exception{
+		con.close();
+		return wdto;
+	}
+	
+	// 위시리스트 삭제
+		public void wishDelete(int wish_no)throws Exception{
 			Connection con = getConnection();
 			
-			String sql = "update cart set cart_cnt=? where cart_no=? ";
+			String sql = "delete from wish where wish_no=?";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, cart_cnt);
-			ps.setInt(2, cart_no);
-			
+			ps.setInt(1, wish_no);
 			ps.execute();
 			
+			
+			con.close();
+		
+		}
+	// 위시리스트 목록 개수 계산
+		public int getCount() throws Exception{
+			Connection con = getConnection();
+			String sql = "select count(*) from wish";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int count = rs.getInt(1);
+			
 			con.close();
 			
+			return count;
 		}
-		
 }

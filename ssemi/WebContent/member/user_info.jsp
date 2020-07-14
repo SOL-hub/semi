@@ -54,8 +54,13 @@
                     </a>
                 </li>     
                 <li>
-                    <a href="shopBarket.jsp">
+                    <a href="shopBarket3.jsp">
                         장바구니
+                    </a>
+                </li>
+                <li>
+                    <a href="wishlist.jsp">
+                        위시리스트
                     </a>
                 </li>
                 <li>
