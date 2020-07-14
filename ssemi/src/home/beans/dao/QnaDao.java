@@ -38,7 +38,9 @@ public class QnaDao {
 	public List<QnaWithMemberDto> getList(int start, int finish) throws Exception{
 		Connection con = getConnection();
 
-		String sql = "SELECT * FROM(SELECT  T.* FROM(SELECT q.*, m.MEMBER_NO, m.MEMBER_ID FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no CONNECT BY PRIOR qna_no=super_no START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC)T ) WHERE ROWNUM BETWEEN ? and ?";			
+		String sql = "SELECT * FROM(SELECT  ROWNUM rn, T.* FROM(SELECT q.*, m.MEMBER_NO, m.MEMBER_ID "
+				+ "FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no CONNECT BY PRIOR qna_no=super_no "
+				+ "START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC)T ) WHERE rn BETWEEN ? and ?";			
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, start);
 		ps.setInt(2, finish);
@@ -58,7 +60,7 @@ public class QnaDao {
 	public List<QnaWithMemberDto> search(String type, String keyword, int start, int finish) throws Exception{
 		Connection con = getConnection();
 		
-		String sql = "SELECT * FROM(SELECT  T.* FROM(SELECT q.*, m.MEMBER_NO, m.MEMBER_ID FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no WHERE Instr(m.member_id, ?)>0 CONNECT BY PRIOR qna_no=super_no START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC)T ) WHERE ROWNUM BETWEEN ? and ?";
+		String sql = "SELECT * FROM(SELECT  ROWNUM rn, T.* FROM(SELECT q.*, m.MEMBER_NO, m.MEMBER_ID FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no WHERE Instr(m.member_id,?)>0 CONNECT BY PRIOR qna_no=super_no START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC)T ) WHERE rn BETWEEN ? and ?";
 		
 		sql = sql.replace("#1", type);
 		PreparedStatement ps = con.prepareStatement(sql);
