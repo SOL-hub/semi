@@ -124,7 +124,7 @@
 display:inline-block;
 }
 .navi_num {
-	letter-spacing : 1.5px;
+	letter-spacing : 2px;
 	font-size:13px;
 }
 .navi_img {
@@ -241,7 +241,7 @@ padding-top:5px;
 
 						<tr>
 							<td><%=qmdto2.getQna_no() %></td>
-							<td align="left">
+							<td>
 							
 												<!-- 
 						답글은 띄어쓰기 구현
@@ -294,14 +294,19 @@ padding-top:5px;
 
 				<!-- 이전 -->
 				<li >
-				<%if(!isSearch) {%>
-						<a href="Qna_list.jsp?page=<%=startBlock-1%>">
-								<img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13" class="navi_img">	
-						</a>
-					<%} else { %>
-						<a href="Qna_list.jsp?page=<%=startBlock-1 %>&type=<%=type %>&keyword=<%=keyword%>">
-								<img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13" class="navi_img">	
-						</a>
+				<a href="Qna_list.jsp?page=<%=pageNo=1 %>">
+						<img src="<%=request.getContextPath()%>/img/backward.png"  width="15" height="13" class="navi_img">
+				</a>		
+				<%if(startBlock>1) {%>
+					<%if(!isSearch) {%>
+							<a href="Qna_list.jsp?page=<%=startBlock-1%>">
+									<img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13" class="navi_img">	
+							</a>
+						<%} else { %>
+							<a href="Qna_list.jsp?page=<%=startBlock-1 %>&type=<%=type %>&keyword=<%=keyword%>">
+									<img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13" class="navi_img">	
+							</a>
+						<%} %>
 					<%} %>
 					
 					</li>
@@ -320,15 +325,20 @@ padding-top:5px;
 						
 					<!-- 다음 -->
 					<li>
-					<%if(!isSearch) {%>
-						<a href="Qna_list.jsp?page=<%=finishBlock+1%>" >
-								<img src="<%=request.getContextPath()%>/img/forward.png" width="15" height="13" class="navi_img">	
+					<%if(pageCount>finishBlock)  {%>
+						<%if(!isSearch) {%>
+							<a href="Qna_list.jsp?page=<%=finishBlock+1%>" >
+									<img src="<%=request.getContextPath()%>/img/forward.png" width="15" height="13" class="navi_img">	
+							</a>
+						<%} else { %>
+							<a href="Qna_list.jsp?page=<%=finishBlock+1 %>&type=<%=type %>&keyword=<%=keyword%>" >
+									<img src="<%=request.getContextPath()%>/img/forward.png" width="15" height="13" class="navi_img">	
+							</a>
+						<%} %> 
+						<a href="Qna_list.jsp?page=<%=pageCount%> ">
+							<img src="<%=request.getContextPath()%>/img/fast-forward.png" width="15" height="13" class="navi_img">
 						</a>
-					<%} else { %>
-						<a href="Qna_list.jsp?page=<%=finishBlock+1 %>&type=<%=type %>&keyword=<%=keyword%>" >
-								<img src="<%=request.getContextPath()%>/img/forward.png" width="15" height="13" class="navi_img">	
-						</a>
-					<%} %> 
+					<%} %>
 			</ul>	
 		</div>
 
