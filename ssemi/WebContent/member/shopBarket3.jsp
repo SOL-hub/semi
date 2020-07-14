@@ -94,7 +94,7 @@
 
 
 			<body class="Body">
-			<form action="barket_delete.do">
+			<form>
 				<div id="frame">
 					
 						<div id="frame2">
@@ -123,7 +123,7 @@
 									
 									<input type="button" class="btn default"
 												style="width: 110px; padding: 10px; margin-bottom: 3px; font-size: 15px; background: white" value="선택상품구매">
-									<input type="submit" class="btn default"
+									<input type="submit" formaction="barket_delete.do" class="btn default"
 												style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px" value="삭제하기">		 	
 															
 												
@@ -181,9 +181,10 @@
 
 										<td style="width: 50px;"><input type="number"
 											style="text-align: right; width: 40px; margin-bottom: 3px;"
-											min="1" max="99" step="1" value="<%=cdto.getCart_cnt()%>">
-											<input type="button" class="btn default"
-												style="border-radius: 3px; size: 10px;" value="변경">
+											min="1" max="99" step="1" name="cart_cnt" value="<%=cdto.getCart_cnt()%>">
+											<input type="submit" formaction="cart_cnt_change.do" class="btn default"
+												style="border-radius: 3px; size: 10px;"name="hidden" value="변경">
+											<input type="hidden" name="cart_no" value="<%=cdto.getCart_no()%>">
 												</td>
 											
 										<td>
