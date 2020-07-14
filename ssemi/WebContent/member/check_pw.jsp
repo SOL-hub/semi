@@ -12,7 +12,7 @@
 	<link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
-	
+	<div style=padding-top:150px;>
 	 <main>
     <form action="check_pw.do" method="post">
       
@@ -50,5 +50,9 @@
     
    
 </main>
+</div>
 
     <jsp:include page="/template/footer.jsp"></jsp:include>
+    
+    </body>
+   </html>

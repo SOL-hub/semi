@@ -294,10 +294,10 @@ padding-top:5px;
 
 				<!-- 이전 -->
 				<li >
+				<%if(startBlock>1) {%>
 				<a href="Qna_list.jsp?page=<%=pageNo=1 %>">
 						<img src="<%=request.getContextPath()%>/img/backward.png"  width="15" height="13" class="navi_img">
 				</a>		
-				<%if(startBlock>1) {%>
 					<%if(!isSearch) {%>
 							<a href="Qna_list.jsp?page=<%=startBlock-1%>">
 									<img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13" class="navi_img">	
