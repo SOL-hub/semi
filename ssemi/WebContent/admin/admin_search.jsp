@@ -8,7 +8,6 @@
 
 <!-- 임새봄 -->
 
-
 <jsp:include page="/template/header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
@@ -26,9 +25,6 @@
 <script src="<%=request.getContextPath()%>/js/lightpick.js"></script>
 
 <style>
-
- 
-
 
  
         /*회원 검색과 리스트 전체 div*/
@@ -234,13 +230,10 @@
 				</table>
 				
 			</div>
-		
 
 		</div>
 	</div>
 	
-
-
 
 </body>
 </html>
