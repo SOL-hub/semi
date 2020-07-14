@@ -1,4 +1,4 @@
-package home.beans.dao;
+ package home.beans.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -162,7 +162,7 @@ public class MemberDao {
 	public void member_out(int member_no) throws Exception {
 		Connection con = getConnection();
 
-		String sql = "delete member where member_no=?";
+		String sql = "delete from member where member_no=?";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 
@@ -173,7 +173,7 @@ public class MemberDao {
 	}
 
 
-	// 로그인 메소드
+	// 로그인 메소드 -솔
 	public MemberDto login(MemberDto mdto) throws Exception {
 		Connection con = getConnection();
 
@@ -302,21 +302,21 @@ public class MemberDao {
 		
 	}
 	
-	//탈퇴 (user_out)-- 솔
-	public void user_out(String member_id)throws Exception{
-		Connection con = getConnection();
-		
-		String sql = "DELETE member where member_id=?";
-		PreparedStatement ps = con.prepareStatement(sql);
-		
-		ps.setString(1, member_id);
-		
-		ps.execute();
-		
-		con.close();
-		
-	}
-	
+//	//탈퇴 (user_out)-- 솔
+//	public void user_out(String member_id)throws Exception{
+//		Connection con = getConnection();
+//		
+//		String sql = "DELETE member where member_id=?";
+//		PreparedStatement ps = con.prepareStatement(sql);
+//		
+//		ps.setString(1, member_id);
+//		
+//		ps.execute();
+//		
+//		con.close();
+//	
+//	}
+//	
 
 	
 //관리자 회원 검색 --임새봄

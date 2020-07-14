@@ -1,10 +1,4 @@
-/*
-공용 스타일 파일(css 파일)
-- style 태그 내부에 작성하는 내용만 기입
-- 일룸대표색상
-빨강 : #C80A1E;
-회색 : #3333;
-*/
+/
 @charset "UTF-8";
 
 * {
@@ -115,6 +109,8 @@ h1 {
 user_Id:  regex =/^[a-z0-9]{8-20}$/g;
 user_Pw: regex=/[a-zA-Z0-9]{8,16}/g;
 */
+
+
 
 
 .form-join join-submit{

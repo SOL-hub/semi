@@ -38,19 +38,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user_info_update.jsp">
+                    <a href="check_pw.jsp?go=user_info_update.jsp">
                     
                         회원정보수정
                     </a>
                 </li>
               <li>
-                    <a href="user_pw_change.jsp">
+                    <a href="check_pw.jsp?go=change_pw.jsp">
            비밀번호변경                      
                     </a>
                 </li>
              <li>
-                    <a href="user_out.jsp">
-           회원탈퇴                      
+                    <a href="check_pw.jsp?go=user_out.do">
+           회원탈퇴                     
                     </a>
                 </li>     
                 <li>

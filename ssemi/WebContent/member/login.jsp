@@ -37,24 +37,21 @@
     <button><a href="find_id,pw.jsp">아이디, 비밀번호 찾기</button>
     </div>
     </div>
-    <br><br>
+    <br>
     
     
-    
-       <!--로그인버튼-->
-       
-    <input class = "click-btn" type="submit" value="로그인">
+   
     <%if(request.getParameter("error") != null){%>
 
     <div class="row center">
 
     	<!-- 오류 메시지는 페이지에 error라는 파라미터가 있을 경우만 출력 -->
 
-		<font color="#FF0000">입력하신 로그인 정보가 맞지 않습니다</font>
+		<font color="#FF0000" style="font-size: 15px;">입력하신 로그인 정보가 맞지 않습니다</font>
 		</div>
 		<%} %>
-		
-		
+		<!--로그인버튼-->
+		<input class = "click-btn" type="submit" value="로그인">
 		
     <br>
      </form>
