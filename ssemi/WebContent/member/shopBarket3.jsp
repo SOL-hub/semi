@@ -13,49 +13,6 @@
 	int cart_member = mdto.getMember_no();
 	CartDao cdao = new CartDao();
 	List<CartDto> list = cdao.getList(cart_member);
-// 	//////////////////////////////////////////////////////////////////
-// 	// 페이지 목록계산 코드
-// 	//////////////////////////////////////////////////////////////////
-	
-// 	int pageSize = 10;//한 페이지에 표시할 데이터 개수
-	
-// 	//page 번호를 계산하기 위한 코드
-// 	// - 이상한 값은 전부다 1로 변경
-// 	// - 멀쩡한 값은 그대로 숫자로 변환
-// 	String pageStr = request.getParameter("page");
-// 	int pageNo;
-// 	try{
-// 		pageNo = Integer.parseInt(pageStr);
-// 		if(pageNo <= 0){
-// 			throw new Exception();
-// 		}
-// 	}
-// 	catch(Exception e){ 
-// 		pageNo = 1;
-// 	}
-	
-// 	//시작 글 순서와 종료 글 순서를 계산
-// 	int finish = pageNo * pageSize;
-// 	int start = finish - (pageSize - 1);
-	
-
-	
-// 	//////////////////////////////////////////////////////////////////
-// 	// 페이지 네비게이터 계산 코드
-// 	//////////////////////////////////////////////////////////////////
-// 	int blockSize = 10;//이 페이지에는 네비게이터 블록을 10개씩 배치하겠다!
-// 	int startBlock = (pageNo - 1) / blockSize * blockSize + 1;
-// 	int finishBlock = startBlock + blockSize - 1;
-	
-// 	int count;
-	
-// 	count = bdao.getCount();
-	
-// 	int pageCount = (count + pageSize - 1) / pageSize;
-// 	//만약 finishBlock이 pageCount보다 크다면 수정해야 한다
-// 	if(finishBlock > pageCount){
-// 		finishBlock = pageCount;
-// 	}
 
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -203,7 +160,10 @@
 										ItemDao idao = new ItemDao();
 										ItemDto itemName = idao.item_get(cdto.getCart_item_name());
 					
-										 total_price += itemName.getItem_price();
+										int item_cnt_change_price = itemName.getItem_price() * cdto.getCart_cnt();
+										
+										 total_price += item_cnt_change_price;
+										 
 									%>
 									
 									<tr style="height: 90px; background-color: #fff;">
@@ -217,7 +177,7 @@
 										<td
 											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=itemName.getItem_info()%></td>
 
-										<td><span style="padding-left: 10px;"><%=itemName.getItem_price()%></span>원</td>
+										<td><span style="padding-left: 10px;"><%=item_cnt_change_price%></span>원</td>
 
 										<td style="width: 50px;"><input type="number"
 											style="text-align: right; width: 40px; margin-bottom: 3px;"
