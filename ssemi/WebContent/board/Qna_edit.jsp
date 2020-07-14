@@ -1,11 +1,16 @@
 <%@page import="home.beans.dto.QnaDto"%>
-<%@page import="home.beans.dao.MemberDao"%>
+<%@page import="home.beans.dao.QnaDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <%
+
+       <%
 		MemberDto mdto =(MemberDto) session.getAttribute("userinfo");
+       
+       int qna_no = Integer.parseInt(request.getParameter("qna_no"));
+       QnaDao qdao = new QnaDao();
+       QnaDto qdto = qdao.get(qna_no);
+       
     %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -33,29 +38,28 @@ font-size:13px
 
 </style>
 
+
 <div align="center" class="container">
 	<span class="write_title">WRITE</span>
-	<form class="write_box" action="QnaWrite.do" method="post" >
-	
-		<!-- 회원번호 히든으로 넘기기 -->
-			
-			<input type="hidden" value="<%=mdto.getMember_no() %>" name="member_no">
-		 
+	<form class="write_box" action="QnaEdit.do" method="post" >
+	<!-- 회원번호 히든으로 넘기기 -->
+	<input type="hidden" value="<%=mdto.getMember_no() %>" name="member_no">
 		<!-- 원본 글 번호가 넘어온다면 (즉, 답글이라면) 원본글번호를 hidden으로 첨부 -->
 		<%if(request.getParameter("qna_no")!=null) {%>
 		<input type="hidden" name="qna_no" value="<%=request.getParameter("qna_no")%>">
 		<%} %>
-		
 		<table>
 			<tbody>
 
 				<tr>
 						<th class="row">SUBJECT</th>
-						<td><input type="text" name="qna_title" size="70" maxlength="90" required></td>
+						<td><input type="text" name="qna_title" size="70" maxlength="90" required
+						value="<%=qdto.getQna_title()%>"
+						></td>
 				</tr>
 				<tr>
 						<th class="row">CONTENT</th>
-						<td><textarea name="qna_content" cols="70" rows="15" required></textarea></td>
+						<td><textarea name="qna_content" cols="70" rows="15" required><%=qdto.getQna_content() %></textarea></td>
 				</tr>
 				
 				<!--  첨부파일  -->
@@ -67,8 +71,13 @@ font-size:13px
 				</tr>
 				
 				<tr>
-						<td colspan="2" align="center"><input type="submit" value="OK">
-						<a href="Qna_list.jsp"><input type="button" value="CANCEL"></a>		
+						<td colspan="2" align="center">
+						<a href="QnaEdit.do">
+						<input type="submit" value="OK">
+						</a>
+						<a href="Qna_content.jsp">
+						<input type="button" value="CANCEL">
+						</a>		
 						</td>
 				</tr>
 
@@ -78,4 +87,3 @@ font-size:13px
 </div>
 </html>
 <jsp:include page="/template/footer.jsp"></jsp:include>
-    
