@@ -57,13 +57,13 @@
            
             
         }
-        article li{
+        .item_recom li{
             list-style: none;
             display: inline-block;
             margin: 60px;
         }
         
-         article li:hover{
+         .item_recom li:hover{
             list-style: none;
             display: inline-block;
              box-shadow: 0px 0px 5px 2px #ccc; /*아니면#333*/ 
@@ -86,7 +86,7 @@
         
         /*전체 div*/
         #frame{
-            width: 80%;
+            width: 70%;
             margin: 0 auto;
             padding: 50px 50px;
             background-color: white;
@@ -205,5 +205,23 @@
         
         #frame2{
             text-align: center;
+        }
+        
+        .pagination a{
+            text-decoration: none;
+            color: dimgray;
+            display: inline-block;
+            padding: 0.5rem;
+            min-width: 2.5rem;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+        .pagination a:hover{
+            border: 1px solid gray;
+            color: red;
+        }
+        .pagination .on{
+            border: 1px solid gray;
+            color: red;
         }
         

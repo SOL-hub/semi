@@ -180,13 +180,21 @@ public class MemberDto {
 		this.member_consult_list = member_consult_list;
 	}
 
-	// 멤버 생일이 날짜만 나오게 하는 DTO -- 임새봄
+	// 멤버 생일이 년도만 나오게 하는 DTO -- 임새봄
 
 	public String getMember_birth_day() {
 
 		return member_birth.substring(0, 4);
 
 	}
+	
+	// 멤버 생일이 시간 빼고 생년 월일만 나오게 하는 dto -- 임새봄 
+	public String getMember_birth_year() {
+
+		return member_birth.substring(0, 10);
+
+	}
+
 
 	// 멤버 생일로 나이를 구하는 DTO -- 임새봄
 	public int getMember_age() {
@@ -200,6 +208,8 @@ public class MemberDto {
 	public String getMember_join_day() {
 		return member_join.substring(0, 10);
 	}
+	
+	
 
 	public int getMember_no() {
 		return member_no;

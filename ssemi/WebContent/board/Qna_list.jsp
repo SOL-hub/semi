@@ -1,3 +1,4 @@
+<%@page import="home.beans.dto.QnaWithMemberDto"%>
 <%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="java.util.List"%>
@@ -115,9 +116,20 @@
 	width: 80%;
 }
 /* 페이지 네비게이션 */
-.page_navi li {
-	display: inline-block;
+.page_navi {
+	margin-top: 60px;
 	text-align: center;
+}
+.page_navi li {
+display:inline-block;
+}
+.navi_num {
+	letter-spacing : 2px;
+	font-size:13px;
+}
+.navi_img {
+padding-top:5px;
+
 }
 </style>
 </head>
@@ -128,13 +140,58 @@
 
 	boolean isSearch = type != null && keyword != null;
 	QnaDao qdao = new QnaDao();
-	List<QnaDto> list;
-	if (isSearch) {
-		list = qdao.search(type, keyword);
-	} else {
-		list = qdao.getList();
-	}
 	
+	// 페이지네비게이션
+	int pageSize=15;
+	
+	// 오류값 -> 1 / 멀쩡한 값O
+	String pageStr = request.getParameter("page");
+	int pageNo;
+	try {
+		pageNo = Integer.parseInt(pageStr);
+		if(pageNo<=0) {
+			throw new Exception(); 
+		}
+	}
+		catch(Exception e) {
+			pageNo=1;
+		}
+		
+		//시작 글 순서와 종료 글 순서를 계산
+		int finish = pageNo * pageSize;
+		int start = finish - (pageSize - 1);
+		
+		//////////////////////////////////////////////////////////////////
+		// 페이지 네비게이터 계산 코드
+		//////////////////////////////////////////////////////////////////
+		int blockSize = 10;//이 페이지에는 네비게이터 블록을 10개씩 배치하겠다!
+		int startBlock = (pageNo - 1) / blockSize * blockSize + 1;
+		int finishBlock = startBlock + blockSize - 1;
+
+		//		(주의!) 다음 버튼의 경우 계산을 통하여 페이지 개수를 구해야 출력 여부 판단이 가능
+		int count;		//	목록 개수 or 검색 개수
+		if(isSearch) {		//		검색
+			count=qdao.getCount(type, keyword);
+		} 
+		else {		//		목록
+			count=qdao.getCount();
+		}
+		int pageCount=(count+pageSize-1)/pageSize;
+		//	만약 finishBlock이 pageCount보다 크다면 수정해야 한다
+		if(finishBlock>pageCount) {
+			finishBlock=pageCount;
+		}
+	
+		List<QnaWithMemberDto> list;
+		if (isSearch) {
+		//	MemberDao user_mdao = new MemberDao();
+		//	MemberDto user_mdto = user_mdao.idCheck(keyword);			
+			list = qdao.search(type, keyword, start, finish);
+		} else {
+			list = qdao.getList(start, finish);
+		}
+			
+		
 %>
 
 <body>
@@ -171,22 +228,35 @@
 					<tbody align="center">
 	
 					<%
-					for(QnaDto qdto2 : list) { 
+					for(QnaWithMemberDto qmdto2 : list) { 
 						// mdto에서 writer가져오기
 						//String member_id=qdao.getWriter(25);
 						
 						// qna작성자를 표기하고 싶다면 회원 정보 필요
 						
 						MemberDao mdao = new MemberDao();
-						MemberDto mdto = mdao.get(qdto2.getQna_writer()); // qna_no로 회원아이디 조회
+						MemberDto mdto = mdao.get(qmdto2.getQna_writer()); // qna_no로 회원아이디 조회
 
 					%>
 
 						<tr>
-							<td><%=qdto2.getQna_no() %></td>
-							<td><a href="Qna_content.jsp?qna_no=<%=qdto2.getQna_no()%>"><%=qdto2.getQna_title() %></a></td>
+							<td><%=qmdto2.getQna_no() %></td>
+							<td>
+							
+												<!-- 
+						답글은 띄어쓰기 구현
+						- 답글인 경우는 super_no > 0 , depth > 0 
+					-->
+					<%if(qmdto2.getDepth() > 0){ %>
+						<%for(int i=0; i < qmdto2.getDepth(); i++){ %>
+							&emsp;
+						<%} %>
+						<img src="<%=request.getContextPath()%>/img/reply.png" width="20" height="15">
+					<%} %>
+						<a href="Qna_content.jsp?qna_no=<%=qmdto2.getQna_no()%>"><%=qmdto2.getQna_title() %>
+						</a></td>
 							<td><%=mdto.getMember_id()%></td>
-							<td><%=qdto2.getQna_date() %></td>
+							<td><%=qmdto2.getQna_autotime() %></td>
 						</tr>
 						<%} %>
 					</tbody>
@@ -202,30 +272,74 @@
 
 
 				<!-- 검색창 -->
-				<form action="qna.jsp" method="get">
+	
+				<form action="Qna_list.jsp" method="get">
 					<!-- 검색분류 -->
 					<select name="type">
-						<option value="Qna_title">제목만</option>
-						<option value="Qna_writer">글작성자</option>
+						<option value="qna_writer">WRITER</option>
 					</select>
 
 					<!-- 검색어 -->
 					<input type="text" name="keyword" required>
 
 					<!-- 전송버튼 -->
-					<input type="submit" value="검색">
+					<input type="submit" value="SEARCH">
 				</form>
 
 			</div>
 		</div>
-
-		<div>
+		<!--  네이게이터  -->
+		<div class="navi_box">
 			<ul class="page_navi">
-				<li>이전</li>
-				<li>1</li>
-				<li>2</li>
-				<li>다음</li>
-			</ul>
+
+				<!-- 이전 -->
+				<li >
+				<%if(startBlock>1) {%>
+				<a href="Qna_list.jsp?page=<%=pageNo=1 %>">
+						<img src="<%=request.getContextPath()%>/img/backward.png"  width="15" height="13" class="navi_img">
+				</a>		
+					<%if(!isSearch) {%>
+							<a href="Qna_list.jsp?page=<%=startBlock-1%>">
+									<img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13" class="navi_img">	
+							</a>
+						<%} else { %>
+							<a href="Qna_list.jsp?page=<%=startBlock-1 %>&type=<%=type %>&keyword=<%=keyword%>">
+									<img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13" class="navi_img">	
+							</a>
+						<%} %>
+					<%} %>
+					
+					</li>
+					
+						<!-- 네비게이터 숫자 부분 -->
+						<li >
+						<%for(int i=startBlock; i<=finishBlock;i++) {%>
+						
+						<%if(!isSearch) {%>
+							<a href = "Qna_list.jsp?page=<%=i %>" class=navi_num><%=i %></a>
+							<%} else { %>
+								<a href="Qna_list.jsp?page=<%=i %>&type=<%=type %>&keyword=<%=keyword %>" class=navi_num><%=i %></a>
+							<%} %>			
+						<%} %>
+						</li>
+						
+					<!-- 다음 -->
+					<li>
+					<%if(pageCount>finishBlock)  {%>
+						<%if(!isSearch) {%>
+							<a href="Qna_list.jsp?page=<%=finishBlock+1%>" >
+									<img src="<%=request.getContextPath()%>/img/forward.png" width="15" height="13" class="navi_img">	
+							</a>
+						<%} else { %>
+							<a href="Qna_list.jsp?page=<%=finishBlock+1 %>&type=<%=type %>&keyword=<%=keyword%>" >
+									<img src="<%=request.getContextPath()%>/img/forward.png" width="15" height="13" class="navi_img">	
+							</a>
+						<%} %> 
+						<a href="Qna_list.jsp?page=<%=pageCount%> ">
+							<img src="<%=request.getContextPath()%>/img/fast-forward.png" width="15" height="13" class="navi_img">
+						</a>
+					<%} %>
+			</ul>	
 		</div>
 
 	</div>

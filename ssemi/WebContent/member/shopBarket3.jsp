@@ -13,56 +13,13 @@
 	int cart_member = mdto.getMember_no();
 	CartDao cdao = new CartDao();
 	List<CartDto> list = cdao.getList(cart_member);
-// 	//////////////////////////////////////////////////////////////////
-// 	// 페이지 목록계산 코드
-// 	//////////////////////////////////////////////////////////////////
-	
-// 	int pageSize = 10;//한 페이지에 표시할 데이터 개수
-	
-// 	//page 번호를 계산하기 위한 코드
-// 	// - 이상한 값은 전부다 1로 변경
-// 	// - 멀쩡한 값은 그대로 숫자로 변환
-// 	String pageStr = request.getParameter("page");
-// 	int pageNo;
-// 	try{
-// 		pageNo = Integer.parseInt(pageStr);
-// 		if(pageNo <= 0){
-// 			throw new Exception();
-// 		}
-// 	}
-// 	catch(Exception e){ 
-// 		pageNo = 1;
-// 	}
-	
-// 	//시작 글 순서와 종료 글 순서를 계산
-// 	int finish = pageNo * pageSize;
-// 	int start = finish - (pageSize - 1);
-	
-
-	
-// 	//////////////////////////////////////////////////////////////////
-// 	// 페이지 네비게이터 계산 코드
-// 	//////////////////////////////////////////////////////////////////
-// 	int blockSize = 10;//이 페이지에는 네비게이터 블록을 10개씩 배치하겠다!
-// 	int startBlock = (pageNo - 1) / blockSize * blockSize + 1;
-// 	int finishBlock = startBlock + blockSize - 1;
-	
-// 	int count;
-	
-// 	count = bdao.getCount();
-	
-// 	int pageCount = (count + pageSize - 1) / pageSize;
-// 	//만약 finishBlock이 pageCount보다 크다면 수정해야 한다
-// 	if(finishBlock > pageCount){
-// 		finishBlock = pageCount;
-// 	}
 
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 
 <link rel=stylesheet type="text/css"
-	href="<%=request.getContextPath()%>/css/shopBarket2.css">
+	href="<%=request.getContextPath()%>/css/shopBarket2.css?ver=1">
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
@@ -83,6 +40,7 @@
 			<h5 style="font-size: 30px;"width:1000px;>함께 사면 좋은 제품 추천</h5>
 			<hr class="hr-twolow">
 			<!--제품관련 스타일-->
+			<div class="item_recom">
 			<ul>
 				<li><img class="img-shadow"
 					src="https://placehold.it/180x180?text=TEST1">
@@ -120,6 +78,7 @@
 						이가격에이가죽소파<br>670,000,000
 					</h5></li>
 			</ul>
+			</div>
 			<!-- 테이블 시작!> -->
 
 			<script>
@@ -135,7 +94,7 @@
 
 
 			<body class="Body">
-			<form action="barket_delete.do">
+			<form>
 				<div id="frame">
 					
 						<div id="frame2">
@@ -161,11 +120,10 @@
 									
 									<div class="right">
 									
-									<input type="button" class="btn default"
-												style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px; text-align: center" value="찜등록">
+									
 									<input type="button" class="btn default"
 												style="width: 110px; padding: 10px; margin-bottom: 3px; font-size: 15px; background: white" value="선택상품구매">
-									<input type="submit" class="btn default"
+									<input type="submit" formaction="barket_delete.do" class="btn default"
 												style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px" value="삭제하기">		 	
 															
 												
@@ -190,16 +148,22 @@
 								<tbody>
 								
 									<%
+										
 										int total_price = 0;
 										int delivery_cost = list.size() * 2500;
 										
+										if(list.size()!=0){
+											
 										
 										for(CartDto cdto : list) {
 										// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출
 										ItemDao idao = new ItemDao();
 										ItemDto itemName = idao.item_get(cdto.getCart_item_name());
 					
-										 total_price += itemName.getItem_price();
+										int item_cnt_change_price = itemName.getItem_price() * cdto.getCart_cnt();
+										
+										 total_price += item_cnt_change_price;
+										 
 									%>
 									
 									<tr style="height: 90px; background-color: #fff;">
@@ -213,13 +177,14 @@
 										<td
 											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=itemName.getItem_info()%></td>
 
-										<td><span style="padding-left: 10px;"><%=itemName.getItem_price()%></span>원</td>
+										<td><span style="padding-left: 10px;"><%=item_cnt_change_price%></span>원</td>
 
 										<td style="width: 50px;"><input type="number"
 											style="text-align: right; width: 40px; margin-bottom: 3px;"
-											min="1" max="99" step="1" value="1">
-											<input type="button" class="btn default"
-												style="border-radius: 3px; size: 10px;" value="변경">
+											min="1" max="99" step="1" name="cart_cnt" value="<%=cdto.getCart_cnt()%>">
+											<input type="submit" formaction="cart_cnt_change.do" class="btn default"
+												style="border-radius: 3px; size: 10px;"name="hidden" value="변경">
+											<input type="hidden" name="cart_no" value="<%=cdto.getCart_no()%>">
 												</td>
 											
 										<td>
@@ -229,18 +194,22 @@
 										<td>2,500원<br />고정
 										</td>
 
-
-<!-- 										<td> -->
-											
-											
-											
-<!-- 										</td> -->
 									</tr>
-									<%
-												}
-					
+									
+									<%}
+									
+									%>
+									
+									<%}else{ %>
+									<tr style="height: 90px; background-color: #fff;">
+										<td colspan="7">
+											장바구니가 비어있습니다.
+										</td>						
+									</tr>
+									<%}
 										int real_total = total_price + delivery_cost;
-											%>
+										%>
+									
 								</tbody>
 
 								<tfoot>
@@ -271,7 +240,6 @@
 							</div>
 
 						</div>
-						
 </form>
 
 						<%--결제예정금액 테이블--%>
@@ -294,11 +262,6 @@
 							</tr>
 						</table>
 						<br /> <br />
-
-
-
-
-
 
 						<div style="margin: 10px 10;">
 
@@ -345,9 +308,6 @@
 
 							</ol>
 
-
-
-
 						</div>
 
 						<br /> <br /> <br /> <br /> <br />
@@ -368,9 +328,6 @@
 								<br>
 								<br>
 							</ol>
-
-
-
 
 						</div>
 						</%--상품정보>
