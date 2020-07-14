@@ -111,7 +111,7 @@
                 </div>
                 <div class="left">
                     <p >
-                        <%=user.getMember_birth() %>
+                        <%=user.getMember_birth_year() %>
            
                     </p>
                 </div>
@@ -159,9 +159,19 @@
                 <div class="content">
                     상세주소
                 </div>
-                <div class="left margin-down">
+                <div class="left">
                     <p>
                         <%=user.getMember_extra_addr() %>
+            
+                    </p>
+                </div>
+                
+                 <div class="content">
+                	 포인트
+                	 </div>
+                 <div class="left margin-down">
+                    <p>
+                        <%=user.getMember_point() %>
             
                     </p>
                 </div>
