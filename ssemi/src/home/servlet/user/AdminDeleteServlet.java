@@ -31,7 +31,7 @@ public class AdminDeleteServlet extends HttpServlet {
 				//출력 : 회원 목록(list.jsp)
 
 
-				resp.sendRedirect("adminSearch.jsp");
+				resp.sendRedirect("admin_search.jsp");
 
 				
 				

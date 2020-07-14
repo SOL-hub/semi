@@ -35,7 +35,9 @@ if (keyword == null) {
 </head>
 
 
+
 <body>
+
    <header>
       <div id="container">
          <div id="box_left">
@@ -70,6 +72,7 @@ if (keyword == null) {
             </a>
          </div>
 
+
 			<!-- 로그인/로그아웃 상황에맞게 설정 -->
 
 			<%
@@ -85,20 +88,14 @@ if (keyword == null) {
 				<ul class="menu side_right">
 
 
-					<li class="menu_right"><a
-						href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
+					<li class="menu_right">
+
+						<a href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
+
 					<li class="menu_right"><a href="<%=request.getContextPath()%>/admin/admin_search.jsp">관리메뉴</a></li>
-					<li class="menu_right"><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
-					<li class="menu_right"><a href="#">주문/배송 조회</a></li>
-					<li class="menu_right"><a href="<%=request.getContextPath()%>/member/shopBarket3.jsp">장바구니</a></li>
-					<li class="menu_right"><a href="<%=request.getContextPath()%>/member/user_out.jsp">회원탈퇴</a></li>
-					<li class="menu_right"><a href="#">주문/배송</a></li>
 					<li class="menu_right"><a href="#">고객센터</a></li>
 
-
 				</ul>
-
-
 
 
 				<%
