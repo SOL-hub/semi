@@ -164,9 +164,8 @@
 					<tr>
 						<th>주문 상품</th>
 						<td><select name="type">
-								<option>상품명</option>
-								<option>상품코드</option>
-								<option>브랜드</option>
+								<option value="item_name">상품명</option>
+								<option value="item_no">상품코드</option>
 						</select> <input type="text" name=""></td>
 
 					</tr>
