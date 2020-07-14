@@ -8,7 +8,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
-
+	
+	
+<div style=padding-top:150px;>
 <form action="find_id,pw.do" method="post">
 	<main>
 		<div class="find-wrap">
@@ -39,15 +41,15 @@
 			<input class="form-phone" type="text" required> 
 			<input class="form-phone" type="text" required>-->
 
-		<br> <br>
+		<br>
 
 		<!-- 에러에 대한 처리 -->
 		<%
 			if (request.getParameter("error") != null) {
 		%>
-		<h6>
+		<h5>
 			<font color="red">해당하는 정보로 아이디를 찾지 못했습니다.</font>
-		</h6>
+		</h5>
 		<%
 			}
 		%>
@@ -56,7 +58,11 @@
 
 		<!--로그인버튼-->
 		<input class="click-btn" type="submit" value="아이디 검색"> <br>
-	</main>
-
+	
+</main>
 </form>
+</div>
+</body>
+   </html>
 <jsp:include page="/template/footer.jsp"></jsp:include>
+ 

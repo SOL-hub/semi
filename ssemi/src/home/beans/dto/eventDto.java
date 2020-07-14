@@ -4,62 +4,68 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class eventDto {
-	
-	private int event1_no, event1_read;
-	private String event1_title, event1_writer, event1_content, event1_date;
+
+	private int event_no, event_read;
+	private String event_head, event_title, event_writer, event_content, event_date;
 	public eventDto() {
 		super();
 	}
 	
-	
 	//ResultSet 을 eventDto로 변환하는 생성자
-	public eventDto(ResultSet rs) throws SQLException{
-		this.setEvent1_no(rs.getInt("event1_no"));
-		this.setEvent1_title(rs.getString("event1_title"));
-		this.setEvent1_writer(rs.getString("event1_writer"));
-		this.setEvent1_content(rs.getString("event1_content"));
-		this.setEvent1_date(rs.getString("event1_date"));
-		this.setEvent1_read(rs.getInt("evnet1_read"));
+	public eventDto(ResultSet rs)throws SQLException{
+		this.setEvent_no(rs.getInt("event_no"));
+		this.setEvent_head(rs.getString("event_head"));
+		this.setEvent_title(rs.getString("event_title"));
+		this.setEvent_writer(rs.getString("event_writer"));
+		this.setEvent_content(rs.getString("event_content"));
+		this.setEvent_date(rs.getString("event_date"));
+		this.setEvent_read(rs.getInt("event_read"));
 	}
 	
 	
-	
-	public int getEvent1_no() {
-		return event1_no;
+	public int getEvent_no() {
+		return event_no;
 	}
-	public void setEvent1_no(int event1_no) {
-		this.event1_no = event1_no;
+	public void setEvent_no(int event_no) {
+		this.event_no = event_no;
 	}
-	public int getEvent1_read() {
-		return event1_read;
+	public int getEvent_read() {
+		return event_read;
 	}
-	public void setEvent1_read(int event1_read) {
-		this.event1_read = event1_read;
+	public void setEvent_read(int event_read) {
+		this.event_read = event_read;
 	}
-	public String getEvent1_title() {
-		return event1_title;
+	public String getEvent_head() {
+		return event_head;
 	}
-	public void setEvent1_title(String event1_title) {
-		this.event1_title = event1_title;
+	public void setEvent_head(String event_head) {
+		this.event_head = event_head;
 	}
-	public String getEvent1_writer() {
-		return event1_writer;
+	public String getEvent_title() {
+		return event_title;
 	}
-	public void setEvent1_writer(String event1_writer) {
-		this.event1_writer = event1_writer;
+	public void setEvent_title(String event_title) {
+		this.event_title = event_title;
 	}
-	public String getEvent1_content() {
-		return event1_content;
+	public String getEvent_writer() {
+		return event_writer;
 	}
-	public void setEvent1_content(String event1_content) {
-		this.event1_content = event1_content;
+	public void setEvent_writer(String event_writer) {
+		this.event_writer = event_writer;
 	}
-	public String getEvent1_date() {
-		return event1_date;
+	public String getEvent_content() {
+		return event_content;
 	}
-	public void setEvent1_date(String event1_date) {
-		this.event1_date = event1_date;
+	public void setEvent_content(String event_content) {
+		this.event_content = event_content;
 	}
-	
+	public String getEvent_date() {
+		return event_date;
+	}
+	public void setEvent_date(String event_date) {
+		this.event_date = event_date;
+	}
 	
 }
+	
+	
