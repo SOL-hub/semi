@@ -29,7 +29,7 @@
             <div class="row-empty"></div>
             <ul>
                 <li>
-                    <a href="user_info.jsp">
+                    <a href="mypage.jsp">
                         마이페이지
                     </a>
                 </li>
@@ -57,7 +57,7 @@
                     </a>
                 </li>     
                 <li>
-                    <a href="shopBarket2.jsp">
+                    <a href="shopBarket3.jsp">
                         장바구니
                     </a>
                 </li>
@@ -79,6 +79,9 @@
                     <a href="#">
                         게시판내역
                     </a>
+                </li>
+                <li>
+                	<a href="#"> 견적내역 </a>
                 </li>
             </ul>
         </aside>

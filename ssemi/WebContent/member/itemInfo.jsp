@@ -43,7 +43,7 @@
 			
 				
 				
-				<form action="cart_add.do" method="post">
+				<form method="post">
 				<tr>
 					<td><%=idto.getItem_no()%></td>
 					<td><%=idto.getItem_name()%></td>
@@ -54,8 +54,8 @@
 					<td><%=idto.getItem_image()%></td>
 					<td><%=idto.getItem_time()%></td>
 					<td>
-				<input type="submit"  value="장바구니에 넣기" onclick="checkAdd();">
-						
+				<input type="submit" formaction="cart_add.do" value="장바구니에 넣기" onclick="checkAdd();">
+				<input type="submit" formaction="wish_add.do" value="찜등록" onclick="checkAdd();">		
 					</td>
 					
 				</tr>

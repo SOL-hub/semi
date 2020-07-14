@@ -62,7 +62,7 @@
 
 
 <link rel=stylesheet type="text/css"
-	href="<%=request.getContextPath()%>/css/shopBarket2.css">
+	href="<%=request.getContextPath()%>/css/shopBarket2.css?ver=1">
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
@@ -83,6 +83,7 @@
 			<h5 style="font-size: 30px;"width:1000px;>함께 사면 좋은 제품 추천</h5>
 			<hr class="hr-twolow">
 			<!--제품관련 스타일-->
+			<div class="item_recom">
 			<ul>
 				<li><img class="img-shadow"
 					src="https://placehold.it/180x180?text=TEST1">
@@ -120,6 +121,7 @@
 						이가격에이가죽소파<br>670,000,000
 					</h5></li>
 			</ul>
+			</div>
 			<!-- 테이블 시작!> -->
 
 			<script>
@@ -161,8 +163,7 @@
 									
 									<div class="right">
 									
-									<input type="button" class="btn default"
-												style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px; text-align: center" value="찜등록">
+									
 									<input type="button" class="btn default"
 												style="width: 110px; padding: 10px; margin-bottom: 3px; font-size: 15px; background: white" value="선택상품구매">
 									<input type="submit" class="btn default"
@@ -190,9 +191,12 @@
 								<tbody>
 								
 									<%
+										
 										int total_price = 0;
 										int delivery_cost = list.size() * 2500;
 										
+										if(list.size()!=0){
+											
 										
 										for(CartDto cdto : list) {
 										// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출
@@ -217,7 +221,7 @@
 
 										<td style="width: 50px;"><input type="number"
 											style="text-align: right; width: 40px; margin-bottom: 3px;"
-											min="1" max="99" step="1" value="1">
+											min="1" max="99" step="1" value="<%=cdto.getCart_cnt()%>">
 											<input type="button" class="btn default"
 												style="border-radius: 3px; size: 10px;" value="변경">
 												</td>
@@ -229,18 +233,22 @@
 										<td>2,500원<br />고정
 										</td>
 
-
-<!-- 										<td> -->
-											
-											
-											
-<!-- 										</td> -->
 									</tr>
-									<%
-												}
-					
+									
+									<%}
+									
+									%>
+									
+									<%}else{ %>
+									<tr style="height: 90px; background-color: #fff;">
+										<td colspan="7">
+											장바구니가 비어있습니다.
+										</td>						
+									</tr>
+									<%}
 										int real_total = total_price + delivery_cost;
-											%>
+										%>
+									
 								</tbody>
 
 								<tfoot>
@@ -271,7 +279,6 @@
 							</div>
 
 						</div>
-						
 </form>
 
 						<%--결제예정금액 테이블--%>
@@ -294,11 +301,6 @@
 							</tr>
 						</table>
 						<br /> <br />
-
-
-
-
-
 
 						<div style="margin: 10px 10;">
 
@@ -345,9 +347,6 @@
 
 							</ol>
 
-
-
-
 						</div>
 
 						<br /> <br /> <br /> <br /> <br />
@@ -368,9 +367,6 @@
 								<br>
 								<br>
 							</ol>
-
-
-
 
 						</div>
 						</%--상품정보>
