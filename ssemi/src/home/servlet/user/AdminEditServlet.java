@@ -23,6 +23,7 @@ public class AdminEditServlet extends HttpServlet {
 			//입력
 			req.setCharacterEncoding("utf-8");
 			
+			
 			MemberDto mdto = new MemberDto();
 			mdto.setMember_no(Integer.parseInt(req.getParameter("member_no")));
 			mdto.setMember_id(req.getParameter("member_id"));
@@ -43,13 +44,14 @@ public class AdminEditServlet extends HttpServlet {
 			mdto.setMember_consult_list (req.getParameter("member_consult_list"));
 			
 			
+			
 			// 처리
 			MemberDao mdao =new MemberDao();
 			mdao.editByAdmin(mdto);
 			
 			// 출력
 			
-			resp.sendRedirect("admin_datail.jsp?member_no="+mdto.getMember_no());
+			resp.sendRedirect("admin_member_info.jsp?member_no="+mdto.getMember_no());
 			
 			
 			

@@ -215,16 +215,16 @@
 
 					<tr class="Ldata">
 					
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_name()%></a></td>
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_id()%></a></td>
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_join_day()%></a></td>
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_phone()%></a></td>
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_age()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_name()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_id()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_join_day()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_phone()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_age()%></a></td>
 						<td class="Ldata"><a href ="#"><input type="button" value="주문내역"
 							class="listbtn"></a> <a href ="#"><input type="button" value="적립금"
 							class="listbtn"></a></td>
 							
-							<td><a href="<%=request.getContextPath()%>/member/user_info_update.jsp?member_no=<%=mdto.getMember_no()%>"><input type="button" value="수정" class="listbtn"></a>
+							<td><a href="<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input type="button" value="수정" class="listbtn"></a>
 							<a href="<%=request.getContextPath()%>/admin/delete.do?member_no=<%=mdto.getMember_no()%>"><input type="button" value="삭제"  class="listbtn" ></a></td>
 					</tr>
 					<%

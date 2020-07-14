@@ -380,7 +380,7 @@ public class MemberDao {
 			Connection con = getConnection();
 			
 			String sql = "update member set " + "member_pw=? ,member_nick=?, member_birth=?, member_phone=?, member_email=?,"
-					+ "member_post=?, member_base_addr=?, member_extra_addr=?, member_auth=? where member_no=?";
+					+ "member_post=?, member_base_addr=?, member_extra_addr=?, member_point=? where member_no=?";
 			
 			PreparedStatement ps = con.prepareStatement(sql);
 			
@@ -392,13 +392,15 @@ public class MemberDao {
 			ps.setString(6, mdto.getMember_post());
 			ps.setString(7, mdto.getMember_base_addr());
 			ps.setString(8, mdto.getMember_extra_addr());
-			ps.setString(9, mdto.getMember_auth());
+			ps.setInt(9, mdto.getMember_point());
 			ps.setInt(10, mdto.getMember_no());
+			
 			
 
 			ps.execute();
 
 			con.close();
+		
 		}
 	
 	
