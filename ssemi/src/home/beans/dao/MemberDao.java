@@ -65,30 +65,22 @@ public class MemberDao {
 
 	}
 
-	public String idCheck(MemberDto mdto) throws Exception {
+	   public MemberDto idCheck(String member_id) throws Exception {
+		      Connection con = getConnection();
+		      String sql = "select * from member where instr(member_id,?)>0";
+		      PreparedStatement ps = con.prepareStatement(sql);
+		      ps.setString(1, member_id);
 
-		Connection con = getConnection();
-		String sql = "select * from member where member_id=?";
-
-		PreparedStatement ps = con.prepareStatement(sql);
-
-		ps.setString(1, mdto.getMember_id());
-
-		ResultSet rs = ps.executeQuery();
-		String rst;
-		if (rs.next()) {
-			rst = rs.getString("member_id");
-		} else {
-			rst = null;
-		}
-
-		con.close();
-		return rst;
-
-	}
-
-
-
+		      ResultSet rs = ps.executeQuery();
+		      MemberDto mdto;
+		      if (rs.next()) {
+		         mdto = new MemberDto(rs);
+		      } else {
+		         mdto = null;
+		      }
+		      con.close();
+		      return mdto;
+		   }
 
 
 	// 진빈(회원탈퇴) ---> 솔이가 밑에 다 씀
@@ -132,6 +124,7 @@ public class MemberDao {
 		return mdto;
 
 	}
+	
 
 	// 진빈(회원정보수정)
 	public void user_info_update(MemberDto mdto) throws Exception {
