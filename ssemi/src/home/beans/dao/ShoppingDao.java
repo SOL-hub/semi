@@ -44,7 +44,7 @@ public class ShoppingDao {
 	public List<shoppingDto> getList() throws Exception {
 		Connection con = getConnection();
 		
-		String sql = "SELECT*FROM shopping ORDER BY DESC";
+		String sql = "SELECT*FROM shopping ORDER BY shopping_no DESC";
 		PreparedStatement ps =con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		

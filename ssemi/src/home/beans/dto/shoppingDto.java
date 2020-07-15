@@ -40,10 +40,10 @@ public class shoppingDto {
 		this.setShopping_recive_content(rs.getString("shopping_recive_content"));
 		this.setShopping_item_name(rs.getInt("shopping_item_name"));
 		this.setShopping_item_cnt(rs.getInt("shopping_item_cnt"));
-		this.setShopping_statue(rs.getString("shopping_satue"));
+		this.setShopping_statue(rs.getString("shopping_statue"));
 		this.setShopping_payment(rs.getString("shopping_payment"));
 		this.setShopping_paybank(rs.getString("shopping_paybank"));
-		this.setShopping_paybank_num(rs.getString("shopping_payment_num"));
+		this.setShopping_paybank_num(rs.getString("shopping_paybank_num"));
 		this.setShopping_total(rs.getInt("shopping_total"));
 		this.setShopping_disc(rs.getInt("shopping_disc"));
 		this.setShopping_date(rs.getString("shopping_date"));
