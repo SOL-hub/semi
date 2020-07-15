@@ -157,12 +157,7 @@
 						</select> <input type="text" name="keyword"></td>
 
 					</tr>
-					<tr>
-						<th>총 구매금액</th>
-						<td><input type="text"> <span>원~</span><input
-							type="text"> <span>원</span></td>
-
-					</tr>
+				
 					<tr>
 						<th>가입일</th>
 						<td><input type="text" class="picker-start" name="start"><span>~</span><input
