@@ -1,4 +1,3 @@
-
 @charset "UTF-8";
 
 
@@ -147,5 +146,3 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 .login-memory {
 	font-size: 13px;
 }
-
-
