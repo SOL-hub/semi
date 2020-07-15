@@ -71,24 +71,26 @@ else{
 
 
                <!-- 여기부터 이벤트 소개 시작 -->
-               
-                  <img class="img-shadow" src="https://placehold.it/1000x700?text=TEST1"> 
-                  
-                  <!-- 여기다 event1!!!!  -->
-                     <h5 style="font-size: 13pt;">
-                        타이밍을 잘 잡아야, 실속있게 산다! <br>종합세트 할인 판매실시!
-                     </h5>
+                  <div align="center">
+                  <img src="<%=request.getContextPath()%>/img/event123.jpg" width="1000" height="700" alt="event"/>
+                  <h5 style="font-size: 13pt;">
+                        타이밍을 잘 잡아야, 실속있게 산다! <br>종합세트 할인 판매실시!</h5>
                      <h6 style="font-color: grey;">
                         곧 여름도 다가오는데 언제다 이거사고 저거사? 여름에 필요한 거 여기 다 있어! <br> 제품 하나씩 맘껏
                         골라서 세트할인으로 즐거운 쇼핑하세요.
-                        
-                     </h6> 
+                     </h6>
+
+                     <h6 style= font-width:bold;>2020-07-12 ~ 2020-08-31</h6>
+                    
+          
                      
                      <!-- 선착순 이벤트 게시판  -->
 
                      <table border="1" width="90%">
                      
                       <form action="event_event1.jsp" method="get">
+                      
+                       <div class= "eventtable">
                      <h2>선착순 게시판</h2>
                        
                         <thead>
@@ -119,16 +121,21 @@ else{
                         </form>
  
                        </tbody>
+                       
                          </table>
                          
                         <!-- 검색창 -->
 
+
+<br>
+ <br>
  <!-- 검색불류 -->
  <select name= "type">
  <option>제목만</option>
  <option>글 작성자</option>
  </select>
  
+
  <!-- 검색어 -->
  <input type ="text" name="keyword" required>
  
@@ -145,7 +152,8 @@ else{
    
    <a href="<%=request.getContextPath()%>/member/user_info.jsp">
    <input class="login-submit" type="submit" value="내 포인트보기">
-    </a></div>
+    </a></div> </div>
+   
                        </article>
                        </main>
                        </body>

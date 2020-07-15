@@ -401,6 +401,23 @@ public class MemberDao {
 		}
 
 
+		// 이벤트를 통한 포인트 적립-솔
+		public void pointadd(MemberDto mdto) throws Exception {
+
+			Connection con = getConnection();
+
+			String sql = "update member set member_point=? where member_no=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setInt(1, mdto.getMember_point());
+			
+			ps.setInt(2, mdto.getMember_no());
+
+			ps.execute();
+
+			con.close();
+
+		}
 	
 }
 	

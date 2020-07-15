@@ -59,7 +59,8 @@ if (keyword == null) {
                   <ul class="menu_left_innerMenu">
                      <li>마루</li>
                      <li>주방</li>
-                     <li>욕실</li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/bath.jsp">욕실</a></li>
+                     
                   </ul>
                </li>
             </ul>
