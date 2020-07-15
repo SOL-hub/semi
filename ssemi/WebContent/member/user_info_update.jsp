@@ -167,7 +167,8 @@
                 </div>
                 <div class="row-empty center">
                
-                        <input class="join-btn" type="submit" value="정보수정">
+              <a href="check_pw.jsp?go=user_info.jsp">
+                        <input class="join-btn" type="submit" value="정보수정"></a>
                     
                 </div>
                 </form>

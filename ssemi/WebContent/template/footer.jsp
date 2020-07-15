@@ -13,6 +13,11 @@
         <!-- 위 footer -->
         <li>
             <div class="footer_inner_separator_line"></div>
+            
+             <h6>세션 : ID: <%=session.getId()%></h6>
+       <h6> userinfo:<%=session.getAttribute("userinfo") %></h6>
+       <h6> 로그인:<%=session.getAttribute("userinfo")!=null%></h6>
+        
             <ul class="footer_inner_box">
                 <li class="footer_inner_item">
                     <a href="/"><img width="80" src="<%=request.getContextPath() %>/img/pig_logo.png"></a>
@@ -53,6 +58,8 @@
         </li>
 
         <!-- 아래 footer -->
+        
+        
         <li id="second_footer">
             <ul class="footer_inner_box">
                 <li class="footer_inner_item">
@@ -66,6 +73,7 @@
                             <li class="footer_bottom_detail">사업자등록번호 : 215-86-93600·</li>
                             <li class="footer_bottom_detail">Copyright © 1998-2020 KH Information Educational Institute All Right Reserved</li>
                         </ul>
+        
                     </div>
                 </li>
             </ul>

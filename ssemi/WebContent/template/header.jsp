@@ -9,14 +9,12 @@
 
 <%
 	MemberDto udto = (MemberDto) session.getAttribute("userinfo");
-
 //상품 검색 : item_type 유형 검색어 입력
 String keyword = request.getParameter("keyword");
 // 이 검색어를 활용하여 '상품 목록' 불러오기
 ItemDao idao = new ItemDao();
 if (keyword == null) {
 	List<ItemDto> list = new ArrayList<>();
-
 } else {
 	List<ItemDto> list = idao.search(keyword);
 }

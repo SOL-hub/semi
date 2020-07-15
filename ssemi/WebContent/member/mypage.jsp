@@ -13,7 +13,6 @@
 	MemberDao mdao = new MemberDao();
 	int member_no = mdto.getMember_no();
 	MemberDto user = mdao.get(member_no);
-
 	CartDao cdao = new CartDao();
 	
 	

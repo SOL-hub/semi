@@ -1,30 +1,30 @@
 @charset "UTF-8";
 
-    * {
-    font-family: NanumGothicCoding;
+
+* {
+	font-family: NanumGothicCoding;
 	src: url("../font/NanumGothicCoding.ttf");
-        box-sizing: border-box;
-        font-family: 'Noto Sans KR', sans-serif;
-    }
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+main {
+	width:500px;
+	text-align: center;
+	height: 800px;
+	margin: auto;
+	border: none;
+	padding-top: 150px;
+	background-color: antiquewhite;
+}
+
+article{
+	border: 1px solid #aaa;
+	height: 500px;
+}
+
     
-    
-    
-    .img-shadow:hover{
-             box-shadow: 0px 0px 5px 2px #ccc; /*아니면#333*/ 
-            display: inline-block;
-            padding:2px;
-            margin: auto;
-            font
-        }
-       .a:hover{ 
-            border:2px solid white;
-        }
-        
-        .b:hover{
-           box-shadow: 0px 0px 5px 2px #ccc; /*아니면#333*/ 
-        }
-    
-    
+   
         .img-wrap{
         text-align: center;
         
@@ -57,19 +57,13 @@
            
             
         }
-        .item_recom li{
+        article li{
             list-style: none;
             display: inline-block;
             margin: 60px;
         }
         
-         .item_recom li:hover{
-            list-style: none;
-            display: inline-block;
-             box-shadow: 0px 0px 5px 2px #ccc; /*아니면#333*/ 
-            display: inline-block;
-            
-        }
+      
         /*여기까지 구별*/
         
         /*장바구니 테이블 시작*/
@@ -78,15 +72,15 @@
         body.Body{
             background-color:white;
             font-size: 13pt;
-            min-width: 1080px;
+            min-width: 1480px;
             width: 100%;
-           /* padding: 50px 0;*/
+            padding: 50px 0;
         }
         
         
         /*전체 div*/
         #frame{
-            width: 70%;
+            width: 80%;
             margin: 0 auto;
             padding: 50px 50px;
             background-color: white;
@@ -207,21 +201,21 @@
             text-align: center;
         }
         
-        .pagination a{
-            text-decoration: none;
-            color: dimgray;
-            display: inline-block;
-            padding: 0.5rem;
-            min-width: 2.5rem;
-            text-align: center;
-            border: 1px solid transparent;
-        }
-        .pagination a:hover{
-            border: 1px solid gray;
-            color: red;
-        }
-        .pagination .on{
-            border: 1px solid gray;
-            color: red;
-        }
+   .event-login-submit{
+	text-align: center;
+	font-size: 15px;
+	color: #C80A1E;
+	background-color: #fff;
+	width: 255px;
+	padding: 1rem;
+	margin-top: 23px;
+	margin-bottom: 15px;
+	margin-left: 50px;
+	margin-right: 50px;
+	border: 1px solid transparent;
+	cursor: pointer;
+	display:inline-float;
+
+}
+        
         
