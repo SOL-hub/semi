@@ -121,13 +121,13 @@ public class ItemDao {
 			Connection con = getConnection();
 
 			String sql = 
-					"insert into item values(item_seq.nextval,?,null,?,?,null,null,sysdate)";
+					"insert into item values(item_seq.nextval,?,?,?,?,?,null,sysdate)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, idto.getItem_name());
 			ps.setInt(2, idto.getItem_price());
 			ps.setString(3, idto.getItem_type());
 			ps.setString(4, idto.getItem_info());
-		
+			ps.setInt(5, idto.getItem_stock());
 			ps.execute();
 
 			con.close();
@@ -178,6 +178,104 @@ public class ItemDao {
 			
 			return count;
 		}
-	 
-		
+	 //동휘_목록메소드2_1
+		public List<ItemDto> getList1(int start, int finish) throws Exception{
+			Connection con = getConnection();
+			
+			//결과의 순서를 정해준다
+			String sql = 
+					"SELECT * FROM("//T의 모든 항목
+						+ "SELECT ROWNUM rn, T.* FROM("
+							+ "SELECT * FROM item WHERE ITEM_TYPE='침대'"
+						+ ")T"//T의 모든 항목
+				+ ") WHERE rn BETWEEN ? and ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, finish);
+			ResultSet rs = ps.executeQuery();
+			
+			List<ItemDto> list = new ArrayList<>();
+			while(rs.next()) {
+				ItemDto idto = new ItemDto(rs);
+				list.add(idto);
+			}
+			
+			con.close();
+			return list;
+		}
+		//동휘_목록메소드2_2
+				public List<ItemDto> getList2(int start, int finish) throws Exception{
+					Connection con = getConnection();
+					
+					//결과의 순서를 정해준다
+					String sql = 
+							"SELECT * FROM("//T의 모든 항목
+								+ "SELECT ROWNUM rn, T.* FROM("
+									+ "SELECT * FROM item WHERE ITEM_TYPE='책상'"
+								+ ")T"//T의 모든 항목
+						+ ") WHERE rn BETWEEN ? and ?";
+					PreparedStatement ps = con.prepareStatement(sql);
+					ps.setInt(1, start);
+					ps.setInt(2, finish);
+					ResultSet rs = ps.executeQuery();
+					
+					List<ItemDto> list = new ArrayList<>();
+					while(rs.next()) {
+						ItemDto idto = new ItemDto(rs);
+						list.add(idto);
+					}
+					
+					con.close();
+					return list;
+				}
+				//동휘_목록메소드2_3
+				public List<ItemDto> getList3(int start, int finish) throws Exception{
+					Connection con = getConnection();
+					
+					//결과의 순서를 정해준다
+					String sql = 
+							"SELECT * FROM("//T의 모든 항목
+								+ "SELECT ROWNUM rn, T.* FROM("
+									+ "SELECT * FROM item WHERE ITEM_TYPE='소파'"
+								+ ")T"//T의 모든 항목
+						+ ") WHERE rn BETWEEN ? and ?";
+					PreparedStatement ps = con.prepareStatement(sql);
+					ps.setInt(1, start);
+					ps.setInt(2, finish);
+					ResultSet rs = ps.executeQuery();
+					
+					List<ItemDto> list = new ArrayList<>();
+					while(rs.next()) {
+						ItemDto idto = new ItemDto(rs);
+						list.add(idto);
+					}
+					
+					con.close();
+					return list;
+				}
+				//동휘_목록메소드2_4
+				public List<ItemDto> getList4(int start, int finish) throws Exception{
+					Connection con = getConnection();
+					
+					//결과의 순서를 정해준다
+					String sql = 
+							"SELECT * FROM("//T의 모든 항목
+								+ "SELECT ROWNUM rn, T.* FROM("
+									+ "SELECT * FROM item WHERE ITEM_TYPE='의자'"
+								+ ")T"//T의 모든 항목
+						+ ") WHERE rn BETWEEN ? and ?";
+					PreparedStatement ps = con.prepareStatement(sql);
+					ps.setInt(1, start);
+					ps.setInt(2, finish);
+					ResultSet rs = ps.executeQuery();
+					
+					List<ItemDto> list = new ArrayList<>();
+					while(rs.next()) {
+						ItemDto idto = new ItemDto(rs);
+						list.add(idto);
+					}
+					
+					con.close();
+					return list;
+				}
 }

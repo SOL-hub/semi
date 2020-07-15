@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="item_write.do" method="post" enctype="multipart/form-data">
+<form action="item_write.do" method="post">
 <%if(request.getParameter("item_no") != null){ %>
 <input type="hidden" name="item_no" value="<%=request.getParameter("item_no")%>">
 <%} %>
@@ -25,12 +25,16 @@
 				</td>
 			</tr>
 			<tr>
+			<th>재고</th>
+			<td><input type="text" name="item_stock" required></td>
+			</tr>
+			<tr>
 			<th>상품가격</th>
 				<td><input type="text" name="item_price" required></td>
 			</tr>
 			<tr>
 			<th>상품이미지</th>
-<!-- 				<td><input type="file" name="item_image" multiple accept=".jpg, .png, .gif"></td> -->
+				<td><input type="file" name="item_image" multiple accept=".jpg, .png, .gif"></td>
 			</tr>
 			<tr>
 			<th>상품설명</th>
