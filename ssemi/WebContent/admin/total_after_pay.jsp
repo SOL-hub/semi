@@ -1,3 +1,8 @@
+<%@page import="home.beans.dto.shoppingDto"%>
+<%@page import="home.beans.dao.ShoppingDao"%>
+<%@page import="home.beans.dto.MemberDto"%>
+<%@page import="java.util.List"%>
+<%@page import="home.beans.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -87,10 +92,14 @@
             </a>
         </div>
 
- 
+ <%
+		ShoppingDao sdao = new ShoppingDao();
+		
+		
+		List<shoppingDto> slist = sdao.getList();  %>
         <div class="label-wrap">
         <a href="total_before_pay.jsp" class="today-label">
-                주문 (15건)
+                주문 (<%=slist.size() %>건)
         </a>
         </div>
 
@@ -114,10 +123,15 @@
             </a>
         </div>
 
+<%
+	
+	MemberDao mdao = new MemberDao();
 
+	List<MemberDto> list;
+	int count = mdao.memberCount(); %>
         <div class="label-wrap ">
             <a href="#" class="today-label">
-                회원 가입(30건)
+                회원 가입(<%= count %>건)
             </a>
         </div>
 
