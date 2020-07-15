@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.shoppingDto"%>
@@ -8,6 +9,18 @@
     
     
     <jsp:include page="/template/header.jsp"></jsp:include>
+    
+    <% request.setCharacterEncoding("UTF-8");
+    
+    	String shopping_member = request.getParameter("shopping_member");
+    	
+
+    	ShoppingDao sdao = new ShoppingDao();
+
+    	List<shoppingDto> list = sdao.search(shopping_member);
+    
+    %>
+    
     
     
     
@@ -92,7 +105,7 @@
         </div>
 
  <%
-		ShoppingDao sdao = new ShoppingDao();
+		
 		
 		
 		List<shoppingDto> slist = sdao.getList();  %>
@@ -126,7 +139,7 @@
 	
 	MemberDao mdao = new MemberDao();
 
-	List<MemberDto> list;
+	List<MemberDto> mlist;
 	int count = mdao.memberCount(); %>
         <div class="label-wrap ">
             <a href="#" class="today-label">
@@ -143,19 +156,21 @@
         <h2>전체 주문 목록</h2>
         <table>
             <tr>
-                <th class="totalth">검색어</th>
-                <td class="totaltd"><select>
-                        <option>주문번호</option>
-                        <option>주문자명</option>
-                    </select><input type="text"></td>
+                <th class="totalth">주문자명</th>
+                <td class="totaltd">
+                <%if(shopping_member == null){ %>
+                 <input type="text"  name="shopping_member">
+                <%} else { %>
+                	<input type="text"  name="shopping_member" 
+                	value="<%=shopping_member%>">
+                <%} %>
+               </td>
             </tr>
             <tr>
-                <th class="totalth">상품</th>
+                <th class="totalth">상품명</th>
 
-                <td class="totaltd"><select>
-                        <option>상품명</option>
-                        <option>상품번호</option>
-                    </select><input type="text"></td>
+                <td class="totaltd">
+                   <input type="text"></td>
             </tr>
 
             <tr>
@@ -175,7 +190,7 @@
 
 			<h2 id="Ltitle">회원 주문 목록</h2>
 			<p id="listcount">
-				검색결과 0건
+				검색결과 <%=list.size() %>건
 			</p>
 		
 			<div class="list-table-wrap">
@@ -193,17 +208,18 @@
 					</tr>
 
 
-
+					<% for(shoppingDto sdto : list){ %>
 					<tr class="Ldata">
 					
-						<td class="Ldata"><a href = "#">123456</a></td>
-						<td class="Ldata"><a href = "#">T12345</a></td>
-						<td class="Ldata" ><a href = "#">예쁜 서랍 <br> <span id="totalcolor">화이트</span></a></td>
-						<td class="Ldata">3</td>
-						<td class="Ldata">562,150원</td>
-						<td class="Ldata">무통장 입금</td>
+						<td class="Ldata"><a href = "#"><%=sdto.getShopping_no() %></a></td>
+						<td class="Ldata"><a href = "#"></a></td>
+						<td class="Ldata" ><a href = "#"><%=sdto.getShopping_item_name()%> <br> <span id="totalcolor">화이트</span></a></td>
+						<td class="Ldata"><%=sdto.getShopping_item_cnt() %></td>
+						<td class="Ldata"><%=sdto.getShopping_total() %></td>
+						<td class="Ldata"><%=sdto.getShopping_payment()%></td>
 						<td class="Ldata"><a href = "#"><input type="button" value="취소"  class="beforetable" style="background-color:#C80A1E"></a></td>
 				
+				<%} %>
 						
 							
 					</tr>

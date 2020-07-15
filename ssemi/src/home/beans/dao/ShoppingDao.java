@@ -57,6 +57,30 @@ public class ShoppingDao {
 		con.close();
 		return list;
 	}
+	
+	
+	public List<shoppingDto> search (String shopping_member) throws Exception {
+		
+		Connection con = getConnection();
+		String sql = "SELECT * FROM shopping WHERE instr(shopping_member, ?)>0 ORDER BY shopping_member ASC";
+	
+		
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1	,shopping_member );
+		ResultSet rs = ps.executeQuery();
+		
+		List<shoppingDto> list = new ArrayList<>();
+		
+		while(rs.next()) {
+			shoppingDto sdto = new shoppingDto(rs);
+			list.add(sdto);
+			
+		}
+		con.close();
+		
+		return list;
+	}
 
 	
 	
