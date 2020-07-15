@@ -335,13 +335,17 @@ public class MemberDao {
 }
 	
 	// 관리자가 회원 날짜로 검색 -- 임새봄 
-		public List<MemberDto> search_join(String keyword) throws Exception {
+		public List<MemberDto> search_join(String type, String keyword,String start , String finish) throws Exception {
 
 			Connection con = getConnection();
 
-			String sql = "SELECT* FROM member WHERE to_date(?,'YYYY-MM-DD')";
+			String sql = "SELECT * FROM MEMBER WHERE instr(#1, ?)>0 and member_join "
+					+"BETWEEN to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD') ORDER BY #1 ASC";
+			sql = sql.replace("#1", type);
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, keyword);
+			ps.setString(2, start);
+			ps.setString(3, finish);
 			ResultSet rs = ps.executeQuery();
 
 			List<MemberDto> list = new ArrayList<>();
@@ -352,6 +356,25 @@ public class MemberDao {
 			con.close();
 			return list;
 
+		}
+		
+		public List<MemberDto> search_join_k(String start , String finish) throws Exception {
+			Connection con = getConnection();
+
+			String sql = "SELECT * FROM MEMBER WHERE member_join "
+					+"BETWEEN to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD')";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, start);
+			ps.setString(2, finish);
+			ResultSet rs = ps.executeQuery();
+
+			List<MemberDto> list = new ArrayList<>();
+			while (rs.next()) {
+				MemberDto mdto = new MemberDto(rs);
+				list.add(mdto);
+			}
+			con.close();
+			return list;
 		}
 
 		// 관리자가 회원 탈퇴 시키는거! -- 임새봄
@@ -401,6 +424,26 @@ public class MemberDao {
 		}
 
 
+		
+		// 총 가입한 사람 카운트 - 임새봄 
+		
+		public int memberCount() throws Exception{
+				
+			Connection con = getConnection();
+			
+			String sql = "SELECT count(*) FROM MEMBER";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+			int count = rs.getInt(1);
+			
+	
+			con.close();
+			return count;
+			
+			
+		}
 	
 }
 	

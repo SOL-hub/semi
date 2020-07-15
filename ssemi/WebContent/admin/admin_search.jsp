@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="java.util.List"%>
@@ -26,9 +29,7 @@
 
 <style>
 
- 
-        /*회원 검색과 리스트 전체 div*/
-       
+/*회원 검색과 리스트 전체 div*/
 </style>
 <script>
 	window.onload = function() {
@@ -70,70 +71,78 @@
 
 	String type = request.getParameter("type");
 	String keyword = request.getParameter("keyword");
-
+	String start = request.getParameter("start");
+	String finish = request.getParameter("finish");
+	
 	MemberDao mdao = new MemberDao();
 
 	List<MemberDto> list;
 
-	if (type == null || keyword == null) {// type이 없거나 keyword가 없으면 --> 처음 실행한 경우
-		list = new ArrayList<>(); // 검색을 할 수 없으니 비어있는 목록 준비
-	} else {
-		list = mdao.search(type, keyword); // 검색하기 
+	if (keyword != null && !keyword.equals("") && start != null && !start.equals("") && finish != null && !finish.equals("")) {// 둘 다 없을 때
+		
+// 		list = mdao.search(type, keyword);	
+		list = mdao.search_join(type, keyword,start, finish);
+
 	}
+	else if(keyword != null && !keyword.equals("")){
+		list = mdao.search(type, keyword);
+	}
+	else if(start !=null && !start.equals("") &&finish != null && !finish.equals("")){
+		list = mdao.search_join_k(start, finish);
+	}
+	else{
+		
+		list = new ArrayList<>();
+	}
+	
 %>
 
 
 </head>
 <body>
-	
+
 	<!-- 관리자 카테고리 -->
 
-	  <div class="category-main fixed">
-        <h3>Today</h3>
+	<div class="category-main fixed">
+		<h3>Total</h3>
 
-        <div class="today-cart-wrap">
-            <a href="total_before_pay.jsp">
-                <img class="todayimg" src="/ssemi/img/supermarket.png">
-            </a>
-        </div>
-
- 
-        <div class="label-wrap">
-        <a href="total_before_pay.jsp" class="today-label">
-                주문 (15건)
-        </a>
-        </div>
-
-        <div class="today-cart-wrap">
-            <a href="total_after_pay.jsp">
-                <img class="todayimg" src="/ssemi/img/money.png">
-            </a>
-        </div>
+		<div class="today-cart-wrap">
+			<a href="total_before_pay.jsp"> <img class="todayimg"
+				src="/ssemi/img/supermarket.png">
+			</a>
+		</div>
 
 
-        <div class="label-wrap">
-            <a href="total_after_pay.jsp" class="today-label">
-                결제 (9건)
-            </a>
-        </div>
+		<div class="label-wrap">
+			<a href="total_before_pay.jsp" class="today-label"> 주문 (15건) </a>
+		</div>
+
+		<div class="today-cart-wrap">
+			<a href="total_after_pay.jsp"> <img class="todayimg"
+				src="/ssemi/img/money.png">
+			</a>
+		</div>
 
 
-        <div class="today-cart-wrap">
-            <a href="#">
-                <img class="todayimg" src="/ssemi/img/customer.png">
-            </a>
-        </div>
+		<div class="label-wrap">
+			<a href="total_after_pay.jsp" class="today-label"> 결제 (9건) </a>
+		</div>
 
 
-        <div class="label-wrap ">
-            <a href="#" class="today-label">
-                회원 가입(30건)
-            </a>
-        </div>
 
-    </div>
+		<div class="today-cart-wrap">
+			<img class="todayimg" src="/ssemi/img/customer.png">
+		</div>
 
-<!-- 회원 검색 -->
+ 	<% int count = mdao.memberCount(); %>
+
+		<div class="label-wrap ">
+			<a href="#" class="today-label"> 회원 가입(<%= count %>건) </a>
+		</div>
+
+	</div>
+
+	<!-- 회원 검색 -->
 	<div class="search-list-wrap">
 		<div class="search-wrap">
 			<h2 id="stitle">회원 검색</h2>
@@ -156,16 +165,15 @@
 					</tr>
 					<tr>
 						<th>가입일</th>
-						<td><input type="text" class="picker-start"
-							name="member_join"><span>~</span><input type="text"
-							class="picker-end" name="member_join"></td>
+						<td><input type="text" class="picker-start" name="start"><span>~</span><input
+							type="text" class="picker-end" name="finish"></td>
 
 					</tr>
 					<tr>
-						<th>주문 상품</th>
-						<td><select name="type">
-								<option value="item_name">상품명</option>
-								<option value="item_no">상품코드</option>
+					<th>주문 상품</th> 
+					<td><select name="type"> 
+							<option value="item_name">상품명</option> 
+ 								<option value="item_no">상품코드</option> 
 						</select> <input type="text" name=""></td>
 
 					</tr>
@@ -185,15 +193,15 @@
 			<p id="listcount">
 				검색결과<%=list.size()%>건
 			</p>
-		
-			
+
+
 			<%MemberDto user = new MemberDto(); %>
-			
-			
+
+
 			<div class="list-table-wrap">
 				<table class="Ltable">
 					<tr>
-						
+
 						<th>이름</th>
 						<th>아이디</th>
 						<th>등록일</th>
@@ -209,30 +217,38 @@
 					%>
 
 					<tr class="Ldata">
-					
-						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_name()%></a></td>
-						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_id()%></a></td>
-						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_join_day()%></a></td>
-						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_phone()%></a></td>
-						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_age()%></a></td>
-						<td class="Ldata"><a href ="#"><input type="button" value="주문내역"
-							class="listbtn"></a> <a href ="#"><input type="button" value="적립금"
-							class="listbtn"></a></td>
-							
-							<td><a href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input type="button" value="수정" class="listbtn"></a>
-							<a href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/delete.do?member_no=<%=mdto.getMember_no()%>"><input type="button" value="삭제"  class="listbtn" ></a></td>
+
+						<td class="Ldata"><a
+							href="<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_name()%></a></td>
+						<td class="Ldata"><a
+							href="<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_id()%></a></td>
+						<td class="Ldata"><a
+							href="<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_join_day()%></a></td>
+						<td class="Ldata"><a
+							href="<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_phone()%></a></td>
+						<td class="Ldata"><a
+							href="<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_age()%></a></td>
+						<td class="Ldata"><a href="#"><input type="button"
+								value="주문내역" class="listbtn"></a> <a href="#"><input
+								type="button" value="적립금" class="listbtn"></a></td>
+
+						<td><a
+							href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input
+								type="button" value="수정" class="listbtn"></a> <a
+							href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/delete.do?member_no=<%=mdto.getMember_no()%>"><input
+								type="button" value="삭제" class="listbtn"></a></td>
 					</tr>
 					<%
 						}
 					%>
 
 				</table>
-				
+
 			</div>
 
 		</div>
 	</div>
-	
+
 
 </body>
 </html>
