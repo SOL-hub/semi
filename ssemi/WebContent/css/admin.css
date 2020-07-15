@@ -13,6 +13,7 @@
 	width: 500px;
 	height: 330px;
 	margin: auto;
+	margin-top: 150px;
 	border: 1px solid #3333;
 	padding: 50px 50px;
 }
@@ -239,12 +240,14 @@ table tr th {
 
         /*카테고리별 글씨*/
         .today-label {
+        	text-decoration: none;
             text-align: center;
             color: #C80A1E;
         }
 
         /*카테고리 별 글씨 div*/
         .label-wrap {
+       		 text-align: center;
             height: 100px;
             width: 100px;
         }

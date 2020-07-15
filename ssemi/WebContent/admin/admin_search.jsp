@@ -8,7 +8,6 @@
 
 <!-- 임새봄 -->
 
-
 <jsp:include page="/template/header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
@@ -26,9 +25,6 @@
 <script src="<%=request.getContextPath()%>/js/lightpick.js"></script>
 
 <style>
-
- 
-
 
  
         /*회원 검색과 리스트 전체 div*/
@@ -96,27 +92,27 @@
         <h3>Today</h3>
 
         <div class="today-cart-wrap">
-            <a href="#">
+            <a href="total_before_pay.jsp">
                 <img class="todayimg" src="/ssemi/img/supermarket.png">
             </a>
         </div>
 
-
+ 
         <div class="label-wrap">
-            <a href="#" class="today-label">
+        <a href="total_before_pay.jsp" class="today-label">
                 주문 (15건)
-            </a>
+        </a>
         </div>
 
         <div class="today-cart-wrap">
-            <a href="#">
+            <a href="total_after_pay.jsp">
                 <img class="todayimg" src="/ssemi/img/money.png">
             </a>
         </div>
 
 
         <div class="label-wrap">
-            <a href="#" class="today-label">
+            <a href="total_after_pay.jsp" class="today-label">
                 결제 (9건)
             </a>
         </div>
@@ -141,7 +137,7 @@
 	<div class="search-list-wrap">
 		<div class="search-wrap">
 			<h2 id="stitle">회원 검색</h2>
-			<form action="adminSearch.jsp" method="get">
+			<form action="admin_search.jsp" method="get">
 				<table class="tsearch">
 					<tr>
 						<th>검색어</th>
@@ -168,9 +164,8 @@
 					<tr>
 						<th>주문 상품</th>
 						<td><select name="type">
-								<option>상품명</option>
-								<option>상품코드</option>
-								<option>브랜드</option>
+								<option value="item_name">상품명</option>
+								<option value="item_no">상품코드</option>
 						</select> <input type="text" name=""></td>
 
 					</tr>
@@ -215,20 +210,17 @@
 
 					<tr class="Ldata">
 					
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_name()%></a></td>
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_id()%></a></td>
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_join_day()%></a></td>
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_phone()%></a></td>
-						<td class="Ldata"><a href = "#"><%=mdto.getMember_age()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_name()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_id()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_join_day()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_phone()%></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_age()%></a></td>
 						<td class="Ldata"><a href ="#"><input type="button" value="주문내역"
 							class="listbtn"></a> <a href ="#"><input type="button" value="적립금"
 							class="listbtn"></a></td>
 							
-							
-					
-							
-							<td><a href="#"><input type="button" value="수정" class="listbtn"></a>
-							<a href="<%=request.getContextPath()%>/admin/delete.do?member_no=<%=mdto.getMember_no()%>"><input type="button" value="삭제"  class="listbtn" ></a></td>
+							<td><a href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input type="button" value="수정" class="listbtn"></a>
+							<a href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/delete.do?member_no=<%=mdto.getMember_no()%>"><input type="button" value="삭제"  class="listbtn" ></a></td>
 					</tr>
 					<%
 						}
@@ -237,13 +229,10 @@
 				</table>
 				
 			</div>
-			
 
 		</div>
 	</div>
 	
-
-
 
 </body>
 </html>

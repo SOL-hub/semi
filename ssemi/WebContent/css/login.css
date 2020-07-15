@@ -1,37 +1,28 @@
-/*
-공용 스타일 파일(css 파일)
-- style 태그 내부에 작성하는 내용만 기입
-- 일룸대표색상
-빨강 : #C80A1E;
-회색 : #3333;
-*/
+
 @charset "UTF-8";
 
+
 * {
-	font-family: NanumGothicCoding;
-	src: url("../font/NanumGothicCoding.ttf");
 	box-sizing: border-box;
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-main {
+.login-main {
 	width:500px;
 	text-align: center;
-	height: 800px;
+	height: 430px;
 	margin: auto;
-	border: none;
-	padding-top: 150px;
+	margin-top: 150px;
+	border:1px solid #3333;
+	padding:50px 50px;
 }
 
-article{
-	border: 1px solid #aaa;
-	height: 500px;
-}
+
 
 .login-wrap {
-	width: 320px;
+	width: 350px;
 	text-align: center;
-	margin: 0px auto;
+	margin: auto;
 }
 
 /*아이디, 비번입력창*/
@@ -40,94 +31,121 @@ article{
 	margin: 0px auto;
 }
 
-.form-input {
-	width: 320px;
-	padding: 10px;
-	font-size: 15px;
-	border: 1px solid black;
-	margin: 5px 0px;
-}
-
-h1 {
-
-	font-size: 30px;
-}
-
-.checkbox-wrap {
-	width: 270px;
-	/*로그인 저장 체크박스 위치*/
-}
-
-.form-input.login-id{
-	padding-left: 50px;
+.login-id{
+		
 	background-image: url("../img/id.jpg");
 	background-repeat: no-repeat;
 	background-size: 30px;
 	background-position: 3px 3px;
+	
+	font-size: 14px;
+	color: #AAAAAA;
+	width: 100%;
+	margin: 5px;
+	padding:  10px 10px 10px 40px;
+	border: 1px solid #3333;
 }
 
-.form-input.login-pw{
-	padding-left: 50px;
+
+.login-pw{ /*.form-input*/
+
+
 	background-image: url("../img/pw.png");
 	background-repeat: no-repeat;
 	background-size: 30px;
 	background-position: 3px 3px;
+	
+	
+	font-size: 14px;
+	color: #AAAAAA;
+	width: 100%;
+	margin: 5px;
+	padding:  10px 10px 10px 40px;
+	border: 1px solid #3333;
+	
 }
 
-
-.form-box {
-	border-left: 20px;
+.login-pw{
+	margin-bottom:15px;
 }
 
-.login-checkbox-wrap {
-	text-align: left;
+.loginT{
+	text-align :left;
+	color: #C80A1E;
+	margin: 0px 0px 10px 0px;
+	
 }
 
-/*대표버튼*/
-.click-btn {
+.login-submit{
 	text-align: center;
-	padding: 1rem;
 	font-size: 16px;
-	width: 45%;
-	background-color: #C80A1E;
-	border: none;
 	color: white;
+	background-color: #C80A1E;
+	width: 255px;
+	padding: 1rem;
+	margin-top: 23px;
+	margin-bottom: 15px;
+	margin-left: 50px;
+	margin-right: 50px;;
+	border: 1px solid transparent;
 	cursor: pointer;
 }
 
-.click-btn:hover {
-	padding: 1rem;
-	font-size: 16px;
-	width: 50%;
-	background-color: #C80A1E;
-	border: none;
+.login2-submit{
+	text-align: left;
+	font-size: 12px;
 	color: white;
-}
-
-
-.form-input login-submit{
-	background-color: #C80A1E;
+	background-color: #3333;
+	width: 155px;
+	padding: 0.5rem;
+	margin-top: 23px;
+	margin-bottom: 15px;
+	margin-left: 50px;
+	margin-right: 50px;;
 	border: 1px solid transparent;
-	width: 200px;
-	color: white;
-}
-/* 로그인, 회원가입시 설정조건
-user_Id:  regex =/^[a-z0-9]{8-20}$/g;
-user_Pw: regex=/[a-zA-Z0-9]{8,16}/g;
-*/
-
-
-.form-join join-submit{
-	 text-decoration: none;
+	cursor: pointer;
 }
 
-.form-find findid,pw-submit{
-	text-decoration: none;
+/*체크박스*/
+input[id="cb1"], input[id="cb2"], input[id="cb3"], input[id="cd4"],
+input[id="cb5"], input[id="cb6"], input[id="cb7"] {
+	display: none;
 }
 
-.join+find_id,pw{
-	display: inline-block;
+
+input[id="cb1"]+label, input[id="cb2"]+label, input[id="cb3"]+label,
+	input[id="cb4"]+label, input[id="cb5"]+label, input[id="cb6"]+label,
+	input[id="cb7"]+label {
+	
+	width: 10%;
+	height: 20px;
+	padding-left: 30px;
+	height: 20px;
+	background: url("/ssemi/img/nonCheck.png") 4px no-repeat;
+	background-size: 20px;
+	text-align: left;
+	color: #AAAAAA;
 }
-.join_find_id,pw{
-	display: inline-block;
+
+
+input[id="cb1"]+label :after, input[id="cb2"]+label :after, input[id="cb3"]+label :after,
+	input[id="cb4"]+label :after, input[id="cb5"]+label :after, input[id="cb6"]+label :after,
+	input[id="cb7"]+label :after {
+	content: "";
+	display: block;
 }
+
+
+input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:checked+label,
+	input[id="cb4"]:checked+label, input[id="cb5"]:checked+label, input[id="cb6"]:checked+label,
+	input[id="cb7"]:checked+label {
+	background: url("/ssemi/img/checked.png") 4px no-repeat;
+	background-size: 20px;
+}
+
+
+.login-memory {
+	font-size: 13px;
+}
+
+

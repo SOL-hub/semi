@@ -20,6 +20,7 @@
         #container {
         width: 100%;
         display: flex;
+        
         position: fixed;
         background-color: rgba(255, 255, 255, 0.95);
         height: 110px;
