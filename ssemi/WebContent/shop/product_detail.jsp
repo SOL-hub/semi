@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:include page="/template/header.jsp"></jsp:include>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/swiper.min.css">
     <script src="<%=request.getContextPath() %>/js/swiper.min.js"></script>
     <style>
+  
     </style>
     <script src="../js/swiper.min.js"></script>
     
@@ -169,3 +172,4 @@
         </div>
     </main>
 </body></html>
+<jsp:include page="/template/footer.jsp"></jsp:include>  
