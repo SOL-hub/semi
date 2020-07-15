@@ -7,6 +7,7 @@ public class ItemDto {
 	private int item_no;
 	private String item_name;
 	private int item_price;
+	private String item_kingtype;
 	private String item_type;
 	private String item_info;
 	private int item_stock;
@@ -22,11 +23,20 @@ public class ItemDto {
 		this.setItem_no(rs.getInt("item_no"));
 		this.setItem_name(rs.getString("item_name"));
 		this.setItem_price(rs.getInt("item_price"));
+		this.setItem_type(rs.getString("item_kingtype"));
 		this.setItem_type(rs.getString("item_type"));
 		this.setItem_info(rs.getString("item_info"));
 		this.setItem_stock(rs.getInt("item_stock"));
 		this.setItem_image(rs.getString("item_image"));
 		this.setItem_time(rs.getString("item_time"));
+	}
+
+	public String getItem_kingtype() {
+		return item_kingtype;
+	}
+
+	public void setItem_kingtype(String item_kingtype) {
+		this.item_kingtype = item_kingtype;
 	}
 
 	public int getItem_no() {

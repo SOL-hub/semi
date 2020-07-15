@@ -4,7 +4,6 @@
     pageEncoding="UTF-8"%>
     <%
 	
-	
 	ItemDao idao = new ItemDao();
 	ItemDto idto = new ItemDto();
 	
@@ -18,7 +17,7 @@
     <title>상품</title>
 </head>
 <body>
-	<table>
+	<table text-align="center">
 		<tbody>
 		<tr>
 		<td>[<%=idto.getItem_type()%>]</td>
@@ -38,6 +37,7 @@
 		</tr>
 		</tbody>
 	</table>
+	<a href="#"><input type="button" value="삭제"></a>
 </body>
 </html> 
 <jsp:include page="/template/footer.jsp"></jsp:include>  

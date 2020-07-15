@@ -88,21 +88,42 @@
         </h5>
         <h5>startBlock=<%=startBlock%>
 			finishBlock=<%=finishBlock%></h5>
-            <p class="subject middle-font">침대</p>
+            <p class="subject middle-font">욕실</p>
             <div class="selected subject">
                 <ul class="main_menu">
                     <li>
                         <a href=#>전체</a>
                     </li>
                     <li>
-                        <a href=#>일반침대</a>
+                        <a href=#>젠다이</a>
                         <ul>
                             <li><a href="#">싱글</a></li>
                             <li><a href="#">듀얼</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href=#>매트리스</a>
+                        <a href=#>거울수납장</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">싱글</a></li>
+                            <li><a href="#">듀얼</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=#>선반</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">싱글</a></li>
+                            <li><a href="#">듀얼</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=#>비데</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">싱글</a></li>
+                            <li><a href="#">듀얼</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=#>환풍기</a>
                         <ul class="sub_menu">
                             <li><a href="#">싱글</a></li>
                             <li><a href="#">듀얼</a></li>

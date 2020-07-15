@@ -1,9 +1,20 @@
+<%@page import="home.beans.dto.ItemDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <head>
+<style>
+
+</style>
+<script>
+
+</script>
+</head>
 <form action="item_write.do" method="post">
 <%if(request.getParameter("item_no") != null){ %>
 <input type="hidden" name="item_no" value="<%=request.getParameter("item_no")%>">
 <%} %>
+
 <div align="center">
 	<h2>상품등록</h2>
 	<!-- 테이블에 글 정보를 출력 -->
@@ -15,14 +26,36 @@
 				
 			</tr>
 			<tr>
+
+
 			<th>상품타입</th>
-				<td><select name="item_type" required>
-				<option value="침대">침대</option>
-				<option value="책상">책상</option>
-				<option value="의자">의자</option>
-				<option value="소파">소파</option>
+				<td><select name="item_kingtype" required >
+					<option  value="c1">욕실</option>
+					<option  value="c2">부엌</option>
+					<option value="c3">주방</option>
 				</select>
-				</td>
+				<select id="yorksil" name="item_type" required>
+					<option value="젠다이">젠다이</option>
+					<option value="거울수납장">거울수납장</option>
+					<option value="선반">선반</option>
+					<option value="비데">비데</option>
+					<option value="환풍기">환풍기</option>
+				</select>
+				<select id="buuk" name="item_type" required>
+					<option value="강마루">강마루</option>
+					<option value="강화마루">강화마루</option>
+					<option value="합판마루">합판마루</option>
+					<option value="원목마루">원목마루</option>
+				</select>
+				<select id="jubang" name="item_type" required>
+					<option value="아일랜드 식탁">아일랜드 식탁</option>
+					<option value="냉장고장">냉장고장</option>
+					<option value="키큰장">키큰장</option>
+					<option value="뒷선반">뒷선반</option>
+					<option value="쿡탑">쿡탑</option>
+					<option value="플랩장">플랩장</option>
+				</select>
+				</td>			
 			</tr>
 			<tr>
 			<th>재고</th>
