@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import home.beans.dao.MemberDao;
 import home.beans.dao.eventDao;
 import home.beans.dto.MemberDto;
 import home.beans.dto.eventDto;
@@ -22,6 +23,9 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		req.setCharacterEncoding("UTF-8");
 		MemberDto mdto = (MemberDto)req.getSession().getAttribute("userinfo");
 		String member_id = mdto.getMember_id();
+		int member_no = mdto.getMember_no();
+		
+		int member_point = Integer.parseInt(req.getParameter("member_point"));
 		
 		eventDto edto = new eventDto();
 		edto.setEvent_head(req.getParameter("event_head"));
@@ -37,9 +41,17 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		edao.write(edto); //등록
 		
 		
+		MemberDto mdto2 = new MemberDto();
+		mdto2.setMember_point(member_point);
+		mdto2.setMember_no(member_no);
+		
+		MemberDao mdao= new MemberDao();
+		mdao.pointadd(mdto2);
+		
+		
 		//출력
-	
-			resp.sendRedirect("event1_content.jsp?event_no="+event_no);
+			resp.getWriter().print("ddd");
+//			resp.sendRedirect("event1_content.jsp?event_no="+event_no);
 		}
 		
 	
