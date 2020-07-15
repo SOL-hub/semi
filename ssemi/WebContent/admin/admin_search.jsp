@@ -78,7 +78,7 @@
 
 	List<MemberDto> list;
 
-	if (keyword != null && !keyword.equals("") && start != null && !start.equals("") && finish != null && !finish.equals("")) {// 둘 다 없을 때
+	if (keyword != null && !keyword.equals("") && start != null && !start.equals("") && finish != null && !finish.equals("")) {// 둘 다 있을 때 
 		
 // 		list = mdao.search(type, keyword);	
 		list = mdao.search_join(type, keyword,start, finish);
