@@ -15,9 +15,38 @@ main {
             border: 1px solid #aaa;
         }
 
+
+article{
+	border: 1px solid #aaa;
+	height: 500px;
+}
+
+.login-wrap {
+	width: 320px;
+	text-align: center;
+	margin: 0px auto;
+}
+
+/*아이디, 비번입력창*/
+.input-wrap {
+	text-align: center;
+	margin: 0px auto;
+}
+
+
         h1 {
             font-size: 30px;
         }
+
+
+.form-input {
+	width: 320px;
+	padding: 10px;
+	font-size: 15px;
+	border: 1px solid black;
+	margin: 5px 0px;
+}
+
 
         /*대표버튼*/
         .click-btn2{
