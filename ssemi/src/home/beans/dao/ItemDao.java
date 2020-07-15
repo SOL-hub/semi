@@ -36,13 +36,13 @@ public class ItemDao {
 	
 	public Connection getConnection() throws Exception{
 		
-		Class.forName("oracle.jdbc.OracleDriver");
-		
-		Connection con = DriverManager.getConnection(
-				"jdbc:oracle:thin:@localhost:1521:xe" , "C##PROJECT","C##PROJECT");
-				
-		return con;//동휘(수정_이유:product_bed_list적용이안되서)(결과:이렇게바꿧는데 됨)
-		//return src.getConnection();
+//		Class.forName("oracle.jdbc.OracleDriver");
+//		
+//		Connection con = DriverManager.getConnection(
+//				"jdbc:oracle:thin:@localhost:1521:xe" , "C##PROJECT","C##PROJECT");
+//				
+//		return con;//동휘(수정_이유:product_bed_list적용이안되서)(결과:이렇게바꿧는데 됨)
+		return src.getConnection();
 	}
 	
 	//상품 검색 메소드
