@@ -70,7 +70,7 @@
 				<li><a href="user_out.jsp"> 회원탈퇴 </a></li>
 				<li><a href="shopBarket3.jsp"> 장바구니 </a></li>
 				<li><a href="wishlist.jsp">위시리스트</a></li>
-				<li><a href="#"> 구매내역 </a></li>
+				<li><a href="<%=request.getContextPath()%>/buypage/buy_list.jsp"> 구매내역 </a></li>
 				<li><a href="#"> 게시판내역 </a></li>
 				<li><a href="#"> 견적내역 </a></li>
 			</ul>

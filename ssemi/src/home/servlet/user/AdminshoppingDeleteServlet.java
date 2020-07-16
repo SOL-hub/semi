@@ -27,7 +27,7 @@ public class AdminshoppingDeleteServlet extends HttpServlet {
 			
 			//처리 : 삭제 처리
 			ShoppingDao sdao = new ShoppingDao();
-			sdao.delete(shopping_no);
+			 sdao.delete(shopping_no);
 			
 			//회원탈퇴와 동일한 기능 사용
 			
