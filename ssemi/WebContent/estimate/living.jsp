@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> 주방 견적 계산기 </title>
+    <title> 마루 견적 계산기 </title>
 
 
 <style>   

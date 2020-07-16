@@ -104,7 +104,7 @@ height:200px;
 
 <form action="saveesti.do">
   <div class="container">
-    <h1>주방 견적서</h1>
+    <h1>마루 견적서</h1>
     <p><%=mdto.getMember_name()%>님의 견적서 입니다</p>
     <hr>
 
