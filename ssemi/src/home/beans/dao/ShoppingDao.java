@@ -144,4 +144,16 @@ public class ShoppingDao {
 	}
 	
 	
+	public void delete(String shopping_no) throws Exception {
+		Connection con = getConnection();
+
+		String sql = "DELETE shopping WHERE shopping_no= ?";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, shopping_no);
+		ps.execute();
+
+		con.close();
+	}
+	
 }
