@@ -173,7 +173,8 @@
 						<th >상품명</th>
 						<th> 수량 </th>
 						<th>결제 예정 금액</th>
-						<th>결제 상태</th>
+						<th>결제 수단</th>
+						<th>비고</th>
 						
 					</tr>
 
@@ -184,10 +185,10 @@
 						<td class="Ldata"><a href = "#">123456</a></td>
 						<td class="Ldata"><a href = "#">T12345</a></td>
 						<td class="Ldata" ><a href = "#">예쁜 서랍 <br> <span id="totalcolor">화이트</span></a></td>
-						<td class="Ldata"><a href = "#">3</a></td>
-						<td class="Ldata"><a href = "#">562,150원</a></td>
-						<td class="Ldata"><a href = "#">미결제</a></td>
-						
+						<td class="Ldata">3</td>
+						<td class="Ldata">562,150원</td>
+						<td class="Ldata">무통장 입금</td>
+						<td class="Ldata"><a href = "#"><input type="button" value="취소"  class="beforetable" style="background-color:#C80A1E"></a></td>
 				
 						
 							
