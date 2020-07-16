@@ -170,4 +170,24 @@ public class eventDao {
 	   
    }
    
+   //수정
+   
+   public void edit(eventDto edto)throws Exception{
+	   Connection con = getConnection();
+	   
+	   String sql = "UPDATE event set "
+	   		+ "event_head=?, event_title=?, event_content=? where event_no=?";  //"event_head=?   --> 너는 잠시 보류
+	   
+	   PreparedStatement ps = con.prepareStatement(sql);
+	   ps.setString(1, edto.getEvent_head());
+	   ps.setString(2, edto.getEvent_title());
+	   ps.setString(3, edto.getEvent_content());
+	   ps.setInt(4, edto.getEvent_no());
+	   
+	   ps.execute();
+	   
+	   con.close();
+	   
+   }
+   
    }
