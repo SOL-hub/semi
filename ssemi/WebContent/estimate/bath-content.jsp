@@ -14,7 +14,6 @@
 	//3. 결과 : 단일 조회 결과(게시글 , BoardDto)
 	
 	int bath_no = Integer.parseInt(request.getParameter("bath_no"));
-
 	EstimateDao edao = new EstimateDao();
 	
 	//board_no를 이용하여 BoardDto를 얻어낸다

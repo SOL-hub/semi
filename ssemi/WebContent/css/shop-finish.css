@@ -2,7 +2,9 @@
 
     * {
     font-family: NanumGothicCoding;
-   src: url("../font/NanumGothicCoding.ttf");
+
+	src: url("../font/NanumGothicCoding.ttf");
+
         box-sizing: border-box;
         font-family: 'Noto Sans KR', sans-serif;
     }

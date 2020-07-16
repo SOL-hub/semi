@@ -7,8 +7,11 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
+</head>
+<body>
 
-<main>
+
+<main style=padding-top:150px;>
 
 
 	<div class="find-wrap">
@@ -38,10 +41,10 @@
 			
 		
 </div>
-
-		</div>
+</div>
 
 </main>
+</body>
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

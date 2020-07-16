@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+
+* {
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+	text-align: center;
+}
+
+main {
+	margin: auto;
+	text-align: center;
+	margin-top: 150px;
+	padding:50px 50px;
+}
+
+
+.table-wrap {
+	 padding:50px 50px;
+	text-align: center;
+}
+
+/*추천제품들*/
+.img-wrap{
+	
+	
+	
+}
+
+/*이미지*/
+
+.img-shadow:hover{
+             box-shadow: 0px 0px 5px 2px #ccc; /*아니면#333*/ 
+            display: inline-block;
+            padding:2px;
+            margin: auto;
+            font
+        }
+       .a:hover{ 
+            border:2px solid white;
+        }
+        
+        .b:hover{
+           box-shadow: 0px 0px 5px 2px #ccc; /*아니면#333*/ 
+        }
+    
+    
+        .img-wrap{
+            text-align: center;
+        }
+        
+         h1:nth-child(2){
+            color: #C80A1E;
+            text-align: center;
+            font-size: 50px
+            
+        }
+        
+       .hr-onelow{
+            width: 1800px;
+           color: grey;
+        }
+        
+        .hr-twolow{
+            width: 1800px;
+            color: gainsboro;
+        }
+        
+            h4{
+            color: #C80A1E;
+            background-color: antiquewhite;
+             padding: 0.75rem;
+            <!--안됌border-width: 200px;-->
+           
+            
+        }
+        
+        .click{
+	text-align: center;
+	font-size: 16px;
+	color: white;
+	background-color: #C80A1E;
+	width: 255px;
+	padding: 1rem;
+	margin-top: 23px;
+	margin-bottom: 15px;
+	margin-left: 50px;
+	margin-right: 50px;;
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+    
