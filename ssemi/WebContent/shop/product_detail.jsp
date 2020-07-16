@@ -55,6 +55,11 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
 </head>
 
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
 <form method="post">
  <main>
    <div>
@@ -91,8 +96,8 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
     <div class=right-box>
         <div class="gkaljzang"></div>
         <div class="f20 mar-b12"><%=idto.getItem_name()%></div>
-        <div class="f25 mar-b20">모션베드 캐주얼(라텍스,책상형)</div>
-        <div class="f25 colorred mar-b60">39,900원</div>
+        <div class="f25 mar-b20"><%=idto.getItem_info()%></div>
+        <div class="f25 colorred mar-b60"><%=idto.getItem_price()%>원</div>
         
            
             <div class="delivery">
@@ -100,8 +105,8 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                 <span>내일</span>
                 <span><b>배송료:</b></span>
                 <span>5,000</span>
-                <span><b>제품넘버:</b></span>
-                <span>제품id쓰시오</span>
+                <span><b>수량:</b></span>
+                <span><%=idto.getItem_stock()%></span>
             </div>
             <div class="eeee">
                              <div>
@@ -136,6 +141,7 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                     <div class="shop-btn">
                     <a href="#"><input type="button" value="결제하기" class="payit"></a>
                     <a href="#"><input type="button" value="장바구니" class="bagit"></a>
+                    <a href="#"><input type="button" value="찜"></a>
                     </div>
                         <div class="border_1"></div>
                       

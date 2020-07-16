@@ -9,8 +9,12 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bed_list.css">
 </head>
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
     <main>
-    <div>
     <div>
             <p class="subject middle-font">keyword&nbsp검색결과</p>
             </div>
