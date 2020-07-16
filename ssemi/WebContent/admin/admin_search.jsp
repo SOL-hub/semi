@@ -1,3 +1,5 @@
+<%@page import="home.beans.dao.ShoppingDao"%>
+<%@page import="home.beans.dto.shoppingDto"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -28,7 +30,11 @@
 <script src="<%=request.getContextPath()%>/js/lightpick.js"></script>
 
 <style>
-
+	#searchtd{
+		
+		padding-left:50px;
+	}
+	
 /*회원 검색과 리스트 전체 div*/
 </style>
 <script>
@@ -44,7 +50,7 @@
 			format : 'YYYY-MM-DD',
 
 			//한 화면에 표시될 달의 개수
-			numberOfMonths : 2,
+			numberOfMonths : 1,
 
 			//시작요일(1:월 ~ 7:일)
 			firstDay : 7,
@@ -55,7 +61,10 @@
 			//선택 방향 제어
 			selectForward : true,
 			selectBackword : false,
-
+			
+			repick: true,
+			
+		
 		};
 
 		var picker = new Lightpick(options);
@@ -113,8 +122,15 @@
 		</div>
 
 
+		
+		<%
+		ShoppingDao sdao = new ShoppingDao();
+		
+		
+		List<shoppingDto> slist = sdao.getList();  %>
+
 		<div class="label-wrap">
-			<a href="total_before_pay.jsp" class="today-label"> 주문 (15건) </a>
+			<a href="total_before_pay.jsp" class="today-label"> 주문 (<%=slist.size() %>건) </a>
 		</div>
 
 		<div class="today-cart-wrap">
@@ -131,13 +147,14 @@
 
 
 		<div class="today-cart-wrap">
-			<img class="todayimg" src="/ssemi/img/customer.png">
+			<a href="admin_search.jsp" ><img class="todayimg" src="/ssemi/img/customer.png">
+			</a>
 		</div>
 
  	<% int count = mdao.memberCount(); %>
 
 		<div class="label-wrap ">
-			<a href="#" class="today-label"> 회원 가입(<%= count %>건) </a>
+			<a href="admin_search.jsp" class="today-label"> 회원 가입(<%= count %>건) </a>
 		</div>
 
 	</div>
@@ -160,7 +177,7 @@
 				
 					<tr>
 						<th>가입일</th>
-						<td><input type="text" class="picker-start" name="start"><span>~</span><input
+						<td><input type="text" class="picker-start" name="start"  ><span>~</span><input
 							type="text" class="picker-end" name="finish"></td>
 
 					</tr>
@@ -202,7 +219,7 @@
 						<th>등록일</th>
 						<th>전화번호</th>
 						<th>나이</th>
-						<th>보기</th>
+						<th>수정/삭제</th>
 					</tr>
 
 
@@ -223,11 +240,8 @@
 							href="<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_phone()%></a></td>
 						<td class="Ldata"><a
 							href="<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_age()%></a></td>
-						<td class="Ldata"><a href="#"><input type="button"
-								value="주문내역" class="listbtn"></a> <a href="#"><input
-								type="button" value="적립금" class="listbtn"></a></td>
-
-						<td><a
+					
+						<td id="searchtd"><a
 							href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input
 								type="button" value="수정" class="listbtn"></a> <a
 							href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/delete.do?member_no=<%=mdto.getMember_no()%>"><input
@@ -242,6 +256,8 @@
 			</div>
 
 		</div>
+			<br>
+	<br>
 	</div>
 
 

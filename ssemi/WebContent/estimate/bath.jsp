@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> 욕실 견적 계산기 </title>
+
+
 <style>   
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap');
     :root {
@@ -215,7 +221,7 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
     vertical-align: -3px;
     }
     
-  .submit_button {
+    .submit_button {
          font-family: Tahoma, "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
         color: var(--white);
         background-color: var(--red);
@@ -233,7 +239,7 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
     }
     
     .submit_button:hover{
-    background-color:#C80A1E;
+    background-color: #3362a1  ;
     }
     
     .reset_button {
@@ -314,19 +320,7 @@ for(var i=0; i < edata.length; i++){
     
     </script>
   
-  <!-- header>-->
-  <jsp:include page="/template/header.jsp"></jsp:include>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title> 욕실 견적 계산기 </title>
 
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/login.css">
-  
 </head>
 <body>
 		
@@ -441,10 +435,8 @@ for(var i=0; i < edata.length; i++){
 						</label>
 					</div>
 							<div class="row-empty"></div>
-							
-							
 
-<!--<div class="foott">--> 
+<div class="foott"> 
 		 <input type="submit" class="submit_button fott" value="견적계산 확인 ">
 		  <input type="hidden" name="pricee" value="">   
 </div>
@@ -455,7 +447,5 @@ for(var i=0; i < edata.length; i++){
     	</div>
 			</div>	
 		</div>
-
-<jsp:include page="/template/footer.jsp"></jsp:include>
 </body>
 </html>

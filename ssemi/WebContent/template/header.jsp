@@ -11,6 +11,7 @@
    MemberDto udto = (MemberDto) session.getAttribute("userinfo");
 
 //상품 검색 : item_type 유형 검색어 입력
+request.setCharacterEncoding("UTF-8");
 String keyword = request.getParameter("keyword");
 // 이 검색어를 활용하여 '상품 목록' 불러오기
 ItemDao idao = new ItemDao();
@@ -43,7 +44,12 @@ href="<%=request.getContextPath()%>/css/main.css">
             <ul class="menu side_left">
                <li class="menu_left">커뮤니티
                   <ul class="menu_left_innerMenu">
+
                      <li>QnA</li>
+
+                     <li><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></li>
+                      <li><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></li>
+
                      <li>Review</li>
                      <li>  <a href="<%=request.getContextPath()%>/event/event.jsp">Event</a></li>
                   </ul>
@@ -66,7 +72,7 @@ href="<%=request.getContextPath()%>/css/main.css">
             </ul>
          </div>
          <div class="menu_logo">
-            <a href="<%=request.getContextPath()%>"> <img width="50px"
+            <a href="<%=request.getContextPath()%>/index.jsp"> <img width="50px"
                src="<%=request.getContextPath()%>/img/pig_logo.png">
             </a>
          </div>

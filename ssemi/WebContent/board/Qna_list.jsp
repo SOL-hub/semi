@@ -38,7 +38,7 @@
 	font-size: 14px;
 	color: #909090;
 	top: 150px;
-	left: -220px;
+	left: -250px;
 	border: 1px solid #AAA;
 	position: absolute;
 	width: 120px;
@@ -46,6 +46,7 @@
 	text-align: left;
 	display: inline-block;
 	cursor: pointer;
+	
 }
 
 /*사이드바 내 카테고리ㅣ */
@@ -67,7 +68,12 @@
 	margin-bottom: 20px;
 	padding-top: 40px;
 }
+.cs_row {
+color:#909090;
+}
+.cs_row:hover {
 
+}
 /* 본문 박스 */
 .qna_box {
 	top: 300px;
@@ -77,7 +83,7 @@
 }
 
 .body {
-	margin-left: 500px;
+	margin-left: 400px;
 	botom: 300px;
 	text-align: center;
 }
@@ -102,19 +108,43 @@
 	display: inline-block
 }
 
-#customer .navi>p:nth-child(1) {
-	font-size: 17px;
-	margin-bottom: 30px;
-}
-
 .title_box {
 	padding-top: 150px;
 }
 
 .qna_box {
-	border: 1px solid #333333;
-	width: 80%;
+	width: 1000px;
+	border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-collapse: collapse;
+    margin-left:150px;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
 }
+.qna_box>tbody {
+	border-top: 1px solid #ddd;
+    border-bottom: 1px solid #333333;
+        }
+ .qna_box>tbody>tr {
+   border-bottom: 1px solid #ddd;
+   }
+   /*테이블 제목 라인*/
+   .qna_box_title {
+     padding: 11px 0 10px;
+    border-bottom: 4px double #ddd;
+    color: #353535;
+    vertical-align: middle;
+    font-weight: normal;
+    font-size: 11px;
+    }
+    /*테이블 내용 부분*/
+    .qna_box_content {
+    border-color: #eee;
+    padding: 15px 0 14px 0;
+    border-right: 0;
+    font-size:13px;
+    color:#555555;
+    }
 /* 페이지 네비게이션 */
 .page_navi {
 	margin-top: 60px;
@@ -129,8 +159,77 @@ display:inline-block;
 }
 .navi_img {
 padding-top:5px;
-
 }
+
+    /* 검색창 */
+
+    .search_box{
+    height: 30px;
+    line-height: 22px;
+    padding: 2px 4px;
+    border: 1px solid #eaeaea;
+    color: #333;
+    font-size: 11px;
+    vertical-align: bottom;
+    padding: 0 0 1px 3px;
+    width: 72px;
+    margin: 10px 00px 0px;   
+    }
+    .write_button {
+        height: 20px;
+    line-height: 18px;
+    padding: 2px 4px;
+    border: 1px solid #eaeaea;
+    color: #333;
+    margin: 10px 0 10px 700px;   
+       display: inline-block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+    border: 1px solid #444;
+    background: #444;
+    color: #fff;
+    border-radius: 2px;
+   cursor:pointer;
+
+    width: 100px;
+
+    } 
+
+    .search_keyword {
+    line-height: 22px;
+    padding: 2px 4px;
+    border: 1px solid #eaeaea;
+    color: #333;
+    font-size: 11px;
+    vertical-align: bottom;
+    padding: 0 0 1px 3px;
+    width: 72px;
+    height: 30px;
+    }
+    .search_submit {
+    background: #fff;
+    color: #444!important;
+    border-color: #ddd!important;
+    height: 30px;
+    line-height: 22px;
+    padding: 2px 4px;
+    border: 1px solid #eaeaea;
+    color: #333;
+    font-size: 11px;
+    vertical-align: bottom;
+    padding: 0 0 1px 3px;
+    width: 72px;
+    cursor:pointer;
+    }
+    .search_keyword,
+    .search_box,
+    .search_submit {
+   margin: 0 558px 0 -558px;
+      }
+
 </style>
 </head>
 <%
@@ -190,8 +289,6 @@ padding-top:5px;
 		} else {
 			list = qdao.getList(start, finish);
 		}
-			
-		
 %>
 
 <body>
@@ -200,15 +297,16 @@ padding-top:5px;
 			<div class="head">
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
-					<p class="notice">공지사항</p>
-					<p class="qna"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">Q&A</a></p>
-					<p class="event">이벤트</p>
+					<p class="cs_row">공지사항</p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
+					<p class="cs_row">이벤트</p>
 				</div>
 
 				<p class="title">
 					<b>상품문의</b>
 				</p>
-				<p class="title_content">서비스에 대해 궁금한 사항을 문의하세요</p>
+				<p class="title_content" style="font-size:18px">상품에 대해 궁금한 사항을 문의하세요</p>
 			</div>
 
 
@@ -217,10 +315,10 @@ padding-top:5px;
 				<table class="qna_box">
 					<thead>
 						<tr>
-							<th>NO</th>
-							<th width="40%">SUBJECT</th>
-							<th>WRITER</th>
-							<th>DATE</th>
+							<th class="qna_box_title">NO</th>
+							<th class="qna_box_title" width="40%">SUBJECT</th>
+							<th class="qna_box_title">WRITER</th>
+							<th class="qna_box_title">DATE</th>
 							<!-- 테스트를 위해 항목 3개를 추가 -->
 
 						</tr>
@@ -236,12 +334,11 @@ padding-top:5px;
 						
 						MemberDao mdao = new MemberDao();
 						MemberDto mdto = mdao.get(qmdto2.getQna_writer()); // qna_no로 회원아이디 조회
-
+					
 					%>
-
 						<tr>
-							<td><%=qmdto2.getQna_no() %></td>
-							<td>
+							<td class="qna_box_content"><%=qmdto2.getQna_no() %></td>
+							<td class="qna_box_content">
 							
 												<!-- 
 						답글은 띄어쓰기 구현
@@ -255,35 +352,34 @@ padding-top:5px;
 					<%} %>
 						<a href="Qna_content.jsp?qna_no=<%=qmdto2.getQna_no()%>"><%=qmdto2.getQna_title() %>
 						</a></td>
-							<td><%=mdto.getMember_id()%></td>
-							<td><%=qmdto2.getQna_autotime() %></td>
+							<td class="qna_box_content"><%=mdto.getMember_id()%></td>
+							<td class="qna_box_content"><%=qmdto2.getQna_autotime() %></td> <!-- 컴퓨터에서 Qna_date()로 확인하기 -->
 						</tr>
 						<%} %>
 					</tbody>
 
-					<tfoot>
-						<tr>
-							<td colspan="8" align="right"><a href="Qna_write.jsp"> <input type="button" value="WRITE">
-								</a>
-							</td>
-						</tr>
-					</tfoot>
 				</table>
+				<div>
+						<span colspan="8" align="right" >
+						<a href="Qna_write.jsp"> <input type="button" value="WRITE"  class="write_button">
+							</a>
+						</span>
+				</div>
 
 
 				<!-- 검색창 -->
 	
-				<form action="Qna_list.jsp" method="get">
+				<form action="Qna_list.jsp" method="get" class="search_container">
 					<!-- 검색분류 -->
-					<select name="type">
+					<select name="type" class="search_box" >
 						<option value="qna_writer">WRITER</option>
 					</select>
 
 					<!-- 검색어 -->
-					<input type="text" name="keyword" required>
+					<input  class="search_keyword" type="text" name="keyword" required>
 
 					<!-- 전송버튼 -->
-					<input type="submit" value="SEARCH">
+					<input type="submit" value="SEARCH" class="search_submit" >
 				</form>
 
 			</div>

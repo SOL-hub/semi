@@ -44,7 +44,7 @@
 			<tr>
 				<th>번호</th>
 				<th width="40%">가격</th>
-				<th>작성일</th>
+<th>작성일</th>
 			</tr>
 		</thead>
 		
@@ -82,9 +82,7 @@
 		</tfoot>
 	</table>
 	</div>
-	
-	
-	<!--추천상품-->
+
 
 	<div class = "img-wrap">
 	    <h5 style= font-size:20px; width:1000px;>함께 사면 좋은 제품 추천</h5>

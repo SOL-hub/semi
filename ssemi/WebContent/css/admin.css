@@ -1,9 +1,7 @@
-@charset "EUC-KR";
-
-/*ÀÓ»õº½*/
+/*ì„ìƒˆë´„*/
 @charset "UTF-8";
 
-/*·Î±×ÀÎ ÆäÀÌÁö ÀÎÇ²  ±¸Çö*/
+/*ë¡œê·¸ì¸ í˜ì´ì§€ ì¸í’‹  êµ¬í˜„*/
 * {
 	box-sizing: border-box;
 	font-family: 'Noto Sans KR', sans-serif;
@@ -58,9 +56,9 @@
 	cursor: pointer;
 }
 
-/*Ã¼Å© ¹Ú½º Àû¿ë 
-Ã¼Å©¹Ú½º ÇÑ°³ ´ç id="cb1" id="cb2" ÀÌ·¸°Ô 3,4,5,6 ¼ıÀÚ ¿Ã¶ó°¡¸é¼­ Á¤ÇÑ ÈÄ ºÎ¿©
-¶óº§ ÀÌ¸§Àº ÇØ´ç Ã¼Å©¹Ú½º ÀÌ¸§°ú µ¿ÀÏÇÏ°Ô Áş±â 
+/*ì²´í¬ ë°•ìŠ¤ ì ìš© 
+ì²´í¬ë°•ìŠ¤ í•œê°œ ë‹¹ id="cb1" id="cb2" ì´ë ‡ê²Œ 3,4,5,6 ìˆ«ì ì˜¬ë¼ê°€ë©´ì„œ ì •í•œ í›„ ë¶€ì—¬
+ë¼ë²¨ ì´ë¦„ì€ í•´ë‹¹ ì²´í¬ë°•ìŠ¤ ì´ë¦„ê³¼ ë™ì¼í•˜ê²Œ ì§“ê¸° 
 
 */
 input[id="cb1"], input[id="cb2"], input[id="cb3"], input[id="cb4"],
@@ -99,7 +97,7 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	font-size: 13px;
 }
 
-/*¾îµå¹Î È¸¿ø °Ë»ö ¸®½ºÆ® css ÀÓ»õº½*/
+/*ì–´ë“œë¯¼ íšŒì› ê²€ìƒ‰ ë¦¬ìŠ¤íŠ¸ css ì„ìƒˆë´„*/
 .tsearch {
 	border: 1px solid #AAAAAA;
 	width: 550px;
@@ -128,6 +126,7 @@ h2 {
 }
 
 td {
+	
 	padding: 10px 10px 10px 10px;
 	color: #AAAAAA;
 	font-size: 13px;
@@ -160,7 +159,7 @@ span {
 	size: 10px;
 }
 
-/*¸®½ºÆ® ½ºÅ¸ÀÏ */
+/*ë¦¬ìŠ¤íŠ¸ ìŠ¤íƒ€ì¼ */
 #Ltitle {
 	font-size: 20px;
 	color: #C80A1E;
@@ -212,14 +211,14 @@ table tr th {
 }
 
 
-/*¸ŞÀÎ ÆäÀÌÁö Ä«Å×°í¸® ¸ğÀ½*/
- /*¿À´Ã Å«±Û¾¾·Î Ç¥½Ã*/
+/*ë©”ì¸ í˜ì´ì§€ ì¹´í…Œê³ ë¦¬ ëª¨ìŒ*/
+ /*ì˜¤ëŠ˜ í°ê¸€ì”¨ë¡œ í‘œì‹œ*/
       h3 {
             width: 100px;
             text-align: center;
         }
 
-        /*ÀÌ¹ÌÁö*/
+        /*ì´ë¯¸ì§€*/
         .todayimg {
             padding: 5px;
             height: 100px;
@@ -228,7 +227,7 @@ table tr th {
 
         }
 
-        /*µ¿±×¶õ È¸»ö ÀÌ¹ÌÁö div*/
+        /*ë™ê·¸ë€ íšŒìƒ‰ ì´ë¯¸ì§€ div*/
         .today-cart-wrap {
 
             height: 100px;
@@ -238,21 +237,21 @@ table tr th {
 
         }
 
-        /*Ä«Å×°í¸®º° ±Û¾¾*/
+        /*ì¹´í…Œê³ ë¦¬ë³„ ê¸€ì”¨*/
         .today-label {
         	text-decoration: none;
             text-align: center;
             color: #C80A1E;
         }
 
-        /*Ä«Å×°í¸® º° ±Û¾¾ div*/
+        /*ì¹´í…Œê³ ë¦¬ ë³„ ê¸€ì”¨ div*/
         .label-wrap {
        		 text-align: center;
             height: 100px;
             width: 100px;
         }
 
-        /*Ä«Å×°í¸® ÀüÃ¼ °¨½Ó*/
+        /*ì¹´í…Œê³ ë¦¬ ì „ì²´ ê°ìŒˆ*/
         .category-main.fixed {
 
             margin-top:5px;

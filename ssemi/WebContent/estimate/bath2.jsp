@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
     
     <%
+
     request.setCharacterEncoding("UTF-8");
     String bath_gong = request.getParameter("bath_gong");
     String bath_sohyung = request.getParameter("bath_sohyung");
@@ -28,6 +29,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
 * {
 	box-sizing: border-box;
 	font-family: 'Noto Sans KR', sans-serif;
@@ -83,6 +85,76 @@ height:200px;
 </head>
 <body>
 
+
+* {
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+body{
+   height:100%;}
+
+
+.container {
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+ width:50%;
+ height:100%;
+ margin:auto;
+ text-align: center;
+  padding: 16px;
+  background-color: white;
+}
+
+
+
+input[type=text]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+.rowrow{
+height:200px;
+}
+
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+</style>
+</head>
+<body>
+
 <div class="rowrow"></div>
 
 <form action="saveesti.do">
@@ -117,3 +189,4 @@ height:200px;
 </html>
 
    <jsp:include page="/template/footer.jsp"></jsp:include>
+
