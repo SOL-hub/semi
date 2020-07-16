@@ -63,7 +63,9 @@
 				<%
 					}
 				%>
-			
+				<tr>
+				<td><a href="#"><input type="button">삭제</a></td>
+				</tr>
 			</tbody>	
 		</table>
 	</div>
