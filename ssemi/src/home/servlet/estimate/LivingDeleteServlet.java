@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import home.beans.dao.EstimateDao;
 
-@WebServlet(urlPatterns = "/estimate/delete.do")
+@WebServlet(urlPatterns = "/estimate/delete3.do")
 public class LivingDeleteServlet  extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
