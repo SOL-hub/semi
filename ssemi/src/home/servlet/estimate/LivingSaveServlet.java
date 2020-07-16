@@ -13,7 +13,7 @@ import home.beans.dao.EstimateDao;
 import home.beans.dto.EstimateDto;
 import home.beans.dto.MemberDto;
 
-@WebServlet(urlPatterns = "/estimate/saveesti.do")
+@WebServlet(urlPatterns = "/estimate/saveesti2.do")
 public class LivingSaveServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
