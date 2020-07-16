@@ -1,3 +1,5 @@
+<%@page import="home.beans.dao.ShoppingDao"%>
+<%@page import="home.beans.dto.shoppingDto"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -113,8 +115,15 @@
 		</div>
 
 
+		
+		<%
+		ShoppingDao sdao = new ShoppingDao();
+		
+		
+		List<shoppingDto> slist = sdao.getList();  %>
+
 		<div class="label-wrap">
-			<a href="total_before_pay.jsp" class="today-label"> 주문 (15건) </a>
+			<a href="total_before_pay.jsp" class="today-label"> 주문 (<%=slist.size() %>건) </a>
 		</div>
 
 		<div class="today-cart-wrap">

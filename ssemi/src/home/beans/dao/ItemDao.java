@@ -34,6 +34,8 @@ private static DataSource src;
 		}
 	}
 	
+
+
 	public Connection getConnection() throws Exception{		
 
 //		Class.forName("oracle.jdbc.OracleDriver");
@@ -43,6 +45,7 @@ private static DataSource src;
 //				
 //		return con;//동휘(수정_이유:product_bed_list적용이안되서)(결과:이렇게바꿧는데 됨)
 		return src.getConnection();
+
 	}
 	
 	//상품 검색 메소드

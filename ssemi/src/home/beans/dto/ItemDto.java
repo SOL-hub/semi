@@ -7,17 +7,20 @@ public class ItemDto {
 	private int item_no;
 	private String item_name;
 	private int item_price;
-	private String item_kingtype;
+	
 	private String item_type;
 	private String item_info;
 	private int item_stock;
 	private String item_image;
 	private String item_time;
+	private String item_kingtype;
 	
 	public ItemDto() {
 		super();
 	}
  
+
+
 	public ItemDto(ResultSet rs) throws SQLException {
 		
 		this.setItem_no(rs.getInt("item_no"));
@@ -29,6 +32,7 @@ public class ItemDto {
 		this.setItem_stock(rs.getInt("item_stock"));
 		this.setItem_image(rs.getString("item_image"));
 		this.setItem_time(rs.getString("item_time"));
+		this.setItem_kingtype(rs.getString("item_kingtype"));
 	}
 
 	public String getItem_kingtype() {
