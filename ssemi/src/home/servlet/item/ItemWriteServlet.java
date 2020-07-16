@@ -1,4 +1,4 @@
-package home.servlet.user;
+package home.servlet.item;
 
 import java.io.IOException;
 

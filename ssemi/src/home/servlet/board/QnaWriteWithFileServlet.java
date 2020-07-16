@@ -1,4 +1,4 @@
-package home.servlet.user;
+package home.servlet.board;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class QnaWriteWithFileServlet extends HttpServlet{
 		// 1. 해석을 위한 도구 생성 옵션 설정
 		String charset = "UTF-8";
 		int limit=10*1024*1024;
-		File baseDir = new File("D:/Semi/upload");
+		File baseDir = new File("D:/upload/qna_file");
 		baseDir.mkdir();
 		
 		// 2. 도구 생성을 위한 Factory 객체 생성
