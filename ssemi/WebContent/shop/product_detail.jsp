@@ -58,7 +58,7 @@
 
 <body>
  <main>
-   <div>
+   <div style= padding-top:"100">
     <div class="section-box">
         <div class="f-pic">
             
@@ -140,7 +140,7 @@
                     </div>
                         <div class="border_1"></div>
                       
-       
+       </div>
                        
                  
                         

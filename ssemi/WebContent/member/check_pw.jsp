@@ -24,7 +24,8 @@
             
            <input type ="hidden" name="go" value="<%=go%>"> 
            
-           <input class="form-find-id" type="password" name="member_pw" placeholder="비밀번호입력" required>
+          <input class = "login-pw" type="password" name="member_pw" placeholder="비밀번호입력" required>
+
             <br>
 
            <!-- <select class="form-phone" name="user_phone">

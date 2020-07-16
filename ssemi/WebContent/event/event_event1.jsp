@@ -62,7 +62,7 @@ else{
                
                <br> <br>
                <br> <br>
-               
+               <br> 
                
                <hr class="hr-twolow">
                <!--제품관련 스타일-->
@@ -107,7 +107,7 @@ else{
                         <tr>
                               <td><%=edto.getEvent_no() %></td>
                               <td align ="left">
-                              <a href="event_content.jsp?event_no=<%=edto.getEvent_no()%>"><%=edto.getEvent_title() %></a></td>
+                              <a href="event1_content.jsp?event_no=<%=edto.getEvent_no()%>"><%=edto.getEvent_title() %></a></td>
                               <td><%=edto.getEvent_writer() %></td>
                               <td><%=edto.getEvent_date() %></td>
                               <td><%=edto.getEvent_read() %></td>

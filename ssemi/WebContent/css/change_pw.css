@@ -8,17 +8,18 @@
 }
 
 main {
-	padding-top: 150px;
-	width: 500px;
+	width:500px;
 	text-align: center;
-	height: 800px;
+	height: 430px;
 	margin: auto;
-	border: none;
+	margin-top: 150px;
+	border:1px solid #3333;
+	padding:50px 50px;
 }
 
 article{
 	border: 1px solid #aaa;
-	height: 500px;
+
 }
 
   h1 {
@@ -35,21 +36,22 @@ article{
 	border: none;
 	color: white;
 	cursor: pointer;
+	margin: 5px 5px 5px 5px;
 }
 
 .click-btn:hover {
 	padding: 1rem;
 	font-size: 16px;
-	width: 50%;
+	width: 45%;
 	background-color: #C80A1E;
 	border: none;
 	color: white;
 }
 
 .find-wrap {
-	width: 320px;
+	width: 350px;
 	text-align: center;
-	margin: 0px auto;
+	margin: auto;
 }
 
         
@@ -94,6 +96,20 @@ article{
             padding: 10px;
             color: #C80A1E;
         }
+        
+        
+        /*새로 추가 확인버튼*/
+
+.login-pw{
+		font-size: 14px;
+	color: #AAAAAA;
+	width: 100%;
+	margin: 5px;
+	padding:  10px 10px 10px 40px;
+	border: 1px solid #3333;
+
+	margin-bottom:15px;
+}
 
       /*  .font-find_pw:hover {
             text-align: left;

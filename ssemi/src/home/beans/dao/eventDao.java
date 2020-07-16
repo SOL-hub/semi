@@ -152,4 +152,22 @@ public class eventDao {
    }
    
    
+   //삭제
+   
+   public void delete(int event_no)throws Exception{
+	   Connection con = getConnection();
+	   
+	   String sql = "delete event where event_no=?";
+	   		
+	   
+	   PreparedStatement ps = con.prepareStatement(sql);
+	   ps.setInt(1, event_no);
+	   
+	   
+	   ps.execute();
+	   
+	   con.close();
+	   
+   }
+   
    }

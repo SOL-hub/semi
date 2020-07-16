@@ -56,7 +56,7 @@
     
     <tr><td colspan="2" align ="center">
     <input type ="submit" value = "등록하기">
-     <input type= "hidden" value="1000" name="member_point">
+     <input type= "hidden" value="2000" name="member_point">
 
      
     </td>
