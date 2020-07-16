@@ -90,14 +90,14 @@
 						selectCart[i].checked = selectAll;
 					}
 				}
-// 				function check_item_checkbox() {
-// 					var selectCart = document.getElementsByName("cart_no").checked;
-// 					if(!selectCart){
-// 						alert("체크박스를 하나라도 체크해주세요");
-// 						return false;
-// 					}
-				
-// 				} 
+				function check_item_checkbox() {
+					var selectCart = document.getElementsByName("cart_no").checked;
+					if(!selectCart){
+						alert("체크박스를 하나라도 체크해주세요");
+						return false;
+					}
+				 
+				} 
 			</script>
 
 
@@ -128,7 +128,7 @@
 									<div class="right">
 									<input type="submit" formaction="<%=request.getContextPath()%>/buypage/buy_page.jsp" class="btn default"
 												style="width: 110px; padding: 10px; margin-bottom: 3px; font-size: 15px; background: white" value="선택상품구매"
-												onclick="return check_item_checkbox();">
+												onsubmit="return check_item_checkbox();">
 									<input type="submit" formaction="barket_delete.do" class="btn default"
 												style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px" value="삭제하기">		 			
 									</div>
@@ -177,14 +177,16 @@
 
 										<td><span style="padding-left: 10px;"><%=item_cnt_change_price%></span>원</td>
 										<form method="post">
-										<td style="width: 50px;"><input type="number"
+										<td style="width: 50px;">
+										<input type="number"
 											style="text-align: right; width: 40px; margin-bottom: 3px;"
 											min="1" max="99" step="1" name="cart_cnt" value="<%=cdto.getCart_cnt()%>">
+											
 											<input type="submit" formaction="cart_cnt_change.do" class="btn default"
 												style="border-radius: 3px; size: 10px;"name="hidden" value="변경">
 											<input type="hidden" name="cart_no" value="<%=cdto.getCart_no()%>">
 												</td>
-											</form>
+											
 										<td>
 											
 										</td>
@@ -207,7 +209,7 @@
 									<%}
 										int real_total = total_price + delivery_cost;
 										%>
-									
+									</form>
 								</tbody>
 
 								<tfoot>
@@ -261,13 +263,28 @@
 						</table>
 						<br /> <br />
 
-						<div style="margin: 10px 10;">
-
-						
-							<input type="button" class="btn default backBtn btnfloat2" value="내 견적서 보기">
-							<input type="button" class="btn default footerbtn" id="footerbtn" value="쇼핑계속하기">
-							<span class="clearboth"></span>
-						</div>
+						<div style="margin: 10px 10;" align="center">
+					<a href="<%=request.getContextPath()%>">
+                     <button class="btn default backBtn btnfloat2"
+                        style="background-color: gray; color: #fff;">홈으로</button>
+					</a>
+					<a href="<%=request.getContextPath()%>/member/mypage.jsp">
+                     <button class="btn default backBtn btnfloat2"
+                        style="background-color: gray; color: #fff;">마이페이지 가기</button>
+					</a>
+					<a href="<%=request.getContextPath()%>/member/wishlist.jsp">
+                     <button class="btn default backBtn btnfloat2">구매내역 가기</button>
+                     </a>
+					<a href="<%=request.getContextPath()%>/buypage/buy_list.jsp">
+                     <button class="btn default backBtn btnfloat2">구매내역 가기</button>
+                     </a>
+                     <a href="#">
+                     <button class="btn default backBtn btnfloat2">내 견적서 보기</button>
+             		</a>
+             		<a href="#">
+                     <button class="btn default backBtn btnfloat2">쇼핑 계속하기</button>
+             		</a> 
+                  </div>
 						<br /> <br /> <br>
 
 

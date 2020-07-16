@@ -143,7 +143,6 @@ public class ShoppingDao {
 		return item_name;
 	}
 	
-	
 	public void delete(String shopping_no) throws Exception {
 		Connection con = getConnection();
 
@@ -156,4 +155,60 @@ public class ShoppingDao {
 		con.close();
 	}
 	
+
+	
+	//진빈 구매내역 추가 (db로)
+	public void buy_list_add(shoppingDto sdto) throws Exception{
+		Connection con = getConnection();
+		String sql = "insert into shopping values(shopping_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, ?, ?, ?, null, null, sysdate)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, sdto.getShopping_item_name());
+		ps.setInt(2, sdto.getShopping_item_cnt());
+		ps.setInt(3, sdto.getShopping_member());
+		ps.setString(4, sdto.getShopping_recive_name());
+		ps.setString(5, sdto.getShopping_recive_phone());
+		ps.setString(6, sdto.getShopping_recive_post());
+		ps.setString(7, sdto.getShopping_recive_base_addr());
+		ps.setString(8, sdto.getShopping_recive_extra_addr());
+		ps.setString(9, sdto.getShopping_recive_content());
+		ps.setString(10, sdto.getShopping_payment());
+		ps.setString(11, sdto.getShopping_paybank());
+		ps.setString(12, sdto.getShopping_paybank_num());
+
+		
+		ps.execute();
+		
+		con.close();
+		
+	}
+	//진빈 아이디별 주문내역 조회
+	public List<shoppingDto> buy_list(int shopping_member) throws Exception {
+		Connection con = getConnection();
+		
+		String sql = "SELECT*FROM shopping where shopping_member=? ORDER BY shopping_no DESC";
+		PreparedStatement ps =con.prepareStatement(sql);
+		ps.setInt(1, shopping_member);
+		ResultSet rs = ps.executeQuery();
+		
+		List<shoppingDto> list = new ArrayList<>();
+		while(rs.next()) {
+			shoppingDto sdto = new shoppingDto(rs);
+			list.add(sdto);
+		}
+		
+		con.close();
+		return list;
+	}
+	//진빈 주문취소 db삭제
+	public void delete_buy_list(int shopping_no)throws Exception{
+		Connection con = getConnection();
+		String sql = "delete from shopping where shopping_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, shopping_no);
+		ps.execute();
+		
+		con.close();
+		
+	}
 }
