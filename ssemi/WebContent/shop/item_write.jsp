@@ -35,25 +35,21 @@
 					<option value="c3">주방</option>
 				</select>
 				<select id="yorksil" name="item_type" required>
-					<option value="젠다이">젠다이</option>
-					<option value="거울수납장">거울수납장</option>
-					<option value="선반">선반</option>
-					<option value="비데">비데</option>
-					<option value="환풍기">환풍기</option>
-				</select>
-				<select id="buuk" name="item_type" required>
-					<option value="강마루">강마루</option>
-					<option value="강화마루">강화마루</option>
-					<option value="합판마루">합판마루</option>
-					<option value="원목마루">원목마루</option>
-				</select>
-				<select id="jubang" name="item_type" required>
-					<option value="아일랜드 식탁">아일랜드 식탁</option>
-					<option value="냉장고장">냉장고장</option>
-					<option value="키큰장">키큰장</option>
-					<option value="뒷선반">뒷선반</option>
-					<option value="쿡탑">쿡탑</option>
-					<option value="플랩장">플랩장</option>
+					<option value="젠다이">[욕실]젠다이</option>
+					<option value="거울수납장">[욕실]거울수납장</option>
+					<option value="선반">[욕실]선반</option>
+					<option value="비데">[욕실]비데</option>
+					<option value="환풍기">[욕실]환풍기</option>
+					<option value="강마루">[부엌]강마루</option>
+					<option value="강화마루">[부엌]강화마루</option>
+					<option value="합판마루">[부엌]합판마루</option>
+					<option value="원목마루">[부엌]원목마루</option>
+					<option value="아일랜드 식탁">[주방]아일랜드 식탁</option>
+					<option value="냉장고장">[주방]냉장고장</option>
+					<option value="키큰장">[주방]키큰장</option>
+					<option value="뒷선반">[주방]뒷선반</option>
+					<option value="쿡탑">[주방]쿡탑</option>
+					<option value="플랩장">[주방]플랩장</option>
 				</select>
 				</td>			
 			</tr>

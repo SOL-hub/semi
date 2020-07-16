@@ -144,6 +144,18 @@ private static DataSource src;
 
 				return seq;
 			}
+			
+			//게시글 삭제
+			public void delete(int item_no) throws Exception {
+				Connection con = getConnection();
+
+				String sql = "DELETE item WHERE item_no = ?";
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setInt(1, item_no);
+				ps.execute();
+
+				con.close();
+			}
 
 	 //(동휘)개수 조회 메소드
 		public int getCount() throws Exception{
@@ -174,6 +186,30 @@ private static DataSource src;
 			
 			return count;
 		}
+	 //동휘_목록메소드2_5_모두조회
+	 		public List<ItemDto> getList5(int start, int finish) throws Exception{
+	 			Connection con = getConnection();
+	 			
+	 			//결과의 순서를 정해준다
+	 			String sql = "SELECT * FROM("//T의 모든 항목
+						+ "SELECT ROWNUM rn, T.* FROM("
+						+ "SELECT * FROM item"
+					+ ")T"//T의 모든 항목
+			+ ") WHERE rn BETWEEN ? and ?";
+	 			PreparedStatement ps = con.prepareStatement(sql);
+	 			ps.setInt(1, start);
+	 			ps.setInt(2, finish);
+	 			ResultSet rs = ps.executeQuery();
+	 			
+	 			List<ItemDto> list = new ArrayList<>();
+	 			while(rs.next()) {
+	 				ItemDto idto = new ItemDto(rs);
+	 				list.add(idto);
+	 			}
+	 			
+	 			con.close();
+	 			return list;
+	 		}
 	 //동휘_목록메소드2_1
 		public List<ItemDto> getList1(int start, int finish) throws Exception{
 			Connection con = getConnection();

@@ -1,5 +1,9 @@
+<%@page import="home.beans.dto.ItemDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%	
+ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
+ %> 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <!DOCTYPE html>
@@ -21,30 +25,24 @@
             //var mySwiper = new Swiper(선택자, 옵션);
             var mySwiper = new Swiper ('.swiper-container', {
                 //swiper에 적용할 옵션들을 작성
-
                 direction: 'horizontal'   //표시방식(수직:vertical, 수평:horizontal)
                 ,loop: true //순환 모드 여부
-
                 //자동재생 옵션그룹
                 ,autoplay:{
                     delay:10000  //자동재생 시간(1초)
                 }
-
                 //페이지 네비게이터 옵션그룹
                 ,pagination: {
                     el: '.swiper-pagination', //적용 대상의 선택자
                     type: 'bullets',//네비게이터 모양(bullets/fraction/...)
                 },
-
                 //이전/다음 이동버튼 설정그룹
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 }
-
                 //커서 모양을 손모양으로 변경
                 ,grabCursor:true
-
                 //슬라이드 전환 효과(effect)
                 //,effect:'coverflow'
                 //,effect:'cube'
@@ -57,6 +55,7 @@
 </head>
 
 <body>
+<form method="post">
  <main>
    <div>
     <div class="section-box">
@@ -91,7 +90,7 @@
     
     <div class=right-box>
         <div class="gkaljzang"></div>
-        <div class="f20 mar-b12">안녕하세요</div>
+        <div class="f20 mar-b12"><%=idto.getItem_name()%></div>
         <div class="f25 mar-b20">모션베드 캐주얼(라텍스,책상형)</div>
         <div class="f25 colorred mar-b60">39,900원</div>
         
@@ -171,5 +170,6 @@
         </div>
         </div>
     </main>
+    </form>
 </body></html>
 <jsp:include page="/template/footer.jsp"></jsp:include>  
