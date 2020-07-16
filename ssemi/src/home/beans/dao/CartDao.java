@@ -78,6 +78,26 @@ public class CartDao {
 		
 		return list;	
 	}
+	public List<CartDto> getList2(CartDto cdto) throws Exception {
+		Connection con = getConnection();
+		
+		String sql = "SELECT * FROM cart WHERE cart_no=? ORDER BY cart_no ASC";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, cdto.getCart_no());
+		ResultSet rs = ps.executeQuery();
+		
+		List<CartDto> list = new ArrayList<>();
+		while(rs.next()) {
+			
+			CartDto cdto2 = new CartDto(rs);
+			list.add(cdto2);
+		}
+		
+		con.close();
+		
+		return list;	
+	}
 	
 	public List<CartDto> getList(int cart_member,int start, int finish) throws Exception{
 		Connection con = getConnection();
@@ -135,6 +155,27 @@ public class CartDao {
 			con.close();
 			return cdto;
 		}
+		
+		// 장바구니 단일조회(장바구니 넘버로)
+				public CartDto get_cart2(int cart_no)throws Exception{
+					Connection con = getConnection();
+					
+					String sql = "select * from cart where cart_no=?";
+					PreparedStatement ps = con.prepareStatement(sql);
+					ps.setInt(1, cart_no);
+					ResultSet rs =ps.executeQuery();
+					
+					CartDto cdto;
+					if(rs.next()) {
+						cdto = new CartDto(rs);
+					}
+					else {
+						cdto = null;
+					}
+					
+					con.close();
+					return cdto;
+				}
 		
 //		장바구니 수량 변경 
 		public void cart_cnt_change(int cart_cnt,int cart_no) throws Exception{
