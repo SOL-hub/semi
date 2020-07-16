@@ -11,7 +11,7 @@
     
     
     <jsp:include page="/template/header.jsp"></jsp:include>
-    
+
 
     
     
@@ -83,8 +83,58 @@
     	color:#AAAAAA;
     }
     
+    
+     .payhr {
+    	border: 0px;
+		height: 1px;
+		background-color: #3333;
+		width: 900px;
+		margin-left: 600px;
+		text-align: center;
+    	
+    	
+    	
+    	
+    }
 
     </style>
+    <script src="<%=request.getContextPath()%>/js/moment.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/lightpick.css">
+<script src="<%=request.getContextPath()%>/js/lightpick.js"></script>
+    
+    <script>
+	window.onload = function() {
+		var options = {
+			//대상 지정
+			field : document.querySelector(".picker-start"),
+
+			//두 번째 대상 지정
+			secondField : document.querySelector(".picker-end"),
+
+			//날짜 표시 형식 지정
+			format : 'YYYY-MM-DD',
+
+			//한 화면에 표시될 달의 개수
+			numberOfMonths : 1,
+
+			//시작요일(1:월 ~ 7:일)
+			firstDay : 7,
+
+			//자동으로 닫히지 않도록 설정
+			//autoclose: false,
+
+			//선택 방향 제어
+			selectForward : true,
+			selectBackword : false,
+
+		};
+
+		var picker = new Lightpick(options);
+
+	};
+</script>
+    
 </head>
 <body>
 
@@ -123,7 +173,7 @@
     %>
     
 <div class="category-main fixed">
-        <h3>Today</h3>
+        <h3>Total</h3>
 
         <div class="today-cart-wrap">
             <a href="total_before_pay.jsp">
@@ -157,7 +207,7 @@
 
 
         <div class="today-cart-wrap">
-            <a href="#">
+            <a href="admin_search.jsp">
                 <img class="todayimg" src="/ssemi/img/customer.png">
             </a>
         </div>
@@ -168,8 +218,10 @@
 
 	List<MemberDto> mlist;
 	int count = mdao.memberCount(); %>
+	
+
         <div class="label-wrap ">
-            <a href="#" class="today-label">
+            <a href="admin_search.jsp" class="today-label">
                 회원 가입(<%= count %>건)
             </a>
         </div>
@@ -183,22 +235,15 @@
        
 <form action="total_before_pay.jsp" method="post">
         <table>
-            <tr>
-                <th class="totalth">검색어</th>
-                <td class="totaltd">
-            		<select name ="type">
-            			<option value="shopping_member">주문자명</option>
-            			<option value ="shopping_item_name">상품명</option>
-            		</select>
-            		<input type="text" name="keyword" >
-    
-               </td>
-            </tr>
-           
+      
             <tr>
                 <th class="totalth">주문 기간</th>
-                <td class="totaltd"><input type="text" name="start">~<input type="text" name="finish"></td>
+                <td class="totaltd"><input type="text" name="start"class="picker-start">~<input type="text" name="finish" class="picker-end" ></td>
             </tr>
+
+
+		
+
 
         </table>
         
@@ -206,7 +251,10 @@
     </form>
     </div>
     
-   
+   				<br>
+				<br>
+				<hr class= "payhr">
+				<br>
     <!--  검색 결과 -->
     <div class="list-wrap">
 
@@ -253,7 +301,10 @@
 
 
 		</div>
-
+				
+				
+				<br>
+				<br>
 	
 
 </body>
