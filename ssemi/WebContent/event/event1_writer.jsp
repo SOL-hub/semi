@@ -1,5 +1,19 @@
+
+
+<%@page import="home.beans.dao.MemberDao"%>
+<%@page import="home.beans.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
+<% MemberDto user = (MemberDto) session.getAttribute("userinfo");
+
+	int member_no = user.getMember_no();
+
+	
+ 
+%>
+
 
 <!-- 선착순 게시글 작성 -->
     <jsp:include page="/template/header.jsp"></jsp:include>
@@ -7,7 +21,7 @@
     <div style= padding-top:200px; align="center">
     <h2>선착순 게시글 작성</h2>
     
-    <form action = "event1_writer.do" method=post>
+    <form action = "event1_writer.do" method="get">
     <table border="1">
     <tbody>
     
@@ -34,12 +48,17 @@
     <th>내용</th>
     <td><textarea name="event_content" required rows="15" cols="70"></textarea></td>
     </tr>
-    
+
+
+  
 
    
     
     <tr><td colspan="2" align ="center">
     <input type ="submit" value = "등록하기">
+     <input type= "hidden" value="1000" name="member_point">
+
+     
     </td>
     </tr>
   </tbody>

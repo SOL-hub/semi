@@ -33,7 +33,7 @@
 			<tr>
 				<th>번호</th>
 				<th width="40%">가격</th>
-				<th>작성자</th>
+	
 				<th>작성일</th>
 			
 	
@@ -43,9 +43,8 @@
 			<%-- list의 데이터를 하나하나 edto라는 이름으로 접근하여 출력 --%>
 			<%for(EstimateDto edto : list ){ %>
 			<tr>
-				<td><%=edto.getBath_no()%></td>
+				<td> 제목(코드은 나중에 넣음)</td>
 				<td align="left">
-				
 					
 					<!-- 가격 -->
 					<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
@@ -53,9 +52,7 @@
 					</a>
 									
 				</td>
-				<td>
-						<%=edto.getBath_member()%>
-				</td>
+		<!-- 작성일 -->
 				<td><%=edto.getBath_autotime()%></td>
 			</tr>
 			<%} %>
@@ -72,6 +69,7 @@
 		</tfoot>
 	</table>
 	
+	<!--  솔아 여기밑이양 미안해ㅜㅜ정신업어섴ㅋㅋㅋ -->
 
 </body>
 </html>

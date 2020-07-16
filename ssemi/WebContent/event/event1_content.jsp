@@ -66,9 +66,13 @@ eventDto edto = edao.get(event_no);
     
     <a href= event_writer.jsp>
     <input type = "button" value="글쓰기"></a>
+    
         <input type = "button" value="수정">
+        
           <input type = "button" value="삭제">
-            <input type = "button" value="목록">
+          
+           <a href= event_event1.jsp>
+            <input type = "button" value="목록"></a>
     
     </td>
     

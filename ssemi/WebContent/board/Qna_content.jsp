@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="home.beans.dao.Qna_fileDao"%>
+<%@page import="home.beans.dto.Qna_fileDto"%>
 <%@page import="home.beans.dao.MemberDao"%>
 
 <%@page import="home.beans.dto.QnaDto"%>
@@ -185,11 +188,8 @@ align:"center";
 }
 
 .body_table {
-
-left:300px;
-
-
-
+margin-right:100px;
+margin-top : 20px;
 }
 
 /*내용 제목*/
@@ -219,9 +219,6 @@ width:80px;
 }
 
 
-
-
-
 </style>
 
 <script></script>
@@ -231,8 +228,6 @@ width:80px;
 <title>Insert title here</title>
 
 </head>
-
-
 
 <%
 
@@ -253,6 +248,8 @@ boolean isAdmin = user.getMember_auth().equals("관리자");
 int member_no = user.getMember_no();
 boolean isMine = member_no == qdto.getQna_writer();
 
+Qna_fileDao qfdao = new Qna_fileDao();
+List<Qna_fileDto> fileList = qfdao.getList(qna_no);
 %>
 
 <body>
@@ -281,9 +278,30 @@ boolean isMine = member_no == qdto.getQna_writer();
 						<tr class="content">
 							<td><%=qdto.getQna_date()%></td>
 						</tr>
+								<%if(!fileList.isEmpty()) {%>
+
+						<%for(Qna_fileDto qfdto : fileList) {%>
 						<tr class="content_content" >
-							<td valign="top" class="content_content"><%=qdto.getQna_content()%></td>
+							<td valign="top" class="content_content"><%=qdto.getQna_content()%>
+							<img src="download.do?qna_file_no=<%=qfdto.getQna_file_no()%>" width="100" height="100">
+							</td>
+						</tr>				
+							<!-- 첨부파일 출력 영역 -->
+						<tr>
+							<td>
+							 FILE
+							 	<ul>
+							 		<li>
+							 		<%=qfdto.getQna_file_name() %>
+							 		(<%=qfdto.getQna_file_size() %>bytes)
+							 		<!-- 다운로드 버튼을 누른다면 해당 파일을 다운로드 할 수 있도록 링크 -->
+									<a href="download.do?qna_file_no=<%=qfdto.getQna_file_no()%>">DOWNLOAD</a>
+							 		</li>
+							 		<%} %>
+							 	</ul>
+							</td>
 						</tr>
+						<%} %>
 					</tbody>
 				</table>
 

@@ -22,6 +22,7 @@
 	
 	MemberDto user = (MemberDto) session.getAttribute("userinfo");
 	
+	
 	// - 내글 : 게시글(edto)의 작성자와 로그인 된 사용자(user)의 아이디가 같아야 함
 	boolean isMine = user.getMember_id().equals(edto.getBath_member()); 
 	boolean isAdmin = user.getMember_auth().equals("관리자");

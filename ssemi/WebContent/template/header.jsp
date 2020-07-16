@@ -9,14 +9,12 @@
 
 <%
 	MemberDto udto = (MemberDto) session.getAttribute("userinfo");
-
 //상품 검색 : item_type 유형 검색어 입력
 String keyword = request.getParameter("keyword");
 // 이 검색어를 활용하여 '상품 목록' 불러오기
 ItemDao idao = new ItemDao();
 if (keyword == null) {
 	List<ItemDto> list = new ArrayList<>();
-
 } else {
 	List<ItemDto> list = idao.search(keyword);
 }
@@ -61,7 +59,8 @@ if (keyword == null) {
                   <ul class="menu_left_innerMenu">
                      <li>마루</li>
                      <li>주방</li>
-                     <li>욕실</li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/bath.jsp">욕실</a></li>
+                     
                   </ul>
                </li>
             </ul>

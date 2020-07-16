@@ -119,12 +119,10 @@
                <br>
 </div>
                <hr class="hr-twolow">
-            </div>
-         </article>
-      </div>
-   </body>
-</form>
-
+  </article>
+  </div>
+  </body>
+  
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -236,9 +236,8 @@ padding-top:5px;
 						
 						MemberDao mdao = new MemberDao();
 						MemberDto mdto = mdao.get(qmdto2.getQna_writer()); // qna_no로 회원아이디 조회
-
+					
 					%>
-
 						<tr>
 							<td><%=qmdto2.getQna_no() %></td>
 							<td>
@@ -256,7 +255,7 @@ padding-top:5px;
 						<a href="Qna_content.jsp?qna_no=<%=qmdto2.getQna_no()%>"><%=qmdto2.getQna_title() %>
 						</a></td>
 							<td><%=mdto.getMember_id()%></td>
-							<td><%=qmdto2.getQna_autotime() %></td>
+							<td><%=qmdto2.getQna_autotime() %></td> <!-- 컴퓨터에서 Qna_date()로 확인하기 -->
 						</tr>
 						<%} %>
 					</tbody>
