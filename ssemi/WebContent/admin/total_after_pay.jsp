@@ -282,7 +282,7 @@
 					
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_no() %><</a></td>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_item_name() %></a></td>
-						<td class="Ldata" ><a href = "#"><%=idto.getItem_name()%> <br> <span id="totalcolor">화이트</span></a></td>
+						<td class="Ldata" ><a href = "#"><%=idto.getItem_name()%> </a></td>
 						<td class="Ldata"><%=sdto.getShopping_item_cnt() %>개</td>
 						<td class="Ldata"><%=sdto.getShopping_total() %></td>
 						<td class="Ldata">미배송</td>

@@ -285,7 +285,7 @@
 					ItemDto idto = idao.item_get(sdto.getShopping_item_name());%>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_no() %></a></td>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_item_name() %></a></td>
-						<td class="Ldata" ><a href = "#"><%=idto.getItem_name()%> <br> <span id="totalcolor"></span></a></td>
+						<td class="Ldata" ><a href = "#"><%=idto.getItem_name()%> </a></td>
 						<td class="Ldata"><%=sdto.getShopping_item_cnt() %></td>
 						<td class="Ldata"><%=sdto.getShopping_total() %></td>
 						<td class="Ldata"><%=sdto.getShopping_payment()%></td>
