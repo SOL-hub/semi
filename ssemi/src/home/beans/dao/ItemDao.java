@@ -19,7 +19,7 @@ import home.beans.dto.MemberDto;
 public class ItemDao {
 
 //	context.xml에서 관리하는 자원 객체를 참조할 수 있도록 연결 코드 구현
-	private static DataSource src;
+private static DataSource src;
 	
 	//static 변수의 초기화가 복잡할 경우에 사용할 수 있는 static 전용 구문
 	static {
@@ -34,15 +34,18 @@ public class ItemDao {
 		}
 	}
 	
-	public Connection getConnection() throws Exception{
-		
-		Class.forName("oracle.jdbc.OracleDriver");
-		
-		Connection con = DriverManager.getConnection(
-				"jdbc:oracle:thin:@localhost:1521:xe" , "c##project","project");
-				
-		return con;//동휘(수정_이유:product_bed_list적용이안되서)(결과:이렇게바꿧는데 됨)
-		//return src.getConnection();
+
+
+	public Connection getConnection() throws Exception{		
+
+//		Class.forName("oracle.jdbc.OracleDriver");
+//		
+//		Connection con = DriverManager.getConnection(
+//				"jdbc:oracle:thin:@localhost:1521:xe" , "C##PROJECT","C##PROJECT");
+//				
+//		return con;//동휘(수정_이유:product_bed_list적용이안되서)(결과:이렇게바꿧는데 됨)
+		return src.getConnection();
+
 	}
 	
 	//상품 검색 메소드
@@ -121,13 +124,14 @@ public class ItemDao {
 			Connection con = getConnection();
 
 			String sql = 
-					"insert into item values(item_seq.nextval,?,?,?,?,?,null,sysdate)";
+					"insert into item values(item_seq.nextval,?,?,?,?,?,?,null,sysdate)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, idto.getItem_name());
 			ps.setInt(2, idto.getItem_price());
-			ps.setString(3, idto.getItem_type());
-			ps.setString(4, idto.getItem_info());
-			ps.setInt(5, idto.getItem_stock());
+			ps.setString(3, idto.getItem_kingtype());
+			ps.setString(4, idto.getItem_type());
+			ps.setString(5, idto.getItem_info());
+			ps.setInt(6, idto.getItem_stock());
 			ps.execute();
 
 			con.close();
@@ -147,6 +151,18 @@ public class ItemDao {
 				con.close();
 
 				return seq;
+			}
+			
+			//게시글 삭제
+			public void delete(int item_no) throws Exception {
+				Connection con = getConnection();
+
+				String sql = "DELETE item WHERE item_no = ?";
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setInt(1, item_no);
+				ps.execute();
+
+				con.close();
 			}
 
 	 //(동휘)개수 조회 메소드
@@ -178,6 +194,30 @@ public class ItemDao {
 			
 			return count;
 		}
+	 //동휘_목록메소드2_5_모두조회
+	 		public List<ItemDto> getList5(int start, int finish) throws Exception{
+	 			Connection con = getConnection();
+	 			
+	 			//결과의 순서를 정해준다
+	 			String sql = "SELECT * FROM("//T의 모든 항목
+						+ "SELECT ROWNUM rn, T.* FROM("
+						+ "SELECT * FROM item"
+					+ ")T"//T의 모든 항목
+			+ ") WHERE rn BETWEEN ? and ?";
+	 			PreparedStatement ps = con.prepareStatement(sql);
+	 			ps.setInt(1, start);
+	 			ps.setInt(2, finish);
+	 			ResultSet rs = ps.executeQuery();
+	 			
+	 			List<ItemDto> list = new ArrayList<>();
+	 			while(rs.next()) {
+	 				ItemDto idto = new ItemDto(rs);
+	 				list.add(idto);
+	 			}
+	 			
+	 			con.close();
+	 			return list;
+	 		}
 	 //동휘_목록메소드2_1
 		public List<ItemDto> getList1(int start, int finish) throws Exception{
 			Connection con = getConnection();
@@ -186,7 +226,7 @@ public class ItemDao {
 			String sql = 
 					"SELECT * FROM("//T의 모든 항목
 						+ "SELECT ROWNUM rn, T.* FROM("
-							+ "SELECT * FROM item WHERE ITEM_TYPE='침대'"
+							+ "SELECT * FROM item WHERE ITEM_TYPE='욕실'"
 						+ ")T"//T의 모든 항목
 				+ ") WHERE rn BETWEEN ? and ?";
 			PreparedStatement ps = con.prepareStatement(sql);

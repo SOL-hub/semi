@@ -33,6 +33,7 @@
         font-weight: normal;
         border: 1px solid #333;
         width: 70px;
+        
         font-size: 12px;
         background-color: rgba(255, 255, 255, 0.95);
     }

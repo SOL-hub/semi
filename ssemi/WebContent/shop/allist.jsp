@@ -4,6 +4,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
+
+	ItemDao idao = new ItemDao();
+	List<ItemDto> list = idao.getList();
+
 	
 	String keyword = request.getParameter("keyword");
 	
@@ -31,14 +36,14 @@
 	int finish = pageNo*pageSize;
 	int start = finish-(pageSize-1);
 	
-	ItemDao idao = new ItemDao();
+// 	ItemDao idao = new ItemDao();
 
-	List<ItemDto> list;
+// 	List<ItemDto> list;
 	if(isSearch){
 		list = idao.search(keyword);
 	}
 	else{
-		list = idao.getList1(start,finish);
+		list = idao.getList5(start,finish);
 	}
 	
 	//네비게이터//
@@ -88,45 +93,37 @@
         </h5>
         <h5>startBlock=<%=startBlock%>
 			finishBlock=<%=finishBlock%></h5>
-            <p class="subject middle-font">욕실</p>
+            <p class="subject middle-font">전체</p>
             <div class="selected subject">
                 <ul class="main_menu">
                     <li>
-                        <a href=#>전체</a>
-                    </li>
-                    <li>
-                        <a href=#>젠다이</a>
+                        <a href=#>욕실</a>
                         <ul>
-                            <li><a href="#">싱글</a></li>
-                            <li><a href="#">듀얼</a></li>
+                            <li><a href="#">젠다이</a></li>
+                            <li><a href="#">거울수납장</a></li>
+                            <li><a href="#">선반</a></li>
+                            <li><a href="#">비데</a></li>
+                            <li><a href="#">환풍기</a></li>
+                        </ul>
+                    </li>
+				<li>
+                        <a href=#>부엌</a>
+                        <ul>
+                            <li><a href="#">강마루</a></li>
+                            <li><a href="#">강화마루</a></li>
+                            <li><a href="#">합판마루</a></li>
+                            <li><a href="#">원목마루</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href=#>거울수납장</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">싱글</a></li>
-                            <li><a href="#">듀얼</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href=#>선반</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">싱글</a></li>
-                            <li><a href="#">듀얼</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href=#>비데</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">싱글</a></li>
-                            <li><a href="#">듀얼</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href=#>환풍기</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">싱글</a></li>
-                            <li><a href="#">듀얼</a></li>
+                        <a href=#>주방</a>
+                        <ul>
+                            <li><a href="#">아일랜드 식탁</a></li>
+                            <li><a href="#">냉장고장</a></li>
+                            <li><a href="#">키큰장</a></li>
+                            <li><a href="#">뒷선반</a></li>
+                            <li><a href="#">쿡탑</a></li>
+                            <li><a href="#">플랩장</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -142,10 +139,9 @@
             <article>
             <%for(ItemDto idto : list){ %>
                 <div class="ln4">
-                    <ul>
-                        <li>
+                    <ul>                 
                             <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
-                            <p><span><%=idto.getItem_name()%></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
+                            <p><span><a href="product_detail.do?item_no=<%=idto.getItem_no() %>"><%=idto.getItem_name()%></a></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>

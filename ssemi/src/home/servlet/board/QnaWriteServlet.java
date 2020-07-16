@@ -1,4 +1,4 @@
-package home.servlet.user;
+package home.servlet.board;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import home.beans.dao.QnaDao;
 import home.beans.dto.MemberDto;
 import home.beans.dto.QnaDto;
 
-@WebServlet(urlPatterns = "/board/QnaWrite.do")
+// @WebServlet(urlPatterns = "/board/QnaWrite.do")
 public class QnaWriteServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

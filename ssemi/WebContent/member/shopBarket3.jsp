@@ -83,18 +83,26 @@
 
 			<script>
 				function cart_all() {
-					var selectAll = document.	querySelector(".cart_all_click").checked;
+					var selectAll = document.querySelector(".cart_all_click").checked;
 					var selectCart = document.getElementsByName("cart_no");
 
 					for (var i = 0; i < selectCart.length; i++) {
 						selectCart[i].checked = selectAll;
 					}
 				}
+// 				function check_item_checkbox() {
+// 					var selectCart = document.getElementsByName("cart_no").checked;
+// 					if(!selectCart){
+// 						alert("체크박스를 하나라도 체크해주세요");
+// 						return false;
+// 					}
+				
+// 				} 
 			</script>
 
 
 			<body class="Body">
-			<form>
+			
 				<div id="frame">
 					
 						<div id="frame2">
@@ -114,19 +122,15 @@
 						<%--상품정보 테이블--%>
 
 						<div>
-
+							<form method="get">
 							<table class="calculation1">
 								<thead>
-									
 									<div class="right">
-									
-									
-									<input type="button" class="btn default"
-												style="width: 110px; padding: 10px; margin-bottom: 3px; font-size: 15px; background: white" value="선택상품구매">
+									<input type="submit" formaction="<%=request.getContextPath()%>/buypage/buy_page.jsp" class="btn default"
+												style="width: 110px; padding: 10px; margin-bottom: 3px; font-size: 15px; background: white" value="선택상품구매"
+												onclick="return check_item_checkbox();">
 									<input type="submit" formaction="barket_delete.do" class="btn default"
-												style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px" value="삭제하기">		 	
-															
-												
+												style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px" value="삭제하기">		 			
 									</div>
 									<tr>
 										<th><input style="width: 10px;" type="checkbox"
@@ -137,24 +141,17 @@
 										<th style="width: 80px;">판매가</th>
 										<th style="width: 20px;">수량</th>
 										<th style="width: 80px;">적립금</th>
-
 										<th style="width: 100px;">배송비</th>
-
 <!-- 										<th style="width: 90px;">선택</th> -->
-
 									</tr>
 								</thead>
-
-								<tbody>
-								
-									<%
-										
+								<tbody>			
+									<%										
 										int total_price = 0;
-										int delivery_cost = list.size() * 2500;
+										int delivery_cost = list.size() * 2500;	
 										
-										if(list.size()!=0){
+										if(list.size()!=0){		
 											
-										
 										for(CartDto cdto : list) {
 										// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출
 										ItemDao idao = new ItemDao();
@@ -171,6 +168,7 @@
 											style="text-align: left; text-align: center; border-right: none; width: 3%">
 											<input type="checkbox" name="cart_no" value="<%=cdto.getCart_no()%>">
 										</td>
+										</form>
 										<td style="border-left: none; border-right: none;"><%=itemName.getItem_name()%><img
 											style="width: 80%;" src="/img/의자.png"></td>
 
@@ -178,7 +176,7 @@
 											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=itemName.getItem_info()%></td>
 
 										<td><span style="padding-left: 10px;"><%=item_cnt_change_price%></span>원</td>
-
+										<form method="post">
 										<td style="width: 50px;"><input type="number"
 											style="text-align: right; width: 40px; margin-bottom: 3px;"
 											min="1" max="99" step="1" name="cart_cnt" value="<%=cdto.getCart_cnt()%>">
@@ -186,7 +184,7 @@
 												style="border-radius: 3px; size: 10px;"name="hidden" value="변경">
 											<input type="hidden" name="cart_no" value="<%=cdto.getCart_no()%>">
 												</td>
-											
+											</form>
 										<td>
 											
 										</td>
@@ -240,7 +238,7 @@
 							</div>
 
 						</div>
-</form>
+
 
 						<%--결제예정금액 테이블--%>
 						</%--결제예정금액>
