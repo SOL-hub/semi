@@ -56,6 +56,8 @@
 					
 				소형안방:
 			<%=edto.getBath_cntt()%>
+			
+			
 				</td>  
 			</tr>
 		
