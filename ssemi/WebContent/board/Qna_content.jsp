@@ -263,7 +263,7 @@ List<Qna_fileDto> fileList = qfdao.getList(qna_no);
 					<p class="event">이벤트</p>
 				</div>
 				<p class="title">
-					<b>상품문의</b>
+					<b>문의내역</b>
 				</p>
 			</div>
 			<div class="body">
@@ -317,10 +317,16 @@ List<Qna_fileDto> fileList = qfdao.getList(qna_no);
 					<input class="button"  type="button" value="DELETE">
 					</a>
 				<%}%>
-
-				<a href="Qna_list.jsp">
-				<input  class="button"  type="button" value="LIST" >
-				</a>
+				
+				<%if(qdto.getQna_title().equals("상품문의")) {%> <!-- qna_title이 상품문의면 -->
+					<a href="Qna_list.jsp">
+						<input  class="button"  type="button" value="LIST" >
+					</a>
+				<%} else { %>	<!-- qna_title이 배송문의면 -->
+					<a href="Qna_list2.jsp">
+						<input  class="button"  type="button" value="LIST" >
+					</a>
+				<%} %>
 					<a href="Qna_write.jsp?qna_no=<%=qna_no%>">
 					<input class="button"  type="button" value="REPLY">
 				</a>

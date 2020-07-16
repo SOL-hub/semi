@@ -68,12 +68,7 @@
 	margin-bottom: 20px;
 	padding-top: 40px;
 }
-.cs_row {
-color:#909090;
-}
-.cs_row:hover {
 
-}
 /* 본문 박스 */
 .qna_box {
 	top: 300px;
@@ -287,7 +282,7 @@ padding-top:5px;
 		//	MemberDto user_mdto = user_mdao.idCheck(keyword);			
 			list = qdao.search(type, keyword, start, finish);
 		} else {
-			list = qdao.getList(start, finish);
+			list = qdao.getList2(start, finish);
 		}
 %>
 
@@ -297,16 +292,16 @@ padding-top:5px;
 			<div class="head">
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
-					<p class="cs_row">공지사항</p>
-					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
-					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
-					<p class="cs_row">이벤트</p>
+					<p class="notice">공지사항</p>
+					<p class="qna"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
+					<p class="delivery"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
+					<p class="event">이벤트</p>
 				</div>
 
 				<p class="title">
-					<b>상품문의</b>
+					<b>배송문의</b>
 				</p>
-				<p class="title_content" style="font-size:18px">상품에 대해 궁금한 사항을 문의하세요</p>
+				<p class="title_content" style="font-size:18px">배송에 대해 궁금한 사항을 문의하세요</p>
 			</div>
 
 
@@ -361,7 +356,7 @@ padding-top:5px;
 				</table>
 				<div>
 						<span colspan="8" align="right" >
-						<a href="Qna_write.jsp"> <input type="button" value="WRITE"  class="write_button">
+						<a href="Qna_write2.jsp"> <input type="button" value="WRITE"  class="write_button">
 							</a>
 						</span>
 				</div>
@@ -369,7 +364,7 @@ padding-top:5px;
 
 				<!-- 검색창 -->
 	
-				<form action="Qna_list.jsp" method="get" class="search_container">
+				<form action="Qna_list2.jsp" method="get" class="search_container">
 					<!-- 검색분류 -->
 					<select name="type" class="search_box" >
 						<option value="qna_writer">WRITER</option>
@@ -391,15 +386,15 @@ padding-top:5px;
 				<!-- 이전 -->
 				<li >
 				<%if(startBlock>1) {%>
-				<a href="Qna_list.jsp?page=<%=pageNo=1 %>">
+				<a href="Qna_list2.jsp?page=<%=pageNo=1 %>">
 						<img src="<%=request.getContextPath()%>/img/backward.png"  width="15" height="13" class="navi_img">
 				</a>		
 					<%if(!isSearch) {%>
-							<a href="Qna_list.jsp?page=<%=startBlock-1%>">
+							<a href="Qna_list2.jsp?page=<%=startBlock-1%>">
 									<img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13" class="navi_img">	
 							</a>
 						<%} else { %>
-							<a href="Qna_list.jsp?page=<%=startBlock-1 %>&type=<%=type %>&keyword=<%=keyword%>">
+							<a href="Qna_list2.jsp?page=<%=startBlock-1 %>&type=<%=type %>&keyword=<%=keyword%>">
 									<img src="<%=request.getContextPath()%>/img/back.png" width="15" height="13" class="navi_img">	
 							</a>
 						<%} %>
@@ -412,9 +407,9 @@ padding-top:5px;
 						<%for(int i=startBlock; i<=finishBlock;i++) {%>
 						
 						<%if(!isSearch) {%>
-							<a href = "Qna_list.jsp?page=<%=i %>" class=navi_num><%=i %></a>
+							<a href = "Qna_list2.jsp?page=<%=i %>" class=navi_num><%=i %></a>
 							<%} else { %>
-								<a href="Qna_list.jsp?page=<%=i %>&type=<%=type %>&keyword=<%=keyword %>" class=navi_num><%=i %></a>
+								<a href="Qna_list2.jsp?page=<%=i %>&type=<%=type %>&keyword=<%=keyword %>" class=navi_num><%=i %></a>
 							<%} %>			
 						<%} %>
 						</li>
@@ -423,15 +418,15 @@ padding-top:5px;
 					<li>
 					<%if(pageCount>finishBlock)  {%>
 						<%if(!isSearch) {%>
-							<a href="Qna_list.jsp?page=<%=finishBlock+1%>" >
+							<a href="Qna_list2.jsp?page=<%=finishBlock+1%>" >
 									<img src="<%=request.getContextPath()%>/img/forward.png" width="15" height="13" class="navi_img">	
 							</a>
 						<%} else { %>
-							<a href="Qna_list.jsp?page=<%=finishBlock+1 %>&type=<%=type %>&keyword=<%=keyword%>" >
+							<a href="Qna_list2.jsp?page=<%=finishBlock+1 %>&type=<%=type %>&keyword=<%=keyword%>" >
 									<img src="<%=request.getContextPath()%>/img/forward.png" width="15" height="13" class="navi_img">	
 							</a>
 						<%} %> 
-						<a href="Qna_list.jsp?page=<%=pageCount%> ">
+						<a href="Qna_list2.jsp?page=<%=pageCount%> ">
 							<img src="<%=request.getContextPath()%>/img/fast-forward.png" width="15" height="13" class="navi_img">
 						</a>
 					<%} %>

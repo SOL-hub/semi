@@ -5,14 +5,7 @@
     pageEncoding="UTF-8"%>
     
     <%
-
 		MemberDto mdto =(MemberDto) session.getAttribute("userinfo");
-    QnaDto qdto = new QnaDto();
-    // 관리자일때
-    boolean isAdmin = mdto.getMember_auth().equals("관리자");
-    // 일반회원일때
-    int member_no = mdto.getMember_no();
-    boolean isMine = member_no == qdto.getQna_writer();
     %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -92,7 +85,7 @@ padding: 15px 0 14px 0;
 </style>
 
 <div align="center" class="container">
-	<span class="write_title">상품문의</span>
+	<span class="write_title">배송문의</span>
 	<form class="write_box" action="QnaWrite.do" method="post"  enctype="multipart/form-data">
 	
 		<!-- 회원번호 히든으로 넘기기 -->
@@ -109,14 +102,8 @@ padding: 15px 0 14px 0;
 
 				<tr>
 						<th class="row">SUBJECT</th>
-						<td class="select_subject">
-							<select  name="qna_title"  required>
-								<%if(!isAdmin)  {%>
-							<option value="상품문의">상품문의</option>
-							<%} else {%>
-								<option value="답변입니다">답변입니다</option>
-								<%} %>
-							</select>
+						<td class="select_subject"><select  name="qna_title"   required>
+						<option value="배송문의">배송문의</option></select>
 						</td>
 				</tr>
 				<tr>
@@ -136,7 +123,7 @@ padding: 15px 0 14px 0;
 			</table>
 			<div style="padding-top:15px;">
 			<input type="submit" value="OK" class="button">
-			<a href="Qna_list.jsp"><input type="button" value="CANCEL" class="button"></a>		
+			<a href="Qna_list2.jsp"><input type="button" value="CANCEL" class="button"></a>		
 			</div>
 		</form>
 </div>

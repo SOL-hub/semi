@@ -43,7 +43,8 @@ if (keyword == null) {
             <ul class="menu side_left">
                <li class="menu_left">커뮤니티
                   <ul class="menu_left_innerMenu">
-                     <li><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">QnA</a></li>
+                     <li><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></li>
+                      <li><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></li>
                      <li>Review</li>
                      <li>  <a href="<%=request.getContextPath()%>/event/event.jsp">Event</a></li>
                   </ul>
@@ -67,7 +68,7 @@ if (keyword == null) {
             </ul>
          </div>
          <div class="menu_logo">
-            <a href="<%=request.getContextPath()%>"> <img width="50px"
+            <a href="<%=request.getContextPath()%>/index.jsp"> <img width="50px"
                src="<%=request.getContextPath()%>/img/pig_logo.png">
             </a>
          </div>
