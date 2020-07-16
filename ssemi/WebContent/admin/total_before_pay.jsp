@@ -289,7 +289,7 @@
 						<td class="Ldata"><%=sdto.getShopping_item_cnt() %></td>
 						<td class="Ldata"><%=sdto.getShopping_total() %></td>
 						<td class="Ldata"><%=sdto.getShopping_payment()%></td>
-						<td class="Ldata"><a href = "#"><input type="button" value="취소"  class="beforetable" style="background-color:#C80A1E"></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/shopping_delete.do?shopping_no=<%=sdto.getShopping_no()%>"><input type="button" value="취소"  class="beforetable" style="background-color:#C80A1E"></a></td>
 				
 				<%} %>
 						

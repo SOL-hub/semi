@@ -63,6 +63,7 @@
 			selectBackword : false,
 			
 			repick: true,
+			
 		
 		};
 
@@ -176,7 +177,7 @@
 				
 					<tr>
 						<th>가입일</th>
-						<td><input type="text" class="picker-start" name="start"><span>~</span><input
+						<td><input type="text" class="picker-start" name="start"  ><span>~</span><input
 							type="text" class="picker-end" name="finish"></td>
 
 					</tr>
