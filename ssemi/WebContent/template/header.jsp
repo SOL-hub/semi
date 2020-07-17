@@ -36,7 +36,7 @@ href="<%=request.getContextPath()%>/css/main.css">
 </head>
 
 
-<body>
+<body style="position: relative; z-index: 2;">
 
    <header>
       <div id="container">
