@@ -14,7 +14,7 @@ session.removeAttribute("member_pw");
 
 
 <main>
-<article>
+
 	<div class="find-wrap">
 		<h1>변경할 비밀번호 입력</h1>
 		
@@ -29,10 +29,22 @@ session.removeAttribute("member_pw");
 
 			<!--변경버튼-->
 			<input class="click-btn" type="submit" value="변경"> <br>
-	
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<%if(request.getParameter("error") != null){%>
+                <div class="row center">
+                <font color="#C80A1E">입력하신 로그인 정보가 맞지 않습니다</font>
+                </div>
+                <%} %>
+            
+            
+         
 </form>
 </div>
-</article>
+
 </main>
 
 

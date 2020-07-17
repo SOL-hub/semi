@@ -37,8 +37,8 @@
 .navi {
 	font-size: 14px;
 	color: #909090;
-	top: 150px;
-	left: -250px;
+    left: -300;
+    top: 180px;
 	border: 1px solid #AAA;
 	position: absolute;
 	width: 120px;
@@ -81,6 +81,8 @@
 	margin-left: 400px;
 	botom: 300px;
 	text-align: center;
+		margin-left: 300px;
+	margin-right:300px;
 }
 /* 사이드바 - 제목(고객센터) */
 #customer.navi>p:nth-child(1) {

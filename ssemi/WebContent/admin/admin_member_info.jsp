@@ -107,7 +107,7 @@
                   	<td><%=mdto.getMember_point() %></td>
                   </tr>       
                   </table>
-                  <a href= "<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input  class="listbtn"  type="button" value="정보수정"></a>
+                  <a href= "<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input  class="listbtn"  type="button" value="정보수정"></a>
                </div>
                 
          

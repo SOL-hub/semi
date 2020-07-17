@@ -121,7 +121,9 @@ padding: 15px 0 14px 0;
 				</tr>
 				<tr>
 						<th class="row">CONTENT</th>
-						<td><textarea name="qna_content" cols="70" rows="15" required class="textarea"></textarea></td>
+						<td><textarea name="qna_content" cols="70" rows="15" required class="textarea">					
+						
+						</textarea></td>
 				</tr>
 				
 				<!--  첨부파일  -->

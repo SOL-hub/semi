@@ -89,7 +89,7 @@ public class ShoppingDao {
 		
 		Connection con = getConnection();
 		String sql= "SELECT * FROM shopping WHERE instr(#1,?)>0 and shopping_date "
-				+ "BETWEEN to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD') ORDER BY #1 DESC";
+				+ "BETWEEN to_date(? || '00:00:00','YYYY-MM-DD HH24:MI:SS') and to_date(? || '23:59:59'  ,'YYYY-MM-DD HH24:MI:SS')ORDER BY #1 DESC";
 		sql = sql.replace("#1", type);
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
@@ -112,7 +112,7 @@ public class ShoppingDao {
 		Connection con = getConnection();
 
 		String sql = "SELECT * FROM shopping WHERE shopping_date "
-				+"BETWEEN to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD')";
+				+"BETWEEN to_date(? || '00:00:00','YYYY-MM-DD HH24:MI:SS') and to_date(? || '23:59:59'  ,'YYYY-MM-DD HH24:MI:SS')";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, start);
 		ps.setString(2, finish);

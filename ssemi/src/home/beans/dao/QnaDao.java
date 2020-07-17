@@ -250,7 +250,7 @@ public class QnaDao {
 	// 게시글 삭제
 	public void delete(int qna_no) throws Exception {
 		Connection con = getConnection();
-		String sql = "DELETE qna WHERE qna_no=?";
+		String sql = "DELETE FROM qna WHERE qna_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, qna_no);
 		ps.execute();

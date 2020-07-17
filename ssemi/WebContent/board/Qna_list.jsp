@@ -37,8 +37,8 @@
 .navi {
 	font-size: 14px;
 	color: #909090;
-	top: 150px;
-	left: -250px;
+    left: -300;
+    top: 180px;
 	border: 1px solid #AAA;
 	position: absolute;
 	width: 120px;
@@ -86,6 +86,9 @@ color:#909090;
 	margin-left: 400px;
 	botom: 300px;
 	text-align: center;
+	margin-left: 300px;
+	margin-right:300px;
+	
 }
 /* 사이드바 - 제목(고객센터) */
 #customer.navi>p:nth-child(1) {
@@ -181,19 +184,17 @@ padding-top:5px;
     padding: 2px 4px;
     border: 1px solid #eaeaea;
     color: #333;
-    margin: 10px 0 10px 700px;   
+  margin: 10px 0 10px 700px;   
        display: inline-block;
     font-size: 11px;
     letter-spacing: 1px;
     text-align: center;
     vertical-align: middle;
     box-shadow: 1px 1px 0 rgba(0,0,0,0.05);
-    border: 1px solid #444;
     background: #444;
     color: #fff;
     border-radius: 2px;
    cursor:pointer;
-
     width: 100px;
 
     } 
@@ -227,8 +228,9 @@ padding-top:5px;
     .search_keyword,
     .search_box,
     .search_submit {
-   margin: 0 558px 0 -558px;
+   margin: 0 20px;
       }
+
 
 </style>
 </head>
@@ -368,7 +370,8 @@ padding-top:5px;
 
 
 				<!-- 검색창 -->
-	
+
+			<div class="search_con">
 				<form action="Qna_list.jsp" method="get" class="search_container">
 					<!-- 검색분류 -->
 					<select name="type" class="search_box" >
@@ -381,7 +384,8 @@ padding-top:5px;
 					<!-- 전송버튼 -->
 					<input type="submit" value="SEARCH" class="search_submit" >
 				</form>
-
+			</div>
+			
 			</div>
 		</div>
 		<!--  네이게이터  -->
