@@ -77,15 +77,12 @@
                            <tr>
                              
                               <th style="width: 280px; height: 50px;"><span>이미지</span></th>
+                              <th style="width: 120px;">상품이름</th>
                               <th style="width: 450px;"><span>상품정보</span></th>
-                              <th style="width: 80px;">판매가</th>
-
-
-                              <th style="width: 20px;">수량</th>
-
-
+                              <th style="width: 100px;">판매가</th>
+                              <th style="width: 60px;">수량</th>
                               <th style="width: 100px;">배송비</th>
-
+                              <th style="width: 100px;">결제방식</th>
                               <th style="width: 150px;">선택</th>
 
                            </tr>
@@ -105,22 +102,29 @@
 							total_price += idto.getItem_price();
 							
 						%>
-						 
+						
                         <tbody>
                         
                            <tr style="height: 90px; background-color: #fff;">
                               <td style="width: 280px; height: 50px;"><span>이미지</span></td>
+                              <td style="width: 120px; height: 50px;"><span><%=idto.getItem_name() %></span></td>
                               <td style="width: 450px; text-align: left; padding-left: 20px;">
                               	<span><%=idto.getItem_info() %></span>
                               </td>
-                              <td style="width: 80px;"><%=idto.getItem_price() %>원</td>
-                              <td style="width: 30px;"><%=sdto.getShopping_item_cnt() %></td>
+                              <td style="width: 100px;"><%=idto.getItem_price() %>원</td>
+                              <td style="width: 60px;"><%=sdto.getShopping_item_cnt() %></td>
 		                      <td style="width: 100px;">2500원</td>
+		                       <td style="width: 100px;">
+		                       		<%=sdto.getShopping_payment() %><br>
+		                       		<%=sdto.getShopping_paybank()%><br>
+		                       		<%=sdto.getShopping_paybank_num() %>
+		                       </td>
                               <td>
                               <form action="buy_list_delete.do">
                               <input type="submit" class="btn default"
                                style="width: 90px; padding: 10px; margin-bottom: 2.5px; font-size: 13px;" value="주문취소">
                                <input type="hidden" name="shopping_no" value="<%=sdto.getShopping_no()%>">
+                               </form>
                               </td>
                            </tr>
                         </tbody>
@@ -135,7 +139,7 @@
 						구매내역이 비어있습니다.
 					</td>
 					</tr>						
-				</form>
+				
 				<%}
 					real_total_price = total_price + delivery_cost;
 				%>
@@ -198,7 +202,7 @@
                      <input type="button" class="btn default backBtn btnfloat2" value="장바구니가기">
                      </a>
                      <a>
-                     <input type="button" class="btn default backBtn btnfloat2" value="내 견적서 보기">
+                     <input type="button" class="btn default backBtn btnfloat2" value="내 견적서보기">
              		</a>
                   </div>
             </div>

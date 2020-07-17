@@ -86,9 +86,6 @@
 	}
 </script>
 
-
-<form action="wish_del.do" method="post">
-
 	<div class="img-wrap">
 		<article>
 			<br>
@@ -111,16 +108,15 @@
 
 			<body class="Body">
 				<div id="frame">
-					<form>
+					
 						
  
 						<div>
-
+							<form method="post">
 							<table class="calculation1">
 								<thead>
 									<div class="right" style="padding-left: 100px">
-
-										<input type="submit" class="btn default"
+										<input type="submit" class="btn default" formaction="wish_del.do"
 											style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px"
 											value="삭제">
 									</div>
@@ -130,12 +126,9 @@
 										<th style="width: 280px; height: 50px;"><span>이미지</span></th>
 										<th style="width: 450px;"><span>상품정보</span></th>
 										<th style="width: 80px;">판매가</th>
-										
-
-
-
 									</tr>
 								</thead>
+								
 								<%
 									for (WishDto wdto : list) {
 
@@ -154,35 +147,19 @@
 
 										<td
 											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=idto.getItem_info()%></td>
-
 										<td><span style="padding-left: 10px;"><%=idto.getItem_price()%></span>원</td>
-
 									</tr>
 								</tbody>
 								<%
 									}
-								%>
-								<tfoot>
-
-
-								</tfoot>
+								%>													
 							</table>
-
-
-
+							</form>
 						</div>
+							<br>
+							<br>
 
-
-
-
-						<br />
-						<br />
-
-
-
-						<div align="center" style="margin: 10px 10;" class="pagination">
-								
-
+						<div align="center" style="margin: 10px 10;" class="pagination">							
 							
 								<%
 									if(startBlock > 1){
@@ -221,12 +198,28 @@
 
 						<div align="center">
 
-							<input type="button" class="btn default backBtn" id="productClear" value="선택상품주문">
-							<br>
-							<br>
-							<br>
-							<input type="button" class="btn default footerbtn" id="footerbtn" value="쇼핑계속하기">
-							<span class="clearboth"></span>
+							<div style="margin: 10px 10;" align="center">
+					<a href="<%=request.getContextPath()%>">
+                     <button class="btn default backBtn btnfloat2"
+                        style="background-color: gray; color: #fff;">홈으로</button>
+					</a>
+					<a href="<%=request.getContextPath()%>/member/mypage.jsp">
+                     <button class="btn default backBtn btnfloat2"
+                        style="background-color: gray; color: #fff;">마이페이지 가기</button>
+					</a>
+					<a href="<%=request.getContextPath()%>/member/shopBarket3.jsp">
+                     <button class="btn default backBtn btnfloat2">장바구니 가기</button>
+                     </a>
+					<a href="<%=request.getContextPath()%>/buypage/buy_list.jsp">
+                     <button class="btn default backBtn btnfloat2">구매내역 가기</button>
+                     </a>
+                     <a href="#">
+                     <button class="btn default backBtn btnfloat2">내 견적서 보기</button>
+             		</a>
+             		<a href="#">
+                     <button class="btn default backBtn btnfloat2">쇼핑 계속하기</button>
+             		</a> 
+                  </div>
 
 						</div>
 						<br />
@@ -241,7 +234,7 @@
 				<br />
 				<br />
 				<br />
-</form>
+
 </div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

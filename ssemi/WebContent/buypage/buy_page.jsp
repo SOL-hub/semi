@@ -289,7 +289,8 @@
 				int real_total_price=0;
 				int delivery_cost = 2500;	
 									
-				
+						
+								
 				for(int i=0; i<setCart.length; i++) {
 					int cart_no = Integer.parseInt(setCart[i]);
 					CartDto cdto2 = cdao.get_cart2(cart_no);
@@ -473,6 +474,7 @@
                 <div class="row-empty center">
                    
                     <input type="submit" value="결제하기" class="purchase-button">
+                    <input type="submit" value="결제취소" class="purchase-button">
                 </div>
                 <div class="row-empty"></div>
                 <div class="row-empty"></div>
