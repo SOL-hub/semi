@@ -7,11 +7,17 @@ import java.util.Date;
 
 public class EstimateDto {
 	private int bath_no, bath_price;
-	private String bath_cnt, bath_cntt, bath_tub, bath_tile, bath_option, bath_date, bath_member;
+	private String bath_title, bath_cnt, bath_cntt, bath_tub, bath_tile, bath_option, bath_date, bath_member;
 	
 	
 	
-	 public String getBath_member() {
+	 public String getBath_title() {
+		return bath_title;
+	}
+	public void setBath_title(String bath_title) {
+		this.bath_title = bath_title;
+	}
+	public String getBath_member() {
 		return bath_member;
 	}
 	public void setBath_member(String bath_member) {
@@ -29,6 +35,7 @@ public class EstimateDto {
 	 public EstimateDto(ResultSet rs) throws SQLException{
 		   
 	      this.setBath_no(rs.getInt("bath_no"));
+	      this.setBath_title(rs.getString("bath_title"));
 	      this.setBath_price(rs.getInt("bath_price"));
 	      this.setBath_cnt(rs.getString("bath_cnt"));
 	      this.setBath_cntt(rs.getString("bath_cntt"));

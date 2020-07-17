@@ -1,7 +1,7 @@
 <%@page import="home.beans.dto.ItemDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+ <jsp:include page="/template/header.jsp"></jsp:include>   
  <head>
 <style>
 
@@ -14,7 +14,11 @@
 <%if(request.getParameter("item_no") != null){ %>
 <input type="hidden" name="item_no" value="<%=request.getParameter("item_no")%>">
 <%} %>
-
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
 <div align="center">
 	<h2>상품등록</h2>
 	<!-- 테이블에 글 정보를 출력 -->

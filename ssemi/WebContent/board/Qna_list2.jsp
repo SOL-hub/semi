@@ -294,10 +294,9 @@ padding-top:5px;
 			<div class="head">
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
-					<p class="notice">공지사항</p>
 					<p class="qna"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
 					<p class="delivery"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
-					<p class="event">이벤트</p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/event/event.jsp">이벤트</a></p>
 				</div>
 
 				<p class="title">
@@ -349,7 +348,12 @@ padding-top:5px;
 					<%} %>
 						<a href="Qna_content.jsp?qna_no=<%=qmdto2.getQna_no()%>"><%=qmdto2.getQna_title() %>
 						</a></td>
+												<%if(mdto.getMember_id()!=null) { %>
 							<td class="qna_box_content"><%=mdto.getMember_id()%></td>
+							<%} else { %>
+							<font color="grey">Undefined User</font>
+						<%} %>
+
 							<td class="qna_box_content"><%=qmdto2.getQna_autotime() %></td> <!-- 컴퓨터에서 Qna_date()로 확인하기 -->
 						</tr>
 						<%} %>
