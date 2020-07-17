@@ -50,11 +50,24 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		
 		
 		//출력
-			resp.getWriter().print("ddd");
-//			resp.sendRedirect("event1_content.jsp?event_no="+event_no);
-		}
 		
+			if(event_no<=10) {//만약에 등록한 글이 10개 이하라면? 목록에 보여주기   //if(event_no>=10)
+       resp.sendRedirect("event1_content.jsp?event_no="+event_no);
+		}
 	
+	
+	else { //11부터는 목록에서 안보이게 삭제할거임
+		
+		resp.sendRedirect("event.jsp"); 
+		//이벤트 어머, 선착순이 마감되었어요 ㅠ0ㅠ , 다른 이벤트들을 참여해보세요!  모달달기. 
+		
+		//삭제 서블릿과 DAO는 만들었는데 어떻게 보낼까? 
+		
+		//resp.sendRedirect("event_event1.jsp");
+        //resp.sendRedirect("event1_tenover_do");
+				
+	}
+	}
 		
 	//}
 	

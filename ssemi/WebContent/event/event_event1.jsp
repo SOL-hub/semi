@@ -31,6 +31,8 @@ else{
 }
 %>
 
+
+
 <div align = "center">
 <h3>
 		type = <%=type%>,
@@ -147,13 +149,16 @@ else{
                            </tr>
                            <%} %>
                            
-                           
+                         <%if(list.size() <10){ %>  
                        <tr>
                        <td colspan="5" align ="right">
                        <a href="event1_writer.jsp">
                        <input type ="button" value="글쓰기"></a>
                        </tr> 
                         </form>
+                        <%}else{ %>
+                        
+                        <%} %>
  
                        </tbody>
                        

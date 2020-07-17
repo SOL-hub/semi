@@ -3,32 +3,38 @@
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원아이디찾기 페이지</title>
+
+
 <link rel=stylesheet type="text/css"
 	href="<%=request.getContextPath()%>/css/find_id.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
 	
-	
-<div style=padding-top:150px;>
-<form action="find_id,pw.do" method="post">
-	<main>
+</head>
+<body>
+
+		<main class="find-main">
+		<form action="find_id,pw.do" method="post">
 		<div class="find-wrap">
 			<h1>내 계정 찾기</h1>
 
-			<div class="font-find"></div>
+			 <!--아이디/비밀번호찾기-->
 			<div class="font-find_id">아이디찾기</div>
 
-
 			<div class="font-find_pw">
-				<a href="check_pw.jsp">비밀번호변경</a>
-			</div>
+				<a href="check_pw.jsp">비밀번호변경</a></div>
 
-		</div>
+		
 
-		<input class="form-find-id" type="text" name="member_name"
-			placeholder="이름" required> <input class="form-find-id"
-			type="text" name="member_phone" placeholder="전화번호" required>
+		<!--아이디/비밀번호입력창-->
+    <input class = "find-id" type="text" name="member_id" placeholder="아이디입력" required>
+    <input class = "find-pw" type="password" name="member_pw" placeholder="비밀번호입력" required>
 
 		<!-- <select class="form-phone" name="user_phone">
 				<option value="010">010</option>
@@ -58,11 +64,11 @@
 
 		<!--로그인버튼-->
 		<input class="click-btn" type="submit" value="아이디 검색"> <br>
+	</div>
 	
-</main>
-</form>
-</div>
-</body>
-   </html>
+	</form>
+	</main>
+	</body>
+	</html>
 <jsp:include page="/template/footer.jsp"></jsp:include>
  
