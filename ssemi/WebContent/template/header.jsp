@@ -29,10 +29,12 @@ if (keyword == null) {
 
 <meta charset="UTF-8">
 <title>홈페이지</title>
+
+
 <!-- <link rel="stylesheet" type="text/css"
    href="<%=request.getContextPath()%>/css/main.css">-->
 <link rel="stylesheet" type="text/css"
-href="<%=request.getContextPath()%>/css/main.css">
+href="<%=request.getContextPath()%>/css/main.css?ver=1">
 </head>
 
 
@@ -51,17 +53,36 @@ href="<%=request.getContextPath()%>/css/main.css">
                </li>
                <li class="menu_left">스토어
                   <ul class="menu_left_innerMenu">
-                     <li>침실가구</li>
-                     <li>주방가구</li>
-                     <li>소파/거실가구</li>
-                     <li>욕실가구</li>
+                     <li><a href="#">욕실</a>
+                       	<ul class="inner-inner">
+                     		<li><a href="<%=request.getContextPath()%>">젠다이</a></li>
+                     		<li><a href="<%=request.getContextPath()%>">선반</a></li>
+                     		<li><a href="<%=request.getContextPath()%>">비데</a></li>
+                     		<li><a href="<%=request.getContextPath()%>">환풍기</a></li>
+                     	</ul>
+                     	</li>
+                     <li><a href="#">마루</a>
+                        <ul class="inner-inner">
+                     		<li><a href="<%=request.getContextPath()%>">강마루</a></li>
+                     		<li><a href="<%=request.getContextPath()%>">강화마루</a></li>
+                     		<li><a href="<%=request.getContextPath()%>">합판마루</a></li>
+                     		<li><a href="<%=request.getContextPath()%>">원목마루</a></li>
+              	       </ul>
+              	       </li>
+                     <li><a href="#">주방</a>
+                   	  	<ul class="inner-inner">
+                     		<li><a href="<%=request.getContextPath()%>">테이블</a></li>
+                     		<li><a href="<%=request.getContextPath()%>">냉장고</a></li>
+                     		<li><a href="<%=request.getContextPath()%>">선반</a></li>
+                    	 	</ul>
+                     	</li>
                   </ul>
                </li>
                <li class="menu_left">인테리어 시공
                   <ul class="menu_left_innerMenu">
-                     <li><a href="<%=request.getContextPath()%>/estimate/living.jsp">마루</li>
-                     <li><a href="<%=request.getContextPath()%>/estimate/kit.jsp">주방</li>
-                     <li><a href="<%=request.getContextPath()%>/estimate/bath.jsp">욕실</li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/living.jsp">마루</a></li>            
+                     <li><a href="<%=request.getContextPath()%>/estimate/kit.jsp">주방</a></li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/bath.jsp">욕실</a></li>           
                   </ul>
                </li>
             </ul>
@@ -72,7 +93,6 @@ href="<%=request.getContextPath()%>/css/main.css">
             </a>
          </div>
 
-         
       
          <!-- 로그인/로그아웃 상황에맞게 설정 -->
 
@@ -89,17 +109,12 @@ href="<%=request.getContextPath()%>/css/main.css">
          <div id="box_right">
            <ul class="menu side_right">
 
-
                   <li class="menu_right"><a
                      href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
                   <li class="menu_right"><a href="<%=request.getContextPath()%>/admin/admin_search.jsp">관리메뉴</a></li>
                   <li class="menu_right"><a href="<%=request.getContextPath()%>/admin/total_before_pay.jsp">주문/배송</a></li>
                   <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
-
-
                </ul>
-         
-         
           
             <%
                } else if (isLogin) {
@@ -111,13 +126,8 @@ href="<%=request.getContextPath()%>/css/main.css">
                <li class="menu_right"><a
                   href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
                <li class="menu_right"><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
-               <li class="menu_right"><a href="<%=request.getContextPath()%>/member/.jsp">주문/배송 조회</a></li>
-               <li class="menu_right"><a href="<%=request.getContextPath()%>/member/user_info.jsp">내 정보</a></li>
                <li class="menu_right"><a href="<%=request.getContextPath()%>/member/shopBarket3.jsp">장바구니</a></li>
-               <li class="menu_right"><a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=user_out.jsp">회원탈퇴</a></li>
-
-
-               <li class="menu_right"><a href="#">주문/배송</a></li>
+               <li class="menu_right"><a href="<%=request.getContextPath()%>/member/.jsp">주문/배송</a></li>
                <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
             </ul>
 
