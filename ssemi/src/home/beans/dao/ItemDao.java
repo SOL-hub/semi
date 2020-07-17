@@ -132,6 +132,7 @@ private static DataSource src;
 			ps.setString(4, idto.getItem_type());
 			ps.setString(5, idto.getItem_info());
 			ps.setInt(6, idto.getItem_stock());
+			
 			ps.execute();
 
 			con.close();

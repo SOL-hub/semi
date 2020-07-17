@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="home.beans.dto.WishDto"%>
 <%@page import="home.beans.dao.WishDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
@@ -18,6 +19,7 @@
 	int member_no = mdto.getMember_no();
 	WishDao wdao = new WishDao();
 	
+	DecimalFormat formatter = new DecimalFormat("###,###");
 	
 	//////////////////////////////////////////////////////////////////
 	// 페이지 목록계산 코드
@@ -84,6 +86,39 @@
 			selectWish[i].checked = selectAll;
 		}
 	}
+	
+	function button_event(){
+		
+		var result2="";
+		
+		   //선택된것 갯수 체크
+		   for (i=0; i<document.select_check.wish_no.length; i++ ){
+		    if (document.select_check.wish_no[i].checked==true){
+		      
+		    	result2 += select_check.wish_no[i].value+"\n";
+
+		     }
+		   } 
+		   //체크박스 선택개수가 3보다 크면
+		   if (result2 == ""){
+		    //경고문을 띄우고
+		    alert("상품을 한개이상 선택하세요");
+		    return false;
+		    }
+		   
+			 else{
+				 var result = confirm("선택하신 상품을 삭제하시겠습니까??");
+			   if (!result){ 
+//		             document.form.submit();
+		        	return false;
+		        }
+		        else{  
+
+//		             return;
+		            document.form.submit();
+		        	}
+		        }
+		  	 }
 </script>
 
 	<div class="img-wrap">
@@ -112,13 +147,13 @@
 						
  
 						<div>
-							<form method="post">
+							<form method="post" name="select_check">
 							<table class="calculation1">
 								<thead>
 									<div class="right" style="padding-left: 100px">
 										<input type="submit" class="btn default" formaction="wish_del.do"
 											style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px"
-											value="삭제">
+											value="삭제" onclick="return button_event();">
 									</div>
 									<tr>
 										<th><input style="width: 10px;" type="checkbox"
@@ -147,7 +182,7 @@
 
 										<td
 											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=idto.getItem_info()%></td>
-										<td><span style="padding-left: 10px;"><%=idto.getItem_price()%></span>원</td>
+										<td><span style="padding-left: 10px;"><%=formatter.format(idto.getItem_price())%></span>원</td>
 									</tr>
 								</tbody>
 								<%
