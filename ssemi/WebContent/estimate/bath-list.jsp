@@ -10,41 +10,69 @@
     <%
 	MemberDto mdto = (MemberDto)session.getAttribute("userinfo");
 	String bath_member = mdto.getMember_id();
-	
+
 	EstimateDao edao = new EstimateDao();
-	List<EstimateDto> list = edao.getList(bath_member);   %>
+	List<EstimateDto> list = edao.getList(bath_member); 
+	%>
 	
-
-
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 견적내역페이지</title>
+<title> 욕실견적내역</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/bath-list.css">
+	
+	<style>
+	
+	.btn {
+  background-color: #6A89B2;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #ddd; 
+  color: white;
+}
+	
+	</style>
 </head>
 <body>
 <main>
 
 <!-- 여기부터하기 -->
 
-<h1>내 견적내역 </h1>
-
+<h1>내 "욕실 시공" 견적내역  </h1>
+<a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 욕실 </a>
+ <a href="<%=request.getContextPath()%>/estimate/kit-list.jsp"> 주방 </a>
+ <a href="<%=request.getContextPath()%>/estimate/living-list.jsp">마루 </a>
+     
  <hr>
  <!--테이블 시작-->
+ <div class="row-empty"></div>
+ <a href="bath.jsp">
+						<input class="btn" type="button" value="욕실 견적 받으러 가볼까요?"> </a>
 <div class = table-wrap>
 <table border="1" width="90%"  align="center">
 		<thead>
+		<tr>
+	<th colspan="3"> 욕실 견적 모음 </th>
+		</tr>
 			<tr>
-				<th>번호</th>
-				<th width="40%">가격</th>
-<th>작성일</th>
+				<th> Name </th>
+				<th width="40%">Price</th>
+				<th>Date</th>
 			</tr>
 		</thead>
 		
@@ -52,8 +80,19 @@
 			<%-- list의 데이터를 하나하나 edto라는 이름으로 접근하여 출력 --%>
 			<%for(EstimateDto edto : list ){ %>
 			<tr>
-				<td> 제목(코드은 나중에 넣음)</td>
-				<td align="left">
+			<td>
+			<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
+				<%=edto.getBath_title() %> </td> 
+		<%-- 수정중입니당
+			<% if( edto.getBath_title()==null) { %>
+			<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
+			 욕실견적서
+			<%}else{ %>
+				<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
+				<%=edto.getBath_title() %> </td> <%} %> 
+				 --%>
+				
+				<td align="center">
 					
 					<!-- 가격 -->
 					<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
@@ -70,10 +109,7 @@
 		<tfoot>
 			<tr>
 			
-				<td colspan="8" align="right">
-					<a href="bath.jsp">
-						<input type="button" value="견적받으러가깅">
-					</a>
+	<td colspan="3"> 수정중입니다
 					
 				</td>
 			
@@ -82,7 +118,9 @@
 		</tfoot>
 	</table>
 	</div>
-
+	
+	
+	<!--추천상품-->
 
 	<div class = "img-wrap">
 	    <h5 style= font-size:20px; width:1000px;>함께 사면 좋은 제품 추천</h5>

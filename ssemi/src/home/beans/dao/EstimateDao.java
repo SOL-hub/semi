@@ -41,15 +41,16 @@ public class EstimateDao {
 			
 				
 			//아래와 같이 작성하면 미 작성된 항목들은 default 값이 적용
-			String sql = "INSERT INTO bath VALUES(bath_seq.nextval, ?, ?, ?, ?, ?, ?, sysdate,?)";
+			String sql = "INSERT INTO bath VALUES(bath_seq.nextval, ?, ?, ?, ?, ?, ?, ?, sysdate,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, edto.getBath_price());
-			ps.setString(2, edto.getBath_cnt());
-			ps.setString(3, edto.getBath_cntt());
-			ps.setString(4, edto.getBath_tub());
-			ps.setString(5, edto.getBath_tile());
-			ps.setString(6, edto.getBath_option());
-			ps.setString(7, edto.getBath_member());
+			ps.setString(1, edto.getBath_title());
+			ps.setInt(2, edto.getBath_price());
+			ps.setString(3, edto.getBath_cnt());
+			ps.setString(4, edto.getBath_cntt());
+			ps.setString(5, edto.getBath_tub());
+			ps.setString(6, edto.getBath_tile());
+			ps.setString(7, edto.getBath_option());
+			ps.setString(8, edto.getBath_member());
 		 
 			ps.execute();
 			

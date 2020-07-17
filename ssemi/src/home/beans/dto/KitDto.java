@@ -2,13 +2,24 @@ package home.beans.dto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class KitDto {
 	private int kit_no, kit_price;
-	private String kit_shape, kit_sinksize, kit_toptype, kit_walltype, kit_tile, kit_option, kit_date, kit_member;
+	private String  kit_title, kit_shape, kit_sinksize, kit_toptype, kit_walltype, kit_tile, kit_option, kit_date, kit_member;
 
 	
+	public KitDto() {
+	      super();
+	   }
 	
+	public String getKit_title() {
+		return kit_title;
+	}
+	public void setKit_title(String kit_title) {
+		this.kit_title = kit_title;
+	}
 	public String getKit_tile() {
 		return kit_tile;
 	}
@@ -71,9 +82,29 @@ public class KitDto {
 		this.kit_member = kit_member;
 	}
 	
+	public String getKit_time() {
+		return kit_date.substring(11, 16);
+	}
+	
+	public String getKit_day() {
+		return kit_date.substring(0, 10);
+	}
+	
+	public String getKit_autotime() {
+
+		String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		if(getKit_day().equals(today)) {//오늘 작성한 글이라면
+			return getKit_time();
+		}
+		else {//아니라면
+			return getKit_day();
+		}
+	}
+	
 	public KitDto(ResultSet rs) throws SQLException{
 		   
 	      this.setKit_no(rs.getInt("kit_no"));
+	      this.setKit_title(rs.getString("kit_title"));
 	      this.setKit_price(rs.getInt("kit_price"));
 	      this.setKit_shape(rs.getString("kit_shape"));
 	      this.setKit_sinksize(rs.getString("kit_sinksize"));
@@ -83,7 +114,7 @@ public class KitDto {
 	      this.setKit_date(rs.getString("kit_date"));
 	      this.setKit_member(rs.getString("kit_member"));
 	   }
-	
+
 	
 	
 

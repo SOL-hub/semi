@@ -59,9 +59,9 @@ href="<%=request.getContextPath()%>/css/main.css">
                </li>
                <li class="menu_left">인테리어 시공
                   <ul class="menu_left_innerMenu">
-                     <li>마루</li>
-                     <li>주방</li>
-                     <li>욕실</li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/living.jsp">마루</li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/kit.jsp">주방</li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/bath.jsp">욕실</li>
                   </ul>
                </li>
             </ul>
