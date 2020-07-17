@@ -50,8 +50,8 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		
 		
 		//출력
-			resp.getWriter().print("ddd");
-//			resp.sendRedirect("event1_content.jsp?event_no="+event_no);
+			
+       resp.sendRedirect("event1_content.jsp?event_no="+event_no);
 		}
 		
 	
