@@ -30,9 +30,9 @@
 
 			<th>상품타입</th>
 				<td><select name="item_kingtype" required >
-					<option  value="c1">욕실</option>
-					<option  value="c2">부엌</option>
-					<option value="c3">주방</option>
+					<option  value="욕실">욕실</option>
+					<option  value="마루">마루</option>
+					<option value="주방">주방</option>
 				</select>
 				<select id="yorksil" name="item_type" required>
 					<option value="젠다이">[욕실]젠다이</option>

@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="home.beans.dto.CartDto"%>
 <%@page import="home.beans.dao.CartDao"%>
@@ -13,6 +14,8 @@
 	int cart_member = mdto.getMember_no();
 	CartDao cdao = new CartDao();
 	List<CartDto> list = cdao.getList(cart_member);
+	
+	DecimalFormat formatter = new DecimalFormat("###,###");
 
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -90,14 +93,33 @@
 						selectCart[i].checked = selectAll;
 					}
 				}
-// 				function check_item_checkbox() {
-// 					var selectCart = document.getElementsByName("cart_no").checked;
-// 					if(!selectCart){
-// 						alert("체크박스를 하나라도 체크해주세요");
-// 						return false;
-// 					}
-				 
-// 				} 
+				
+				function check_item_checkbox() {
+					   var result="";
+					   //선택된것 갯수 체크
+					   for (i=0; i<document.select_check.cart_no.length; i++ )
+					   {
+					    if (document.select_check.cart_no[i].checked==true)
+					     {
+					      result += select_check.cart_no[i].value+"\n";
+
+					      
+					     }
+					   } 
+					   //체크박스 선택개수가 3보다 크면
+					   if (result=="")
+					   {
+					    //경고문을 띄우고
+					    alert("상품을 한개이상 선택하세요");
+					    return false;
+					    }
+					   else{
+						   document.form.submit();
+					  	 }
+					   }
+					  
+
+		
 
 				function sendEdit(button){
 					//button 앞에는 수량창이 있고 뒤에는 번호태그가 있다
@@ -105,13 +127,58 @@
 					//뒤 : button.nextElementSibling
 					var cart_cnt = button.previousElementSibling.value;
 					var cart_no = button.nextElementSibling.value;
+					
 					//console.log(cart_no, cart_cnt);
 					
 					var form = document.querySelector(".edit-form");
 					form.querySelector("input[name=cart_no]").value = cart_no;
 					form.querySelector("input[name=cart_cnt]").value = cart_cnt;
-					form.submit();//폼 전송버튼 누른 효과
-				}
+					
+					
+			           
+			        form.submit();//폼 전송버튼 누른 효과
+			        	
+			        }
+					
+					
+					
+				 function button_event(){
+						
+						
+						var result2="";
+						
+						   //선택된것 갯수 체크
+						   for (i=0; i<document.select_check.cart_no.length; i++ ){
+						    if (document.select_check.cart_no[i].checked==true){
+						      
+						    	result2 += select_check.cart_no[i].value+"\n";
+
+						     }
+						   } 
+						   //체크박스 선택개수가 3보다 크면
+						   if (result2 == ""){
+						    //경고문을 띄우고
+						    alert("상품을 한개이상 선택하세요");
+						    return false;
+						    }
+						   
+							 else{
+								 var result = confirm("선택하신 상품을 삭제하시겠습니까??");
+							   if (!result){ 
+//						             document.form.submit();
+						        	return false;
+						        }
+						        else{  
+
+//						             return;
+						            document.form.submit();
+						        	}
+						        }
+						  	 }
+						   
+						
+				        
+									
 			</script>
 
 
@@ -136,16 +203,17 @@
 						<%--상품정보 테이블--%>
 
 						<div>
-							<form method="get">
+							<form method="get" name="select_check">
 							<table class="calculation1">
 								<thead>
 									<tr>
 										<th colspan="7" class="right" style="background-color: antiquewhite;"> 
 											<input type="submit" formaction="<%=request.getContextPath()%>/buypage/buy_page.jsp" class="btn default"
 														style="width: 110px; padding: 10px; margin-bottom: 3px; font-size: 15px; background: white" value="선택상품구매"
-														onclick="return check_item_checkbox();">
+														  onclick="return check_item_checkbox();" >
 											<input type="submit" formaction="barket_delete.do" class="btn default"
-														style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px" value="삭제하기">		 			
+														style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px" value="삭제하기"
+														onclick="return button_event();">		 			
 										</th>
 									</tr>
 									<tr>
@@ -189,7 +257,7 @@
 										<td
 											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=itemName.getItem_info()%></td>
 
-										<td><span style="padding-left: 10px;"><%=item_cnt_change_price%></span>원</td>
+										<td><span style="padding-left: 10px;"><%=formatter.format(item_cnt_change_price)%></span>원</td>
 										
 										<td style="width: 50px;">
 										
@@ -232,7 +300,7 @@
 										</td>
 										<td colspan="5"
 											style="border-left: nonoe; text-align: right; padding-right: 10px;">
-											상품금액 : <span><%=total_price %></span>+ <span><%=delivery_cost %> = <%=real_total %></span>&nbsp;<span
+											상품금액 : <span><%=formatter.format(total_price) %></span>원 + <span><%=formatter.format(delivery_cost) %>원 = <%=formatter.format(real_total) %>원</span>&nbsp;<span
 											style="font-weight: bold; font-size: 15pt;"></span>
 										</td>
 									</tr>
@@ -264,10 +332,10 @@
 							</tr>
 
 							<tr style="background-color: #fff;">
-								<td style="padding: 22px 0;"><span class="price"><%=total_price %></span>원</td>
-								<td><span class="price"><%=delivery_cost %></span>원
+								<td style="padding: 22px 0;"><span class="price"><%=formatter.format(total_price) %></span>원</td>
+								<td><span class="price"><%=formatter.format(delivery_cost) %></span>원
 								</td>
-								<td><span class="price"><%=real_total %></span>원
+								<td><span class="price"><%=formatter.format(real_total) %></span>원
 								</td>
 
 							</tr>
