@@ -19,15 +19,17 @@ public class ItemWriteServlet extends HttpServlet {
 			//목표:상품 등록 후 상품등록_상세페이지로
 			//상품등록
 			
-			
 			req.setCharacterEncoding("UTF-8");
+			
 			ItemDto idto = new ItemDto();
 			idto.setItem_name(req.getParameter("item_name"));
 			idto.setItem_price(Integer.parseInt(req.getParameter("item_price")));
+			idto.setItem_kingtype(req.getParameter("item_kingtype"));
 			idto.setItem_type(req.getParameter("item_type"));
 			idto.setItem_info(req.getParameter("item_info"));
+			idto.setItem_image(req.getParameter("item_image"));
 			idto.setItem_stock(Integer.parseInt(req.getParameter("item_stock")));
-			idto.setItem_kingtype(req.getParameter("item_kingtype"));
+		
 				
 			if(req.getParameter("item_no") != null) {
 				idto.setItem_no(Integer.parseInt(req.getParameter("item_no")));

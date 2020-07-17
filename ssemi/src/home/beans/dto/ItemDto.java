@@ -7,7 +7,6 @@ public class ItemDto {
 	private int item_no;
 	private String item_name;
 	private int item_price;
-	
 	private String item_type;
 	private String item_info;
 	private int item_stock;

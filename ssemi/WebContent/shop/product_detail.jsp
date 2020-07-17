@@ -51,42 +51,13 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                 //,effect:'slide'//기본값
             });
         };
-        var sell_price;
-        var amount;
-
-        function init () {
-        	sell_price = document.form.sell_price.value;
-        	amount = document.form.amount.value;
-        	document.form.sum.value = sell_price;
-        	change();
-        }
-
-        function add () {
-        	hm = document.form.amount;
-        	sum = document.form.sum;
-        	hm.value ++ ;
-
-        	sum.value = parseInt(hm.value) * sell_price;
-        }
-
-        function del () {
-        	hm = document.form.amount;
-        	sum = document.form.sum;
-        		if (hm.value > 1) {
-        			hm.value -- ;
-        			sum.value = parseInt(hm.value) * sell_price;
-        		}
-        }
-
-        function change () {
-        	hm = document.form.amount;
-        	sum = document.form.sum;
-
-        		if (hm.value < 0) {
-        			hm.value = 0;
-        		}
-        	sum.value = parseInt(hm.value) * sell_price;
-        }  
+    	// 곱하기
+      function calcNow(){
+    	calc.result_multiply.value = calc_multiply(calc.left.value, calc.right.value);
+		}
+		function calc_multiply(left, right){
+    	return left * right;
+}
            </script>
 </head>
 
@@ -96,9 +67,10 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
 <br>
 <br>
 <br>
-<form method="post">
+<br>
+<form method="post" name="calc">
  <main>
-   <div style= padding-top:"100">
+   <div>
     <div class="section-box">
         <div class="f-pic">
             
@@ -141,34 +113,34 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                 <span>내일</span>
                 <span><b>배송료:</b></span>
                 <span>5,000</span>
-                <span><b>수량:</b></span>
+                <span><b>재고:</b></span>
                 <span><%=idto.getItem_stock()%></span>
             </div>
             <div class="eeee">
                              <div>
-<!--                               <select class="select_option mar-b12"name="area"> -->
-								<form>
-                    		  <span>            
-								<button onclick="change(-1);"type="button"><span class="blind">☜</span></button>        
-              					<input type="text" maxlength="3" title="수량" value="1">
-              					<button onclick="change(1);"type="button"><span class="blind">☞</span></button>
-							  </span>
-								</form>
-<!--                               </select> -->
+                				     <input class="anboim" type="text" name="left" value="<%=idto.getItem_price()%>"/>
+        <div class="goway">    
+            수량:<input type="number" name="right" value="1"/>
+            <input type="button" value="계산하기" onClick="calcNow()"/>
+            </div>
                               </div>
                         </div>
+                        <br>       
+         
+
                         <div class="total_price">
                             <b>총구매가</b>
-                            <span class="f-right colorred">FREE</span>
+                            <span class="f-right colorred"><input type="text" name="result_multiply" readonly /></span>
+            				
                         </div>
+                        <br>
                     <div class="shop-btn">
                     <a href="#"><input type="button" value="결제하기" class="payit"></a>
-                    <a href="#"><input type="button" value="장바구니" class="bagit"></a>
-                    <a href="#"><input type="button" value="찜"></a>
+                    <a href="#"><input type="button" value="장바구니" class="bagit"></a>                    
                     </div>
                         <div class="border_1"></div>
                       
-       </div>
+       
                        
                  
                         

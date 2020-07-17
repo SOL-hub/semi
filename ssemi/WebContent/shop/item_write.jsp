@@ -34,26 +34,23 @@
 
 			<th>상품타입</th>
 				<td><select name="item_kingtype" required >
+
 					<option  value="욕실">욕실</option>
 					<option  value="마루">마루</option>
 					<option value="주방">주방</option>
 				</select>
 				<select id="yorksil" name="item_type" required>
 					<option value="젠다이">[욕실]젠다이</option>
-					<option value="거울수납장">[욕실]거울수납장</option>
 					<option value="선반">[욕실]선반</option>
 					<option value="비데">[욕실]비데</option>
 					<option value="환풍기">[욕실]환풍기</option>
-					<option value="강마루">[부엌]강마루</option>
-					<option value="강화마루">[부엌]강화마루</option>
-					<option value="합판마루">[부엌]합판마루</option>
-					<option value="원목마루">[부엌]원목마루</option>
-					<option value="아일랜드 식탁">[주방]아일랜드 식탁</option>
-					<option value="냉장고장">[주방]냉장고장</option>
-					<option value="키큰장">[주방]키큰장</option>
-					<option value="뒷선반">[주방]뒷선반</option>
-					<option value="쿡탑">[주방]쿡탑</option>
-					<option value="플랩장">[주방]플랩장</option>
+					<option value="강마루">[마루]강마루</option>
+					<option value="강화마루">[마루]강화마루</option>
+					<option value="합판마루">[마루]합판마루</option>
+					<option value="원목마루">[마루]원목마루</option>
+					<option value="테이블">[주방]아일랜드 식탁</option>
+					<option value="냉장고">[주방]냉장고장</option>
+					<option value="선반">[주방]키큰장</option>
 				</select>
 				</td>			
 			</tr>

@@ -93,24 +93,20 @@
         </h5>
         <h5>startBlock=<%=startBlock%>
 			finishBlock=<%=finishBlock%></h5>
-            <p class="subject middle-font">욕실</p>
+            <p class="subject middle-font">주방</p>
             <div class="selected subject">
                 <ul class="main_menu">
                     <li>
                         <a href=#>전체</a>
                     </li>
                     <li>
-                        <a href=#>젠다이</a>
-        
+                        <a href=#>테이블</a>
                     </li>
                     <li>
-                        <a href=#>선반</a>        
+                        <a href=#>냉장고</a>        
                     </li>
                     <li>
-                        <a href=#>비데</a>
-                    </li>
-                    <li>
-                        <a href=#>환풍기</a>
+                        <a href=#>선반</a>
                     </li>
                 </ul>
             </div>
