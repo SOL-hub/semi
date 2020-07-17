@@ -96,6 +96,11 @@
     	
     	
     }
+     
+ 	.Ltable th {
+ 	
+ 		font-size: 14px;
+ 	}
 
     </style>
     <script src="<%=request.getContextPath()%>/js/moment.min.js"></script>
@@ -275,10 +280,11 @@
 					<tr>
 						
 						<th>주문번호</th>
+						<th>구매날짜</th>
 						<th>상품번호</th>
 						<th>상품명</th>
 						<th>수량</th>
-						<th>총 결제 금액</th>
+						<th>결제 금액</th>
 						<th>배송 상태</th>
 						<th>운송장 번호</th>
 						<th>비고</th>
@@ -293,6 +299,7 @@
 					ItemDao idao = new ItemDao();
 					ItemDto idto = idao.item_get(sdto.getShopping_item_name());%>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_no() %></a></td>
+						<td class="Ldata"><a href = "#"><%=sdto.getShopping_date_month() %></a></td>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_item_name() %></a></td>
 						<td class="Ldata" ><a href = "#"><%=idto.getItem_name()%> </a></td>
 						<td class="Ldata"><%=sdto.getShopping_item_cnt() %>개</td>
