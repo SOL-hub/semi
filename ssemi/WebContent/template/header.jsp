@@ -149,7 +149,6 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                         <input type="image"  src="<%=request.getContextPath()%>/img/search.png" style="width: 20px;">
                      </form>
                   </div>
-                  
                </div>
             </div>
          </div>
