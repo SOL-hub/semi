@@ -92,7 +92,7 @@
 
         <div class="label-wrap">
             <a href="total_after_pay.jsp" class="today-label">
-                결제 (9건)
+                결제 (<%=slist.size()%>건)
             </a>
         </div>
 
