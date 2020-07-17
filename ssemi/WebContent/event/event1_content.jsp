@@ -1,18 +1,39 @@
 
+<%@page import="home.beans.dao.MemberDao"%>
+<%@page import="home.beans.dto.MemberDto"%>
 <%@page import="home.beans.dto.eventDto"%>
 <%@page import="home.beans.dao.eventDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 
+
 <% int event_no = Integer.parseInt(request.getParameter("event_no"));
 
 eventDao edao = new eventDao();
 eventDto edto = edao.get(event_no);
 
-
 %>
-  
+
+<%
+
+//관리자이면 세션에 있는 userinfo 권한 정보
+
+MemberDto user = (MemberDto)session.getAttribute("userinfo");
+
+// 내글이(게시글edto)의 작성자와 로그인 된 사용자(user)의 아이디가 같아야함.
+
+boolean isMine = user.getMember_id().equals(edto.getEvent_writer());
+
+int Member_no = Integer.parseInt(request.getParameter("Member_no"));
+
+MemberDao mdao = new MemberDao();
+MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
+
+
+%> 
+
+
      <jsp:include page="/template/header.jsp"></jsp:include>
     
     
@@ -35,27 +56,50 @@ eventDto edto = edao.get(event_no);
     
     <tr>
     <td>
+    <font size="6">
+    <%if(edto.getEvent_head()!=null){ %>
+    [<%=edto.getEvent_head()%>]
+    <%}%>
+    </font>
     
     <%=edto.getEvent_title()%><!-- 제목 -->
+     </font>
     </td>
     </tr>
     
     
-    <tr><!--작성자 -->
-    <td><%=edto.getEvent_writer() %></td>
+    <tr>
+    <td>
+    
+    <!--작성자 -->
+   
+    
+     <%if(edto.getEvent_writer()!=null) {%>
+     <%=edto.getEvent_writer()%>
+ <%}else{%>
+    <font color ="gray"> 탈퇴한 사용자</font>
+       <%}%>
+       
+       
+  <%if(mdto != null){ %>
+    <font color = "gray">
+    <%=mdto.getMember_auth()%>
+    </font>
+    <%}%>
+    </td>
     </tr>
     
     <tr>
     <td>
-   <%=edto.getEvent_date() %>
-    <%=edto.getEvent_read() %>
+   <%=edto.getEvent_date()%>
+    <%=edto.getEvent_read()%>
     </td>
     </tr>
     
     
      <tr height="300">
     <td valign ="top">
-  <%=edto.getEvent_content() %>
+  <%=edto.getEvent_content()%>
     </td>
     </tr>
 
@@ -67,10 +111,16 @@ eventDto edto = edao.get(event_no);
     <a href= event_writer.jsp>
     <input type = "button" value="글쓰기"></a>
     
-        <input type = "button" value="수정">
+    
+    <%if(isMine){%>
+     <a href= "<%=request.getContextPath()%>/event/event1_edit.jsp?event_no=<%=event_no%>">
+        <input type = "button" value="수정"></a>
         
-          <input type = "button" value="삭제">
+        <a href= "<%=request.getContextPath()%>/member/check_pw.jsp?go=<%=request.getContextPath()%>/event/delete.do?event_no=<%=event_no%>">
+          <input type = "button" value="삭제"></a>
           
+          
+          <%} %>
            <a href= event_event1.jsp>
             <input type = "button" value="목록"></a>
     

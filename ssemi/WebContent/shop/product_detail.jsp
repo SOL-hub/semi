@@ -98,7 +98,7 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
 <br>
 <form method="post">
  <main>
-   <div>
+   <div style= padding-top:"100">
     <div class="section-box">
         <div class="f-pic">
             
@@ -168,7 +168,7 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                     </div>
                         <div class="border_1"></div>
                       
-       
+       </div>
                        
                  
                         

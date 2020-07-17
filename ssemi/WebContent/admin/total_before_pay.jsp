@@ -11,7 +11,7 @@
     
     
     <jsp:include page="/template/header.jsp"></jsp:include>
-    
+
 
     
     
@@ -83,8 +83,64 @@
     	color:#AAAAAA;
     }
     
+    
+     .payhr {
+    	border: 0px;
+		height: 1px;
+		background-color: #3333;
+		width: 900px;
+		margin-left: 600px;
+		text-align: center;
+    	
+    	
+    	
+    	
+    }
+ 
+ 
+ 	.Ltable th {
+ 	
+ 		font-size: 14px;
+ 	}
 
     </style>
+    <script src="<%=request.getContextPath()%>/js/moment.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/lightpick.css">
+<script src="<%=request.getContextPath()%>/js/lightpick.js"></script>
+    
+    <script>
+	window.onload = function() {
+		var options = {
+			//대상 지정
+			field : document.querySelector(".picker-start"),
+
+			//두 번째 대상 지정
+			secondField : document.querySelector(".picker-end"),
+
+			//날짜 표시 형식 지정
+			format : 'YYYY-MM-DD',
+
+			//한 화면에 표시될 달의 개수
+			numberOfMonths : 1,
+
+			//시작요일(1:월 ~ 7:일)
+			firstDay : 7,
+
+			//자동으로 닫히지 않도록 설정
+			//autoclose: false,
+
+			//선택 방향 제어
+			selectForward : true,
+			selectBackword : false,
+
+		};
+
+		var picker = new Lightpick(options);
+
+	};
+</script>
+    
 </head>
 <body>
 
@@ -123,7 +179,7 @@
     %>
     
 <div class="category-main fixed">
-        <h3>Today</h3>
+        <h3>Total</h3>
 
         <div class="today-cart-wrap">
             <a href="total_before_pay.jsp">
@@ -151,13 +207,13 @@
 
         <div class="label-wrap">
             <a href="total_after_pay.jsp" class="today-label">
-                결제 (9건)
+                결제 (<%=slist.size()%>건)
             </a>
         </div>
 
 
         <div class="today-cart-wrap">
-            <a href="#">
+            <a href="admin_search.jsp">
                 <img class="todayimg" src="/ssemi/img/customer.png">
             </a>
         </div>
@@ -168,8 +224,10 @@
 
 	List<MemberDto> mlist;
 	int count = mdao.memberCount(); %>
+	
+
         <div class="label-wrap ">
-            <a href="#" class="today-label">
+            <a href="admin_search.jsp" class="today-label">
                 회원 가입(<%= count %>건)
             </a>
         </div>
@@ -183,22 +241,15 @@
        
 <form action="total_before_pay.jsp" method="post">
         <table>
-            <tr>
-                <th class="totalth">검색어</th>
-                <td class="totaltd">
-            		<select name ="type">
-            			<option value="shopping_member">주문자명</option>
-            			<option value ="shopping_item_name">상품명</option>
-            		</select>
-            		<input type="text" name="keyword" >
-    
-               </td>
-            </tr>
-           
+      
             <tr>
                 <th class="totalth">주문 기간</th>
-                <td class="totaltd"><input type="text" name="start">~<input type="text" name="finish"></td>
+                <td class="totaltd"><input type="text" name="start"class="picker-start">~<input type="text" name="finish" class="picker-end" ></td>
             </tr>
+
+
+		
+
 
         </table>
         
@@ -206,18 +257,31 @@
     </form>
     </div>
     
-   
+   				<br>
+				<br>
+				<hr class= "payhr">
+				<br>
     <!--  검색 결과 -->
     <div class="list-wrap">
 
 			<h2 id="Ltitle">회원 주문 목록</h2>
-				<p id="listcount">검색결과 <%=list.size() %>건
-			</p>
+			
+			
+			<%if(keyword == null&& start==null &&finish==null) {%>
+			<p> </p>
+			<%}else if(list.isEmpty()){%>
+			<p class="listcount">검색 결과가 없습니다</p>
+				<% } else {%>
+				<p class="listcount">검색결과<%=list.size()%>건</p>
+		 	
+			<%} %>
+		 	
 			<div class="list-table-wrap">
 				<table class="Ltable">
 					<tr>
 						
 						<th>주문번호</th>
+						<th>구매날짜</th>
 						<th>상품번호</th>
 						<th >상품명</th>
 						<th> 수량 </th>
@@ -236,12 +300,13 @@
 					ItemDao idao = new ItemDao();
 					ItemDto idto = idao.item_get(sdto.getShopping_item_name());%>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_no() %></a></td>
+						<td class="Ldata"><a href = "#"><%=sdto.getShopping_date_month() %></a></td>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_item_name() %></a></td>
-						<td class="Ldata" ><a href = "#"><%=idto.getItem_name()%> <br> <span id="totalcolor">화이트</span></a></td>
+						<td class="Ldata" ><a href = "#"><%=idto.getItem_name()%> </a></td>
 						<td class="Ldata"><%=sdto.getShopping_item_cnt() %></td>
 						<td class="Ldata"><%=sdto.getShopping_total() %></td>
 						<td class="Ldata"><%=sdto.getShopping_payment()%></td>
-						<td class="Ldata"><a href = "#"><input type="button" value="취소"  class="beforetable" style="background-color:#C80A1E"></a></td>
+						<td class="Ldata"><a href = "<%=request.getContextPath()%>/admin/shopping_delete.do?shopping_no=<%=sdto.getShopping_no()%>"><input type="button" value="취소"  class="beforetable" style="background-color:#C80A1E"></a></td>
 				
 				<%} %>
 						
@@ -253,7 +318,9 @@
 
 
 		</div>
-
+				
+		<br> <br> <br> <br> <br> <br> <br>
+		<br>	<br> <br> <br>  <br><br><br>
 	
 
 </body>

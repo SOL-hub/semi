@@ -1,4 +1,5 @@
 
+<%@page import="home.beans.dto.MemberDto"%>
 <%@page import="home.beans.dto.eventDto"%>
 <%@page import="java.util.List"%>
 <%@page import="home.beans.dao.eventDao"%>
@@ -15,6 +16,10 @@ boolean isSearch = type!=null && keyword!=null;
 
 eventDao edao = new eventDao();
 //list
+
+
+
+//List<eventDto> list = 목록 or 검색;
 List<eventDto>list;
 
 if(isSearch){
@@ -26,6 +31,20 @@ else{
 }
 %>
 
+<div align = "center">
+<h3>
+		type = <%=type%>,
+		keyword = <%=keyword%>,
+		isSearch = <%=isSearch%>
+	</h3>
+	
+	
+<%
+
+//여기서는... 하아.. 여기서는 
+%> 
+
+</div>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 
@@ -62,7 +81,7 @@ else{
                
                <br> <br>
                <br> <br>
-               
+               <br> 
                
                <hr class="hr-twolow">
                <!--제품관련 스타일-->
@@ -102,17 +121,33 @@ else{
                               <th>조회수</th>
                            </tr>
                         </thead>
-                        <tbody>
+                        
+                        <tbody align= "center">
+                   
                         <%for(eventDto edto : list){%>
+                        
                         <tr>
                               <td><%=edto.getEvent_no() %></td>
                               <td align ="left">
-                              <a href="event_content.jsp?event_no=<%=edto.getEvent_no()%>"><%=edto.getEvent_title() %></a></td>
-                              <td><%=edto.getEvent_writer() %></td>
+                              
+                              
+                              <a href="event1_content.jsp?event_no=<%=edto.getEvent_no()%>"><%=edto.getEvent_title() %>
+                              </a>
+                              </td>
+                              <td>
+                              <%if(edto.getEvent_writer()!=null){%>
+                              <%=edto.getEvent_writer()%>
+                              
+                              <%}else{ %>
+                              <font color="gray">탈퇴한 사용자</font>
+                              <%} %>
+                              </td>
                               <td><%=edto.getEvent_date() %></td>
                               <td><%=edto.getEvent_read() %></td>
                            </tr>
                            <%} %>
+                           
+                           
                        <tr>
                        <td colspan="5" align ="right">
                        <a href="event1_writer.jsp">

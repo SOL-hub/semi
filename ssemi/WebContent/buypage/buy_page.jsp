@@ -1,12 +1,23 @@
+<%@page import="home.beans.dto.ItemDto"%>
+<%@page import="home.beans.dao.ItemDao"%>
+<%@page import="java.util.List"%>
+<%@page import="home.beans.dao.CartDao"%>
+<%@page import="home.beans.dto.CartDto"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     
     <%
-    	MemberDto mdto = (MemberDto)request.getSession().getAttribute("userinfo");
-    	
-    
+      	MemberDto mdto = (MemberDto)request.getSession().getAttribute("userinfo");
+   		int cart_member = mdto.getMember_no();
+		
+   		CartDto cdto = new CartDto();
+   		cdto.setCart_no(Integer.parseInt(request.getParameter("cart_no")));
+   		CartDao cdao = new CartDao();
+   		
+   		String [] setCart= request.getParameterValues("cart_no");
+	
     %>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -19,7 +30,7 @@
 
     <style>
         * {
-/*             font-size: 20px */
+/*            font-size: 20px  */
         }
 
         main {
@@ -175,6 +186,45 @@
         div.area.on {
             display: block;
         }
+        
+        .bottomline{
+            border-bottom: 1px solid black;
+        }
+        
+        .item_info_color{
+            background-color: beige;
+        }
+        .text_textarea{
+        	width:250px;
+        	height:125px;
+        	min-height: 125px;
+        	max-height:125px;
+        	min-width: 300px;
+        	max-width: 300px;  
+        	border-style: none;
+        	resize: none;
+        	padding-top: 20px;
+        	background-color: beige;
+        }
+        .text_textarea:focus{
+        	width:250px;
+        	height:125px;
+        	min-height: 125px;
+        	max-height:125px;
+        	min-width: 300px;
+        	max-width: 300px;  
+        	border-style: none;
+        	resize: none;
+        	padding-top: 20px;
+        	background-color: beige;
+        	outline: none;
+        }
+        .input_text_style{
+        	text-align: center;
+        	border-style: none;
+        	outline: none;
+        	background-color: beige;
+        }
     </style>
     <script>
         
@@ -206,65 +256,128 @@
 
 <body>
     <main>
-        <header>
-            <div class="img-wrap">
-                <div align=center>
-                    <br>
-                    <h1 style="font-size: 50px;">결제 내용</h1>
-                </div>
-            </div>
-            <hr>
-            <div class="item_list">
-                <div class="item_list2">
-                    <div class="item_title center" style="width: 20%;">이미지</div>
-                    <div class="item_title center" style="width: 10%">상품이름</div>
-                    <div class="item_title center" style="width: 31%">상품정보</div>
-                    <div class="item_title" style="width: 10%">배송비</div>
-                    <div class="item_title" style="width: 5%">수량</div>
-                    <div class="item_title center" style="width: 19%">주문금액</div>
-                </div>
-                <hr>
-                <div class="item_list">
+    <header>
+    <form action="buy_page.do">
+        <div class="center">
+                   <h1 style="font-size: 50px;">결제 내용</h1>
+               </div>
+               
+                <div class="row-empty"></div>
+                
+            <table>
+               <thead>
+               <tr>
+                    <td colspan="6"class="center bottomline"></td>
+                </tr>
+                <tr class="row-empty"></tr>
+                <tr>
+                    <td class="center" style="width: 13%">이미지</td>
+                    <td class="center" style="width: 5%">상품이름</td>
+                    <td class="center" style="width: 20%">상품정보</td>
+                    <td class="center" style="width: 5%">배송비</td>
+                    <td class="center" style="width: 5%">수량</td>
+                    <td class="center" style="width: 5%">총 주문금액</td>
+                </tr>
+                <tr class="row-empty"></tr>
+                </thead>
+                
+                <tbody class="item_info_color">
+                  <%
+                  
+                int total_cnt=0;
+				int total_price = 0;
+				int real_total_price=0;
+				int delivery_cost = 2500;	
+									
+						
+								
+				for(int i=0; i<setCart.length; i++) {
+					int cart_no = Integer.parseInt(setCart[i]);
+					CartDto cdto2 = cdao.get_cart2(cart_no);
 
-                    <div class="item_list2">
-                        <div class="item_title center" style="float: left; ">
-                            <div style="item_title border-right: solid 1px #aaa;"></div>
-                            <img src="https://placeimg.com/274/274" style="width: 60%">
-                        </div>
-                        <div style="float: left; padding-top: 5%">dddddddd</div>
-                        <div style="float: left; padding-top: 5%; margin-left : 4%; max-width: 28%;">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</div>
-                        <div style="float: left; padding-top: 5%; margin-left : 2%;">2500원</div>
-                        <div style="float: left; padding-top: 5%; margin-left : 7%;">2</div>
-                        <div style="float: left; padding-top: 5%; margin-left : 10%;">000002</div>
-                    </div>
-                </div>
-            </div>
+				ItemDao idao = new ItemDao();
+				ItemDto itemName = idao.item_get(cdto2.getCart_item_name());
+					
+				int item_cnt_change_price = itemName.getItem_price() * cdto2.getCart_cnt();
+										
+				total_price = item_cnt_change_price + delivery_cost ;
+				total_cnt += cdto2.getCart_cnt();	
+				real_total_price += total_price;
+				%>
+				
+                <tr>
+                    <td colspan="6"class="center bottomline"></td>
+                </tr>
+                <tr class="row-empty"></tr>
+              
+                <tr>
+                    <td class="center" style="width: 13%">
+                    <img src="https://placeimg.com/274/274" style="width: 40%"></td>
+                    <td class="center" style="width: 5%">
+                    	<input class="input_text_style" type="text" readonly value="<%=itemName.getItem_name()%>">
+                    	<input type="hidden" name="shopping_item_name" value="<%=itemName.getItem_no() %>">
+                    </td>
+                    <td class="center" style="width: 5%">
+                    	<textarea  readonly class="text_textarea"><%=itemName.getItem_info()%></textarea>
+                    </td> 
+                    <td class="center" style="width: 5%">
+                    	<input style=" width: 40%;" class="input_text_style" type="text" value="2500">원
+                    </td>
+                    <td class="center" style="width: 5%">
+                    	<input style=" width: 40%;" class="input_text_style" type="text" value="<%=cdto2.getCart_cnt() %>" name="shopping_item_cnt">
+                    </td>
+                    <td class="center" style="width: 5%;">
+                    	<input style= "text-align: right; width: 70%;" class="input_text_style" type="text" value="<%=total_price%>">원
+                    </td>
+                </tr>
+                <tr class="row-empty"></tr>
+<!--                 <tr> -->
+<!--                     <td colspan="6"class="center bottomline"></td> -->
+<!--                 </tr> -->
+                
+                <%}
+				int real_total = total_price + delivery_cost;					
+				%> 
+									
+				
+				<tr>
+                    <td colspan="6"class="center bottomline"></td>
+                </tr>
+				<tr class="center">
+                	<td colspan="4"></td>
+                	<td>총수량</td>
+                	<td>총 금액</td>
+                </tr>
+                <tr class="center">
+                	<td colspan="4"></td>
+                	<td><%=total_cnt %></td>
+                	<td><%=real_total_price %></td>
+                </tr>
+                <tr>
+                    <td colspan="6"class="center bottomline"></td>
+                </tr>
+                </tbody>
+            </table>
         </header>
+              
+                
+  
         <div class="row-empty"></div>
-        <div class="row-empty"></div>
-        <div class="row-empty"></div>
-        <div class="row-empty"></div>
-        <div class="row-empty"></div>
-        <div class="row-empty"></div>
-        <div class="row-empty"></div>
-        <div class="row-empty"></div>
-        <div class="row-empty"></div>
-
-        <hr>
+        
         <section>
             <article class="buy_list1">
                 <div class="phrchase-info">
                     <h3>회원 정보</h3>
 
                     <h4>회원이름</h4>
-                    <input class="user-name" type="text" readonly
+                    <input style= "text-align: left" class="user-name input_text_style" type="text" readonly
                     value="<%=mdto.getMember_name()%>">
                     <h4>연락처</h4>
-                    <input class="user-phone" readonly
+                    <input style= "text-align: left" class="user-phone input_text_style" readonly
                     value="<%=mdto.getMember_phone()%>">
 
                     <h4>이메일</h4>
-                    <input class="form-email" type="text" readonly
+                    <input style= "text-align: left" class="form-email input_text_style" type="text" readonly
                     value="<%=mdto.getMember_email()%>">
                 </div>
 
@@ -311,17 +424,17 @@
             </div>
             <div>
                 <div>
-                    <label for="cb1"><input type="radio" name="shopping_payment" id="cb1" onchange="toggleTabAutomation(this);" checked>
+                    <label for="cb1"><input type="radio" name="shopping_payment" id="cb1" onchange="toggleTabAutomation(this);" checked value="카드">
                         <span>카드</span>
                     </label>
-                    <label for="cb2"><input type="radio" name="shopping_payment" id="cb2" onchange="toggleTabAutomation(this);">
+                    <label for="cb2"><input type="radio" name="shopping_payment" id="cb2" onchange="toggleTabAutomation(this);" value="계좌이체">
                         <span>계좌이체</span>
                     </label>
                 </div>
 
                 <div class="row-empty"></div>
                 <div class="row-empty">
-                    <select>
+                    <select name="shopping_paybank">
                         <option>은행선택</option>
                         <option>국민은행</option>
                         <option>신한은행</option>
@@ -337,12 +450,12 @@
                         <div class="row-empty"></div>
                         <div class="row-empty"></div>
                         <div>
-                            카드번호<input type="text">
+                            카드번호<input type="text" name="shopping_paybank_num">
                         </div>
                     </div>
                     <div class="area" id="cb2-area">
                         <div>
-                            계좌번호<input type="text">
+                            계좌번호<input type="text" name="shopping_paybank_num">
                         </div>
                     </div>
                 <div class="row-empty"></div>
@@ -361,12 +474,14 @@
                 <div class="row-empty center">
                    
                     <input type="submit" value="결제하기" class="purchase-button">
+                    <input type="submit" value="결제취소" class="purchase-button">
                 </div>
                 <div class="row-empty"></div>
                 <div class="row-empty"></div>
                 <div class="row-empty"></div>
     
             </div>
+            </form>
         </footer>
     </main>
 </body></html>

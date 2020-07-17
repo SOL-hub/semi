@@ -30,7 +30,7 @@
             </div>
             <hr class="cs_time_line">            
             <div class="cs_bottom">
-                <li class="cs_phone">1544-9940</li>
+                <li class="cs_phone"><a href="/ssemi/board/cs_email.jsp" ><strong style="color: #C80A1E" >메일로 문의하기</strong></a></li>
                 <li class="cs_phone_notice">전화로 문의 시 월, 화요일 / 공휴일 다음날은 상담전화가 많아 일정이 다소 지연될 수 있습니다.</li>
             </div>
         </article>

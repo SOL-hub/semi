@@ -340,7 +340,7 @@ public class MemberDao {
 			Connection con = getConnection();
 
 			String sql = "SELECT * FROM MEMBER WHERE instr(#1, ?)>0 and member_join "
-					+"BETWEEN to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD') ORDER BY #1 ASC";
+					+"BETWEEN to_date(? || '00:00:00','YYYY-MM-DD HH24:MI:SS') and to_date(? || '23:59:59'  ,'YYYY-MM-DD HH24:MI:SS') ORDER BY #1 ASC";
 			sql = sql.replace("#1", type);
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, keyword);
@@ -362,7 +362,7 @@ public class MemberDao {
 			Connection con = getConnection();
 
 			String sql = "SELECT * FROM MEMBER WHERE member_join "
-					+"BETWEEN to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD')";
+					+"BETWEEN to_date(? || '00:00:00','YYYY-MM-DD HH24:MI:SS') and to_date(? || '23:59:59'  ,'YYYY-MM-DD HH24:MI:SS') ";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, start);
 			ps.setString(2, finish);
@@ -464,6 +464,12 @@ public class MemberDao {
 
 
 		}
+		
+		
+		
+		
+		
+		
 	
 }
 	

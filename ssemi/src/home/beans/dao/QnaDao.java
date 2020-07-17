@@ -38,8 +38,34 @@ public class QnaDao {
 	public List<QnaWithMemberDto> getList(int start, int finish) throws Exception{
 		Connection con = getConnection();
 
+		String sql = "SELECT * FROM("
+				+ "SELECT  ROWNUM rn, T.* FROM("
+				+ "SELECT q.*, m.MEMBER_NO, m.MEMBER_ID "
+				+ "FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no and q.QNA_TITLE = '상품문의' CONNECT BY PRIOR qna_no=super_no "
+				+ "START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC"
+				+ ")T"
+				+ " ) WHERE rn BETWEEN ? and ?";			
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, start);
+		ps.setInt(2, finish);
+		ResultSet rs = ps.executeQuery();
+		
+		List<QnaWithMemberDto> list = new ArrayList<>();
+		while(rs.next()) {
+			QnaWithMemberDto qmdto = new QnaWithMemberDto(rs);
+			list.add(qmdto);
+		}
+		
+		con.close();
+		return list;
+	}
+	
+	 // 목록 메소드
+	public List<QnaWithMemberDto> getList2(int start, int finish) throws Exception{
+		Connection con = getConnection();
+
 		String sql = "SELECT * FROM(SELECT  ROWNUM rn, T.* FROM(SELECT q.*, m.MEMBER_NO, m.MEMBER_ID "
-				+ "FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no CONNECT BY PRIOR qna_no=super_no "
+				+ "FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no and q.QNA_TITLE = '배송문의' CONNECT BY PRIOR qna_no=super_no "
 				+ "START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC)T ) WHERE rn BETWEEN ? and ?";			
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, start);
@@ -224,7 +250,7 @@ public class QnaDao {
 	// 게시글 삭제
 	public void delete(int qna_no) throws Exception {
 		Connection con = getConnection();
-		String sql = "DELETE qna WHERE qna_no=?";
+		String sql = "DELETE FROM qna WHERE qna_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, qna_no);
 		ps.execute();

@@ -1,3 +1,6 @@
+<%@page import="home.beans.dto.shoppingDto"%>
+<%@page import="java.util.List"%>
+<%@page import="home.beans.dao.ShoppingDao"%>
 <%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -48,6 +51,17 @@
 </style>
 </head>
 <body>
+
+		
+	
+
+
+		<div class="today-cart-wrap">
+			<a href="admin_search.jsp" ><img class="todayimg" src="/ssemi/img/customer.png">
+			</a>
+		</div>
+
+
  <div class="editdiv">
                  <h1 id="edith1"> 회원 정보</h1>
               
@@ -93,7 +107,7 @@
                   	<td><%=mdto.getMember_point() %></td>
                   </tr>       
                   </table>
-                  <a href= "<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input  class="listbtn"  type="button" value="정보수정"></a>
+                  <a href= "<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input  class="listbtn"  type="button" value="정보수정"></a>
                </div>
                 
          

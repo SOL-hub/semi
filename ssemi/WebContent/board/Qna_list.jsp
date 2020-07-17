@@ -37,8 +37,8 @@
 .navi {
 	font-size: 14px;
 	color: #909090;
-	top: 150px;
-	left: -250px;
+    left: -300;
+    top: 180px;
 	border: 1px solid #AAA;
 	position: absolute;
 	width: 120px;
@@ -68,7 +68,12 @@
 	margin-bottom: 20px;
 	padding-top: 40px;
 }
+.cs_row {
+color:#909090;
+}
+.cs_row:hover {
 
+}
 /* 본문 박스 */
 .qna_box {
 	top: 300px;
@@ -81,6 +86,9 @@
 	margin-left: 400px;
 	botom: 300px;
 	text-align: center;
+	margin-left: 300px;
+	margin-right:300px;
+	
 }
 /* 사이드바 - 제목(고객센터) */
 #customer.navi>p:nth-child(1) {
@@ -108,11 +116,13 @@
 }
 
 .qna_box {
-	width: 80%;
+	width: 1000px;
 	border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     border-collapse: collapse;
-    left:-250px;
+    margin-left:150px;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
 }
 .qna_box>tbody {
 	border-top: 1px solid #ddd;
@@ -174,19 +184,17 @@ padding-top:5px;
     padding: 2px 4px;
     border: 1px solid #eaeaea;
     color: #333;
-    margin: 10px 0 10px 700px;   
+  margin: 10px 0 10px 700px;   
        display: inline-block;
     font-size: 11px;
     letter-spacing: 1px;
     text-align: center;
     vertical-align: middle;
     box-shadow: 1px 1px 0 rgba(0,0,0,0.05);
-    border: 1px solid #444;
     background: #444;
     color: #fff;
     border-radius: 2px;
    cursor:pointer;
-
     width: 100px;
 
     } 
@@ -220,8 +228,9 @@ padding-top:5px;
     .search_keyword,
     .search_box,
     .search_submit {
-   margin: 0 558px 0 -558px;
+   margin: 0 20px;
       }
+
 
 </style>
 </head>
@@ -290,16 +299,16 @@ padding-top:5px;
 			<div class="head">
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
-					<p class="notice">공지사항</p>
-					<p class="qna"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
-					<p class="delivery"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">배송문의</a></p>
-					<p class="event">이벤트</p>
+					<p class="cs_row">공지사항</p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
+					<p class="cs_row">이벤트</p>
 				</div>
 
 				<p class="title">
 					<b>상품문의</b>
 				</p>
-				<p class="title_content" style="font-size:18px">서비스에 대해 궁금한 사항을 문의하세요</p>
+				<p class="title_content" style="font-size:18px">상품에 대해 궁금한 사항을 문의하세요</p>
 			</div>
 
 
@@ -346,7 +355,7 @@ padding-top:5px;
 						<a href="Qna_content.jsp?qna_no=<%=qmdto2.getQna_no()%>"><%=qmdto2.getQna_title() %>
 						</a></td>
 							<td class="qna_box_content"><%=mdto.getMember_id()%></td>
-							<td class="qna_box_content"><%=qmdto2.getQna_date() %></td> <!-- 컴퓨터에서 Qna_date()로 확인하기 -->
+							<td class="qna_box_content"><%=qmdto2.getQna_autotime() %></td> <!-- 컴퓨터에서 Qna_date()로 확인하기 -->
 						</tr>
 						<%} %>
 					</tbody>
@@ -361,7 +370,8 @@ padding-top:5px;
 
 
 				<!-- 검색창 -->
-	
+
+			<div class="search_con">
 				<form action="Qna_list.jsp" method="get" class="search_container">
 					<!-- 검색분류 -->
 					<select name="type" class="search_box" >
@@ -374,7 +384,8 @@ padding-top:5px;
 					<!-- 전송버튼 -->
 					<input type="submit" value="SEARCH" class="search_submit" >
 				</form>
-
+			</div>
+			
 			</div>
 		</div>
 		<!--  네이게이터  -->

@@ -41,17 +41,16 @@ public class LivingDao {
 				
 					
 				//아래와 같이 작성하면 미 작성된 항목들은 default 값이 적용
-				String sql = "INSERT INTO bath VALUES(living_seq.nextval, ?, ?, ?, ?, ?, sysdate,?)";
+				String sql = "INSERT INTO living VALUES(living_seq.nextval,?, ?, ?, ?, ?, ?, sysdate,?)";
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setInt(1, ldto.getLiving_price());
-				ps.setString(2, ldto.getLiving_type());
-				ps.setString(3, ldto.getLiving_pattern());
-				ps.setString(4, ldto.getLiving_color());
-				ps.setString(5, ldto.getLiving_brand());
-				ps.setString(6, ldto.getLiving_date());
+				ps.setString(1, ldto.getLiving_title());
+				ps.setInt(2, ldto.getLiving_price());
+				ps.setString(3, ldto.getLiving_type());
+				ps.setString(4, ldto.getLiving_pattern());
+				ps.setString(5, ldto.getLiving_color());
+				ps.setString(6, ldto.getLiving_brand());
 				ps.setString(7, ldto.getLiving_member());
-	
-			 
+			
 				ps.execute();
 				
 				con.close();

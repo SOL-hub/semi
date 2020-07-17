@@ -3,7 +3,6 @@
     pageEncoding="UTF-8"%>
     
     <%
-
     request.setCharacterEncoding("UTF-8");
     String bath_gong = request.getParameter("bath_gong");
     String bath_sohyung = request.getParameter("bath_sohyung");
@@ -11,11 +10,14 @@
     String bigtools = request.getParameter("bigtools");
    String[] chutools = request.getParameterValues("chutools");
    
-   int pricee =Integer.parseInt(request.getParameter("pricee"));
+   int realprice =Integer.parseInt(request.getParameter("pricee"));
+ 
+   int pricemin = (realprice - 250000) / 10000;
+   int priceplus = (realprice + 250000) / 10000;
   
 	MemberDto mdto = (MemberDto) session.getAttribute("userinfo");
 	boolean isLogin = mdto != null;
-	
+
 	%>
     
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -43,21 +45,28 @@ body{
 .container {
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
  width:50%;
- height:100%;
  margin:auto;
  text-align: center;
-  padding: 16px;
+  padding: 26px;
   background-color: white;
 }
 
-
-
-input[type=text]{
-  width: 100%;
+.bar{
+  width: 50%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 15px 0 15px 25px;
   display: inline-block;
   border: none;
+  background: #f1f1f1;
+  }
+
+input[type=text]{
+ border: 3px outset #DDD4CB ;
+  width: 80%;
+  padding: 10px;
+  margin: 22px 0 22px 0;
+  display: inline-block;
+
   background: #f1f1f1;
 }
 
@@ -68,17 +77,18 @@ input[type=text]:focus {
 
 hr {
   border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .registerbtn {
-  background-color: #4CAF50;
+  background-color: #C80A1E;;
   color: white;
-  padding: 16px 20px;
+  padding: 15px;
   margin: 8px 0;
-  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  width: 100%;
+  width: 150px;
   opacity: 0.9;
 }
 
@@ -90,10 +100,18 @@ hr {
 height:200px;
 }
 
+.roww {
+height:5px;
+}
+
 
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+}
+
+.half {
+  background: linear-gradient(to top, #EAE2E5  40%, transparent 50%);
 }
 
 </style>
@@ -102,32 +120,67 @@ height:200px;
 
 <div class="rowrow"></div>
 
-<form action="saveesti.do">
+
+   <form action="saveesti.do" method="post" >
   <div class="container">
-    <h1>욕실 견적서</h1>
-    <p><%=mdto.getMember_name()%>님의 견적서 입니다</p>
+    <%
+				if (isLogin) {
+			%>
+    <p> <img width="30px"
+               src="<%=request.getContextPath()%>/img/pig_logo.png">  <b><%=mdto.getMember_name()%>님의 욕실 예상견적서 입니다 </b> <img width="30px"
+               src="<%=request.getContextPath()%>/img/pig_logo.png"></p> 
+    <hr><%} else{%> 
+      <p> <img width="30px"
+               src="<%=request.getContextPath()%>/img/pig_logo.png">   욕실시공  예상견적서 입니다  <img width="30px"
+               src="<%=request.getContextPath()%>/img/pig_logo.png"></p> 
+    <hr>  <%} %>
+        
+    <label for="title"><b> 예상가격 </b> </label>
+    <h1 class="bar"> <%=pricemin %> ~ <%=priceplus %> 만원 </h1>
+   <input type="hidden" name="bath_price" value="<%=realprice%>">
+
     <hr>
+   
+    <span class="half"> 공용(거실) </span>  <b> <span class="bar"><%=bath_gong %></span> </b>
+     <input type ="hidden" name="bath_cnt" value="<%=bath_gong %>" id="gong"></td>
+     <div class="roww"></div>
+     
+        <span class="half"> 소형(안방) </span>  <b>  <span class="bar"><%=bath_sohyung %></span></b>
+     <input type ="hidden" name="bath_cntt" value="<%=bath_sohyung %>" id="gong"></td>
+     <div class="roww"></div>
+     
+         <span class="half"> 욕실 유형 </span>  <b> <span class="bar"><%=tools %></span></b>
+     <input type ="hidden" name="bath_tub" value="<%=tools %>" id="gong"></td>
+     <div class="roww"></div>
+     
+     <span class="half"> 타일 시공 </span>  <b> <span class="bar"><%=bigtools %></span></b></label>
+     <input type ="hidden" name="bath_tile" value="<%=bigtools %>" id="gong"></td>
+     <div class="roww"></div>
+     
+       <span class="half"> 추가 옵션 </span>  <b> <span class="bar"> <%for(int i=0; i<chutools.length; i++){out.println(" " + chutools[i]);}%></span></b></label>
+     <input type ="hidden" name="bath_option" value=" <%for(int i=0; i<chutools.length; i++){out.println(" " + chutools[i]);}%>"  id="gong"></td>
+     <div class="roww"></div>
 
-    <label for="title"><b>이 견적서의 제목을 만들어 주세요</b></label>
-    <input type="text" placeholder=" ^.^ " name="title" id="title" required>
-
-    <label for="ddd"><b>Password</b></label>
-    <input type="text" placeholder="Enter " name="ddd" id="ddd" required>
-
-    <label for="dddd"><b>큐큐큐큐</b></label>
-    <input type="text" placeholder="Enter" name="dddd" id="dddd" required>
+    
+         <%
+				if (isLogin) {
+			%>
+   
     <hr>
-    <p> 뀨 </p>
-
-    <button type="submit" class="registerbtn">저장</button>
-  </div>
+      <label for="title"><img width="15px"
+               src="<%=request.getContextPath()%>/img/heart_none.png"> <b>이 견적서의 제목을 만들어 주세요</b> <img width="15px"
+               src="<%=request.getContextPath()%>/img/heart_none.png"></label>
+    <input type="text" placeholder=" 기억하기 쉬운 이름이 좋겠어요^.^" name="bath_title" id="title" > 
+    <button type="submit" class="registerbtn">저장</button>     <% }%>
+  </div>  
+  
   
   <div class="container signin">
-    <p>Already have an account? 재견적하러가깅</p>
-  </div>
-  
-  <!-- 솔아 여기 밑에 추천리스트 불러와야행ㅜ.ㅜ) -->
-  
+  <% if(isLogin) {%> 
+    <a href="<%=request.getContextPath()%>/estimate/bath.jsp"><p>재견적하러가기</p></a>
+     <a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"><p>나의견적보기</p></a> <% } else { %>
+       <a href="<%=request.getContextPath()%>/estimate/bath.jsp"><p>재견적하러가기</p></a><% } %>
+  </div> 
   
 </form>
 </body>

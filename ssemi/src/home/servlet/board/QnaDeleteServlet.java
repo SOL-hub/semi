@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import home.beans.dao.QnaDao;
+import home.beans.dto.QnaDto;
 
 @WebServlet (urlPatterns="/board/Qna_delete.do")
 public class QnaDeleteServlet  extends HttpServlet{
@@ -19,11 +20,18 @@ try {
 	int qna_no = Integer.parseInt(req.getParameter("qna_no"));
 	//	처리 : 삭제
 	QnaDao qdao = new QnaDao();
-	qdao.delete(qna_no);
 	
 	//출력
-	resp.sendRedirect("Qna_list.jsp");
+	QnaDto qdto = qdao.get(qna_no);
 	
+	System.out.println(qdto.getQna_title());
+	
+	if(qdto.getQna_title().equals("상품문의")) {
+	resp.sendRedirect("Qna_list.jsp");
+	} else {
+	resp.sendRedirect("Qna_list2.jsp");
+	}
+	qdao.delete(qna_no);
 }
 catch (Exception e) {
 	e.printStackTrace();

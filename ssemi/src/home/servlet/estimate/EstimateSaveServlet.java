@@ -26,6 +26,7 @@ public class EstimateSaveServlet extends HttpServlet{
 			String member_id = mdto.getMember_id();//작성자 추출
 			
 			EstimateDto edto = new EstimateDto();
+			edto.setBath_title(req.getParameter("bath_title"));
 			edto.setBath_price(Integer.parseInt(req.getParameter("bath_price")));
 			edto.setBath_cnt(req.getParameter("bath_cnt"));
 			edto.setBath_cntt(req.getParameter("bath_cntt"));
@@ -37,7 +38,7 @@ public class EstimateSaveServlet extends HttpServlet{
 		
 			EstimateDao edao = new EstimateDao();
 			edao.save(edto);
-			resp.sendRedirect("bath.jsp");
+			resp.sendRedirect("bath-list.jsp");
 			
 		}
 		catch(Exception e) {

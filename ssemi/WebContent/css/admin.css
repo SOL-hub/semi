@@ -126,6 +126,7 @@ h2 {
 }
 
 td {
+	
 	padding: 10px 10px 10px 10px;
 	color: #AAAAAA;
 	font-size: 13px;
@@ -168,7 +169,7 @@ span {
 	margin-right: 10px;
 }
 
-#listcount {
+.listcount {
 	color: #AAAAAA;
 	font-size: 13px;
 }
