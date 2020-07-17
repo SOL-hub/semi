@@ -44,13 +44,8 @@ href="<%=request.getContextPath()%>/css/main.css">
             <ul class="menu side_left">
                <li class="menu_left">커뮤니티
                   <ul class="menu_left_innerMenu">
-
-                     <li>QnA</li>
-
                      <li><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></li>
                       <li><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></li>
-
-                     <li>Review</li>
                      <li>  <a href="<%=request.getContextPath()%>/event/event.jsp">Event</a></li>
                   </ul>
                </li>

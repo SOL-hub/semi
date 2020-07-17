@@ -236,6 +236,8 @@ boolean isMine = member_no == qdto.getQna_writer();
 
 Qna_fileDao qfdao = new Qna_fileDao();
 List<Qna_fileDto> fileList = qfdao.getList(qna_no);
+
+String go = request.getParameter("go");
 %>
 
 <body>
@@ -311,7 +313,7 @@ List<Qna_fileDto> fileList = qfdao.getList(qna_no);
 					<input class="button"  type="button" value="EDIT">
 					</a>
 
-					<a href="<%=request.getContextPath()%>/ssemi/member/check_pw.jsp?go=<%=request.getContextPath()%>/ssemi/board/Qna_delete.do?qna_no=<%=qna_no%>">
+					<a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=<%=request.getContextPath()%>/board/Qna_delete.do?qna_no=<%=qna_no%>">
 					<input class="button"  type="button" value="DELETE">
 					</a>
 				<%}%>
