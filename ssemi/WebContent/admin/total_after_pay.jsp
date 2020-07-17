@@ -1,16 +1,18 @@
-<%@page import="home.beans.dto.ItemDto"%>
 <%@page import="home.beans.dao.ItemDao"%>
+<%@page import="home.beans.dto.ItemDto"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="home.beans.dto.shoppingDto"%>
-<%@page import="home.beans.dao.ShoppingDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
-<%@page import="java.util.List"%>
 <%@page import="home.beans.dao.MemberDao"%>
+<%@page import="home.beans.dto.shoppingDto"%>
+<%@page import="java.util.List"%>
+<%@page import="home.beans.dao.ShoppingDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     
     <jsp:include page="/template/header.jsp"></jsp:include>
+
+
     
     
     
@@ -18,12 +20,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전체 결제 관리</title>
+<title>전체 주문 관리</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/admin.css">
+	href="<%=request.getContextPath()%>/css/admin.css?ver=1">
 	
  <style>
  
@@ -61,8 +63,8 @@
         }
         
         
-         .list-table-wrap {
-         	
+        
+        .list-table-wrap {
         	width:900px;
         	margin-right:1000px;
         	
@@ -75,13 +77,14 @@
     	color:white;
     	border: 1px solid transparent; 
     }
-    
-    #totalcolor{
+
+	    #totalcolor{
     	
     	color:#AAAAAA;
     }
     
-    .payhr {
+    
+     .payhr {
     	border: 0px;
 		height: 1px;
 		background-color: #3333;
@@ -93,7 +96,49 @@
     	
     	
     }
-      <% 
+
+    </style>
+    <script src="<%=request.getContextPath()%>/js/moment.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/lightpick.css">
+<script src="<%=request.getContextPath()%>/js/lightpick.js"></script>
+    
+    <script>
+	window.onload = function() {
+		var options = {
+			//대상 지정
+			field : document.querySelector(".picker-start"),
+
+			//두 번째 대상 지정
+			secondField : document.querySelector(".picker-end"),
+
+			//날짜 표시 형식 지정
+			format : 'YYYY-MM-DD',
+
+			//한 화면에 표시될 달의 개수
+			numberOfMonths : 1,
+
+			//시작요일(1:월 ~ 7:일)
+			firstDay : 7,
+
+			//자동으로 닫히지 않도록 설정
+			//autoclose: false,
+
+			//선택 방향 제어
+			selectForward : true,
+			selectBackword : false,
+
+		};
+
+		var picker = new Lightpick(options);
+
+	};
+</script>
+    
+</head>
+<body>
+
+    <% 
     request.setCharacterEncoding("UTF-8");
     
     	String type = request.getParameter("type");
@@ -119,55 +164,14 @@
     		list = sdao.search_join_k(start, finish);
     	}
     	else{
-    		list = new ArrayList<>();
     		
+    		list = new ArrayList<>();
     	}
     	
     	
     	
     %>
-
-    </style>
     
-    <script src="<%=request.getContextPath()%>/js/moment.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/lightpick.css">
-<script src="<%=request.getContextPath()%>/js/lightpick.js"></script>
-<script>
-	window.onload = function() {
-		var options = {
-			//대상 지정
-			field : document.querySelector(".picker-start"),
-
-			//두 번째 대상 지정
-			secondField : document.querySelector(".picker-end"),
-
-			//날짜 표시 형식 지정
-			format : 'YYYY-MM-DD',
-
-			//한 화면에 표시될 달의 개수
-			numberOfMonths : 1,
-
-			//시작요일(1:월 ~ 7:일)
-			firstDay : 7,
-
-			//자동으로 닫히지 않도록 설정
-			//autoclose: true,
-
-			//선택 방향 제어
-			selectForward : true,
-			selectBackword : false,
-
-		};
-
-		var picker = new Lightpick(options);
-
-	};
-</script>
-
-</head>
-<body>
-
 <div class="category-main fixed">
         <h3>Total</h3>
 
@@ -197,7 +201,7 @@
 
         <div class="label-wrap">
             <a href="total_after_pay.jsp" class="today-label">
-                결제 (9건)
+                결제 (<%=slist.size()%>건)
             </a>
         </div>
 
@@ -208,15 +212,14 @@
             </a>
         </div>
 
-<%
+	<%
 	
 	MemberDao mdao = new MemberDao();
 
 	List<MemberDto> mlist;
 	int count = mdao.memberCount(); %>
 	
-	
-	
+
         <div class="label-wrap ">
             <a href="admin_search.jsp" class="today-label">
                 회원 가입(<%= count %>건)
@@ -227,39 +230,46 @@
 
 
 
-
-<form action="total_after_pay.jsp" method="get">
  <div class ="totaldiv">
-        <h2>전체 결제 목록</h2>
+        <h2>전체 주문 목록</h2>
+       
+<form action="total_after_pay.jsp" method="post">
         <table>
+      
             <tr>
-                <th class="totalth">결제 기간</th>
-                <td class="totaltd"><input type="text" class="picker-start">~<input type="text" class="picker-end" ></td>
+                <th class="totalth">주문 기간</th>
+                <td class="totaltd"><input type="text" name="start"class="picker-start">~<input type="text" name="finish" class="picker-end" ></td>
             </tr>
+
+
+		
+
 
         </table>
         
-        <input type="button" value="검색" class="admin-submit">
-    </div>
+        <input type="submit" value="검색" class="admin-submit">
     </form>
+    </div>
     
-    			<br>
+   				<br>
 				<br>
 				<hr class= "payhr">
 				<br>
-				
-    
-       <!--  검색 결과 -->
+    <!--  검색 결과 -->
     <div class="list-wrap">
 
-			<h2 id="Ltitle">회원 결제 목록</h2>
-			<p id="listcount">
-				검색결과 0건
-			</p>
+			<h2 id="Ltitle">회원 주문 목록</h2>
 			
-				
 			
-		
+			<%if(keyword == null&& start==null &&finish==null) {%>
+			<p> </p>
+			<%}else if(list.isEmpty()){%>
+			<p class="listcount">검색 결과가 없습니다</p>
+				<% } else {%>
+				<p class="listcount">검색결과<%=list.size()%>건</p>
+		 	
+			<%} %>
+		 	
 			<div class="list-table-wrap">
 				<table class="Ltable">
 					<tr>
@@ -273,14 +283,16 @@
 						<th>운송장 번호</th>
 						<th>비고</th>
 					</tr>
+ 					
 
-			<% for(shoppingDto sdto : list){ %>
+
+					<% for(shoppingDto sdto : list){ %>
 					<tr class="Ldata">
+					
 					<% 
 					ItemDao idao = new ItemDao();
 					ItemDto idto = idao.item_get(sdto.getShopping_item_name());%>
-					
-						<td class="Ldata"><a href = "#"><%=sdto.getShopping_no() %><</a></td>
+						<td class="Ldata"><a href = "#"><%=sdto.getShopping_no() %></a></td>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_item_name() %></a></td>
 						<td class="Ldata" ><a href = "#"><%=idto.getItem_name()%> </a></td>
 						<td class="Ldata"><%=sdto.getShopping_item_cnt() %>개</td>
@@ -296,13 +308,14 @@
 				</table>
 				
 			</div>
-		
+
 
 		</div>
-		
-   			 <br>
-				<br>
-    
+				
+		<br> <br> <br> <br> <br> <br> <br>
+		<br>	<br> <br> <br>  <br><br><br>
+	
+
 </body>
 </html>
 

@@ -201,7 +201,7 @@
 
         <div class="label-wrap">
             <a href="total_after_pay.jsp" class="today-label">
-                결제 (9건)
+                결제 (<%=slist.size()%>건)
             </a>
         </div>
 
@@ -259,8 +259,17 @@
     <div class="list-wrap">
 
 			<h2 id="Ltitle">회원 주문 목록</h2>
-				<p id="listcount">검색결과 <%=list.size() %>건
-			</p>
+			
+			
+			<%if(keyword == null&& start==null &&finish==null) {%>
+			<p> </p>
+			<%}else if(list.isEmpty()){%>
+			<p class="listcount">검색 결과가 없습니다</p>
+				<% } else {%>
+				<p class="listcount">검색결과<%=list.size()%>건</p>
+		 	
+			<%} %>
+		 	
 			<div class="list-table-wrap">
 				<table class="Ltable">
 					<tr>
@@ -302,9 +311,8 @@
 
 		</div>
 				
-				
-				<br>
-				<br>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br>	<br> <br> <br>  <br><br><br>
 	
 
 </body>
