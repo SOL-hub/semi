@@ -80,7 +80,7 @@ border: 1px, solid, #999999;
 
 .navi p {
 	font-size: 13px;
-	color: #AAAAAA;
+	color: #eaeaea;
 }
 
 #customer .navi>.cs {
@@ -201,7 +201,6 @@ width:80px;
     border: 1px solid #ddd;
     border-radius: 2px;
    cursor:pointer;
-
 }
 
 
@@ -236,6 +235,8 @@ boolean isMine = member_no == qdto.getQna_writer();
 
 Qna_fileDao qfdao = new Qna_fileDao();
 List<Qna_fileDto> fileList = qfdao.getList(qna_no);
+
+String go = request.getParameter("go");
 %>
 
 <body>
@@ -244,10 +245,9 @@ List<Qna_fileDto> fileList = qfdao.getList(qna_no);
 			<div class="head">
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
-					<p class="cs_row">공지사항</p>
 					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
 					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
-					<p class="cs_row">이벤트</p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/event/event.jsp">이벤트</a></p>
 				</div>
 				<p class="title">
 					<b>문의내역</b>
@@ -311,7 +311,7 @@ List<Qna_fileDto> fileList = qfdao.getList(qna_no);
 					<input class="button"  type="button" value="EDIT">
 					</a>
 
-					<a href="<%=request.getContextPath()%>/ssemi/member/check_pw.jsp?go=<%=request.getContextPath()%>/ssemi/board/Qna_delete.do?qna_no=<%=qna_no%>">
+					<a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=<%=request.getContextPath()%>/board/Qna_delete.do?qna_no=<%=qna_no%>">
 					<input class="button"  type="button" value="DELETE">
 					</a>
 				<%}%>

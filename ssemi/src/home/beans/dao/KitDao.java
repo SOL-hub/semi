@@ -40,16 +40,16 @@ public class KitDao {
 				
 					
 				//아래와 같이 작성하면 미 작성된 항목들은 default 값이 적용
-				String sql = "INSERT INTO bath VALUES(kit_seq.nextval, ?, ?, ?, ?, ?, ?,?, sysdate,?)";
+				String sql = "INSERT INTO kit VALUES(kit_seq.nextval, ?, ?, ?, ?, ?, ?, ?,?, sysdate,?)";
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setInt(1, kdto.getKit_price());
-				ps.setString(2, kdto.getKit_shape());
-				ps.setString(3, kdto.getKit_sinksize());
-				ps.setString(4, kdto.getKit_toptype());
-				ps.setString(5, kdto.getKit_walltype());
-				ps.setString(6, kdto.getKit_tile());
-				ps.setString(7, kdto.getKit_option());
-				ps.setString(8, kdto.getKit_date());
+				ps.setString(1, kdto.getKit_title());
+				ps.setInt(2, kdto.getKit_price());
+				ps.setString(3, kdto.getKit_shape());
+				ps.setString(4, kdto.getKit_sinksize());
+				ps.setString(5, kdto.getKit_toptype());
+				ps.setString(6, kdto.getKit_walltype());
+				ps.setString(7, kdto.getKit_tile());
+				ps.setString(8, kdto.getKit_option());
 				ps.setString(9, kdto.getKit_member());
 			 
 				ps.execute();

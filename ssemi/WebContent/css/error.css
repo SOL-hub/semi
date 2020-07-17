@@ -27,10 +27,11 @@
 }
 /* 오류 텍스트 +줄긋기*/
 .error_box {
-	margin-left: 370px;
+	margin-left: 800px;
+padding-top:120px;
 	float: left;
 	border-right: 1px solid #3333;
-	padding-right: 20px;
+	
 }
 
 /*죄송 문구 */

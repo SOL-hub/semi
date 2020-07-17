@@ -9,15 +9,15 @@
 <meta charset="UTF-8">
 <title>회원 로그인 페이지</title>
 <link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+   rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/login.css">
+   href="<%=request.getContextPath()%>/css/login.css">
 
 </head>
 <body>
 
-<main class="login-main">
+<main class="login-main" style=padding-top:200px;>
  <form action="login.do" method="post">
  <div class = "login-wrap">
   <div class="loginT">로그인</div>
@@ -60,6 +60,6 @@
    </form>
    </main>
    
-	 </body>
-	 </html>
+    </body>
+    </html>
 <jsp:include page="/template/footer.jsp"></jsp:include>

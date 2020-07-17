@@ -13,6 +13,7 @@
         background-color: rgba(255, 255, 255, 0.95);
         height: 110px;
         top:0px;
+        z-index:3;
     }
 
     #box_left {
@@ -69,6 +70,25 @@
     .menu>.menu_left:hover .menu_left_innerMenu {
         display: block;
     }
+    
+    /* 스토어 소분류 */
+    .menu_left_innerMenu li:hover ul {
+   display: block;
+   text-align:center;
+   height: 80px;
+      width: 120%;
+vertical-align: middle;
+}
+    .inner-inner {
+   position: absolute;
+   top: 0%;
+   left: 100%;
+   background-color: white;
+   border:1px solid #333;
+   display: none;
+}
+
+    
 
     /* 전체 왼쪽 메뉴 */
     .menu.side_left {

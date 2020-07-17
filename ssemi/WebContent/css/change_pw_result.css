@@ -7,22 +7,20 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-main {
+.find-main {
             width: 500px;
             text-align: center;
             height: 450px;
             margin: auto;
             border: 1px solid #aaa;
+            padding-top:150px;
+            margin-top: 150px;
+            padding:50px 50px;
         }
 
 
-article{
-	border: 1px solid #aaa;
-	height: 500px;
-}
-
-.login-wrap {
-	width: 320px;
+.find-wrap {
+	width: 350px;
 	text-align: center;
 	margin: 0px auto;
 }
@@ -31,6 +29,7 @@ article{
 .input-wrap {
 	text-align: center;
 	margin: 0px auto;
+	
 }
 
 
@@ -53,7 +52,7 @@ article{
             text-align: center;
             padding: 0.7rem;
             font-size: 15px;
-            width: 25%;
+            width: 55%;
             background-color: white;
             border: none;
             color: #C80A1E;
@@ -63,7 +62,7 @@ article{
         .click-btn2:hover {
             padding: 0.7rem;
             font-size: 15px;
-            width: 25%;
+            width: 55%;
             background-color:antiquewhite;
             border: none;
             color: #C80A1E;

@@ -164,7 +164,22 @@ private static DataSource src;
 
 				con.close();
 			}
+		//수정메소드
+		public void edit(ItemDto idto)throws Exception{
+			Connection con = getConnection();
+			String sql = "UPDATE item SET "
+					+ "item_name=?, item_price=?, item_info=?,item_stock=? "
+					+ "where item_no=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, idto.getItem_name());
+			ps.setInt(2, idto.getItem_price());
+			ps.setString(3, idto.getItem_info());
+			ps.setInt(4, idto.getItem_stock());
+			ps.setInt(5, idto.getItem_no());
+			ps.execute();
 
+			con.close();
+		}
 	 //(동휘)개수 조회 메소드
 		public int getCount() throws Exception{
 			Connection con = getConnection();

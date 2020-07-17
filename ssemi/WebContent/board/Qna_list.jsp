@@ -70,9 +70,10 @@
 }
 .cs_row {
 color:#909090;
-}
-.cs_row:hover {
 
+}
+.cs_row:focus {
+color:#C80A1E;
 }
 /* 본문 박스 */
 .qna_box {
@@ -230,9 +231,11 @@ padding-top:5px;
     .search_submit {
    margin: 0 20px;
       }
-
-
 </style>
+<script>
+
+</script>
+
 </head>
 <%
 	// 준비물 : 입력값 - type, keyword(둘 다 있으면 검색)
@@ -299,10 +302,10 @@ padding-top:5px;
 			<div class="head">
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
-					<p class="cs_row">공지사항</p>
+
 					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
 					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
-					<p class="cs_row">이벤트</p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/event/event.jsp">이벤트</a></p>
 				</div>
 
 				<p class="title">
@@ -336,6 +339,7 @@ padding-top:5px;
 						
 						MemberDao mdao = new MemberDao();
 						MemberDto mdto = mdao.get(qmdto2.getQna_writer()); // qna_no로 회원아이디 조회
+						
 					
 					%>
 						<tr>
@@ -354,7 +358,11 @@ padding-top:5px;
 					<%} %>
 						<a href="Qna_content.jsp?qna_no=<%=qmdto2.getQna_no()%>"><%=qmdto2.getQna_title() %>
 						</a></td>
+						<%if(mdto.getMember_id()!=null) { %>
 							<td class="qna_box_content"><%=mdto.getMember_id()%></td>
+							<%} else { %>
+							<font color="grey">Undefined User</font>
+						<%} %>
 							<td class="qna_box_content"><%=qmdto2.getQna_autotime() %></td> <!-- 컴퓨터에서 Qna_date()로 확인하기 -->
 						</tr>
 						<%} %>

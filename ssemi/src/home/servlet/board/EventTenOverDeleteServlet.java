@@ -1,4 +1,4 @@
-package home.servlet.estimate;
+package home.servlet.board;
 
 import java.io.IOException;
 
@@ -8,34 +8,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import home.beans.dao.EstimateDao;
-import home.beans.dao.LivingDao;
+import home.beans.dao.eventDao;
 
-@WebServlet(urlPatterns = "/estimate/livingdelete.do")
-public class LivingDeleteServlet  extends HttpServlet{
+@WebServlet(urlPatterns = "/event1_tenover_do")
+public class EventTenOverDeleteServlet extends HttpServlet{
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 		try {
-
-			int living_no = Integer.parseInt(req.getParameter("living_no"));
+			int event_no = Integer.parseInt(req.getParameter("event_no"));
 			
-			LivingDao ldao = new LivingDao ();
-			ldao.delete(living_no);//삭제
+			eventDao edao = new eventDao();
+			edao.tenover(event_no);
 			
-//			출력 : list.jsp로 redirect
-			resp.sendRedirect("living-list.jsp");
+			resp.sendRedirect("event_event1.jsp");
+			
 		}
+		
 		catch(Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
 		}
 	}
 }
-
-
-
-
-
-
-
-

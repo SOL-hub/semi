@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import home.beans.dao.ShoppingDao;
 import home.beans.dto.shoppingDto;
 
 @WebServlet(urlPatterns = ("/buypage/buy_list_delete.do"))
@@ -16,8 +17,12 @@ public class BuyListDeleteServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			
-			shoppingDto sdto = new shoppingDto();
+			int shopping_no =Integer.parseInt(req.getParameter("shopping_no"));
 			
+			ShoppingDao sdao = new ShoppingDao();
+			sdao.delete_buy_list(shopping_no);
+			
+			resp.sendRedirect("buy_list.jsp");
 			
 		}
 		

@@ -33,6 +33,7 @@
     }
         /* 카테고리 상세 */
     .menu_left_innerMenu {
+    
         display: none;
         position: absolute;
         font-weight: normal;

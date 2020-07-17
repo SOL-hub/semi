@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+
+* {
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.out-main {
+	width:500px;
+	text-align: center;
+	height: 430px;
+	margin: auto;
+	margin-top: 150px;
+	border:1px solid #3333;
+	padding:50px 50px;
+}
+
+.out-wrap{
+	width: 350px;
+	text-align: center;
+	margin: auto;
+}
+
+ /*대표버튼*/
+        .click-btn2{
+            text-align: center;
+            padding: 0.7rem;
+            font-size: 15px;
+            width: 55%;
+            background-color: white;
+            border: none;
+            color: #C80A1E;
+            cursor: pointer;
+        }
+
+        .click-btn2:hover {
+            padding: 0.7rem;
+            font-size: 15px;
+            width: 55%;
+            background-color:antiquewhite;
+            border: none;
+            color: #C80A1E;
+            border: 1px solid #aaa;
+        }
+
+        
+            /*결제화면, 삭제 알림창 */
+        .modal-wrap{
+            /*전체를 가리기 위한 설정*/
+            position: fixed;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+           background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0.5;
+            
+           
+        }
+            
+           .modal-wrap.on{
+            display: none;
+        }
+        
+            .modal{
+            width: 400px;
+            height: 200px;
+            position: absolute;
+            top:40%;
+            left:50%;
+            background-color:antiquewhite;
+           transform: translate(-50%,-50%);
+            text-align: center;
+            padding: 25px;
+            
+        }
+        
+         
+         

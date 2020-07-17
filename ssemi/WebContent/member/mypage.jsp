@@ -73,6 +73,7 @@
 				<li><a href="<%=request.getContextPath()%>/buypage/buy_list.jsp"> 구매내역 </a></li>
 				<li><a href="#"> 게시판내역 </a></li>
 				<li><a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 견적내역 </a></li>
+				<li><a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=user_out.do">회원탈퇴</a></li>
 			</ul>
 		</aside>
 		<section>
@@ -81,15 +82,15 @@
 				<table>
 					
 					
-						<div class="img_flex">
+<!-- 						<div class="img_flex"> -->
 
-							<div class="img cart_img"></div>
+<!-- 							<div class="img cart_img"></div> -->
 
-							<div class="img order_img"></div>
+<!-- 							<div class="img order_img"></div> -->
 
-							<div class="img broad_img"></div>
+<!-- 							<div class="img broad_img"></div> -->
 
-						</div>
+<!-- 						</div> -->
 						<tbody>
 						<tr class="cart_line_padding">
 							<td  class="cart_title center">나의 장바구니 목록</td>
