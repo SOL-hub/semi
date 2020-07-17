@@ -2,147 +2,147 @@
 
 
 * {
-	box-sizing: border-box;
-	font-family: 'Noto Sans KR', sans-serif;
+   box-sizing: border-box;
+   font-family: 'Noto Sans KR', sans-serif;
 }
 
 .login-main {
-	width:500px;
-	text-align: center;
-	height: 430px;
-	margin: auto;
-	margin-top: 150px;
-	border:1px solid #3333;
-	padding:50px 50px;
+   width:500px;
+   text-align: center;
+   height: 430px;
+   margin: auto;
+   margin-top: 150px;
+   border:1px solid #3333;
+   padding:50px 50px;
 }
 
 
 
 .login-wrap {
-	width: 350px;
-	text-align: center;
-	margin: auto;
+   width: 350px;
+   text-align: center;
+   margin: auto;
 }
 
 /*아이디, 비번입력창*/
 .input-wrap {
-	text-align: center;
-	margin: 0px auto;
+   text-align: center;
+   margin: 0px auto;
 }
 
 .login-id{
-		
-	background-image: url("../img/id.jpg");
-	background-repeat: no-repeat;
-	background-size: 30px;
-	background-position: 3px 3px;
-	
-	font-size: 14px;
-	color: #AAAAAA;
-	width: 100%;
-	margin: 5px;
-	padding:  10px 10px 10px 40px;
-	border: 1px solid #3333;
+      
+   background-image: url("../img/id.jpg");
+   background-repeat: no-repeat;
+   background-size: 30px;
+   background-position: 3px 3px;
+   
+   font-size: 14px;
+   color: #AAAAAA;
+   width: 100%;
+   margin: 5px;
+   padding:  10px 10px 10px 40px;
+   border: 1px solid #3333;
 }
 
 
 .login-pw{ /*.form-input*/
 
 
-	background-image: url("../img/pw.png");
-	background-repeat: no-repeat;
-	background-size: 30px;
-	background-position: 3px 3px;
-	
-	
-	font-size: 14px;
-	color: #AAAAAA;
-	width: 100%;
-	margin: 5px;
-	padding:  10px 10px 10px 40px;
-	border: 1px solid #3333;
-	
+   background-image: url("../img/pw.png");
+   background-repeat: no-repeat;
+   background-size: 30px;
+   background-position: 3px 3px;
+   
+   
+   font-size: 14px;
+   color: #AAAAAA;
+   width: 100%;
+   margin: 5px;
+   padding:  10px 10px 10px 40px;
+   border: 1px solid #3333;
+   
 }
 
 .login-pw{
-	margin-bottom:15px;
+   margin-bottom:15px;
 }
 
 .loginT{
-	text-align :left;
-	color: #C80A1E;
-	margin: 0px 0px 10px 0px;
-	
+   text-align :left;
+   color: #C80A1E;
+   margin: 0px 0px 10px 0px;
+   
 }
 
 .login-submit{
-	text-align: center;
-	font-size: 16px;
-	color: white;
-	background-color: #C80A1E;
-	width: 255px;
-	padding: 1rem;
-	margin-top: 23px;
-	margin-bottom: 15px;
-	margin-left: 50px;
-	margin-right: 50px;;
-	border: 1px solid transparent;
-	cursor: pointer;
+   text-align: center;
+   font-size: 16px;
+   color: white;
+   background-color: #C80A1E;
+   width: 255px;
+   padding: 1rem;
+   margin-top: 23px;
+   margin-bottom: 15px;
+   margin-left: 50px;
+   margin-right: 50px;;
+   border: 1px solid transparent;
+   cursor: pointer;
 }
 
 .login2-submit{
-	text-align: left;
-	font-size: 12px;
-	color: white;
-	background-color: #3333;
-	width: 155px;
-	padding: 0.5rem;
-	margin-top: 23px;
-	margin-bottom: 15px;
-	margin-left: 50px;
-	margin-right: 50px;;
-	border: 1px solid transparent;
-	cursor: pointer;
+   text-align: left;
+   font-size: 12px;
+   color: white;
+   background-color: #3333;
+   width: 155px;
+   padding: 0.5rem;
+   margin-top: 23px;
+   margin-bottom: 15px;
+   margin-left: 50px;
+   margin-right: 50px;;
+   border: 1px solid transparent;
+   cursor: pointer;
 }
 
 /*체크박스*/
 input[id="cb1"], input[id="cb2"], input[id="cb3"], input[id="cd4"],
 input[id="cb5"], input[id="cb6"], input[id="cb7"] {
-	display: none;
+   display: none;
 }
 
 
 input[id="cb1"]+label, input[id="cb2"]+label, input[id="cb3"]+label,
-	input[id="cb4"]+label, input[id="cb5"]+label, input[id="cb6"]+label,
-	input[id="cb7"]+label {
-	
-	width: 10%;
-	height: 20px;
-	padding-left: 30px;
-	height: 20px;
-	background: url("/ssemi/img/nonCheck.png") 4px no-repeat;
-	background-size: 20px;
-	text-align: left;
-	color: #AAAAAA;
+   input[id="cb4"]+label, input[id="cb5"]+label, input[id="cb6"]+label,
+   input[id="cb7"]+label {
+   
+   width: 10%;
+   height: 20px;
+   padding-left: 30px;
+   height: 20px;
+   background: url("/ssemi/img/nonCheck.png") 4px no-repeat;
+   background-size: 20px;
+   text-align: left;
+   color: #AAAAAA;
 }
 
 
 input[id="cb1"]+label :after, input[id="cb2"]+label :after, input[id="cb3"]+label :after,
-	input[id="cb4"]+label :after, input[id="cb5"]+label :after, input[id="cb6"]+label :after,
-	input[id="cb7"]+label :after {
-	content: "";
-	display: block;
+   input[id="cb4"]+label :after, input[id="cb5"]+label :after, input[id="cb6"]+label :after,
+   input[id="cb7"]+label :after {
+   content: "";
+   display: block;
 }
 
 
 input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:checked+label,
-	input[id="cb4"]:checked+label, input[id="cb5"]:checked+label, input[id="cb6"]:checked+label,
-	input[id="cb7"]:checked+label {
-	background: url("/ssemi/img/checked.png") 4px no-repeat;
-	background-size: 20px;
+   input[id="cb4"]:checked+label, input[id="cb5"]:checked+label, input[id="cb6"]:checked+label,
+   input[id="cb7"]:checked+label {
+   background: url("/ssemi/img/checked.png") 4px no-repeat;
+   background-size: 20px;
 }
 
 
 .login-memory {
-	font-size: 13px;
+   font-size: 13px;
 }

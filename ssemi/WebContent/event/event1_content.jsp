@@ -25,7 +25,6 @@ MemberDto user = (MemberDto)session.getAttribute("userinfo");
 
 boolean isMine = user.getMember_id().equals(edto.getEvent_writer());
 
-int Member_no = Integer.parseInt(request.getParameter("Member_no"));
 
 MemberDao mdao = new MemberDao();
 MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
