@@ -32,29 +32,18 @@
 <style>
 
 * {
-
 	box-sizing: border-box;
-
 	margin: 0px;
-
 	padding: 0px;
-
 	font-family: 'Noto Sans KR', sans-serif;
-
 	letter-spacing: -1.5px;
-
 }
 
 .body_table {
-
 margin:auto;
-
 width:60%;
 
-padding-top:150px;
-
 border: 1px, solid, #999999;
-
 }
 
 
@@ -62,91 +51,51 @@ border: 1px, solid, #999999;
 /* 상단 콘텐츠 */
 
 .head {
-
 	padding-top: 150px;
-
 	height: 180px;
-
 	position: relative;
-
 	width: 730px;
-
 	margin-left: auto;
-
 	margin-right: auto;
-
 	text-align: center;
-
 }
 
 
 
 .navi {
-
 	font-size: 14px;
-
 	color: #909090;
-
-	top: 150px;
-
-	left: -220px;
-
 	border: 1px solid #AAA;
-
 	position: absolute;
-
 	width: 120px;
-
 	padding: 30px 20px 30px 20px;
-
 	text-align: left;
-
-	display: inline-block;
-
 	cursor: pointer;
+	left:-300px;
+	    top: 180px;
 
 }
-
-
 
 /*사이드바 내 카테고리ㅣ */
 
 .navi p {
-
 	font-size: 13px;
-
 	color: #AAAAAA;
-
 }
-
-
 
 #customer .navi>.cs {
-
 	color: #333333;
-
 	font-size: 17px;
-
 	margin-bottom: 30px;
-
 }
-
-
-
-
 
 /* Q&A 제목 */
 
 .head_center>.title {
-
 	text-align: center;
-
 	font-size: 50px;
-
 	margin-bottom: 20px;
-
 	padding-top: 40px;
-
 }
 
 
@@ -154,67 +103,104 @@ border: 1px, solid, #999999;
 /* 사이드바 - 제목(고객센터) */
 
 #customer.navi>p:nth-child(1) {
-
 	font-size: 17px;
-
 	margin-bottom: 30px;
-
 	color: #333333;
-
 }
-
-
 
 .body .qna_box p {
-
 	font-size: 13px;
-
 	color: #AAAAAA;
-
 }
 
-
-
 /*전체 테이블 */
-
 .body {
-
 width:80%;
-
 left:300px;
+align:center;
+margin-top:95px;
 
-align:"center";
 
 }
 
 .body_table {
+border: 1px solid #eaeaea;
 margin-right:100px;
 margin-top : 20px;
+border-right:1px solid transparent;
+border-left : 1px solid transparent;
+ border-collapse: collapse;
+ display: block;
+ 
 }
 
 /*내용 제목*/
 
 .content_content {
-
 height:200px;
-
+valign:middle;
+word-break:break-all;'
 }
+.content_th {
+    padding: 15px 10px 14px 18px;
+    border-right: 0;
+    border-left: 0;
+    background: 0;
+    font-weight: 400;
+    color: #666;
+    font-size:13px;
+    width:150px;
+}
+.content_td {
+	padding: 15px 0 14px 0;
+    border-right: 0;
+    border-left: 0;
+    font-size:13px;
+    width:892px;
+    }
+    /* 시간 */
+    .content_date {
+    text-align: right;
+   border-bottom:1px solid transparent;
+    }
+    .content_date_datail {
+    line-height: 22px;
+    color: #666;
+    }
+
+    .content_date_text {
+    font-size:13px;
+    margin :0 0 0 3px;
+    color : #666666;
+    }
+    .content_date_text2 {
+    font-size : 12px;
+        margin :0 0 0 3px;
+        color:#939393;
+    }
 
 /* 하단 버튼 */
 
 .button_box {
-
-position:relative;
-
-left:650px;
-
-top:20px;
-
+text-align: right;
+padding-right:100px;
+padding-top : 30px;
 }
 
-.button_box>.button {
-
+.button {
 width:80px;
+        height: 20px;
+    line-height: 18px;
+    padding: 2px 4px;
+    color: #333;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+    border: 1px solid #ddd;
+    border-radius: 2px;
+   cursor:pointer;
 
 }
 
@@ -258,39 +244,51 @@ List<Qna_fileDto> fileList = qfdao.getList(qna_no);
 			<div class="head">
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
-					<p class="notice">공지사항</p>
-					<p class="qna">Q&A</p>
-					<p class="event">이벤트</p>
+					<p class="cs_row">공지사항</p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
+					<p class="cs_row">이벤트</p>
 				</div>
 				<p class="title">
 					<b>문의내역</b>
 				</p>
+		
 			</div>
-			<div class="body">
+			<div class="body" >
 				<table class="body_table" border="1" >
 					<tbody>
-						<tr class="content">
-							<td><%=qdto.getQna_title()%></td>
+						<tr >
+						<th class="content_th">TITLE </th>
+							<td class="content_td"><%=qdto.getQna_title()%></td>
 						</tr>
-						<tr class="content">
+						<tr >
+						<th class="content_th">WRITER </th>
 							<td><%=mdto.getMember_id()%></td>
 						</tr>
-						<tr class="content">
-							<td><%=qdto.getQna_date()%></td>
-						</tr>
-								<%if(!fileList.isEmpty()) {%>
+						<tr >
+							<td class="content_date"  colspan="2">							
+										<span class="content_date_text">DATE</span>
+										<span class="content_date_text2"><%=qdto.getQna_date()%></span>
 
-						<%for(Qna_fileDto qfdto : fileList) {%>
-						<tr class="content_content" >
-							<td valign="top" class="content_content"><%=qdto.getQna_content()%>
-							<img src="download.do?qna_file_no=<%=qfdto.getQna_file_no()%>" width="100" height="100">
+							</td>
+						</tr>
+						<tr >
+						<th class="content_th">CONTENT </th>
+							<td  class="content_content" >
+					
+									 <%=qdto.getQna_content()%>
+									 
+								 <!--  첨부파일 있을 때만 출력 -->
+								<%if(!fileList.isEmpty()) {%>
+									<%for(Qna_fileDto qfdto : fileList) {%>		
+										<img src="download.do?qna_file_no=<%=qfdto.getQna_file_no()%>" width="100" height="100">
 							</td>
 						</tr>				
 							<!-- 첨부파일 출력 영역 -->
 						<tr>
-							<td>
+							<td class="content_th" colspan="2">
 							 FILE
-							 	<ul>
+							 	<ul >
 							 		<li>
 							 		<%=qfdto.getQna_file_name() %>
 							 		(<%=qfdto.getQna_file_size() %>bytes)
@@ -330,6 +328,7 @@ List<Qna_fileDto> fileList = qfdao.getList(qna_no);
 					<a href="Qna_write.jsp?qna_no=<%=qna_no%>">
 					<input class="button"  type="button" value="REPLY">
 				</a>
+
 				
 				</div>
 			</div>
@@ -338,4 +337,3 @@ List<Qna_fileDto> fileList = qfdao.getList(qna_no);
 
 </body>
 </html>
-<jsp:include page="/template/footer.jsp"></jsp:include>
