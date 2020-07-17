@@ -51,6 +51,42 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                 //,effect:'slide'//기본값
             });
         };
+        var sell_price;
+        var amount;
+
+        function init () {
+        	sell_price = document.form.sell_price.value;
+        	amount = document.form.amount.value;
+        	document.form.sum.value = sell_price;
+        	change();
+        }
+
+        function add () {
+        	hm = document.form.amount;
+        	sum = document.form.sum;
+        	hm.value ++ ;
+
+        	sum.value = parseInt(hm.value) * sell_price;
+        }
+
+        function del () {
+        	hm = document.form.amount;
+        	sum = document.form.sum;
+        		if (hm.value > 1) {
+        			hm.value -- ;
+        			sum.value = parseInt(hm.value) * sell_price;
+        		}
+        }
+
+        function change () {
+        	hm = document.form.amount;
+        	sum = document.form.sum;
+
+        		if (hm.value < 0) {
+        			hm.value = 0;
+        		}
+        	sum.value = parseInt(hm.value) * sell_price;
+        }  
            </script>
 </head>
 
@@ -110,28 +146,15 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
             </div>
             <div class="eeee">
                              <div>
-                              <select class="select_option mar-b12"name="area">
-                                  <option value="#">[필수]색깔을 선택해주세요</option>
-                                  <option value="#">빨</option>
-                                  <option value="#">주</option>
-                                  <option value="#">노</option>
-                                  <option value="#">초</option>
-                                  <option value="#">파</option>
-                                  <option value="#">람</option>
-                                  <option value="#">보</option>
-                              </select>
-                              </div>
-                              <div>
-                              <select class="select_option mar-b12"name="area">
-                                  <option value="#">[선택]</option>
-                                  <option value="#">바보</option>
-                                  <option value="#">똥개</option>
-                                  <option value="#">멍청이</option>
-                                  <option value="#">말미잘</option>
-                                  <option value="#">탕수육</option>
-                                  <option value="#">육개장</option>
-                                  <option value="#">람보</option>
-                              </select>
+<!--                               <select class="select_option mar-b12"name="area"> -->
+								<form>
+                    		  <span>            
+								<button onclick="change(-1);"type="button"><span class="blind">☜</span></button>        
+              					<input type="text" maxlength="3" title="수량" value="1">
+              					<button onclick="change(1);"type="button"><span class="blind">☞</span></button>
+							  </span>
+								</form>
+<!--                               </select> -->
                               </div>
                         </div>
                         <div class="total_price">

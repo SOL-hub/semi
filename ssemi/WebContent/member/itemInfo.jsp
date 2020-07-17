@@ -1,3 +1,5 @@
+<%@page import="home.beans.dao.MemberDao"%>
+<%@page import="home.beans.dto.MemberDto"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="home.beans.dao.ItemDao"%>
@@ -8,8 +10,11 @@
 
 <%
 	
-	ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");//idto애들 불러오기위해 필요
+
+
 	
+	ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");//idto애들 불러오기위해 필요
+
 %>
 <script>
 	function checkAdd() {
@@ -52,13 +57,16 @@
 					<td><%=idto.getItem_stock()%></td>
 					<td><%=idto.getItem_image()%></td>
 					<td><%=idto.getItem_time()%></td>
-					
+				
+
 				<td>
 				<input type="submit" formaction="cart_add.do" value="장바구니에 넣기" onclick="checkAdd();">
 				<input type="submit" formaction="wish_add.do" value="찜등록" onclick="checkAdd();">
-				<a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=<%=request.getContextPath()%>/board/delete.do?item_no=<%=idto.getItem_no()%>"><input type="button" value="삭제"></a>
+				<a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=<%=request.getContextPath()%>/member/delete.do?item_no=<%=idto.getItem_no()%>"><input type="button" value="삭제"></a>
+				<a href="shopedit.jsp?item_no=<%=idto.getItem_no()%>">
+				<input type="button" value="수정"></a>
 				</td>
-					
+
 					
 				</tr>
 				</form>

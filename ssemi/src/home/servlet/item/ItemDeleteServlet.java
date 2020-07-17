@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import home.beans.dao.BoardDao;
 import home.beans.dao.ItemDao;
-@WebServlet(urlPatterns = "/shop/item_rmv.do")
+@WebServlet(urlPatterns = "/member/delete.do")
 public class ItemDeleteServlet extends HttpServlet{
 	protected void service(HttpServletRequest req , HttpServletResponse resp) throws IOException {
 		try {
@@ -20,7 +20,7 @@ public class ItemDeleteServlet extends HttpServlet{
 			idao.delete(item_no);//삭제
 			
 
-			resp.sendRedirect("member/itemList.jsp");
+			resp.sendRedirect("itemList.jsp");
 		}
 		catch(Exception e){
 			e.printStackTrace();
