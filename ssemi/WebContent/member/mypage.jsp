@@ -73,6 +73,7 @@
 				<li><a href="<%=request.getContextPath()%>/buypage/buy_list.jsp"> 구매내역 </a></li>
 				<li><a href="#"> 게시판내역 </a></li>
 				<li><a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 견적내역 </a></li>
+				<li><a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=user_out.do">회원탈퇴</a></li>
 			</ul>
 		</aside>
 		<section>
