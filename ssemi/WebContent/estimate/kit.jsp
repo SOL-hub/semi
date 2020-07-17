@@ -283,66 +283,24 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
     <script>
     function formCheck(){
     
-    {  
-            var a = document.querySelector("select[name=bath_gong]");
-             var options = a.querySelectorAll("option");
-             for(var i=0; i < options.length; i++){
+var a = document.querySelector("input[name=shape]:checked").getAttribute("data-price"); 
+var b = document.querySelector("input[name=sizee]:checked").getAttribute("data-price"); 
+var c = document.querySelector("input[name=toptype]:checked").getAttribute("data-price"); 
+var d = document.querySelector("input[name=walltype]:checked").getAttribute("data-price"); 
+var e = document.querySelector("input[name=tile]:checked").getAttribute("data-price"); 
 
-        if(options[i].selected){
-       var aa = options[i].getAttribute("data-price"); 
-        }
-    }
-       
-             var b = document.querySelector("select[name=bath_sohyung]");
-             var optionss = b.querySelectorAll("option");
-             for(var i=0; i < optionss.length; i++){
-
-        if(optionss[i].selected){
-       var bb = optionss[i].getAttribute("data-price"); 
-        }
-    }
-
-    
-var c = document.querySelector("input[name=tools]:checked").getAttribute("data-price"); 
-   
-var d = document.querySelector("input[name=bigtools]:checked").getAttribute("data-price"); 
-  
-var edata = document.querySelectorAll("input[name=chutools]:checked");
+var fa = document.querySelectorAll("input[name=optionn]:checked");
 var total =0;
-for(var i=0; i < edata.length; i++){
-   total += parseInt(edata[i].dataset.price);
+for(var i=0; i < fa.length; i++){
+   total += parseInt(fa[i].dataset.price);
 }
 
-   var sum = parseInt(c) + parseInt(d) + total + parseInt(aa) + parseInt(bb);
+   var sum = parseInt(a) + parseInt(b)  + parseInt(c) + parseInt(d) + parseInt(e) + total;
    
-   document.querySelector("input[name=pricee]").value=sum;
- 
+   document.querySelector("input[name=pricek]").value=sum;
+  
+    
 }
-    
-    
-    {
-    	var ba = document.insertForm;
-    	if(ba.bath_gong.value==""){
-    		ba.bath_gong.focus(); 
-       alert(" 공용(거실)을 선택해주세요!");
-    		return false;
-    	}
- 
-            if(ba.bath_sohyung.value==""){
-    		ba.bath_sohyung.focus();
-            alert(" 소형(안방)을 선택해주세요!");
-    		return false;
-    		}
-               	if(ba.bath_sohyung.value && ba.bath_gong.value ==""){
-    		ba.bath_sohyung.focus();
-            alert(" 욕실이 있어야 합니다! ");
-    		return false;
-    		}
-            
-    	return true;
-    }
-    }
-
     
     </script>
   
@@ -350,121 +308,166 @@ for(var i=0; i < edata.length; i++){
 </head>
 <body>
 		
-     <form method="post" action="bath2-1.jsp" name="insertForm" onsubmit="return formCheck();">
+     <form method="post" action="kit2.jsp" name="insertForm" onsubmit="return formCheck();">
 		<div class="section over-hide z-bigger">
 			<div class="container pb-5">
 				<div class="row justify-content-center pb-5">
-
-   <span class="h2"> 욕실 견적 계산 </span> 
+                     
+	               
+<a href="<%=request.getContextPath()%>/estimate/bath.jsp"> 욕실 </a>
+ <a href="<%=request.getContextPath()%>/estimate/kit.jsp"> 주방 </a>
+ <a href="<%=request.getContextPath()%>/estimate/living.jsp">마루 </a>
+  <a href="<%=request.getContextPath()%>/index.jsp"> 메인페이지로 (테스트) </a>
      <div class="line"> </div>
     
-   <br> 
+	<div class="row-empty"></div>
+
+   <span class="h2"> 주방 견적 계산 </span> 
+
+
+    	<div class="row-empty"></div>
+
 <input class="reset_button" type='reset' value="초기화" ></br>
 
 <!--옵션1-->
-   	<div class="col-12 pt-5">
-						<p class="mb-4 pb-2 "><span class="half"> 시공할 욕실이 몇 개인가요?</span> </p>
-					</div>
-				
-					<div class="col-12 pt-5">
-					
-         		<select class="form-control
-         		" name="bath_gong" style="vertical-align: middle; text-align-last: center">
-							<option style="color:#DDD7E4" selected value disabled> - 공용(거실) - </option>
-							<option value="1개" data-price="1800000">공용 1개</option>
-							<option value="2개" data-price="3600000">공용 2개</option>
-							<option value="3개" data-price="5400000">공용 3개</option>
-							<option value="0"data-price="0">없음</option>
-						</select>
-                      
-				<select class="form-control" name="bath_sohyung" style="vertical-align: middle; text-align-last: center">
-				 			<option style="color:#DDD7E4" selected value disabled> - 소형(안방) - </option>
-							<option value="1개"data-price="1200000">소형 1개</option>
-							<option value="2개"data-price="2400000">소형 2개</option>
-							<option value="3개"data-price="3600000">소형 3개</option>
-							<option value="0"data-price="0">없음</option>
-						</select>
-					
-					</div>
-					<div class="row-empty"></div>
-				
-					
-<!--옵션2-->
-      	<div class="col-12 pt-5">
-						<p class="mb-4 pb-2"><span class="half"> 어떤 욕실 유형을 선호하세요?</span></p>
+   	    	<div class="col-12 pt-5">
+						<p class="mb-4 pb-2"><span class="half"> 어떤 형태의 싱크대를 시공하실 생각이세요?</span></p>
 					</div>
 					<div class="col-12 pb-5">
-						<input class="checkbox-tools" type="radio" data-price="500000" name="tools" checked id="tools-1" value="욕조형" >
-						<label class="for-checkbox-tools" for="tools-1">
-							욕조형
+						<input class="checkbox-tools" type="radio" data-price="1600000" name="shape" checked id="shape-1" value="ㅡ형" >
+						<label class="for-checkbox-tools" for="shape-1">
+							ㅡ형
 						</label>
 						<!--
-						--><input class="checkbox-tools" type="radio" data-price="400000" name="tools" id="tools-2" value="샤워부스형">
-						<label class="for-checkbox-tools" for="tools-2">
-							샤워부스형
+						--><input class="checkbox-tools" type="radio" data-price="1800000" name="shape" id="shape-2" value="ㄱ형">
+						<label class="for-checkbox-tools" for="shape-2">
+							ㄱ형
 						</label><!--
-						--><input class="checkbox-tools" value="파우더형" data-price="800000" type="radio" name="tools" id="tools-3">
-						<label class="for-checkbox-tools" for="tools-3">
-						파우더형
+						--><input class="checkbox-tools" value="ㄷ형" data-price="2000000" type="radio" name="shape" id="shape-3">
+						<label class="for-checkbox-tools" for="shape-3">
+						ㄷ형
+						</label></div>
+								<div class="row-empty"></div>
+					
+<!--옵션2-->
+         	    	<div class="col-12 pt-5">
+						<p class="mb-4 pb-2"><span class="half"> 싱크대 가로 사이즈 (가장 긴면)이 어떻게 되나요?</span></p>
+					</div>
+					<div class="col-12 pb-5">
+						<input class="checkbox-tools" type="radio" data-price="100000" name="sizee" checked id="sizee-1" value="240cm" >
+						<label class="for-checkbox-tools" for="sizee-1">
+							240cm
+						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="200000" name="sizee" id="sizee-2" value="320cm">
+						<label class="for-checkbox-tools" for="sizee-2">
+							320cm
+						</label><!--
+						--><input class="checkbox-tools" value="400cm" data-price="300000" type="radio" name="sizee" id="sizee-3">
+						<label class="for-checkbox-tools" for="sizee-3">
+						  400cm
 						</label></div>
 								<div class="row-empty"></div>
 							
+							
+<!--옵션3-->
+       	    	<div class="col-12 pt-5">
+						<p class="mb-4 pb-2"><span class="half"> 상판 유형은 어떤걸로 할까요? </span></p>
+					</div>
+					<div class="col-12 pb-5">
+						<input class="checkbox-tools" type="radio" data-price="200000" name="toptype" checked id="toptype-1" value="PT" >
+						<label class="for-checkbox-tools" for="toptype-1">
+							PT
+						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="400000" name="toptype" id="toptype-2" value="인조대리석">
+						<label class="for-checkbox-tools" for="toptype-2">
+							인조대리석
+						</label>
+						</div>
+								<div class="row-empty"></div>
+					
+					
 			
   						
-<!--옵션3-->
-                    <div class="col-12 pt-1">
-						<p class="mb-4 pb-2"><span class="half">타일은 어디에 시공할까요?</span></p>
+<!--옵션4-->
+       	    	<div class="col-12 pt-5">
+						<p class="mb-4 pb-2"><span class="half"> 도어 유형은 어떤걸로 할까요? </span></p>
 					</div>
-					<div class="col-xl-10 pb-5">
-						<input class="checkbox-tools" value="벽" type="radio" data-price="300000" name="bigtools" id="bigtools-1" checked>
-						<label class="for-checkbox-tools" for="bigtools-1">
-							<span data-hover="벽">벽</span>
-						</label><!--
-						--><input class="checkbox-tools" value="바닥" type="radio" data-price="200000" name="bigtools" id="bigtools-2">
-						<label class="for-checkbox-tools" for="bigtools-2">							
-							<span data-hover="바닥">바닥</span>
-						</label><!--
-						--><input class="checkbox-tools" value="벽+바닥" type="radio" data-price="500000" name="bigtools" id="bigtools-3">
-						<label class="for-checkbox-tools" for="bigtools-3">							
-							<span data-hover="벽+바닥">벽+바닥</span>
+					<div class="col-12 pb-5">
+						<input class="checkbox-tools" type="radio" data-price="100000" name="walltype" checked id="walltype-1" value="하이그로시(유광)" >
+						<label class="for-checkbox-tools" for="walltype-1">
+							하이그로시
 						</label>
-					</div>
-		
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="200000" name="walltype" id="walltype-2" value="PET(무광)">
+						<label class="for-checkbox-tools" for="walltype-2">
+							PET(무광)
+						</label><!--
+						--><input class="checkbox-tools" value="열전사" data-price="300000" type="radio" name="walltype" id="walltype-3">
+						<label class="for-checkbox-tools" for="walltype-3">
+						  열전사
+						</label>
+							<!--
+						--><input class="checkbox-tools" type="radio" data-price="500000" name="walltype" id="walltype-2" value="원목">
+						<label class="for-checkbox-tools" for="walltype-2">
+							원목
+						</label>
+						</div>
+								<div class="row-empty"></div>
 					
 					
 						
+								
+<!--옵션5-->
+       	    	<div class="col-12 pt-5">
+						<p class="mb-4 pb-2"><span class="half"> 벽 타일은 어떻게 하실 생각이세요?</span></p>
+					</div>
+					<div class="col-12 pb-5">
+						<input class="checkbox-tools" type="radio" data-price="50000" name="tile" checked id="tile-1" value="기존 유지" >
+						<label class="for-checkbox-tools" for="tile-1">
+							기존유지
+						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="300000" name="tile" id="tile-2" value="교체 시공">
+						<label class="for-checkbox-tools" for="tile-2">
+							교체시공
+						</label>
+						</div>
 								<div class="row-empty"></div>
-<!--옵션4-->
+					
+					
+<!--옵션6-->
 							<div class="col-12 pt-1">
 						<p class="mb-4 pb-2"><span class="half"> 추가옵션 (중복선택가능) </span></p>
 					</div>
 					<div class="col-12 pb-5">
-						<input class="checkbox-tools" value="젠다이" data-price="250000" type="checkbox" name="chutools" id="chutools-1" checked >
-						<label class="for-checkbox-tools" for="chutools-1">
-					<span class="text">젠다이</span>
+						<input class="checkbox-tools" value="아일랜드 식탁" data-price="350000" type="checkbox" name="optionn" id="optionn-1" checked >
+						<label class="for-checkbox-tools" for="optionn-1">
+					<span class="text">아일랜드 식탁</span>
 						</label><!--
-						--><input class="checkbox-tools" value="거울수납장" data-price="150000" type="checkbox" name="chutools" id="chutools-2">
-						<label class="for-checkbox-tools" for="chutools-2">							
-							<span class="text">거울수납장</span>
+						--><input class="checkbox-tools" value="냉장고장" data-price="280000" type="checkbox" name="optionn" id="optionn-2">
+						<label class="for-checkbox-tools" for="optionn-2">							
+							<span class="text">냉장고장</span>
 						</label><!--
-						--><input class="checkbox-tools" value="선반" data-price="100000" type="checkbox" name="chutools" id="chutools-3">
-						<label class="for-checkbox-tools" for="chutools-3">							
-							<span class="text">선반</span>
+						--><input class="checkbox-tools" value="키큰장" data-price="300000" type="checkbox" name="optionn" id="optionn-3">
+						<label class="for-checkbox-tools" for="optionn-3">							
+							<span class="text">키큰장</span>
 						</label><!--
-						--><input class="checkbox-tools" value="비데" data-price="300000" type="checkbox" name="chutools" id="chutools-4">
-						<label class="for-checkbox-tools" for="chutools-4">							
-							<span class="text">비데</span>
+						--><input class="checkbox-tools" value="뒷선반" data-price="290000" type="checkbox" name="optionn" id="optionn-4">
+						<label class="for-checkbox-tools" for="optionn-4">							
+							<span class="text">뒷선반</span>
 						</label><!--
-						--><input class="checkbox-tools" value="환풍기" data-price="400000" type="checkbox" name="chutools" id="chutools-5">
-						<label class="for-checkbox-tools" for="chutools-5">							
-					<span class="text">환풍기</span>
+						--><input class="checkbox-tools" value="쿡탑" data-price="360000" type="checkbox" name="optionn" id="optionn-5">
+						<label class="for-checkbox-tools" for="optionn-5">							
+					<span class="text">쿡탑</span>
 						</label>
 					</div>
 							<div class="row-empty"></div>
 
 <div class="foott"> 
 		 <input type="submit" class="submit_button fott" value="견적계산 확인 ">
-		  <input type="hidden" name="pricee" value="">   
+		  <input type="hidden" name="pricek" value="">   
 </div>
 
 </form>

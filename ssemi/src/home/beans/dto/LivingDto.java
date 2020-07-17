@@ -6,10 +6,11 @@ import java.sql.SQLException;
 public class LivingDto {
 
 	private int living_no, living_price;
-	private String living_type, living_pattern, living_color, living_brand, living_date, living_member;
+	private String living_title, living_type, living_pattern, living_color, living_brand, living_date, living_member;
 	
 	 public LivingDto(ResultSet rs) throws SQLException{
 		   
+		  this.setLiving_title(rs.getString("living_title"));
 	      this.setLiving_no(rs.getInt("living_no"));
 	      this.setLiving_price(rs.getInt("living_price"));
 	      this.setLiving_type(rs.getString("living_type"));
@@ -21,6 +22,20 @@ public class LivingDto {
 	   }
 	
 	
+	 public String getLiving_title() {
+		return living_title;
+	}
+
+	public void setLiving_title(String living_title) {
+		this.living_title = living_title;
+	}
+
+
+	public LivingDto() {
+	      super();
+	   }
+	 
+	 
 	public int getLiving_no() {
 		return living_no;
 	}

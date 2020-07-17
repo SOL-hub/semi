@@ -283,66 +283,17 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
     <script>
     function formCheck(){
     
-    {  
-            var a = document.querySelector("select[name=bath_gong]");
-             var options = a.querySelectorAll("option");
-             for(var i=0; i < options.length; i++){
+var a = document.querySelector("input[name=type]:checked").getAttribute("data-price"); 
+var b = document.querySelector("input[name=pattern]:checked").getAttribute("data-price"); 
+var c = document.querySelector("input[name=color]:checked").getAttribute("data-price"); 
+var d = document.querySelector("input[name=brand]:checked").getAttribute("data-price"); 
 
-        if(options[i].selected){
-       var aa = options[i].getAttribute("data-price"); 
-        }
-    }
-       
-             var b = document.querySelector("select[name=bath_sohyung]");
-             var optionss = b.querySelectorAll("option");
-             for(var i=0; i < optionss.length; i++){
-
-        if(optionss[i].selected){
-       var bb = optionss[i].getAttribute("data-price"); 
-        }
-    }
-
-    
-var c = document.querySelector("input[name=tools]:checked").getAttribute("data-price"); 
-   
-var d = document.querySelector("input[name=bigtools]:checked").getAttribute("data-price"); 
-  
-var edata = document.querySelectorAll("input[name=chutools]:checked");
-var total =0;
-for(var i=0; i < edata.length; i++){
-   total += parseInt(edata[i].dataset.price);
-}
-
-   var sum = parseInt(c) + parseInt(d) + total + parseInt(aa) + parseInt(bb);
+   var sum = parseInt(a) + parseInt(b)  + parseInt(c) + parseInt(d) ;
    
    document.querySelector("input[name=pricee]").value=sum;
- 
+  
+    
 }
-    
-    
-    {
-    	var ba = document.insertForm;
-    	if(ba.bath_gong.value==""){
-    		ba.bath_gong.focus(); 
-       alert(" 공용(거실)을 선택해주세요!");
-    		return false;
-    	}
- 
-            if(ba.bath_sohyung.value==""){
-    		ba.bath_sohyung.focus();
-            alert(" 소형(안방)을 선택해주세요!");
-    		return false;
-    		}
-               	if(ba.bath_sohyung.value && ba.bath_gong.value ==""){
-    		ba.bath_sohyung.focus();
-            alert(" 욕실이 있어야 합니다! ");
-    		return false;
-    		}
-            
-    	return true;
-    }
-    }
-
     
     </script>
   
@@ -350,117 +301,135 @@ for(var i=0; i < edata.length; i++){
 </head>
 <body>
 		
-     <form method="post" action="bath2-1.jsp" name="insertForm" onsubmit="return formCheck();">
+     <form method="post" action="living2.jsp" name="insertForm" onsubmit="return formCheck();">
 		<div class="section over-hide z-bigger">
 			<div class="container pb-5">
 				<div class="row justify-content-center pb-5">
-
-   <span class="h2"> 욕실 견적 계산 </span> 
+                    
+	          
+ <a href="<%=request.getContextPath()%>/estimate/bath.jsp"> 욕실 </a>
+ <a href="<%=request.getContextPath()%>/estimate/kit.jsp"> 주방 </a>
+ <a href="<%=request.getContextPath()%>/estimate/living.jsp">마루 </a>
+   <a href="<%=request.getContextPath()%>/index.jsp"> 메인페이지로 (테스트) </a>
      <div class="line"> </div>
     
-   <br> 
+	<div class="row-empty"></div>
+
+   <span class="h2"> 마루 견적 계산 </span> 
+
+
+    	<div class="row-empty"></div>
+
 <input class="reset_button" type='reset' value="초기화" ></br>
 
 <!--옵션1-->
-   	<div class="col-12 pt-5">
-						<p class="mb-4 pb-2 "><span class="half"> 시공할 욕실이 몇 개인가요?</span> </p>
-					</div>
-				
-					<div class="col-12 pt-5">
-					
-         		<select class="form-control
-         		" name="bath_gong" style="vertical-align: middle; text-align-last: center">
-							<option style="color:#DDD7E4" selected value disabled> - 공용(거실) - </option>
-							<option value="1개" data-price="1800000">공용 1개</option>
-							<option value="2개" data-price="3600000">공용 2개</option>
-							<option value="3개" data-price="5400000">공용 3개</option>
-							<option value="0"data-price="0">없음</option>
-						</select>
-                      
-				<select class="form-control" name="bath_sohyung" style="vertical-align: middle; text-align-last: center">
-				 			<option style="color:#DDD7E4" selected value disabled> - 소형(안방) - </option>
-							<option value="1개"data-price="1200000">소형 1개</option>
-							<option value="2개"data-price="2400000">소형 2개</option>
-							<option value="3개"data-price="3600000">소형 3개</option>
-							<option value="0"data-price="0">없음</option>
-						</select>
-					
-					</div>
-					<div class="row-empty"></div>
-				
-					
-<!--옵션2-->
-      	<div class="col-12 pt-5">
-						<p class="mb-4 pb-2"><span class="half"> 어떤 욕실 유형을 선호하세요?</span></p>
+   	    	<div class="col-12 pt-5">
+						<p class="mb-4 pb-2"><span class="half"> 시공할 마루 종류를 선택해주세요 </span></p>
 					</div>
 					<div class="col-12 pb-5">
-						<input class="checkbox-tools" type="radio" data-price="500000" name="tools" checked id="tools-1" value="욕조형" >
-						<label class="for-checkbox-tools" for="tools-1">
-							욕조형
+						<input class="checkbox-tools" type="radio" data-price="200000" name="type" checked id="type-1" value="강마루" >
+						<label class="for-checkbox-tools" for="type-1">
+							강마루
 						</label>
 						<!--
-						--><input class="checkbox-tools" type="radio" data-price="400000" name="tools" id="tools-2" value="샤워부스형">
-						<label class="for-checkbox-tools" for="tools-2">
-							샤워부스형
+						--><input class="checkbox-tools" type="radio" data-price="300000" name="type" id="type-2" value="원목마루">
+						<label class="for-checkbox-tools" for="type-2">
+							원목마루
 						</label><!--
-						--><input class="checkbox-tools" value="파우더형" data-price="800000" type="radio" name="tools" id="tools-3">
-						<label class="for-checkbox-tools" for="tools-3">
-						파우더형
+						--><input class="checkbox-tools" value="강화마루" data-price="400000" type="radio" name="type" id="type-3">
+						<label class="for-checkbox-tools" for="type-3">
+						강화마루
+						</label><!--
+						--><input class="checkbox-tools" value="온돌마루" data-price="500000" type="radio" name="type" id="type-4">
+						<label class="for-checkbox-tools" for="type-4">
+						온돌마루
 						</label></div>
 								<div class="row-empty"></div>
-							
-			
-  						
-<!--옵션3-->
-                    <div class="col-12 pt-1">
-						<p class="mb-4 pb-2"><span class="half">타일은 어디에 시공할까요?</span></p>
-					</div>
-					<div class="col-xl-10 pb-5">
-						<input class="checkbox-tools" value="벽" type="radio" data-price="300000" name="bigtools" id="bigtools-1" checked>
-						<label class="for-checkbox-tools" for="bigtools-1">
-							<span data-hover="벽">벽</span>
-						</label><!--
-						--><input class="checkbox-tools" value="바닥" type="radio" data-price="200000" name="bigtools" id="bigtools-2">
-						<label class="for-checkbox-tools" for="bigtools-2">							
-							<span data-hover="바닥">바닥</span>
-						</label><!--
-						--><input class="checkbox-tools" value="벽+바닥" type="radio" data-price="500000" name="bigtools" id="bigtools-3">
-						<label class="for-checkbox-tools" for="bigtools-3">							
-							<span data-hover="벽+바닥">벽+바닥</span>
-						</label>
-					</div>
-		
-					
-					
-						
-								<div class="row-empty"></div>
-<!--옵션4-->
-							<div class="col-12 pt-1">
-						<p class="mb-4 pb-2"><span class="half"> 추가옵션 (중복선택가능) </span></p>
+
+								
+<!--옵션2-->
+       	    	<div class="col-12 pt-5">
+						<p class="mb-4 pb-2"><span class="half"> 마루 패턴은 어떻게 하실 생각이세요?</span></p>
 					</div>
 					<div class="col-12 pb-5">
-						<input class="checkbox-tools" value="젠다이" data-price="250000" type="checkbox" name="chutools" id="chutools-1" checked >
-						<label class="for-checkbox-tools" for="chutools-1">
-					<span class="text">젠다이</span>
-						</label><!--
-						--><input class="checkbox-tools" value="거울수납장" data-price="150000" type="checkbox" name="chutools" id="chutools-2">
-						<label class="for-checkbox-tools" for="chutools-2">							
-							<span class="text">거울수납장</span>
-						</label><!--
-						--><input class="checkbox-tools" value="선반" data-price="100000" type="checkbox" name="chutools" id="chutools-3">
-						<label class="for-checkbox-tools" for="chutools-3">							
-							<span class="text">선반</span>
-						</label><!--
-						--><input class="checkbox-tools" value="비데" data-price="300000" type="checkbox" name="chutools" id="chutools-4">
-						<label class="for-checkbox-tools" for="chutools-4">							
-							<span class="text">비데</span>
-						</label><!--
-						--><input class="checkbox-tools" value="환풍기" data-price="400000" type="checkbox" name="chutools" id="chutools-5">
-						<label class="for-checkbox-tools" for="chutools-5">							
-					<span class="text">환풍기</span>
+						<input class="checkbox-tools" type="radio" data-price="100000" name="pattern" checked id="pattern-1" value="벽돌(Brick)" >
+						<label class="for-checkbox-tools" for="pattern-1">
+							벽돌<br>(Brick)
 						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="150000" name="pattern" id="pattern-2" value="헤링본(Herringbone)">
+						<label class="for-checkbox-tools" for="pattern-2">
+							헤링본(Herringbone)
+						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="250000" name="pattern" id="pattern-3" value="파케이(Parquet)">
+						<label class="for-checkbox-tools" for="pattern-3">
+							파케이(Parquet)
+						</label>
+					
+						</div>
+								<div class="row-empty"></div>					
+
+								
+<!--옵션3-->
+       	    	<div class="col-12 pt-5">
+						<p class="mb-4 pb-2"><span class="half"> 마루 수종을 선택해주세요 </span></p>
 					</div>
-							<div class="row-empty"></div>
+					<div class="col-12 pb-5">
+						<input class="checkbox-tools" type="radio" data-price="250000" name="color" checked id="color-1" value="오크(Oak)" >
+						<label class="for-checkbox-tools" for="color-1">
+							오크 <br>(Oak)
+						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="360000" name="color" id="color-2" value="메이플(Maple)">
+						<label class="for-checkbox-tools" for="color-2">
+							메이플(Maple)
+						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="280000" name="color" id="color-3" value="이로코(Iroko)">
+						<label class="for-checkbox-tools" for="color-3">
+							이로코(Iroko)
+						</label><!--
+						--><input class="checkbox-tools" type="radio" data-price="180000" name="color" id="color-4" value="멀바우(Merbau)">
+						<label class="for-checkbox-tools" for="color-4">
+							멀바우(Merbau)
+						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="220000" name="color" id="color-5" value="월넛(Walnut)">
+						<label class="for-checkbox-tools" for="color-5">
+							월넛(Walnut)
+						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="300000" name="color" id="color-6" value="티크(Teak)">
+						<label class="for-checkbox-tools" for="color-6">
+							티크<br>(Teak)
+						</label>
+						</div>
+								<div class="row-empty"></div>		
+  						
+<!--옵션4-->
+       	    	<div class="col-12 pt-5">
+						<p class="mb-4 pb-2"><span class="half"> 마루 브랜드는 어떤걸 선호하시나요? </span></p>
+					</div>
+					<div class="col-12 pb-5">
+						<input class="checkbox-tools" type="radio" data-price="500000" name="brand" checked id="brand-1" value="브랜드" >
+						<label class="for-checkbox-tools" for="brand-1">
+							브랜드
+						</label>
+						<!--
+						--><input class="checkbox-tools" type="radio" data-price="280000" name="brand" id="brand-2" value="비브랜드">
+						<label class="for-checkbox-tools" for="brand-2">
+							비브랜드
+						</label><!--
+						--><input class="checkbox-tools" value="무관" data-price="300000" type="radio" name="brand" id="brand-3">
+						<label class="for-checkbox-tools" for="brand-3">
+						  무관
+						</label>
+		
+						</div>
+								<div class="row-empty"></div>
+					
+	
 
 <div class="foott"> 
 		 <input type="submit" class="submit_button fott" value="견적계산 확인 ">
