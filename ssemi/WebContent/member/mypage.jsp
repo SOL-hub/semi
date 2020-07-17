@@ -81,15 +81,15 @@
 				<table>
 					
 					
-						<div class="img_flex">
+<!-- 						<div class="img_flex"> -->
 
-							<div class="img cart_img"></div>
+<!-- 							<div class="img cart_img"></div> -->
 
-							<div class="img order_img"></div>
+<!-- 							<div class="img order_img"></div> -->
 
-							<div class="img broad_img"></div>
+<!-- 							<div class="img broad_img"></div> -->
 
-						</div>
+<!-- 						</div> -->
 						<tbody>
 						<tr class="cart_line_padding">
 							<td  class="cart_title center">나의 장바구니 목록</td>

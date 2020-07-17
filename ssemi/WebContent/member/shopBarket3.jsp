@@ -32,7 +32,7 @@
 			<!-- 임시공간맞추기담당 -->
 			<!-- <h1>reemD </h1> -->
 			<br>
-			<h4>01 장바구니 - 02주문서 작성 - 03주문완료</h4>
+<!-- 			<h4>01 장바구니 - 02주문서 작성 - 03주문완료</h4> -->
 			<br>
 			<h1 style="font-size: 50px;">장바구니</h1>
 			<br>
@@ -90,14 +90,28 @@
 						selectCart[i].checked = selectAll;
 					}
 				}
-				function check_item_checkbox() {
-					var selectCart = document.getElementsByName("cart_no").checked;
-					if(!selectCart){
-						alert("체크박스를 하나라도 체크해주세요");
-						return false;
-					}
+// 				function check_item_checkbox() {
+// 					var selectCart = document.getElementsByName("cart_no").checked;
+// 					if(!selectCart){
+// 						alert("체크박스를 하나라도 체크해주세요");
+// 						return false;
+// 					}
 				 
-				} 
+// 				} 
+
+				function sendEdit(button){
+					//button 앞에는 수량창이 있고 뒤에는 번호태그가 있다
+					//앞 : button.previousElementSibling
+					//뒤 : button.nextElementSibling
+					var cart_cnt = button.previousElementSibling.value;
+					var cart_no = button.nextElementSibling.value;
+					//console.log(cart_no, cart_cnt);
+					
+					var form = document.querySelector(".edit-form");
+					form.querySelector("input[name=cart_no]").value = cart_no;
+					form.querySelector("input[name=cart_cnt]").value = cart_cnt;
+					form.submit();//폼 전송버튼 누른 효과
+				}
 			</script>
 
 
@@ -125,16 +139,17 @@
 							<form method="get">
 							<table class="calculation1">
 								<thead>
-									<div class="right">
-									<input type="submit" formaction="<%=request.getContextPath()%>/buypage/buy_page.jsp" class="btn default"
-												style="width: 110px; padding: 10px; margin-bottom: 3px; font-size: 15px; background: white" value="선택상품구매"
-												onsubmit="return check_item_checkbox();">
-									<input type="submit" formaction="barket_delete.do" class="btn default"
-												style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px" value="삭제하기">		 			
-									</div>
 									<tr>
-										<th><input style="width: 10px;" type="checkbox"
-											name="checkbox" id="check" class="cart_all_click"
+										<th colspan="7" class="right" style="background-color: antiquewhite;"> 
+											<input type="submit" formaction="<%=request.getContextPath()%>/buypage/buy_page.jsp" class="btn default"
+														style="width: 110px; padding: 10px; margin-bottom: 3px; font-size: 15px; background: white" value="선택상품구매"
+														onclick="return check_item_checkbox();">
+											<input type="submit" formaction="barket_delete.do" class="btn default"
+														style="width: 90px; padding: 10px; margin-bottom: 3px; font-size: 15px" value="삭제하기">		 			
+										</th>
+									</tr>
+									<tr>
+										<th><input style="width: 10px;" type="checkbox" id="check" class="cart_all_click"
 											onchange="cart_all();"></th>
 										<th style="width: 280px; height: 50px;"><span>이미지</span></th>
 										<th style="width: 450px;"><span>상품정보</span></th>
@@ -168,7 +183,6 @@
 											style="text-align: left; text-align: center; border-right: none; width: 3%">
 											<input type="checkbox" name="cart_no" value="<%=cdto.getCart_no()%>">
 										</td>
-										</form>
 										<td style="border-left: none; border-right: none;"><%=itemName.getItem_name()%><img
 											style="width: 80%;" src="/img/의자.png"></td>
 
@@ -176,17 +190,14 @@
 											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=itemName.getItem_info()%></td>
 
 										<td><span style="padding-left: 10px;"><%=item_cnt_change_price%></span>원</td>
-										<form method="post">
+										
 										<td style="width: 50px;">
-										<input type="number"
-											style="text-align: right; width: 40px; margin-bottom: 3px;"
-											min="1" max="99" step="1" name="cart_cnt" value="<%=cdto.getCart_cnt()%>">
-											
-											<input type="submit" formaction="cart_cnt_change.do" class="btn default"
-												style="border-radius: 3px; size: 10px;"name="hidden" value="변경">
-											<input type="hidden" name="cart_no" value="<%=cdto.getCart_no()%>">
-												</td>
-											
+										
+											<!-- 이 배치가 바뀌면 프로그래밍에 문제가 생김(강사 왈) -->
+											<input type="number" style="text-align: right; width: 40px; margin-bottom: 3px;" min="1" max="99" step="1" value="<%=cdto.getCart_cnt()%>">
+											<input type="button" class="btn default" style="border-radius: 3px; size: 10px;" value="변경" onclick="sendEdit(this);">
+											<input type="hidden" value="<%=cdto.getCart_no()%>">
+										</td>
 										<td>
 											
 										</td>
@@ -209,7 +220,6 @@
 									<%}
 										int real_total = total_price + delivery_cost;
 										%>
-									</form>
 								</tbody>
 
 								<tfoot>
@@ -230,6 +240,7 @@
 									
 								</tfoot>
 							</table>
+							</form>
 
 							<div style="border: border:solid 1px #e0e0b; padding: 15px 0;">
 								<img src="/semiProject/image/주의!.png"
@@ -247,8 +258,8 @@
 
 						<table class="calculation2">
 							<tr>
-								<th>총 상품금액</th>
-								<th>총 배송비</th>
+								<th style="width: 350px;">총 상품금액</th>
+								<th style="width: 350px;">총 배송비</th>
 								<th style="width: 750px; padding: 22px 0;"><span>결제예정금액</span></th>
 							</tr>
 
@@ -273,7 +284,7 @@
                         style="background-color: gray; color: #fff;">마이페이지 가기</button>
 					</a>
 					<a href="<%=request.getContextPath()%>/member/wishlist.jsp">
-                     <button class="btn default backBtn btnfloat2">구매내역 가기</button>
+                     <button class="btn default backBtn btnfloat2">위시리스트 가기</button>
                      </a>
 					<a href="<%=request.getContextPath()%>/buypage/buy_list.jsp">
                      <button class="btn default backBtn btnfloat2">구매내역 가기</button>
@@ -348,5 +359,11 @@
 						</%--상품정보>
 					
 				</div>
+				
+				<!-- 변경을 위한 form : 수량, 카트번호가 있어야함 -->
+				<form method="post" action="cart_cnt_change.do" class="edit-form">
+					<input type="hidden" name="cart_no" value="">
+					<input type="hidden" name="cart_cnt" value="">
+				</form>
 
 				<jsp:include page="/template/footer.jsp"></jsp:include>
