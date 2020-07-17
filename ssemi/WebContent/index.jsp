@@ -72,14 +72,15 @@
 	margin-left: 250px;
 	width:467px; height: 570px;
 	display:inline;
+	
 }
 
 
 .maindiv{
 	
 	display:inline-block; 
-
 	overflow:hidden;
+	
 
 }
 
@@ -91,11 +92,13 @@
 
 transform: scale(1.0);
 	transition: all 0.5s linear;
+	
 }
 
 .maindiv a img:hover {	
 transform: scale(1.1);
 -webkit-transform: scale(1.1);
+
 
 }
 
