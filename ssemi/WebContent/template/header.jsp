@@ -62,12 +62,6 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                      	</ul>
                      	</li>
                      <li><a href="#">마루</a>
-                        <ul class="inner-inner">
-                     		<li><a href="<%=request.getContextPath()%>">강마루</a></li>
-                     		<li><a href="<%=request.getContextPath()%>">강화마루</a></li>
-                     		<li><a href="<%=request.getContextPath()%>">합판마루</a></li>
-                     		<li><a href="<%=request.getContextPath()%>">원목마루</a></li>
-              	       </ul>
               	       </li>
                      <li><a href="#">주방</a>
                    	  	<ul class="inner-inner">
@@ -88,8 +82,8 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
             </ul>
          </div>
          <div class="menu_logo">
-            <a href="<%=request.getContextPath()%>/index.jsp"> <img width="50px"
-               src="<%=request.getContextPath()%>/img/pig_logo.png">
+            <a href="<%=request.getContextPath()%>/index.jsp"> <img width="150px"
+               src="<%=request.getContextPath()%>/img/logo.png" style="margin-top:-15px">
             </a>
          </div>
 
@@ -150,12 +144,11 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                   %>
 
                   <div id="search">
-                     <form  class="search_set" action="<%=request.getContextPath()%>/shop/product_bed_list.jsp"  method="get" style="float: left;">
+                     <form  class="search_set" action="<%=request.getContextPath()%>/search/search_result.jsp"  method="get" style="float: left;">
                         <input class="search_box" type="text" placeholder="검색" name="keyword" required> 
                         <input type="image"  src="<%=request.getContextPath()%>/img/search.png" style="width: 20px;">
                      </form>
                   </div>
-                  
                </div>
             </div>
          </div>
