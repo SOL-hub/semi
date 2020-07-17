@@ -9,35 +9,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import home.beans.dao.EstimateDao;
-import home.beans.dto.EstimateDto;
+import home.beans.dao.LivingDao;
+import home.beans.dto.LivingDto;
 import home.beans.dto.MemberDto;
 
-@WebServlet(urlPatterns = "/estimate/saveesti2.do")
+@WebServlet(urlPatterns = "/estimate/saveliving.do")
 public class LivingSaveServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 
 			
-			  req.setCharacterEncoding("UTF-8");
+			 req.setCharacterEncoding("UTF-8");
 			
 			MemberDto mdto = (MemberDto) req.getSession().getAttribute("userinfo");
 			String member_id = mdto.getMember_id();//작성자 추출
 			
-			EstimateDto edto = new EstimateDto();
-			edto.setBath_price(Integer.parseInt(req.getParameter("bath_price")));
-			edto.setBath_cnt(req.getParameter("bath_cnt"));
-			edto.setBath_cntt(req.getParameter("bath_cntt"));
-			edto.setBath_tub(req.getParameter("bath_tub"));
-			edto.setBath_tile(req.getParameter("bath_tile"));
-			edto.setBath_option(req.getParameter("bath_option"));
-			edto.setBath_date(req.getParameter("bath_date"));
-			edto.setBath_member(member_id);
+			LivingDto ldto = new LivingDto();
+			ldto.setLiving_title(req.getParameter("living_title"));
+			ldto.setLiving_price(Integer.parseInt(req.getParameter("living_price")));
+			ldto.setLiving_type(req.getParameter("living_type"));
+			ldto.setLiving_pattern(req.getParameter("living_pattern"));
+			ldto.setLiving_color(req.getParameter("living_color"));
+			ldto.setLiving_brand(req.getParameter("living_brand"));
+			ldto.setLiving_member(member_id);
 		
-			EstimateDao edao = new EstimateDao();
-			edao.save(edto);
-			resp.sendRedirect("bath.jsp");
+			
+			LivingDao ldao = new LivingDao();
+			ldao.save(ldto);
+			resp.sendRedirect("living.jsp");
 			
 		}
 		catch(Exception e) {

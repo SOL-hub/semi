@@ -7,8 +7,11 @@
     <title> 욕실 견적 계산기 </title>
 
 
+
 <style>   
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap');
+
+
     :root {
 	--white: #ffffff;
 	--light: #f0eff3;
@@ -21,6 +24,7 @@
 	--grey: #ecedf3;
 }
     
+
 body{
       font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
     width: 100%;
@@ -33,8 +37,10 @@ body{
 	transition: all 300ms linear; 
 	letter-spacing: 1px;
     -webkit-font-smoothing: antialiased;
-    
 }
+
+
+
   p{
     font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
 	font-size: 15px;
@@ -45,6 +51,7 @@ body{
 	-webkit-transition: all 300ms linear;
 	transition: all 300ms linear; 
 }
+
     .h2 {
         font-size: 28px;
       line-height: 50px;
@@ -79,6 +86,8 @@ mark{
 .z-bigger {
     z-index: 100 !important;
 }
+
+
 .background-color{
 	position: fixed;
 	top: 0;
@@ -90,6 +99,9 @@ mark{
 	-webkit-transition: all 300ms linear;
 	transition: all 300ms linear; 
 }
+
+
+
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked),
 [type="radio"]:checked,
@@ -102,6 +114,7 @@ mark{
 }
     
     
+
 .checkbox-tools:checked + label,
 .checkbox-tools:not(:checked) + label{
 	position: relative;
@@ -151,13 +164,18 @@ mark{
 	background-image: linear-gradient(298deg, var(--red), var(--yellow));
 	z-index: -1;
 }
+
+
 .checkbox:checked ~ .section .container .row .col-12 .checkbox-tools:not(:checked) + label{
 	background-color: var(--light);
 	color: var(--dark-blue);
 	box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
 }
     
+
     
+
+
     .line {
         position: relative;
 width: 100%;
@@ -192,9 +210,11 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
     color: var(--dark-blue);
     font-size: 15px;
 }
+
     .half {
   background: linear-gradient(to top, #EAE2E5 40%, transparent 50%);
 }
+
 .row-empty {
     height: 20px;
 }
@@ -257,6 +277,7 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
     transition: background-color .2s;
     cursor: pointer;
 }
+
     </style>
     
     <script>
@@ -266,6 +287,7 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
             var a = document.querySelector("select[name=bath_gong]");
              var options = a.querySelectorAll("option");
              for(var i=0; i < options.length; i++){
+
         if(options[i].selected){
        var aa = options[i].getAttribute("data-price"); 
         }
@@ -274,10 +296,12 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
              var b = document.querySelector("select[name=bath_sohyung]");
              var optionss = b.querySelectorAll("option");
              for(var i=0; i < optionss.length; i++){
+
         if(optionss[i].selected){
        var bb = optionss[i].getAttribute("data-price"); 
         }
     }
+
     
 var c = document.querySelector("input[name=tools]:checked").getAttribute("data-price"); 
    
@@ -288,13 +312,14 @@ var total =0;
 for(var i=0; i < edata.length; i++){
    total += parseInt(edata[i].dataset.price);
 }
+
    var sum = parseInt(c) + parseInt(d) + total + parseInt(aa) + parseInt(bb);
    
    document.querySelector("input[name=pricee]").value=sum;
- 
+   
 }
-    
-    
+   
+   
     {
     	var ba = document.insertForm;
     	if(ba.bath_gong.value==""){
@@ -317,6 +342,7 @@ for(var i=0; i < edata.length; i++){
     	return true;
     }
     }
+
     
     </script>
   
@@ -328,11 +354,21 @@ for(var i=0; i < edata.length; i++){
 		<div class="section over-hide z-bigger">
 			<div class="container pb-5">
 				<div class="row justify-content-center pb-5">
-
-   <span class="h2"> 욕실 견적 계산 </span> 
+				
+	           
+<a href="<%=request.getContextPath()%>/estimate/bath.jsp"> 욕실 </a>
+ <a href="<%=request.getContextPath()%>/estimate/kit.jsp"> 주방 </a>
+ <a href="<%=request.getContextPath()%>/estimate/living.jsp">마루 </a>
+   <a href="<%=request.getContextPath()%>/index.jsp"> 메인페이지로 (테스트) </a>
      <div class="line"> </div>
     
-   <br> 
+	<div class="row-empty"></div>
+
+   <span class="h2"> 욕실 견적 계산 </span> 
+
+
+    	<div class="row-empty"></div>
+
 <input class="reset_button" type='reset' value="초기화" ></br>
 
 <!--옵션1-->
@@ -439,6 +475,7 @@ for(var i=0; i < edata.length; i++){
 <div class="foott"> 
 		 <input type="submit" class="submit_button fott" value="견적계산 확인 ">
 		  <input type="hidden" name="pricee" value="">   
+		    <input type="hidden" name="priceee" value="">   
 </div>
 
 </form>

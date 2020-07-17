@@ -52,7 +52,7 @@
 	int finishBlock=startBlock+(blockSize-1);
 	
 %> 
-<%--     <jsp:include page="/template/header.jsp"></jsp:include> --%>
+    <jsp:include page="/template/header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,6 +82,11 @@
             cnt++;
         }
     </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <main>
         <div>
         <!-- 여기로 오셔서 확인 -->
@@ -107,7 +112,7 @@
                         </ul>
                     </li>
 				<li>
-                        <a href=#>부엌</a>
+                        <a href=#>마루</a>
                         <ul>
                             <li><a href="#">강마루</a></li>
                             <li><a href="#">강화마루</a></li>

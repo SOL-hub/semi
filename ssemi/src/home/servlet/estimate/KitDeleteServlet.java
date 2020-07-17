@@ -8,21 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import home.beans.dao.EstimateDao;
+import home.beans.dao.KitDao;
 
-@WebServlet(urlPatterns = "/estimate/delete2.do")
+@WebServlet(urlPatterns = "/estimate/kitdelete.do")
 public class KitDeleteServlet  extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 
-			int bath_no = Integer.parseInt(req.getParameter("bath_no"));
+			int kit_no = Integer.parseInt(req.getParameter("kit_no"));
 			
-			EstimateDao edao = new EstimateDao ();
-			edao.delete(bath_no);//삭제
+			KitDao kdao = new KitDao ();
+			kdao.delete(kit_no);//삭제
 			
 //			출력 : list.jsp로 redirect
-			resp.sendRedirect("bath-list.jsp");
+			resp.sendRedirect("kit-list.jsp");
 		}
 		catch(Exception e) {
 			e.printStackTrace();

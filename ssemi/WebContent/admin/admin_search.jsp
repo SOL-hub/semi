@@ -23,18 +23,17 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/admin.css">
+	href="<%=request.getContextPath()%>/css/admin.css?ver=1">
 <script src="<%=request.getContextPath()%>/js/moment.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/lightpick.css">
 <script src="<%=request.getContextPath()%>/js/lightpick.js"></script>
 
 <style>
-	#searchtd{
-		
-		padding-left:50px;
-	}
-	
+#searchtd {
+	padding-left: 50px;
+}
+
 /*회원 검색과 리스트 전체 div*/
 </style>
 <script>
@@ -61,10 +60,9 @@
 			//선택 방향 제어
 			selectForward : true,
 			selectBackword : false,
-			
-			repick: true,
-			
-		
+
+			repick : true,
+
 		};
 
 		var picker = new Lightpick(options);
@@ -82,28 +80,25 @@
 	String keyword = request.getParameter("keyword");
 	String start = request.getParameter("start");
 	String finish = request.getParameter("finish");
-	
+
 	MemberDao mdao = new MemberDao();
 
 	List<MemberDto> list;
 
-	if (keyword != null && !keyword.equals("") && start != null && !start.equals("") && finish != null && !finish.equals("")) {// 둘 다 있을 때 
-		
-// 		list = mdao.search(type, keyword);	
-		list = mdao.search_join(type, keyword,start, finish);
+	if (keyword != null && !keyword.equals("") && start != null && !start.equals("") && finish != null
+			&& !finish.equals("")) {// 둘 다 있을 때 
 
-	}
-	else if(keyword != null && !keyword.equals("")){
+		// 		list = mdao.search(type, keyword);	
+		list = mdao.search_join(type, keyword, start, finish);
+
+	} else if (keyword != null && !keyword.equals("")) {
 		list = mdao.search(type, keyword);
-	}
-	else if(start !=null && !start.equals("") &&finish != null && !finish.equals("")){
+	} else if (start != null && !start.equals("") && finish != null && !finish.equals("")) {
 		list = mdao.search_join_k(start, finish);
-	}
-	else{
-		
+	} else {
+
 		list = new ArrayList<>();
 	}
-	
 %>
 
 
@@ -122,15 +117,16 @@
 		</div>
 
 
-		
+
 		<%
-		ShoppingDao sdao = new ShoppingDao();
-		
-		
-		List<shoppingDto> slist = sdao.getList();  %>
+			ShoppingDao sdao = new ShoppingDao();
+
+			List<shoppingDto> slist = sdao.getList();
+		%>
 
 		<div class="label-wrap">
-			<a href="total_before_pay.jsp" class="today-label"> 주문 (<%=slist.size() %>건) </a>
+			<a href="total_before_pay.jsp" class="today-label"> 주문 (<%=slist.size()%>건)
+			</a>
 		</div>
 
 		<div class="today-cart-wrap">
@@ -141,20 +137,23 @@
 
 
 		<div class="label-wrap">
-			<a href="total_after_pay.jsp" class="today-label"> 결제 (9건) </a>
+			<a href="total_after_pay.jsp" class="today-label"> 결제 (<%=slist.size()%>건) </a>
 		</div>
 
 
 
 		<div class="today-cart-wrap">
-			<a href="admin_search.jsp" ><img class="todayimg" src="/ssemi/img/customer.png">
-			</a>
+			<a href="admin_search.jsp"><img class="todayimg"
+				src="/ssemi/img/customer.png"> </a>
 		</div>
 
- 	<% int count = mdao.memberCount(); %>
+		<%
+			int count = mdao.memberCount();
+		%>
 
 		<div class="label-wrap ">
-			<a href="admin_search.jsp" class="today-label"> 회원 가입(<%= count %>건) </a>
+			<a href="admin_search.jsp" class="today-label"> 회원 가입(<%=count%>건)
+			</a>
 		</div>
 
 	</div>
@@ -174,19 +173,11 @@
 						</select> <input type="text" name="keyword"></td>
 
 					</tr>
-				
+
 					<tr>
 						<th>가입일</th>
-						<td><input type="text" class="picker-start" name="start"  ><span>~</span><input
+						<td><input type="text" class="picker-start" name="start"><span>~</span><input
 							type="text" class="picker-end" name="finish"></td>
-
-					</tr>
-					<tr>
-					<th>주문 상품</th> 
-					<td><select name="type"> 
-							<option value="item_name">상품명</option> 
- 								<option value="item_no">상품코드</option> 
-						</select> <input type="text" name=""></td>
 
 					</tr>
 
@@ -202,12 +193,34 @@
 		<div class="list-wrap">
 
 			<h2 id="Ltitle">회원 목록</h2>
-			<p id="listcount">
+
+
+
+
+			<%
+				if (keyword == null && start == null && finish == null) {
+			%>
+			<p></p>
+			<%
+				} else if (list.isEmpty()) {
+			%>
+			<p class="listcount">검색 결과가 없습니다</p>
+			<%
+				} else {
+			%>
+			<p class="listcount">
 				검색결과<%=list.size()%>건
 			</p>
 
+			<%
+				}
+			%>
 
-			<%MemberDto user = new MemberDto(); %>
+
+
+			<%
+				MemberDto user = new MemberDto();
+			%>
 
 
 			<div class="list-table-wrap">
@@ -240,7 +253,7 @@
 							href="<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_phone()%></a></td>
 						<td class="Ldata"><a
 							href="<%=request.getContextPath()%>/admin/admin_member_info.jsp?member_no=<%=mdto.getMember_no()%>"><%=mdto.getMember_age()%></a></td>
-					
+
 						<td id="searchtd"><a
 							href="<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input
 								type="button" value="수정" class="listbtn"></a> <a
@@ -256,8 +269,12 @@
 			</div>
 
 		</div>
-			<br>
-	<br>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br>	<br> <br> <br>  <br><br><br>
+	
+
+
+
 	</div>
 
 

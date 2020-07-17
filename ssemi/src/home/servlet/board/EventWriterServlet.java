@@ -50,6 +50,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		
 		
 		//출력
+
 		
 			if(event_no<=10) {//만약에 등록한 글이 10개 이하라면? 목록에 보여주기   //if(event_no>=10)
        resp.sendRedirect("event1_content.jsp?event_no="+event_no);

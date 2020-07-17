@@ -44,13 +44,8 @@ href="<%=request.getContextPath()%>/css/main.css">
             <ul class="menu side_left">
                <li class="menu_left">커뮤니티
                   <ul class="menu_left_innerMenu">
-
-                     <li>QnA</li>
-
                      <li><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></li>
                       <li><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></li>
-
-                     <li>Review</li>
                      <li>  <a href="<%=request.getContextPath()%>/event/event.jsp">Event</a></li>
                   </ul>
                </li>
@@ -64,9 +59,9 @@ href="<%=request.getContextPath()%>/css/main.css">
                </li>
                <li class="menu_left">인테리어 시공
                   <ul class="menu_left_innerMenu">
-                     <li>마루</li>
-                     <li>주방</li>
-                     <li>욕실</li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/living.jsp">마루</li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/kit.jsp">주방</li>
+                     <li><a href="<%=request.getContextPath()%>/estimate/bath.jsp">욕실</li>
                   </ul>
                </li>
             </ul>
@@ -87,13 +82,31 @@ href="<%=request.getContextPath()%>/css/main.css">
          %>
 
          <%
-            if (isLogin) {
+            if (isLogin && mdto.getMember_auth().equals("관리자")) {
          %><!-- 로그인 -->
 
 
          <div id="box_right">
-            <ul class="menu side_right">
+           <ul class="menu side_right">
 
+
+                  <li class="menu_right"><a
+                     href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
+                  <li class="menu_right"><a href="<%=request.getContextPath()%>/admin/admin_search.jsp">관리메뉴</a></li>
+                  <li class="menu_right"><a href="<%=request.getContextPath()%>/admin/total_before_pay.jsp">주문/배송</a></li>
+                  <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
+
+
+               </ul>
+         
+         
+          
+            <%
+               } else if (isLogin) {
+            %><!-- 관리자일 때-->
+
+            <div id="box_right">
+               <ul class="menu side_right">
 
                <li class="menu_right"><a
                   href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
@@ -108,22 +121,6 @@ href="<%=request.getContextPath()%>/css/main.css">
                <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
             </ul>
 
-            <%
-               } else if (isLogin && mdto.getMember_auth().equals("관리자")) {
-            %><!-- 관리자일 때-->
-
-            <div id="box_right">
-               <ul class="menu side_right">
-
-
-                  <li class="menu_right"><a
-                     href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
-                  <li class="menu_right"><a href="#">관리메뉴</a></li>
-                  <li class="menu_right"><a href="#">주문/배송</a></li>
-                  <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
-
-
-               </ul>
                <%
                   } else{
                %>
