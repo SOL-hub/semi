@@ -134,23 +134,53 @@ public class eventDao {
    }
    //등록
    public void write(eventDto edto)throws Exception{
-	   Connection con = getConnection();
-	   
-	   String sql="INSERT INTO event(event_no, event_head, event_title, event_writer, event_content) VALUES(?, ?, ?, ?, ?)";
-	   PreparedStatement ps = con.prepareStatement(sql);
-	   ps.setInt(1, edto.getEvent_no());
-	   ps.setString(2, edto.getEvent_head());
-	   ps.setString(3, edto.getEvent_title());
-	   ps.setString(4, edto.getEvent_writer());
-	   ps.setString(5, edto.getEvent_content());
-	 
-	   
-	   ps.execute();
-	   
-	   con.close();
-	   
+      Connection con = getConnection();
+      
+      String sql="INSERT INTO event"
+            + "(event_no, event_head, event_title, event_writer, event_content) VALUES(?, ?, ?, ?, ?)";
+      PreparedStatement ps = con.prepareStatement(sql);
+      ps.setInt(1, edto.getEvent_no());
+      ps.setString(2, edto.getEvent_head());
+      ps.setString(3, edto.getEvent_title());
+      ps.setInt(4, edto.getEvent_writer());
+      ps.setString(5, edto.getEvent_content());
+    
+      
+      ps.execute();
+      
+      con.close();
+      
    }
    
+   //선착순 10명만 뽑는 
+//  public void onlyten(eventDto edto)throws Exception{
+//	  Connection con = getConnection();
+	  
+//	  String sql="SELECT event_no FROM event WHERE ROWNUM <= 10";
+	  
+//	  PreparedStatement ps = con.prepareStatement(sql);
+///	  ps.setInt(1, event_no);
+	  
+//	  ps.execute();
+	  
+//	  con.close();
+//  }
+  
+  //선착순10명 이외의 고객작성글 삭제 
+// public void tenover(eventDto edto)throws Exception{
+//	  Connection con = getConnection();
+	  
+//	  String sql="SELECT event_no FROM event WHERE ROWNUM <= 10";
+	  
+//	  PreparedStatement ps = con.prepareStatement(sql);
+//	  ps.setInt(1, event_no);
+	  
+//	  ps.execute();
+	  
+//	  con.close();
+// }
+ 
+ 
    
    //삭제
    
@@ -189,5 +219,23 @@ public class eventDao {
 	   con.close();
 	   
    }
+
+
+ //선착순10명 이외의 고객작성글 삭제 
+public void tenover(int event_no)throws Exception {
+	Connection con = getConnection();
+	
+	 String sql="SELECT event_no FROM event WHERE ROWNUM <=10";
+	  
+	  PreparedStatement ps = con.prepareStatement(sql);
+	  ps.setInt(1, event_no);
+	  
+	  ps.execute();
+	  
+	  con.close();
+	
+}
+
+
    
    }

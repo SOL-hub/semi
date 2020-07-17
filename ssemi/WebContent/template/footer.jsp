@@ -17,7 +17,7 @@
         
             <ul class="footer_inner_box">
                 <li class="footer_inner_item">
-                    <a href="/"><img width="80" src="<%=request.getContextPath() %>/img/pig_logo.png"></a>
+                    <a href="/"><img width="180px" src="<%=request.getContextPath() %>/img/logo.png"></a>
                 </li>
                 <li class="footer_inner_item">
                     <ul>

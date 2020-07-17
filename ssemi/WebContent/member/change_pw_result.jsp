@@ -3,19 +3,25 @@
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비번 수정완료 페이지</title>
 
 <link rel=stylesheet type="text/css"
 	href="<%=request.getContextPath()%>/css/change_pw_result.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
+</head>
+<body>
 
-<main>
+<main class= "find-main">
 	<div class="find-wrap">
 		<h1>내 계정 찾기</h1>
 
-
-		<div class="center">
+		<!--<div class="center">-->
 
 			<br>
 			<h3>비밀번호 변경이 완료되었습니다</h3>
@@ -34,7 +40,7 @@
 
 			<div class="change_after">
 				<a href="<%=request.getContextPath()%>"> <input
-					class="click-btn2" type="submit" value="내 견적보러가기"></a>
+					class="click-btn2" type="submit" value="내견적보러가기"></a>
 			</div>
 			
 			<div class="change_after">
@@ -44,8 +50,10 @@
 
 </div>
 		</div>
+		
 
 </main>
-
+</body>
+</html>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

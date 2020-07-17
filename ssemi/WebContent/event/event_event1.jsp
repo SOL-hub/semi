@@ -1,4 +1,5 @@
 
+<%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="home.beans.dto.eventDto"%>
 <%@page import="java.util.List"%>
@@ -9,6 +10,7 @@
 
 
 <%
+MemberDao mdao = new MemberDao();
 String type = request.getParameter("type");
 String keyword = request.getParameter("keyword");
 
@@ -30,6 +32,8 @@ else{
 	list= edao.getList();
 }
 %>
+
+
 
 <div align = "center">
 <h3>
@@ -91,7 +95,7 @@ else{
 
                <!-- 여기부터 이벤트 소개 시작 -->
                   <div align="center">
-                  <img src="<%=request.getContextPath()%>/img/event123.jpg" width="1000" height="700" alt="event"/>
+                  <img src="<%=request.getContextPath()%>/img/event1-4.png" width="1000" height="700" alt="event"/>
                   <h5 style="font-size: 13pt;">
                         타이밍을 잘 잡아야, 실속있게 산다! <br>종합세트 할인 판매실시!</h5>
                      <h6 style="font-color: grey;">
@@ -124,7 +128,11 @@ else{
                         
                         <tbody align= "center">
                    
-                        <%for(eventDto edto : list){%>
+                        <%
+                        
+                        for(eventDto edto : list){
+                        MemberDto mdto = mdao.get(edto.getEvent_writer());
+                        %>
                         
                         <tr>
                               <td><%=edto.getEvent_no() %></td>
@@ -135,8 +143,8 @@ else{
                               </a>
                               </td>
                               <td>
-                              <%if(edto.getEvent_writer()!=null){%>
-                              <%=edto.getEvent_writer()%>
+                              <%if(edto.getEvent_writer()!= 0 ){%>
+                              <%= mdto.getMember_id() %>
                               
                               <%}else{ %>
                               <font color="gray">탈퇴한 사용자</font>
@@ -147,13 +155,16 @@ else{
                            </tr>
                            <%} %>
                            
-                           
+                         <%if(list.size() <10){ %>  
                        <tr>
                        <td colspan="5" align ="right">
                        <a href="event1_writer.jsp">
                        <input type ="button" value="글쓰기"></a>
                        </tr> 
                         </form>
+                        <%}else{ %>
+                        
+                        <%} %>
  
                        </tbody>
                        

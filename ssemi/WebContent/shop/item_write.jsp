@@ -34,6 +34,7 @@
 
 			<th>상품타입</th>
 				<td><select name="item_kingtype" required >
+
 					<option  value="욕실">욕실</option>
 					<option  value="마루">마루</option>
 					<option value="주방">주방</option>

@@ -28,9 +28,9 @@ public class ItemWriteServlet extends HttpServlet {
 			idto.setItem_type(req.getParameter("item_type"));
 			idto.setItem_info(req.getParameter("item_info"));
 			idto.setItem_image(req.getParameter("item_image"));
-			
-	
-			
+			idto.setItem_stock(Integer.parseInt(req.getParameter("item_stock")));
+		
+				
 			if(req.getParameter("item_no") != null) {
 				idto.setItem_no(Integer.parseInt(req.getParameter("item_no")));
 			}

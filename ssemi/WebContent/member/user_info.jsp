@@ -28,7 +28,7 @@
         <aside class="sidebar">
             <ul>
                 <li>
-                    <a href="user_info.jsp">
+                    <a href="mypage.jsp">
                         마이페이지
                     </a>
                 </li>
@@ -64,7 +64,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/buypage/buy_list.jsp">
                         구매내역
                     </a>
                 </li>
@@ -72,6 +72,11 @@
                     <a href="#">
                         게시판내역
                     </a>
+                </li>
+                <li>
+                	<a href=href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 
+                		견적내역 
+                	</a>
                 </li>
             </ul>
         </aside>

@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="home.beans.dto.ItemDto"%>
 <%@page import="home.beans.dao.ItemDao"%>
 <%@page import="java.util.List"%>
@@ -17,7 +18,7 @@
    		CartDao cdao = new CartDao();
    		
    		String [] setCart= request.getParameterValues("cart_no");
-	
+   		DecimalFormat formatter = new DecimalFormat("###,###");
     %>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -131,7 +132,17 @@
         .purchase-button {
             padding: 0.6rem;
             font-size: 14px;
-            width: 20%;
+            width: 10%;
+            background-color: #C80A1E;
+            border: white;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .purchase-button2 {
+            padding: 0.6rem;
+            font-size: 14px;
+            width: 10%;
             background-color: black;
             border: white;
             color: white;
@@ -141,8 +152,15 @@
         .purchase-button:hover {
             padding: 0.6rem;
             font-size: 14px;
-            width: 20%;
-            background-color: #C80A1E;
+            width: 10%;
+            background-color: darkorange;
+            color: white;
+        }
+         .purchase-button2:hover {
+            padding: 0.6rem;
+            font-size: 14px;
+            width: 10%;
+            background-color: #aaa;
             color: white;
         }
 
@@ -225,7 +243,41 @@
         	outline: none;
         	background-color: beige;
         }
-    </style>
+        .price{
+            font-size:20pt;
+            font-weight:bold;
+        }
+        
+        .selectbox { 
+        width: 200px; /* 원하는 너비설정 */ 
+        padding: .8em .5em; /* 여백으로 높이 설정 */ 
+        font-family: inherit; /* 폰트 상속 */ 
+        background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */ 
+        border: 1px solid #999; 
+        border-radius: 0px; /* iOS 둥근모서리 제거 */ 
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */ 
+        -moz-appearance: none; 
+        appearance: none;
+         }
+        .selectbox:focus { 
+        width: 200px; /* 원하는 너비설정 */ 
+        padding: .8em .5em; /* 여백으로 높이 설정 */ 
+        font-family: inherit; /* 폰트 상속 */ 
+        background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */ 
+        border: 1px solid #999; 
+        border-radius: 0px; /* iOS 둥근모서리 제거 */ 
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */ 
+        -moz-appearance: none; 
+        appearance: none;
+        outline: none;
+         }
+		.input-number{
+		width: 200px; /* 원하는 너비설정 */ 
+        padding: .3em .3em; /* 여백으로 높이 설정 */ 
+		}
+
+</style>
+
     <script>
         
         //각 태그마다 번호 지정
@@ -251,6 +303,23 @@
             var target = document.getElementById(targetId);
             target.classList.add("on");
         }
+        
+        function button_event(){
+		var result = confirm("정말 결제하시겠습니까??");
+        if (!result){ 
+//             document.form.submit();
+        	return false;
+
+        }
+        else{  
+
+//             return;
+            document.form.submit();
+
+        	}
+
+        }
+
     </script>
 </head>
 
@@ -321,13 +390,13 @@
                     	<textarea  readonly class="text_textarea"><%=itemName.getItem_info()%></textarea>
                     </td> 
                     <td class="center" style="width: 5%">
-                    	<input style=" width: 40%;" class="input_text_style" type="text" value="2500">원
+                    	<input style=" width: 40%;" class="input_text_style" type="text" value="2,500">원
                     </td>
                     <td class="center" style="width: 5%">
                     	<input style=" width: 40%;" class="input_text_style" type="text" value="<%=cdto2.getCart_cnt() %>" name="shopping_item_cnt">
                     </td>
                     <td class="center" style="width: 5%;">
-                    	<input style= "text-align: right; width: 70%;" class="input_text_style" type="text" value="<%=total_price%>">원
+                    	<input style= "text-align: right; width: 70%;" class="input_text_style" type="text" value="<%=formatter.format(total_price)%>">원
                     </td>
                 </tr>
                 <tr class="row-empty"></tr>
@@ -344,14 +413,14 @@
                     <td colspan="6"class="center bottomline"></td>
                 </tr>
 				<tr class="center">
-                	<td colspan="4"></td>
+                	<td colspan="4" style="background-color: white;"></td>
                 	<td>총수량</td>
                 	<td>총 금액</td>
                 </tr>
                 <tr class="center">
-                	<td colspan="4"></td>
+                	<td colspan="4" style="background-color: white;"></td>
                 	<td><%=total_cnt %></td>
-                	<td><%=real_total_price %></td>
+                	<td><%=formatter.format(real_total_price) %></td>
                 </tr>
                 <tr>
                     <td colspan="6"class="center bottomline"></td>
@@ -428,34 +497,48 @@
                         <span>카드</span>
                     </label>
                     <label for="cb2"><input type="radio" name="shopping_payment" id="cb2" onchange="toggleTabAutomation(this);" value="계좌이체">
-                        <span>계좌이체</span>
+                        <span>실시간 계좌이체</span>
                     </label>
                 </div>
 
-                <div class="row-empty"></div>
-                <div class="row-empty">
-                    <select name="shopping_paybank">
-                        <option>은행선택</option>
-                        <option>국민은행</option>
-                        <option>신한은행</option>
-                        <option>기업은행</option>
-                    </select>
                 </div>
-                    <div class="row-empty"></div>
                      <div class="row-empty"></div>
                     <div class="area on" id="cb1-area">
+                    	<select name="shopping_paybank" class="selectbox">
+                    	
+                        <option>카드선택</option>
+                        <option>국민카드</option>
+                        <option>신한카드</option>
+                        <option>BC카드</option>
+                   		 </select>
+                   		 <div class="row-empty"></div>
                         <div>
                             <img src="https://placeimg.com/274/274">
                         </div>
                         <div class="row-empty"></div>
                         <div class="row-empty"></div>
                         <div>
-                            카드번호<input type="text" name="shopping_paybank_num">
+                            카드번호 입력 <input class="input-number" type="text" name="shopping_paybank_num">
                         </div>
                     </div>
                     <div class="area" id="cb2-area">
+                    <select name="shopping_paybank" class="selectbox">
+                        <option>은행선택</option>
+                        <option>국민은행</option>
+                        <option>신한은행</option>
+                        <option>기업은행</option>
+                    </select>
+                    <div class="row-empty"></div>
+                    <div>
+                    	입금 하실 계좌번호<br><br>          
+                    	국민은행 : 111-111-11111<br>
+                    	신한은행 : 222-222-22222<br>
+                    	기업은행 : 333-333-33333
+                    </div>
+                    <div class="row-empty"></div>
+                    <div class="row-empty"></div>
                         <div>
-                            계좌번호<input type="text" name="shopping_paybank_num">
+                            내 계좌번호 입력 <input class="input-number" type="text" name="shopping_paybank_num">
                         </div>
                     </div>
                 <div class="row-empty"></div>
@@ -467,14 +550,18 @@
                 </div>
                 <div class="row-empty">
                    <div class="row-empty center"></div>
-                    ㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹ
+                    	<span class="price"><%=formatter.format(real_total_price) %></span>원
                 </div>
+               
                 <div class="row-empty center"></div>
                 <div class="row-empty center"></div>
                 <div class="row-empty center">
-                   
-                    <input type="submit" value="결제하기" class="purchase-button">
-                    <input type="submit" value="결제취소" class="purchase-button">
+                 <div class="row-empty center"></div>
+                    <hr>
+                     <div class="row-empty center"></div>
+                      <div class="row-empty center"></div>
+                    <input type="submit" value="결제하기" class="purchase-button" onclick="return button_event();">
+                    <input type="submit" value="결제취소" class="purchase-button2" onclick="history.back();">
                 </div>
                 <div class="row-empty"></div>
                 <div class="row-empty"></div>

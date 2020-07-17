@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="home.beans.dto.shoppingDto"%>
 <%@page import="home.beans.dao.ShoppingDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
@@ -11,6 +12,7 @@
 <%
 	MemberDto mdto = (MemberDto)request.getSession().getAttribute("userinfo");
 	int member_no = mdto.getMember_no();
+	DecimalFormat formatter = new DecimalFormat("###,###");
 	
 	ShoppingDao sdao = new ShoppingDao();
 	List<shoppingDto> list = sdao.buy_list(member_no);
@@ -44,8 +46,23 @@
          <h1 style="font-size: 47px;">구매/주문 내역</h1>
          <!-- 테이블 시작!> -->
 
-         <script type="text/javascript"
-            src="/JaueryStudy/js/jquery-3.3.1.min.js"></script>
+         <script>
+         function button_event() {
+			
+		
+         var result = confirm("선택하신 상품을 삭제하시겠습니까??");
+		   if (!result){ 
+//	             document.form.submit();
+	        	return false;
+	        }
+	        else{  
+
+//	             return;
+	            document.form.submit();
+	        	}
+	        }
+	  	 
+         </script>
 
          <body class="Body">
             <div id="frame">
@@ -111,9 +128,9 @@
                               <td style="width: 450px; text-align: left; padding-left: 20px;">
                               	<span><%=idto.getItem_info() %></span>
                               </td>
-                              <td style="width: 100px;"><%=idto.getItem_price() %>원</td>
+                              <td style="width: 100px;"><%=formatter.format(idto.getItem_price())%>원</td>
                               <td style="width: 60px;"><%=sdto.getShopping_item_cnt() %></td>
-		                      <td style="width: 100px;">2500원</td>
+		                      <td style="width: 100px;">2,500원</td>
 		                       <td style="width: 100px;">
 		                       		<%=sdto.getShopping_payment() %><br>
 		                       		<%=sdto.getShopping_paybank()%><br>
@@ -122,7 +139,8 @@
                               <td>
                               <form action="buy_list_delete.do">
                               <input type="submit" class="btn default"
-                               style="width: 90px; padding: 10px; margin-bottom: 2.5px; font-size: 13px;" value="주문취소">
+                               style="width: 90px; padding: 10px; margin-bottom: 2.5px; font-size: 13px;" value="주문취소"
+                               onclick="return button_event();">
                                <input type="hidden" name="shopping_no" value="<%=sdto.getShopping_no()%>">
                                </form>
                               </td>
@@ -152,7 +170,7 @@
                               </td>
                               <td colspan="5"
                                  style="border-left: nonoe; text-align: center; padding-right: 10px;">                             
-                                 <span style="font-weight: bold; font-size: 15pt;"><%=real_total_price %>원</span>
+                                 <span style="font-weight: bold; font-size: 15pt;"><%=formatter.format(real_total_price) %>원</span>
                               </td>
                            </tr>
 
@@ -181,10 +199,10 @@
                      </tr>
 
                      <tr style="background-color: #fff;">
-                        <td style="padding: 22px 0;"><span class="price"><%=total_price %></span>원</td>
-                        <td><span class="price"><%=delivery_cost %></span>원
+                        <td style="padding: 22px 0;"><span class="price"><%=formatter.format(total_price) %></span>원</td>
+                        <td><span class="price"><%=formatter.format(delivery_cost) %></span>원
                         </td>
-                        <td><span class="price"><%=real_total_price %></span>원
+                        <td><span class="price"><%=formatter.format(real_total_price) %></span>원
                         </td>
 
                      </tr>
@@ -198,6 +216,12 @@
                      <input type="button" class="btn default backBtn btnfloat2"
                         style="background-color: gray; color: #fff;" value="홈으로">
 					</a>
+					<a href="<%=request.getContextPath()%>/member/mypage.jsp">
+                     <input type="button" class="btn default backBtn btnfloat2" style="background-color: gray; color: #fff;" value="마이페이지 가기">
+             		</a>
+             		<a href="<%=request.getContextPath()%>/member/wishlist.jsp">
+                     <input type="button" class="btn default backBtn btnfloat2" value="위시리스트 가기">
+             		</a>
 					<a href="<%=request.getContextPath()%>/member/shopBarket3.jsp">
                      <input type="button" class="btn default backBtn btnfloat2" value="장바구니가기">
                      </a>
