@@ -185,5 +185,12 @@ public class shoppingDto {
 	public void setShopping_date(String shopping_date) {
 		this.shopping_date = shopping_date;
 	}
+	
+	// 가입 날짜만 보이게 하는 DTO -- 임새봄
+	public String getShopping_date_month() {
+		return shopping_date.substring(0, 10);
+	}
+	
+	
 
 }

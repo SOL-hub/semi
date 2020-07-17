@@ -87,13 +87,31 @@ href="<%=request.getContextPath()%>/css/main.css">
          %>
 
          <%
-            if (isLogin) {
+            if (isLogin && mdto.getMember_auth().equals("관리자")) {
          %><!-- 로그인 -->
 
 
          <div id="box_right">
-            <ul class="menu side_right">
+           <ul class="menu side_right">
 
+
+                  <li class="menu_right"><a
+                     href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
+                  <li class="menu_right"><a href="<%=request.getContextPath()%>/admin/admin_search.jsp">관리메뉴</a></li>
+                  <li class="menu_right"><a href="<%=request.getContextPath()%>/admin/total_before_pay.jsp">주문/배송</a></li>
+                  <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
+
+
+               </ul>
+         
+         
+          
+            <%
+               } else if (isLogin) {
+            %><!-- 관리자일 때-->
+
+            <div id="box_right">
+               <ul class="menu side_right">
 
                <li class="menu_right"><a
                   href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
@@ -108,22 +126,6 @@ href="<%=request.getContextPath()%>/css/main.css">
                <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
             </ul>
 
-            <%
-               } else if (isLogin && mdto.getMember_auth().equals("관리자")) {
-            %><!-- 관리자일 때-->
-
-            <div id="box_right">
-               <ul class="menu side_right">
-
-
-                  <li class="menu_right"><a
-                     href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
-                  <li class="menu_right"><a href="#">관리메뉴</a></li>
-                  <li class="menu_right"><a href="#">주문/배송</a></li>
-                  <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
-
-
-               </ul>
                <%
                   } else{
                %>

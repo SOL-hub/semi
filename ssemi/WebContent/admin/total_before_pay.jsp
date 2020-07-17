@@ -96,6 +96,12 @@
     	
     	
     }
+ 
+ 
+ 	.Ltable th {
+ 	
+ 		font-size: 14px;
+ 	}
 
     </style>
     <script src="<%=request.getContextPath()%>/js/moment.min.js"></script>
@@ -201,7 +207,7 @@
 
         <div class="label-wrap">
             <a href="total_after_pay.jsp" class="today-label">
-                결제 (9건)
+                결제 (<%=slist.size()%>건)
             </a>
         </div>
 
@@ -259,13 +265,23 @@
     <div class="list-wrap">
 
 			<h2 id="Ltitle">회원 주문 목록</h2>
-				<p id="listcount">검색결과 <%=list.size() %>건
-			</p>
+			
+			
+			<%if(keyword == null&& start==null &&finish==null) {%>
+			<p> </p>
+			<%}else if(list.isEmpty()){%>
+			<p class="listcount">검색 결과가 없습니다</p>
+				<% } else {%>
+				<p class="listcount">검색결과<%=list.size()%>건</p>
+		 	
+			<%} %>
+		 	
 			<div class="list-table-wrap">
 				<table class="Ltable">
 					<tr>
 						
 						<th>주문번호</th>
+						<th>구매날짜</th>
 						<th>상품번호</th>
 						<th >상품명</th>
 						<th> 수량 </th>
@@ -284,6 +300,7 @@
 					ItemDao idao = new ItemDao();
 					ItemDto idto = idao.item_get(sdto.getShopping_item_name());%>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_no() %></a></td>
+						<td class="Ldata"><a href = "#"><%=sdto.getShopping_date_month() %></a></td>
 						<td class="Ldata"><a href = "#"><%=sdto.getShopping_item_name() %></a></td>
 						<td class="Ldata" ><a href = "#"><%=idto.getItem_name()%> </a></td>
 						<td class="Ldata"><%=sdto.getShopping_item_cnt() %></td>
@@ -302,9 +319,8 @@
 
 		</div>
 				
-				
-				<br>
-				<br>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br>	<br> <br> <br>  <br><br><br>
 	
 
 </body>
