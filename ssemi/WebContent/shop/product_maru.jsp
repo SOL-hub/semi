@@ -38,7 +38,7 @@
 		list = idao.search(keyword);
 	}
 	else{
-		list = idao.getList1(start,finish);
+		list = idao.getList2(start,finish);
 	}
 	
 	//네비게이터//
