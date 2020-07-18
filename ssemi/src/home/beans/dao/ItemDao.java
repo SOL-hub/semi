@@ -66,25 +66,48 @@ private static DataSource src;
 	
 	// 목록 메소드
 	public List<ItemDto> getList() throws Exception {
-		Connection con = getConnection();
-		
+		Connection con = getConnection();		
 		String sql = "SELECT * FROM item ORDER BY item_no ASC";
-		
 		PreparedStatement ps = con.prepareStatement(sql);
-		
 		ResultSet rs = ps.executeQuery();
-		
 		List<ItemDto> list = new ArrayList<>();
-		while(rs.next()) {
-			
+		while(rs.next()) {			
 			ItemDto idto = new ItemDto(rs);
 			list.add(idto);
-		}
-		
-		con.close();
-		
+		}	
+		con.close();		
 		return list;	
 	}
+	
+	// 지민 - 검색 메소드( 높은 가격순)
+	public List<ItemDto> getListD() throws Exception {
+		Connection con=getConnection();
+		String sql="SELECT  * FROM item ORDER BY item_price DESC";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		List<ItemDto> list = new ArrayList<>();
+		while(rs.next()) {			
+			ItemDto idto = new ItemDto(rs);
+			list.add(idto);
+		}	
+		con.close();		
+		return list;	
+	}	
+	
+	// 지민 - 검색 메소드( 낮은 가격순)
+	public List<ItemDto> getListA() throws Exception {
+		Connection con=getConnection();
+		String sql="SELECT  * FROM item ORDER BY item_price ASC";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		List<ItemDto> list = new ArrayList<>();
+		while(rs.next()) {			
+			ItemDto idto = new ItemDto(rs);
+			list.add(idto);
+		}	
+		con.close();		
+		return list;	
+	}	
 	
 //	진빈(아이템 단일조회)
 	
@@ -105,11 +128,8 @@ private static DataSource src;
 	      else {
 	         idto = null;
 	      }
-	      
 	      con.close();
-	      
-	      return idto;
-	      
+	      return idto;	      
 	   }
 	   
 	   
