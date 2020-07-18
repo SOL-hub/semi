@@ -1,5 +1,4 @@
 
-
 <%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,10 +6,7 @@
 
 
 <% MemberDto user = (MemberDto) session.getAttribute("userinfo");
-
 	int member_no = user.getMember_no();
-
-
 %>
 
 
