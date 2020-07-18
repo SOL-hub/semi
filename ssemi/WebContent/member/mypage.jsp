@@ -18,6 +18,8 @@
 	MemberDto user = mdao.get(member_no);
 	CartDao cdao = new CartDao();
 	
+	
+	
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	//////////////////////////////////////////////////////////////////
 	// 페이지 목록계산 코드
@@ -45,6 +47,7 @@
 	int start = finish - (pageSize - 1);
 	
 	List<CartDto> list = cdao.getList(member_no, start, finish);
+// 	List<EstimateDto> E_list=
 %>
 
 
@@ -209,105 +212,66 @@
 							<td class="row-empty"></td>
 						</tr>
 						
-						<tr>
-							<td  class="cart_title center">나의 견적내역</td>
-						</tr>
-						<tr>
-							<td class="row-empty"></td>
-						</tr>
-						<tr>
-							<td class="cart_list">상품이름</td>
-							<td class="cart_list">상품정보</td>
-							<td class="cart_list">가격</td>
-							<td class="cart_list">수량</td>
-						</tr>
-						<tr>
-							<td colspan="4" class="cart_line"></td>
-						</tr>
-
-						<%
-						if(list.size() != 0){
-							for (CartDto cdto : list) {
-								// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출
-								ItemDao idao = new ItemDao();
-								ItemDto itemName = idao.item_get(cdto.getCart_item_name());						
-						%>
-						<tr>
-							<td style="width: 10%" class="cart_content"><%=itemName.getItem_name()%></td>
-							<td style="width: 50%" class="cart_content_left"><%=itemName.getItem_info()%></td>
-							<td style="width: 10%" class="cart_content"><%=itemName.getItem_price()%></td>
-							<td style="width: 10%" class="cart_content"><%=cdto.getCart_cnt()%></td>
-							<br>
-						</tr>
-						<tr>
-							<td colspan="4" class="cart_line"></td>
-						</tr>
-		
-							<%
-								}
-							%>
-							<%
-								}else{
-									
-							%>
-							<tr>
-								<td colspan="4" class="cart_content">장바구니가 비어있습니다</td>
-							</tr>
-						<%
-							}
-						%>
+<!-- 					견적 -->
+<!-- 					견적 -->
+<!-- 					견적 -->
+<!-- 					견적 -->
+<!-- 					견적 -->
+<!-- 						<tr> -->
+<!-- 							<td  class="cart_title center">나의 견적내역</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td class="row-empty"></td> -->
+<!-- 						</tr> -->
 						
-							<tr>
-							<td class="row-empty"></td>
-						</tr>
-						
-						<tr>
-							<td  class="cart_title center">나의 게시글내역</td>
-						</tr>
-						<tr>
-							<td class="row-empty"></td>
-						</tr>
-						<tr>
-							<td class="cart_list">상품이름</td>
-							<td class="cart_list">상품정보</td>
-							<td class="cart_list">가격</td>
-							<td class="cart_list">수량</td>
-						</tr>
-						<tr>
-							<td colspan="4" class="cart_line"></td>
-						</tr>
+<!-- 						<tr> -->
+<!-- 							<td class="left">마루견적 내역</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td class="cart_list">견적 제목</td> -->
+<!-- 							<td class="cart_list">견적 가격</td> -->
+<!-- 							<td class="cart_list">올린시간</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td colspan="3" class="cart_line"></td> -->
+<!-- 						</tr> -->
 
-						<%
-						if(list.size() != 0){
-							for (CartDto cdto : list) {
-								// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출
-								ItemDao idao = new ItemDao();
-								ItemDto itemName = idao.item_get(cdto.getCart_item_name());						
-						%>
-						<tr>
-							<td style="width: 10%" class="cart_content"><%=itemName.getItem_name()%></td>
-							<td style="width: 50%" class="cart_content_left"><%=itemName.getItem_info()%></td>
-							<td style="width: 10%" class="cart_content"><%=itemName.getItem_price()%></td>
-							<td style="width: 10%" class="cart_content"><%=cdto.getCart_cnt()%></td>
-							<br>
-						</tr>
-						<tr>
-							<td colspan="4" class="cart_line"></td>
-						</tr>
+<%-- 						<% --%>
+<!-- // 						if(list.size() != 0){ -->
+<!-- // 							for (CartDto cdto : list) { -->
+<!-- // 								// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출 -->
+<!-- // 								ItemDao idao = new ItemDao(); -->
+<!-- // 								ItemDto itemName = idao.item_get(cdto.getCart_item_name());						 -->
+<%-- 						%> --%>
+<!-- 						<tr> -->
+<%-- 							<td style="width: 10%" class="cart_content"><%=itemName.getItem_name()%></td> --%>
+<%-- 							<td style="width: 50%" class="cart_content_left"><%=itemName.getItem_info()%></td> --%>
+<%-- 							<td style="width: 10%" class="cart_content"><%=itemName.getItem_price()%></td> --%>
+<%-- 							<td style="width: 10%" class="cart_content"><%=cdto.getCart_cnt()%></td> --%>
+<!-- 							<br> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td colspan="4" class="cart_line"></td> -->
+<!-- 						</tr> -->
 		
-							<%
-								}
-							%>
-							<%
-								}else{
+<%-- 							<% --%>
+<!-- // 								} -->
+<%-- 							%> --%>
+<%-- 							<% --%>
+<!-- // 								}else{ -->
 									
-							%>
-							<tr>
-								<td colspan="4" class="cart_content">장바구니가 비어있습니다</td>
-							</tr>
-						<%
-							}
-						%>
+<%-- 							%> --%>
+<!-- 							<tr> -->
+<!-- 								<td colspan="4" class="cart_content">장바구니가 비어있습니다</td> -->
+<!-- 							</tr> -->
+<%-- 						<% --%>
+<!-- // 							} -->
+<%-- 						%> --%>
+						
+<!-- 							<tr> -->
+<!-- 							<td class="row-empty"></td> -->
+<!-- 						</tr> -->
+						
 					</tbody>
 				</table>
 			</article>

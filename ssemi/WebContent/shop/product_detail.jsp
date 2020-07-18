@@ -15,7 +15,15 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/swiper.min.css">
     <script src="<%=request.getContextPath() %>/js/swiper.min.js"></script>
     <style>
-  
+  		.center{
+  			text-align: center;
+  		}
+  		.left{
+  			text-align: left;
+  		}
+  		.right{
+  			text-align: right;
+  		}
     </style>
     <script src="../js/swiper.min.js"></script>
     
@@ -103,28 +111,26 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
     
     <div class=right-box>
         <div class="gkaljzang"></div>
-        <div class="f20 mar-b12"><%=idto.getItem_name()%></div>
-        <div class="f25 mar-b20"><%=idto.getItem_info()%></div>
-        <div class="f25 colorred mar-b60"><%=idto.getItem_price()%>원</div>
+        <div class="f20 mar-b12 left">[상품이름] <%=idto.getItem_name()%></div>
+        <div class="f25 mar-b20 left">[상품정보] <%=idto.getItem_info()%></div>
+        <div class="f25 colorred mar-b60 left">[상품가격] <%=idto.getItem_price()%>원</div>
         
            
             <div class="delivery">
-                <span><b>배송기간:</b></span>
-                <span>내일</span>
                 <span><b>배송료:</b></span>
-                <span>5,000</span>
-                <span><b>재고:</b></span>
+                <span>2,500원 고정</span>	
+                <span><b>남은수량:</b></span>
                 <span><%=idto.getItem_stock()%></span>
             </div>
             <div class="eeee">
-                             <div>
-                				     <input class="anboim" type="text" name="left" value="<%=idto.getItem_price()%>"/>
-        <div class="goway">    
-            수량:<input type="number" name="right" value="1"/>
-            <input type="button" value="계산하기" onClick="calcNow()"/>
+               <div>
+           		<input class="anboim" type="text" name="left" value="<%=idto.getItem_price()%>"/>
+        	<div class="goway">    
+           		 수량:<input type="number" name="right" value="1"/>
+            	<input type="button" value="계산하기" onClick="calcNow()"/>
             </div>
-                              </div>
-                        </div>
+				</div>
+			</div>
                         <br>       
          
 
@@ -139,10 +145,7 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                     <a href="#"><input type="button" value="장바구니" class="bagit"></a>                    
                     </div>
                         <div class="border_1"></div>
-                      
-       
-                       
-                 
+               
                         
     </div>
                
