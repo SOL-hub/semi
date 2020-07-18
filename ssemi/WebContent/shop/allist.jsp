@@ -178,10 +178,10 @@
                 <div class="ln4">
                     <ul>                 
                     <li>
-                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
-                            <p><span><a href="product_detail.do?item_no=<%=idto.getItem_no() %>"><%=idto.getItem_name()%></a></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
-                            <p class="icon"><a onclick="changeimg()">
-                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
+                         <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                         <p><span><a href="product_detail.do?item_no=<%=idto.getItem_no() %>"><%=idto.getItem_name()%></a></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
+                         <p class="icon"><a onclick="changeimg()">
+                           	<img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                     </ul>              
