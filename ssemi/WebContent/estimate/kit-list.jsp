@@ -1,37 +1,96 @@
-<%@page import="home.beans.dao.EstimateDao"%>
+<%@page import="home.beans.dao.KitDao"%>
 <%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="java.util.List"%>
-<%@page import="home.beans.dto.EstimateDto"%>
+<%@page import="home.beans.dto.KitDto"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%
 	MemberDto mdto = (MemberDto)session.getAttribute("userinfo");
-	String bath_member = mdto.getMember_id();
+	String kit_member = mdto.getMember_id();
 
-	EstimateDao edao = new EstimateDao();
-	List<EstimateDto> list = edao.getList(bath_member); 
+	KitDao kdao = new KitDao();
+	List<KitDto> list = kdao.getList(kit_member); 
 	%>
 	
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <!DOCTYPE html>
-<html>
+
 <head>
 <meta charset="UTF-8">
-<title> 욕실견적내역</title>
+<title> 주방 견적 내역</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/bath-list.css">
+
 	
 	<style>
 	
-	.btn {
+   :root {
+	--white: #ffffff;
+	--light: #f0eff3;
+	--black: #000000;
+    --bblack: #424242;
+	--dark-blue: #1f2029;
+	--dark-light: #353746;
+	--red: #6A89B2  ;
+	--yellow: #C5C5D7;
+	--grey: #ecedf3;
+}
+	
+* {
+   box-sizing: border-box;
+   font-family: 'Noto Sans KR', sans-serif;
+   
+}
+
+.main {
+  padding: 40px 0 0 0;
+  text-align:center;
+
+  
+}
+
+	    .line {
+        position: relative;
+width: 100%;
+display: inline-block;
+padding: 0;
+margin: 0 auto;
+text-align: center;
+margin: 17px 0;
+height: 1px;
+        background-image: linear-gradient(298deg, var(--red), var(--yellow));
+    }
+    
+	.menuu a {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 12px 10px 12px 10px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #C5C5D7;
+    display: inline;
+    text-align: center;
+    font-weight: 900;
+    cursor:pointer;
+
+}
+.menuu a:hover {
+  color: #1778ba;
+
+}
+	
+	
+	
+	
+	
+.btn {
   background-color: #6A89B2;
+  border-radius:5px;
   border: none;
   color: white;
   padding: 16px 32px;
@@ -45,104 +104,112 @@
   background-color: #ddd; 
   color: white;
 }
+
+.roww {
+height:130px;
+}
+
+.h2 {
+        font-size: 28px;
+      line-height: 50px;
+      font-weight:700;
+      text-align: center;
+    }
 	
+	.titlee{
+padding-bottom:15px;
+text-align:center;
+}
+	
+	.row-emptyy{
+	height: 40px;
+	}
+	 .half {
+  background: linear-gradient(to top, #adfff3 40%, transparent 50%);
+ 
+}
+
+table {
+  border-collapse: collapse;
+  width: 70%;
+  
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#f5f5f5;}
+
+.bttn{
+text-align:center;
+margin: 20px 0 20px 0;
+}
+
 	</style>
 </head>
 <body>
-<main>
+<div class="roww"></div>
 
-<!-- 여기부터하기 -->
+<div class="menuu" align="center">
+<a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 욕실</a> 
+ <a href="<%=request.getContextPath()%>/estimate/kit-list.jsp"><font color=#1778ba>주방</font></a>
+ <a href="<%=request.getContextPath()%>/estimate/living-list.jsp">마루</a>
+</div>
 
-<h1>내 "욕실 시공" 견적내역  </h1>
-<a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 욕실 </a>
- <a href="<%=request.getContextPath()%>/estimate/kit-list.jsp"> 주방 </a>
- <a href="<%=request.getContextPath()%>/estimate/living-list.jsp">마루 </a>
-     
- <hr>
- <!--테이블 시작-->
- <div class="row-empty"></div>
- <a href="bath.jsp">
-						<input class="btn" type="button" value="욕실 견적 받으러 가볼까요?"> </a>
-<div class = table-wrap>
-<table border="1" width="90%"  align="center">
-		<thead>
-		<tr>
-	<th colspan="3"> 욕실 견적 모음 </th>
-		</tr>
-			<tr>
-				<th> Name </th>
-				<th width="40%">Price</th>
-				<th>Date</th>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<%-- list의 데이터를 하나하나 edto라는 이름으로 접근하여 출력 --%>
-			<%for(EstimateDto edto : list ){ %>
+<div class="line">
+<div class="main"> 
+				
+						
+    
+    <h2>주방 견적 내역</h2>
+<span class="half"><b>내일의집 견적서비스에서 깐깐한 기준으로 인증한 맞춤상품들을 추천해드릴게요!</b></span>
+ <div class="row-emptyy"></div>
+
+<div align="center">
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Date</th>
+  </tr>
+  <%for(KitDto kdto : list ){ %>
 			<tr>
 			<td>
-			<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
-				<%=edto.getBath_title() %> </td> 
-		<%-- 수정중입니당
-			<% if( edto.getBath_title()==null) { %>
-			<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
-			 욕실견적서
-			<%}else{ %>
-				<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
-				<%=edto.getBath_title() %> </td> <%} %> 
-				 --%>
-				
-				<td align="center">
 					
-					<!-- 가격 -->
-					<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
-						<%=edto.getBath_price()%>
-					</a>
-									
-				</td>
-		<!-- 작성일 -->
-				<td><%=edto.getBath_autotime()%></td>
+			<% if( kdto.getKit_title()==null) { %>		
+			<a href="kit-content.jsp?kit_no=<%= kdto.getKit_no()%>">
+			 욕실견적서	 
+			<%} else { %>
+				<a href="kit-content.jsp?kit_no=<%= kdto.getKit_no()%>">
+				<%=kdto.getKit_title()%>  <%} %>  </td>
+ 
+    <td><a href="kit-content.jsp?kit_no=<%= kdto.getKit_no()%>">
+						<%=kdto.getKit_price()%>
+					</a> </td>
+                    <td>
+                    <%=kdto.getKit_autotime()%></td>
 			</tr>
 			<%} %>
-		</tbody>
-		
-		<tfoot>
-			<tr>
-			
-	<td colspan="3"> 수정중입니다
-					
-				</td>
-			
-			</tr>
-			
-		</tfoot>
-	</table>
+ 
+  <tr>
+    <td colspan="3">  <div class="bttn" ><a href="kit.jsp">
+						<input class="btn" type="button" value="주방 견적 받으러 가볼까요?"> </a></div> </td>
+  </tr>
+</table>
 	</div>
-	
-	
-	<!--추천상품-->
+					
 
-	<div class = "img-wrap">
-	    <h5 style= font-size:20px; width:1000px;>함께 사면 좋은 제품 추천</h5>
-    <hr class="hr-twolow">
-    <!--제품관련 스타일-->
-    <ul>
-    <li><img class="img-shadow" src="https://placehold.it/180x180?text=TEST1" ><h5>넘편해소파<br>130,000</h5></li>
-   
-        <li><img class="img-shadow" src="https://placehold.it/180x180?text=TEST2"><h5>2인용인듯한침대<br>26,000,000</h5></li>
-    
-        <li><img class="img-shadow" src="https://placehold.it/180x180?text=TEST3"><h5>계속앉고파의자<br>4,560,000</h5></li>
-    
-        <li><img class="img-shadow" src="https://placehold.it/180x180?text=TEST4"><h5>세상포근쿠션<br>25,000</h5></li>
-        
-        <li><img class="img-shadow" src="https://placehold.it/180x180?text=TEST4"><h5>우리아들책상<br>95,000</h5></li>
-    
-    <li><img class="img-shadow" src="https://placehold.it/180x180?text=TEST4"><h5>이가격에이가죽소파<br>670,000,000</h5></li>
-    </ul>
-</div>
-</div>
-
-</main>
+ 	 <div class="row-emptyy"></div>
+     
+<img width="60%"
+               src="<%=request.getContextPath()%>/img/shoo.PNG" style="margin-top:-15px"> 
+               <img width="60%"
+               src="<%=request.getContextPath()%>/img/kit.PNG" style="margin-top:-15px"> 
+                     <img width="60%"
+               src="<%=request.getContextPath()%>/img/kit2.PNG" style="margin-top:-15px"> 
 </body>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
