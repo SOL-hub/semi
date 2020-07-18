@@ -18,8 +18,9 @@
 	
 </head>
 <body>
-
+<div style=padding-top:50px;>
 		<main class="find-main">
+		<div style=padding-top:150px;>
 		<form action="find_id,pw.do" method="post">
 		<div class="find-wrap">
 			<h1>내 계정 찾기</h1>
@@ -33,7 +34,7 @@
 		
 
 		<!--아이디/비밀번호입력창-->
-    <input class = "find-id" type="text" name="member_id" placeholder="아이디입력" required>
+    <input class = "find-id" type="text" name="member_nick" placeholder="닉네임입력" required>
     <input class = "find-pw" type="password" name="member_pw" placeholder="비밀번호입력" required>
 
 		<!-- <select class="form-phone" name="user_phone">
@@ -64,11 +65,12 @@
 
 		<!--로그인버튼-->
 		<input class="click-btn" type="submit" value="아이디 검색"> <br>
+		</form>
 	</div>
 	
-	</form>
-	</main>
+	</main></div>
 	</body>
 	</html>
+	
 <jsp:include page="/template/footer.jsp"></jsp:include>
  

@@ -13,21 +13,14 @@
 MemberDao mdao = new MemberDao();
 String type = request.getParameter("type");
 String keyword = request.getParameter("keyword");
-
 boolean isSearch = type!=null && keyword!=null;
-
 eventDao edao = new eventDao();
 //list
-
-
-
 //List<eventDto> list = 목록 or 검색;
 List<eventDto>list;
-
 if(isSearch){
 	list= edao.search(type, keyword);
 }
-
 else{
 	list= edao.getList();
 }
@@ -44,7 +37,6 @@ else{
 	
 	
 <%
-
 //여기서는... 하아.. 여기서는 
 %> 
 
@@ -179,7 +171,6 @@ else{
  <option>글 작성자</option>
  </select>
  
-
  <!-- 검색어 -->
  <!--<input type ="text" name="keyword" required>
  
@@ -189,10 +180,10 @@ else{
  
  
  
-   <div class="event-login-submint">
+  <!--<div class="event-login-submint">
    <a href="<%=request.getContextPath()%>/member/login.jsp">
     <input class="login-submit" type="submit" value="로그인하기">
-   </a>
+   </a>--> 
    
    <a href="<%=request.getContextPath()%>/member/user_info.jsp">
    <input class="login-submit" type="submit" value="내 포인트보기">
