@@ -2,11 +2,22 @@
     pageEncoding="UTF-8"%>
     
  <jsp:include page="/template/header.jsp"></jsp:include>  
+ <link
+
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+
+	rel="stylesheet">
 
     <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/base.css">
     <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/join_main.css?ver=1">
     <style>
-
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Noto Sans KR', sans-serif;
+	letter-spacing: -1.5px;
+}
     </style>
     <script>
     
@@ -42,12 +53,14 @@
             </div>
             <div class="row-empty"></div>
             <div class="row-empty"></div>
-            <div class="center small-font">
-                얼른 빨리 하세여
+            <div class="center small-font" style="font-size:20px">
+                회원으로 가입하시면 
+                <br>
+                다양한 혜택과 서비스를 이용하실 수 있습니다.
             </div>
             <div class="row-empty small-font"></div>
             <div class="center">
-                ㅇㅋ?
+              
             </div>
             <div class="row-empty"></div>
             <div class="row-empty"></div>

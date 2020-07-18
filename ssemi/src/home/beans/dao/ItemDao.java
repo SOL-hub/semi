@@ -66,25 +66,48 @@ private static DataSource src;
 	
 	// 목록 메소드
 	public List<ItemDto> getList() throws Exception {
-		Connection con = getConnection();
-		
+		Connection con = getConnection();		
 		String sql = "SELECT * FROM item ORDER BY item_no ASC";
-		
 		PreparedStatement ps = con.prepareStatement(sql);
-		
 		ResultSet rs = ps.executeQuery();
-		
 		List<ItemDto> list = new ArrayList<>();
-		while(rs.next()) {
-			
+		while(rs.next()) {			
 			ItemDto idto = new ItemDto(rs);
 			list.add(idto);
-		}
-		
-		con.close();
-		
+		}	
+		con.close();		
 		return list;	
 	}
+	
+	// 지민 - 검색 메소드( 높은 가격순)
+	public List<ItemDto> getListD() throws Exception {
+		Connection con=getConnection();
+		String sql="SELECT  * FROM item ORDER BY item_price DESC";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		List<ItemDto> list = new ArrayList<>();
+		while(rs.next()) {			
+			ItemDto idto = new ItemDto(rs);
+			list.add(idto);
+		}	
+		con.close();		
+		return list;	
+	}	
+	
+	// 지민 - 검색 메소드( 낮은 가격순)
+	public List<ItemDto> getListA() throws Exception {
+		Connection con=getConnection();
+		String sql="SELECT  * FROM item ORDER BY item_price ASC";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		List<ItemDto> list = new ArrayList<>();
+		while(rs.next()) {			
+			ItemDto idto = new ItemDto(rs);
+			list.add(idto);
+		}	
+		con.close();		
+		return list;	
+	}	
 	
 //	진빈(아이템 단일조회)
 	
@@ -105,48 +128,46 @@ private static DataSource src;
 	      else {
 	         idto = null;
 	      }
-	      
 	      con.close();
-	      
-	      return idto;
-	      
+	      return idto;	      
 	   }
-	   
+		///(동휘)시퀀스
+
+		public int getSequence() throws Exception{
+			Connection con = getConnection();
+
+			String sql = "SELECT item_seq.nextval FROM dual";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int seq = rs.getInt(1);
+
+			con.close();
+
+			return seq;
+		}
 	   
 		//(동휘)등록
 		public void write(ItemDto idto) throws Exception {
 			Connection con = getConnection();
 
 			String sql = 
-					"insert into item values(item_seq.nextval,?,?,?,?,?,?,null,sysdate)";
+					"insert into item values(?,?,?,?,?,?,?,null,sysdate)";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, idto.getItem_name());
-			ps.setInt(2, idto.getItem_price());
-			ps.setString(3, idto.getItem_kingtype());
-			ps.setString(4, idto.getItem_type());
-			ps.setString(5, idto.getItem_info());
-			ps.setInt(6, idto.getItem_stock());
+			ps.setInt(1, idto.getItem_no());
+			ps.setString(2, idto.getItem_name());
+			ps.setInt(3, idto.getItem_price());
+			ps.setString(4, idto.getItem_kingtype());
+			ps.setString(5, idto.getItem_type());
+			ps.setString(6, idto.getItem_info());
+			ps.setInt(7, idto.getItem_stock());
 			
 			ps.execute();
 
 			con.close();
 		}
 	   
-	///(동휘)시퀀스
 
-			public int getSequence() throws Exception{
-				Connection con = getConnection();
-
-				String sql = "SELECT item_seq.nextval FROM dual";
-				PreparedStatement ps = con.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery();
-				rs.next();
-				int seq = rs.getInt(1);
-
-				con.close();
-
-				return seq;
-			}
 			
 			//게시글 삭제
 			public void delete(int item_no) throws Exception {

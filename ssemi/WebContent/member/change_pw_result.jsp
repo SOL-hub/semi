@@ -19,12 +19,11 @@
 
 <main class= "find-main">
 	<div class="find-wrap">
-		<h1>내 계정 찾기</h1>
+	<br><br>
+		<h2>비밀번호 변경이 완료되었습니다</h2>
 
 		<!--<div class="center">-->
 
-			<br>
-			<h3>비밀번호 변경이 완료되었습니다</h3>
 			<br>
 			
 			<div class="change_after">

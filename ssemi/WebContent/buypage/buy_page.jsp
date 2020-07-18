@@ -1,3 +1,5 @@
+<%@page import="home.beans.dao.ItemFileDao"%>
+<%@page import="home.beans.dto.ItemFileDto"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="home.beans.dto.ItemDto"%>
 <%@page import="home.beans.dao.ItemDao"%>
@@ -325,8 +327,8 @@
 
 <body>
     <main>
+    <form action="buy_page.do" method="get">
     <header>
-    <form action="buy_page.do">
         <div class="center">
                    <h1 style="font-size: 50px;">결제 내용</h1>
                </div>
@@ -366,6 +368,9 @@
 
 				ItemDao idao = new ItemDao();
 				ItemDto itemName = idao.item_get(cdto2.getCart_item_name());
+				
+				ItemFileDao ifdao = new ItemFileDao();
+				List<ItemFileDto> file_list = ifdao.getList(itemName.getItem_no());
 					
 				int item_cnt_change_price = itemName.getItem_price() * cdto2.getCart_cnt();
 										
@@ -381,7 +386,11 @@
               
                 <tr>
                     <td class="center" style="width: 13%">
-                    <img src="https://placeimg.com/274/274" style="width: 40%"></td>
+                   	 <%for(ItemFileDto ifdto : file_list){%>
+							<img src="<%=request.getContextPath() %>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100px" height="100px">
+							
+						<%} %>   
+                    </td>
                     <td class="center" style="width: 5%">
                     	<input class="input_text_style" type="text" readonly value="<%=itemName.getItem_name()%>">
                     	<input type="hidden" name="shopping_item_name" value="<%=itemName.getItem_no() %>">
@@ -568,8 +577,9 @@
                 <div class="row-empty"></div>
     
             </div>
-            </form>
+            
         </footer>
+        </form>
     </main>
 </body></html>
 

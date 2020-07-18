@@ -177,6 +177,7 @@
             <%for(ItemDto idto : list){ %>
                 <div class="ln4">
                     <ul>                 
+                    <li>
                             <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
                             <p><span><a href="product_detail.do?item_no=<%=idto.getItem_no() %>"><%=idto.getItem_name()%></a></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">

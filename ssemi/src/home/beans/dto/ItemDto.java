@@ -25,12 +25,13 @@ public class ItemDto {
 		this.setItem_no(rs.getInt("item_no"));
 		this.setItem_name(rs.getString("item_name"));
 		this.setItem_price(rs.getInt("item_price"));
-		this.setItem_type(rs.getString("item_kingtype"));
+		this.setItem_kingtype(rs.getString("item_kingtype"));
 		this.setItem_type(rs.getString("item_type"));
 		this.setItem_info(rs.getString("item_info"));
 		this.setItem_stock(rs.getInt("item_stock"));
 		this.setItem_image(rs.getString("item_image"));
 		this.setItem_time(rs.getString("item_time"));
+
 	}
 
 	public String getItem_kingtype() {

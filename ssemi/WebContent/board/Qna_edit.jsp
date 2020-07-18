@@ -120,10 +120,10 @@ padding: 15px 0 14px 0;
 			<th class="row">SUBJECT</th>
 						<td class="select_subject">
 							<select  name="qna_title"  required>
-								<%if(!isAdmin)  {%>
-							<option value="상품문의">상품문의</option>
+								<%if(isAdmin)  {%>
+							<option value="답변입니다">답변입니다</option>
 							<%} else {%>
-								<option value="답변입니다">답변입니다</option>
+								<option value="<%=qdto.getQna_title()%>"><%=qdto.getQna_title()%></option>
 								<%} %>
 							</select>
 						</td>
