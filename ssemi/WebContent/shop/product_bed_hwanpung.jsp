@@ -14,7 +14,7 @@
 	
 	boolean isSearch = keyword != null;
 	///여따가쓰시오(페이지 계산 코드)
-	int pageSize = 12;//한페이지에 표시할 데이터 개수
+	int pageSize = 16;//한페이지에 표시할 데이터 개수
 	
 	//문자열로 먼저 받기
 	String pageStr = request.getParameter("page");
@@ -43,7 +43,7 @@
 		list = idao.search(keyword);
 	}
 	else{
-		list = idao.getList2(start,finish);
+		list = idao.getList8(start,finish);
 	}
 	
 	//네비게이터//
@@ -134,9 +134,18 @@
         </h5>
         <h5>startBlock=<%=startBlock%>
 			finishBlock=<%=finishBlock%></h5>
-             <p class="subject middle-font">마루</p>
+            <p class="subject middle-font">욕실</p>
             <div class="selected subject">
-            </div>
+                <ul class="main_menu">
+                    <li>
+                        <ul>
+                            <li><a href="#">젠다이</a></li>            
+                            <li><a href="#">선반</a></li>
+                            <li><a href="#">비데</a></li>
+                            <li><a href="#">환풍기</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
             <div class="border">
                 <div class="ssmall-font xyz
@@ -162,21 +171,21 @@
                 <!-- 페이지_네비게이터 -->
                 <div class="page center_wlwjd">
                 <%if(!isSearch){%>
-                <a href="product_maru.jsp?page=<%=startBlock-1%>">[<]</a>               
+                <a href="product_bed_hawnpung.jsp?page=<%=startBlock-1%>">[<]</a>                
                 <%}else{%>
-                <a href="product_maru.jsp?page=<%=startBlock-1%>&keyword=<%=keyword%>">[<]</a>
+                <a href="product_bed_hawnpung.jsp?page=<%=startBlock-1%>&keyword=<%=keyword%>">[<]</a>
                 <%} %>
                 <%for(int i=startBlock; i<=finishBlock; i++){%>
                 <%if(!isSearch){ %>
-                    <a href="product_maru.jsp?page=<%=i%>"><%=i%></a>            
+					<a href="product_bed_hawnpung.jsp?page=<%=i%>"><%=i%></a>             
                     <%}else{ %>
-                    <a href="product_maru.jsp?page=<%=i%>&keyword=<%=keyword%>"><%=i%></a>
+                    <a href="product_bed_hawnpung.jsp?page=<%=i%>&keyword=<%=keyword%>"><%=i%></a> 
                     <%} %>
-                    <%} %>         
-                    <%if(!isSearch){%>
-                <a href="product_maru.jsp?page=<%=finishBlock+1%>">[>]</a>               
+                    <%} %>          
+                	<%if(!isSearch){%>
+                <a href="product_bed_hawnpung.jsp?page=<%=finishBlock+1%>">[>]</a>                
                 <%}else{%>
-                <a href="product_maru.jsp?page=<%=finishBlock+1%>&keyword=<%=keyword%>">[>]</a>
+                <a href="product_bed_hawnpung.jsp?page=<%=finishBlock+1%>&keyword=<%=keyword%>">[>]</a>
                 <%} %>
                 </div>
             </article>

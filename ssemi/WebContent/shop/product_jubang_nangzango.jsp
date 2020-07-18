@@ -43,7 +43,7 @@
 		list = idao.search(keyword);
 	}
 	else{
-		list = idao.getList2(start,finish);
+		list = idao.getList14(start,finish);
 	}
 	
 	//네비게이터//
@@ -134,9 +134,22 @@
         </h5>
         <h5>startBlock=<%=startBlock%>
 			finishBlock=<%=finishBlock%></h5>
-             <p class="subject middle-font">마루</p>
+            <p class="subject middle-font">주방</p>
             <div class="selected subject">
-            </div>
+                <ul class="main_menu">
+           			<li>
+                        <a href=#>전체</a>
+                    </li>
+                    <li>
+                        <a href=#>테이블</a>
+                    </li>
+                    <li>
+                        <a href=#>냉장고</a>        
+                    </li>
+                    <li>
+                        <a href=#>선반</a>
+                    </li>
+                </ul>
             </div>
             <div class="border">
                 <div class="ssmall-font xyz
@@ -149,7 +162,8 @@
             <article>
             <%for(ItemDto idto : list){ %>
                 <div class="ln4">
-                    <ul>                 
+                    <ul>            
+                    <li>     
                             <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
                             <p><span><a href="product_detail.do?item_no=<%=idto.getItem_no() %>"><%=idto.getItem_name()%></a></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
@@ -162,21 +176,21 @@
                 <!-- 페이지_네비게이터 -->
                 <div class="page center_wlwjd">
                 <%if(!isSearch){%>
-                <a href="product_maru.jsp?page=<%=startBlock-1%>">[<]</a>               
+                <a href="product_jubang_nangzango.jsp?page=<%=startBlock-1%>">[<]</a>                
                 <%}else{%>
-                <a href="product_maru.jsp?page=<%=startBlock-1%>&keyword=<%=keyword%>">[<]</a>
+                <a href="product_jubang_nangzango.jsp?page=<%=startBlock-1%>&keyword=<%=keyword%>">[<]</a>
                 <%} %>
                 <%for(int i=startBlock; i<=finishBlock; i++){%>
                 <%if(!isSearch){ %>
-                    <a href="product_maru.jsp?page=<%=i%>"><%=i%></a>            
+					<a href="product_jubang_nangzango.jsp?page=<%=i%>"><%=i%></a>             
                     <%}else{ %>
-                    <a href="product_maru.jsp?page=<%=i%>&keyword=<%=keyword%>"><%=i%></a>
+                    <a href="product_jubang_nangzango.jsp?page=<%=i%>&keyword=<%=keyword%>"><%=i%></a> 
                     <%} %>
-                    <%} %>         
-                    <%if(!isSearch){%>
-                <a href="product_maru.jsp?page=<%=finishBlock+1%>">[>]</a>               
+                    <%} %>          
+                	<%if(!isSearch){%>
+                <a href="product_jubang_nangzango.jsp?page=<%=finishBlock+1%>">[>]</a>                
                 <%}else{%>
-                <a href="product_maru.jsp?page=<%=finishBlock+1%>&keyword=<%=keyword%>">[>]</a>
+                <a href="product_jubang_nangzango.jsp?page=<%=finishBlock+1%>&keyword=<%=keyword%>">[>]</a>
                 <%} %>
                 </div>
             </article>

@@ -31,7 +31,6 @@ public class ItemDto {
 		this.setItem_stock(rs.getInt("item_stock"));
 		this.setItem_image(rs.getString("item_image"));
 		this.setItem_time(rs.getString("item_time"));
-		this.setItem_kingtype(rs.getString("item_kingtype"));
 	}
 
 	public String getItem_kingtype() {
