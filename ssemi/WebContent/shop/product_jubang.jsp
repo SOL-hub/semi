@@ -135,21 +135,21 @@
                 <!-- 페이지_네비게이터 -->
                 <div class="page center_wlwjd">
                 <%if(!isSearch){%>
-                <a href="product_bed_list.jsp?page=<%=startBlock-1%>">[<]</a>                
+                <a href="product_jubang.jsp?page=<%=startBlock-1%>">[<]</a>                
                 <%}else{%>
-                <a href="product_bed_list.jsp?page=<%=startBlock-1%>&keyword=<%=keyword%>">[<]</a>
+                <a href="product_jubang.jsp?page=<%=startBlock-1%>&keyword=<%=keyword%>">[<]</a>
                 <%} %>
                 <%for(int i=startBlock; i<=finishBlock; i++){%>
                 <%if(!isSearch){ %>
-					<a href="product_bed_list.jsp?page=<%=i%>"><%=i%></a>             
+					<a href="product_jubang.jsp?page=<%=i%>"><%=i%></a>             
                     <%}else{ %>
-                    <a href="product_bed_list.jsp?page=<%=i%>&keyword=<%=keyword%>"><%=i%></a> 
+                    <a href="product_jubang.jsp?page=<%=i%>&keyword=<%=keyword%>"><%=i%></a> 
                     <%} %>
                     <%} %>          
                 	<%if(!isSearch){%>
-                <a href="product_bed_list.jsp?page=<%=finishBlock+1%>">[>]</a>                
+                <a href="product_jubang.jsp?page=<%=finishBlock+1%>">[>]</a>                
                 <%}else{%>
-                <a href="product_bed_list.jsp?page=<%=finishBlock+1%>&keyword=<%=keyword%>">[>]</a>
+                <a href="product_jubang.jsp?page=<%=finishBlock+1%>&keyword=<%=keyword%>">[>]</a>
                 <%} %>
                 </div>
             </article>

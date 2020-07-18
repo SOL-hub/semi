@@ -140,8 +140,7 @@
                     <li>
                         <a href=#>욕실</a>
                         <ul>
-                            <li><a href="#">젠다이</a></li>
-                            <li><a href="#">거울수납장</a></li>
+                            <li><a href="#">젠다이</a></li>            
                             <li><a href="#">선반</a></li>
                             <li><a href="#">비데</a></li>
                             <li><a href="#">환풍기</a></li>
@@ -159,12 +158,9 @@
                     <li>
                         <a href=#>주방</a>
                         <ul>
-                            <li><a href="#">아일랜드 식탁</a></li>
-                            <li><a href="#">냉장고장</a></li>
-                            <li><a href="#">키큰장</a></li>
-                            <li><a href="#">뒷선반</a></li>
-                            <li><a href="#">쿡탑</a></li>
-                            <li><a href="#">플랩장</a></li>
+                            <li><a href="#">테이블</a></li>
+                            <li><a href="#">냉장고</a></li>
+                            <li><a href="#">선반</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -181,10 +177,11 @@
             <%for(ItemDto idto : list){ %>
                 <div class="ln4">
                     <ul>                 
-                            <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
-                            <p><span><a href="product_detail.do?item_no=<%=idto.getItem_no() %>"><%=idto.getItem_name()%></a></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
-                            <p class="icon"><a onclick="changeimg()">
-                                    <img src="../img/heart_none.png" id="img1" width="17" height="16">
+                    <li>
+                         <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
+                         <p><span><a href="product_detail.do?item_no=<%=idto.getItem_no() %>"><%=idto.getItem_name()%></a></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
+                         <p class="icon"><a onclick="changeimg()">
+                           	<img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
                         </li>
                     </ul>              

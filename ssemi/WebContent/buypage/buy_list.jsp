@@ -1,3 +1,5 @@
+<%@page import="home.beans.dao.ItemFileDao"%>
+<%@page import="home.beans.dto.ItemFileDto"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="home.beans.dto.shoppingDto"%>
 <%@page import="home.beans.dao.ShoppingDao"%>
@@ -115,15 +117,23 @@
 							
 						ItemDao idao = new ItemDao();
 						ItemDto idto = idao.item_get(sdto.getShopping_item_name());
-							
-							total_price += idto.getItem_price();
+						ItemFileDao ifdao = new ItemFileDao();
+						List<ItemFileDto> file_list = ifdao.getList(idto.getItem_no());
+						
+						total_price += idto.getItem_price();
 							
 						%>
 						
                         <tbody>
                         
                            <tr style="height: 90px; background-color: #fff;">
-                              <td style="width: 280px; height: 50px;"><span>이미지</span></td>
+                              <td style="width: 280px; height: 50px;">
+                              <span>
+									<%for(ItemFileDto ifdto : file_list){%>
+											<img src="<%=request.getContextPath() %>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100px" height="100px">
+							
+										<%} %>                              
+								</span></td>
                               <td style="width: 120px; height: 50px;"><span><%=idto.getItem_name() %></span></td>
                               <td style="width: 450px; text-align: left; padding-left: 20px;">
                               	<span><%=idto.getItem_info() %></span>
@@ -153,7 +163,7 @@
                         <%}else{ %>
 				
 				<tr style=" background-color: white; height: 150px;">
-					<td colspan="7">
+					<td colspan="8">
 						구매내역이 비어있습니다.
 					</td>
 					</tr>						

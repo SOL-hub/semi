@@ -4,12 +4,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
+
+	ItemDao idao = new ItemDao();
+	List<ItemDto> list = idao.getList();
+
 	
 	String keyword = request.getParameter("keyword");
 	
 	boolean isSearch = keyword != null;
 	///여따가쓰시오(페이지 계산 코드)
-	int pageSize = 12;//한페이지에 표시할 데이터 개수
+	int pageSize = 16;//한페이지에 표시할 데이터 개수
 	
 	//문자열로 먼저 받기
 	String pageStr = request.getParameter("page");
@@ -31,14 +36,14 @@
 	int finish = pageNo*pageSize;
 	int start = finish-(pageSize-1);
 	
-	ItemDao idao = new ItemDao();
+// 	ItemDao idao = new ItemDao();
 
-	List<ItemDto> list;
+// 	List<ItemDto> list;
 	if(isSearch){
 		list = idao.search(keyword);
 	}
 	else{
-		list = idao.getList1(start,finish);
+		list = idao.getList3(start,finish);
 	}
 	
 	//네비게이터//
@@ -76,6 +81,42 @@
             }
             cnt++;
         }
+        var sell_price;
+        var amount;
+
+        function init () {
+        	sell_price = document.form.sell_price.value;
+        	amount = document.form.amount.value;
+        	document.form.sum.value = sell_price;
+        	change();
+        }
+
+        function add () {
+        	hm = document.form.amount;
+        	sum = document.form.sum;
+        	hm.value ++ ;
+
+        	sum.value = parseInt(hm.value) * sell_price;
+        }
+
+        function del () {
+        	hm = document.form.amount;
+        	sum = document.form.sum;
+        		if (hm.value > 1) {
+        			hm.value -- ;
+        			sum.value = parseInt(hm.value) * sell_price;
+        		}
+        }
+
+        function change () {
+        	hm = document.form.amount;
+        	sum = document.form.sum;
+
+        		if (hm.value < 0) {
+        			hm.value = 0;
+        		}
+        	sum.value = parseInt(hm.value) * sell_price;
+        } 
     </script>
     <br>
     <br>
@@ -97,20 +138,12 @@
             <div class="selected subject">
                 <ul class="main_menu">
                     <li>
-                        <a href=#>전체</a>
-                    </li>
-                    <li>
-                        <a href=#>젠다이</a>
-        
-                    </li>
-                    <li>
-                        <a href=#>선반</a>        
-                    </li>
-                    <li>
-                        <a href=#>비데</a>
-                    </li>
-                    <li>
-                        <a href=#>환풍기</a>
+                        <ul>
+                            <li><a href="#">젠다이</a></li>            
+                            <li><a href="#">선반</a></li>
+                            <li><a href="#">비데</a></li>
+                            <li><a href="#">환풍기</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -125,10 +158,10 @@
             <article>
             <%for(ItemDto idto : list){ %>
                 <div class="ln4">
-                    <ul>
-                        <li>
+                    <ul>  
+                    <li>               
                             <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
-                            <p><span><%=idto.getItem_name()%></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
+                            <p><span><a href="product_detail.do?item_no=<%=idto.getItem_no() %>"><%=idto.getItem_name()%></a></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>

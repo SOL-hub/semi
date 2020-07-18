@@ -1,3 +1,5 @@
+<%@page import="home.beans.dto.ItemFileDto"%>
+<%@page import="home.beans.dao.ItemFileDao"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="home.beans.dao.ItemDao"%>
@@ -7,6 +9,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
+	
 	ItemDao idao = new ItemDao();
 	List<ItemDto> list = idao.getList();
 %>
@@ -37,6 +40,8 @@
 				
 				<%
 					for(ItemDto idto : list) {
+						ItemFileDao ifdao = new ItemFileDao();
+						List<ItemFileDto> file_list = ifdao.getList(idto.getItem_no());
 				%>
 				
 				<tr>
@@ -52,7 +57,13 @@
 					<td><%=idto.getItem_type()%></td>
 					<td><%=idto.getItem_info()%></td>
 					<td><%=idto.getItem_stock()%></td>
-					<td><%=idto.getItem_image()%></td>
+					<%if(!file_list.isEmpty()) {%>
+					<%for(ItemFileDto ifdto : file_list){%>
+					<td>
+						<img src="download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100" height="100">
+					</td>
+					<%} %>
+					<%} %>
 					<td><%=idto.getItem_time()%></td>
 					<td>
 						

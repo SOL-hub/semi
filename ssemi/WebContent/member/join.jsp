@@ -4,10 +4,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
-
-
 <jsp:include page="/template/header.jsp"></jsp:include>
+ <link
+
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+
+	rel="stylesheet">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +20,13 @@
     <link href="<%=request.getContextPath() %>/css/join.css?ver=1" rel=stylesheet type="text/css" >
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <style>
-
+       * {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Noto Sans KR', sans-serif;
+	letter-spacing: -1.5px;
+} 
 
     </style>
     

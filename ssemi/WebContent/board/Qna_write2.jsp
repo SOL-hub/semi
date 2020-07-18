@@ -85,7 +85,7 @@ padding: 15px 0 14px 0;
 </style>
 
 <div align="center" class="container">
-	<span class="write_title">배송문의</span>
+	<span class="write_title">공지사항</span>
 	<form class="write_box" action="QnaWrite.do" method="post"  enctype="multipart/form-data">
 	
 		<!-- 회원번호 히든으로 넘기기 -->
@@ -102,8 +102,7 @@ padding: 15px 0 14px 0;
 
 				<tr>
 						<th class="row">SUBJECT</th>
-						<td class="select_subject"><select  name="qna_title"   required>
-						<option value="배송문의">배송문의</option></select>
+						<td class="select_subject"><input type="text"  name="qna_title"   required>
 						</td>
 				</tr>
 				<tr>

@@ -15,7 +15,15 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/swiper.min.css">
     <script src="<%=request.getContextPath() %>/js/swiper.min.js"></script>
     <style>
-  
+  		.center{
+  			text-align: center;
+  		}
+  		.left{
+  			text-align: left;
+  		}
+  		.right{
+  			text-align: right;
+  		}
     </style>
     <script src="../js/swiper.min.js"></script>
     
@@ -51,13 +59,50 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                 //,effect:'slide'//기본값
             });
         };
-    	// 곱하기
-      function calcNow(){
-    	calc.result_multiply.value = calc_multiply(calc.left.value, calc.right.value);
-		}
-		function calc_multiply(left, right){
-    	return left * right;
+//     	// 곱하기
+//       function calcNow(){
+//     	calc.result_multiply.value = calc_multiply(calc.left.value, calc.right.value);
+// 		}
+// 		function calc_multiply(left, right){
+//     	return left * right;
+// }
+
+var sell_price;
+var amount;
+
+function init () {
+	sell_price = document.form.sell_price.value;
+	amount = document.form.amount.value;
+	document.form.sum.value = sell_price;
+	change();
 }
+
+function add () {
+	hm = document.form.amount;
+	sum = document.form.sum;
+	hm.value ++ ;
+
+	sum.value = parseInt(hm.value) * sell_price;
+}
+
+function del () {
+	hm = document.form.amount;
+	sum = document.form.sum;
+		if (hm.value > 1) {
+			hm.value -- ;
+			sum.value = parseInt(hm.value) * sell_price;
+		}
+}
+
+function change () {
+	hm = document.form.amount;
+	sum = document.form.sum;
+
+		if (hm.value < 0) {
+			hm.value = 0;
+		}
+	sum.value = parseInt(hm.value) * sell_price;
+}  
            </script>
 </head>
 
@@ -68,7 +113,7 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
 <br>
 <br>
 <br>
-<form method="post" name="calc">
+<form method="get" name="form">
  <main>
    <div>
     <div class="section-box">
@@ -103,35 +148,35 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
     
     <div class=right-box>
         <div class="gkaljzang"></div>
-        <div class="f20 mar-b12"><%=idto.getItem_name()%></div>
-        <div class="f25 mar-b20"><%=idto.getItem_info()%></div>
-        <div class="f25 colorred mar-b60"><%=idto.getItem_price()%>원</div>
+        <div class="f20 mar-b12 left">[상품이름] <%=idto.getItem_name()%></div>
+        <div class="f25 mar-b20 left">[상품정보] <%=idto.getItem_info()%></div>
+        <div class="f25 colorred mar-b60 left">[상품가격] <%=idto.getItem_price()%>원</div>
         
            
             <div class="delivery">
-                <span><b>배송기간:</b></span>
-                <span>내일</span>
                 <span><b>배송료:</b></span>
-                <span>5,000</span>
-                <span><b>재고:</b></span>
+                <span>2,500원 고정</span>	
+                <span><b>남은수량:</b></span>
                 <span><%=idto.getItem_stock()%></span>
             </div>
             <div class="eeee">
                              <div>
                 				     <input class="anboim" type="text" name="left" value="<%=idto.getItem_price()%>"/>
         <div class="goway">    
-            수량:<input type="number" name="right" value="1"/>
-            <input type="button" value="계산하기" onClick="calcNow()"/>
+            수량:<input type=hidden name="sell_price" value="<%=idto.getItem_price()%>"/>
+<input type="text" name="amount" value="1" size="3" onchange="change();">
+<input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
+
             </div>
-                              </div>
-                        </div>
+				</div>
+			</div>
                         <br>       
          
 
                         <div class="total_price">
                             <b>총구매가</b>
-                            <span class="f-right colorred"><input type="text" name="result_multiply" readonly /></span>
-            				
+<!--                             <span class="f-right colorred"><input type="text" name="result_multiply" readonly /></span> -->
+            				금액 : <input type="text" name="sum" size="11" readonly>원
                         </div>
                         <br>
                     <div class="shop-btn">
@@ -139,10 +184,7 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                     <a href="#"><input type="button" value="장바구니" class="bagit"></a>                    
                     </div>
                         <div class="border_1"></div>
-                      
-       
-                       
-                 
+               
                         
     </div>
                

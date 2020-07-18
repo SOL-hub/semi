@@ -1,3 +1,5 @@
+<%@page import="home.beans.dto.ItemFileDto"%>
+<%@page import="home.beans.dao.ItemFileDao"%>
 <%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="java.util.List"%>
@@ -14,6 +16,8 @@
 
 	
 	ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");//idto애들 불러오기위해 필요
+	ItemFileDao ifdao = new ItemFileDao();
+	List<ItemFileDto> file_list = ifdao.getList(idto.getItem_no());
 
 %>
 <script>
@@ -55,7 +59,11 @@
 					<td><%=idto.getItem_type()%></td>
 					<td><%=idto.getItem_info()%></td>
 					<td><%=idto.getItem_stock()%></td>
-					<td><%=idto.getItem_image()%></td>
+					<%for(ItemFileDto ifdto : file_list){%>
+					<td>
+						<img src="download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100" height="100">
+					</td>
+					<%} %>
 					<td><%=idto.getItem_time()%></td>
 				
 

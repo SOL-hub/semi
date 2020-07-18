@@ -4,6 +4,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
+
+	ItemDao idao = new ItemDao();
+	List<ItemDto> list = idao.getList();
+
 	
 	String keyword = request.getParameter("keyword");
 	
@@ -31,14 +36,14 @@
 	int finish = pageNo*pageSize;
 	int start = finish-(pageSize-1);
 	
-	ItemDao idao = new ItemDao();
+// 	ItemDao idao = new ItemDao();
 
-	List<ItemDto> list;
+// 	List<ItemDto> list;
 	if(isSearch){
 		list = idao.search(keyword);
 	}
 	else{
-		list = idao.getList1(start,finish);
+		list = idao.getList2(start,finish);
 	}
 	
 	//네비게이터//
@@ -76,6 +81,42 @@
             }
             cnt++;
         }
+        var sell_price;
+        var amount;
+
+        function init () {
+        	sell_price = document.form.sell_price.value;
+        	amount = document.form.amount.value;
+        	document.form.sum.value = sell_price;
+        	change();
+        }
+
+        function add () {
+        	hm = document.form.amount;
+        	sum = document.form.sum;
+        	hm.value ++ ;
+
+        	sum.value = parseInt(hm.value) * sell_price;
+        }
+
+        function del () {
+        	hm = document.form.amount;
+        	sum = document.form.sum;
+        		if (hm.value > 1) {
+        			hm.value -- ;
+        			sum.value = parseInt(hm.value) * sell_price;
+        		}
+        }
+
+        function change () {
+        	hm = document.form.amount;
+        	sum = document.form.sum;
+
+        		if (hm.value < 0) {
+        			hm.value = 0;
+        		}
+        	sum.value = parseInt(hm.value) * sell_price;
+        } 
     </script>
     <br>
     <br>
@@ -93,23 +134,9 @@
         </h5>
         <h5>startBlock=<%=startBlock%>
 			finishBlock=<%=finishBlock%></h5>
-            <p class="subject middle-font">마루</p>
+             <p class="subject middle-font">마루</p>
             <div class="selected subject">
-                <ul class="main_menu">
-                    <li>
-                        <a href=#>강화마루</a>
-                    </li>
-                    <li>
-                        <a href=#>원목마루</a>
-        
-                    </li>
-                    <li>
-                        <a href=#>강마루</a>        
-                    </li>
-                    <li>
-                        <a href=#>합판마루</a>
-                    </li>
-                </ul>
+            </div>
             </div>
             <div class="border">
                 <div class="ssmall-font xyz
@@ -122,10 +149,9 @@
             <article>
             <%for(ItemDto idto : list){ %>
                 <div class="ln4">
-                    <ul>
-                        <li>
+                    <ul>                 
                             <p><img src="<%=idto.getItem_image()%>" width="100%"></p>
-                            <p><span><%=idto.getItem_name()%></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
+                            <p><span><a href="product_detail.do?item_no=<%=idto.getItem_no() %>"><%=idto.getItem_name()%></a></span><br><br><span class="price"><%=idto.getItem_price()%>&nbsp;원</span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
                                 </a></p>
@@ -136,21 +162,21 @@
                 <!-- 페이지_네비게이터 -->
                 <div class="page center_wlwjd">
                 <%if(!isSearch){%>
-                <a href="product_bed_list.jsp?page=<%=startBlock-1%>">[<]</a>                
+                <a href="product_maru.jsp?page=<%=startBlock-1%>">[<]</a>               
                 <%}else{%>
-                <a href="product_bed_list.jsp?page=<%=startBlock-1%>&keyword=<%=keyword%>">[<]</a>
+                <a href="product_maru.jsp?page=<%=startBlock-1%>&keyword=<%=keyword%>">[<]</a>
                 <%} %>
                 <%for(int i=startBlock; i<=finishBlock; i++){%>
                 <%if(!isSearch){ %>
-					<a href="product_bed_list.jsp?page=<%=i%>"><%=i%></a>             
+                    <a href="product_maru.jsp?page=<%=i%>"><%=i%></a>            
                     <%}else{ %>
-                    <a href="product_bed_list.jsp?page=<%=i%>&keyword=<%=keyword%>"><%=i%></a> 
+                    <a href="product_maru.jsp?page=<%=i%>&keyword=<%=keyword%>"><%=i%></a>
                     <%} %>
-                    <%} %>          
-                	<%if(!isSearch){%>
-                <a href="product_bed_list.jsp?page=<%=finishBlock+1%>">[>]</a>                
+                    <%} %>         
+                    <%if(!isSearch){%>
+                <a href="product_maru.jsp?page=<%=finishBlock+1%>">[>]</a>               
                 <%}else{%>
-                <a href="product_bed_list.jsp?page=<%=finishBlock+1%>&keyword=<%=keyword%>">[>]</a>
+                <a href="product_maru.jsp?page=<%=finishBlock+1%>&keyword=<%=keyword%>">[>]</a>
                 <%} %>
                 </div>
             </article>
