@@ -155,6 +155,12 @@
             
         }
         
-   
-     
+   /*가격안보이게*/
+   .anboim{
+   	display:none;
+   }
+     /*집가고싶다*/
+     .goway{
+     	margin-left:228px;
+     }
     </style>

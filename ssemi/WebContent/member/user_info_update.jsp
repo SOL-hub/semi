@@ -71,7 +71,7 @@
                 
                 
                 <li>
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/buypage/buy_list.jsp">
                         구매내역
                     </a>
                 </li>
@@ -81,7 +81,9 @@
                     </a>
                 </li>
                 <li>
-                	<a href="#"> 견적내역 </a>
+                	<a href=href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 
+                		견적내역 
+                	</a>
                 </li>
             </ul>
         </aside>
