@@ -45,28 +45,49 @@ body{
 .container {
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
  width:50%;
-
  margin:auto;
  text-align: center;
-  padding: 16px;
+  padding: 26px;
   background-color: white;
 }
 
 .bar{
-  width: 100%;
+  width: 50%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 15px 0 15px 25px;
   display: inline-block;
   border: none;
   background: #f1f1f1;
   }
+  
+  .barr {
+  margin: 15px 20px 15px 20px;
+  font-size: 20px;
+    }
+    
+  .barr:hover{
+    text-decoration: underline;
+  }
 
-input[type=text]{
-  width: 100%;
+.barp{
+  width: 70%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 15px 0 15px 25px;
   display: inline-block;
-  border: none;
+  
+  border-radius:5px;
+  background: black;
+  color: white;
+  }
+  
+  
+input[type=text]{
+ border: 3px outset #DDD4CB ;
+  width: 80%;
+  padding: 10px;
+  margin: 22px 0 22px 0;
+  display: inline-block;
+
   background: #f1f1f1;
 }
 
@@ -77,17 +98,18 @@ input[type=text]:focus {
 
 hr {
   border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .registerbtn {
-  background-color: #4CAF50;
+  background-color: #C80A1E;;
   color: white;
-  padding: 16px 20px;
+  padding: 15px;
   margin: 8px 0;
-  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  width: 100%;
+  width: 150px;
   opacity: 0.9;
 }
 
@@ -99,10 +121,23 @@ hr {
 height:200px;
 }
 
+.roww {
+height:20px;
+}
+
 
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+  font-size:15px;
+}
+
+.half {
+  background: linear-gradient(to top, #EAE2E5  40%, transparent 50%);
+}
+
+.halfyellow{
+  background: linear-gradient(to top, #fffb00 40%, transparent 50%);
 }
 
 </style>
@@ -112,55 +147,72 @@ height:200px;
 <div class="rowrow"></div>
 
    <form action="saveliving.do" method="post" >
-  <div class="container">
-    <h1>마루 견적서</h1>
+
+   <div class="container">
     <%
 				if (isLogin) {
 			%>
-    <p><%=mdto.getMember_name()%>님의 견적서 입니다</p><%} else{ %>
-       <p>Guest님의 견적서 입니다</p><%} %>
-    <hr>
-        
-       <label for="title"><b> 가격 </b></label>
-    <h2 class="bar"> <%=pricemin %> ~ <%=priceplus %> 만원 </h2>
+    <p> <b><%=mdto.getMember_name()%>님의 마루 시공 예상 가격 </b> </p> 
+    <hr><%} else{%> 
+      <p>  마루 시공 예상 가격  </p>   <hr>   <%} %>
+
+    <h1 class="barp"> <%=pricemin %> ~ <%=priceplus %> 만원 </h1>
    <input type="hidden" name="living_price" value="<%=realprice%>">
 
     <hr>
-           <%
-				if (isLogin) {
-			%>
-      <label for="title"><b>이 견적서의 제목을 만들어 주세요</b></label>
-    <input type="text" placeholder=" ^.^ㅋ " name="living_title" id="title" > <%} %>
  
-    <label for="type"><b> 시공할 마루 종류 : <span class="bar"><%=type%></span></b></label>
-     <input type ="hidden" name="living_type" value="<%=type %>" id="type"></td>
-     
-         <label for="pattern"><b> 패턴 : <span class="bar"><%=pattern %></span></b></label>
-     <input type ="hidden" name="living_pattern" value="<%=pattern %>" id="pattern"></td>
-     
-         <label for="color"><b> 수종 : <span class="bar"><%=color %></span></b></label>
-     <input type ="hidden" name="living_color" value="<%=color %>" id="color"></td>
-     
-         <label for="brand"><b> 브랜드 : <span class="bar"><%=brand %></span></b></label>
-     <input type ="hidden" name="living_brand" value="<%=brand %>" id="brand"></td>
-     
-  
+      <span class="half"> 마루 종류 :  </span>  <b> <span class="bar"><%=type %></span> </b>
+     <input type ="hidden" name="living_type" value="<%=type%>" >
+     <div class="roww"></div>
     
-    <hr>
-    <p> 뀨 </p>
-
- 	<%
+    	
+      <span class="half"> 패턴 : </span>  <b> <span class="bar"><%=pattern %></span> </b>
+     <input type ="hidden" name="living_pattern" value="<%=pattern%>" >
+     <div class="roww"></div>
+    
+           <span class="half"> 수종 :  </span>  <b><span class="bar"><%=color %></span></b>
+     <input type ="hidden" name="living_color" value="<%=color %>" id="color">
+       <div class="roww"></div>
+       
+        <span class="half">브랜드 : </span>  <b><span class="bar"><%=brand %></span></b>
+     <input type ="hidden" name="living_brand" value="<%=brand %>" id="brand">
+    
+    
+     <div class="roww"></div>
+     
+    
+         <%
 				if (isLogin) {
 			%>
-    <button type="submit" class="registerbtn">저장</button>      <%} %>
-  </div>
+   
+    <hr>
+      <label for="title"> <b>이 견적서의 제목을 만들어 주세요</b> </label>
+    <input type="text" placeholder=" 예) 마루 견적서 " name="living_title" id="title" > 
+    <button type="submit" class="registerbtn">저장</button>     <% }%>
+  </div>  
+  
   
   <div class="container signin">
-    <p>- 재견적하러가깅</p> 
-    <p>- 나의 견적보기</p>
-  </div>
+  <% if(isLogin) {%> 
+  	
+   <span class="barr">  <a href="<%=request.getContextPath()%>/estimate/kit.jsp">재견적하러가기</a> </span>
+  <span class="barr">  <a href="<%=request.getContextPath()%>/estimate/kit-list.jsp">나의견적보기</a></span> <% } else { %>
+   <span class="barr">   <a href="<%=request.getContextPath()%>/estimate/kit.jsp">재견적하러가기</a></span> <%} %>
+   
+ </div> 
+  
 </form>
+<div class="roww"> </div>
+    
+<div align="center">  
+<div class="roww"> </div>
+               <img width="70%"
+               src="<%=request.getContextPath()%>/img/kit.PNG" style="margin-top:-15px"> 
+                     <img width="70%"
+               src="<%=request.getContextPath()%>/img/kit2.PNG" style="margin-top:-15px"> 
+</div>
 </body>
 </html>
 
-   <jsp:include page="/template/footer.jsp"></jsp:include>
+<jsp:include page="/template/footer.jsp"></jsp:include>
+    

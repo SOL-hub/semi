@@ -2,6 +2,8 @@ package home.beans.dto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LivingDto {
 
@@ -85,5 +87,24 @@ public class LivingDto {
 		this.living_member = living_member;
 	} 
 
+	
+	public String getLiving_time() {
+		return living_date.substring(11, 16);
+	}
+	
+	public String getLiving_day() {
+		return living_date.substring(0, 10);
+	}
+	
+	public String getLiving_autotime() {
+
+		String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		if(getLiving_day().equals(today)) {//오늘 작성한 글이라면
+			return getLiving_time();
+		}
+		else {//아니라면
+			return getLiving_day();
+		}
+	}
 	
 }

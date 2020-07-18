@@ -59,7 +59,28 @@ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
   border: none;
   background: #f1f1f1;
   }
+  
+  .barr {
+  margin: 15px 20px 15px 20px;
+  font-size: 20px;
+    }
+    
+  .barr:hover{
+    text-decoration: underline;
+  }
 
+.barp{
+  width: 70%;
+  padding: 15px;
+  margin: 15px 0 15px 25px;
+  display: inline-block;
+  
+  border-radius:5px;
+  background: black;
+  color: white;
+  }
+  
+  
 input[type=text]{
  border: 3px outset #DDD4CB ;
   width: 80%;
@@ -101,18 +122,25 @@ height:200px;
 }
 
 .roww {
-height:5px;
+height:25px;
 }
 
 
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+  font-size:15px;
 }
 
 .half {
   background: linear-gradient(to top, #EAE2E5  40%, transparent 50%);
 }
+
+.halfyellow{
+  background: linear-gradient(to top, #fffb00 40%, transparent 50%);
+}
+
+
 
 </style>
 </head>
@@ -126,40 +154,34 @@ height:5px;
     <%
 				if (isLogin) {
 			%>
-    <p> <img width="30px"
-               src="<%=request.getContextPath()%>/img/pig_logo.png">  <b><%=mdto.getMember_name()%>님의 욕실 예상견적서 입니다 </b> <img width="30px"
-               src="<%=request.getContextPath()%>/img/pig_logo.png"></p> 
+    <p> <b><%=mdto.getMember_name()%>님의 욕실 시공 예상 가격 </b> </p> 
     <hr><%} else{%> 
-      <p> <img width="30px"
-               src="<%=request.getContextPath()%>/img/pig_logo.png">   욕실시공  예상견적서 입니다  <img width="30px"
-               src="<%=request.getContextPath()%>/img/pig_logo.png"></p> 
-    <hr>  <%} %>
-        
-    <label for="title"><b> 예상가격 </b> </label>
-    <h1 class="bar"> <%=pricemin %> ~ <%=priceplus %> 만원 </h1>
+      <p>  <b>욕실 시공 예상 가격 </b> </p>   <hr>   <%} %>
+
+    <h1 class="barp"> <%=pricemin %> ~ <%=priceplus %> 만원 </h1>
    <input type="hidden" name="bath_price" value="<%=realprice%>">
 
     <hr>
    
     <span class="half"> 공용(거실) </span>  <b> <span class="bar"><%=bath_gong %></span> </b>
-     <input type ="hidden" name="bath_cnt" value="<%=bath_gong %>" id="gong"></td>
+     <input type ="hidden" name="bath_cnt" value="<%=bath_gong %>" >
      <div class="roww"></div>
      
         <span class="half"> 소형(안방) </span>  <b>  <span class="bar"><%=bath_sohyung %></span></b>
-     <input type ="hidden" name="bath_cntt" value="<%=bath_sohyung %>" id="gong"></td>
+     <input type ="hidden" name="bath_cntt" value="<%=bath_sohyung %>">
      <div class="roww"></div>
      
          <span class="half"> 욕실 유형 </span>  <b> <span class="bar"><%=tools %></span></b>
-     <input type ="hidden" name="bath_tub" value="<%=tools %>" id="gong"></td>
+     <input type ="hidden" name="bath_tub" value="<%=tools %>" >
      <div class="roww"></div>
      
-     <span class="half"> 타일 시공 </span>  <b> <span class="bar"><%=bigtools %></span></b></label>
-     <input type ="hidden" name="bath_tile" value="<%=bigtools %>" id="gong"></td>
+     <span class="half"> 타일 시공 </span>  <b> <span class="bar"><%=bigtools %></span></b>
+     <input type ="hidden" name="bath_tile" value="<%=bigtools %>" >
      <div class="roww"></div>
      
-       <span class="half"> 추가 옵션 </span>  <b> <span class="bar"> <%for(int i=0; i<chutools.length; i++){out.println(" " + chutools[i]);}%></span></b></label>
-     <input type ="hidden" name="bath_option" value=" <%for(int i=0; i<chutools.length; i++){out.println(" " + chutools[i]);}%>"  id="gong"></td>
-     <div class="roww"></div>
+       <span class="half"> 추가 옵션 </span>  <b> <span class="bar"> <%for(int i=0; i<chutools.length; i++){out.println(" " + chutools[i]);}%></span></b>
+     <input type ="hidden" name="bath_option" value=" <%for(int i=0; i<chutools.length; i++){out.println(" " + chutools[i]);} %>">
+     <div class="roww"> </div>
 
     
          <%
@@ -167,23 +189,33 @@ height:5px;
 			%>
    
     <hr>
-      <label for="title"><img width="15px"
-               src="<%=request.getContextPath()%>/img/heart_none.png"> <b>이 견적서의 제목을 만들어 주세요</b> <img width="15px"
-               src="<%=request.getContextPath()%>/img/heart_none.png"></label>
-    <input type="text" placeholder=" 기억하기 쉬운 이름이 좋겠어요^.^" name="bath_title" id="title" > 
+      <label for="title"> <b>이 견적서의 제목을 만들어 주세요</b> </label>
+    <input type="text" placeholder=" 예) 욕실 견적서 " name="bath_title" id="title" > 
     <button type="submit" class="registerbtn">저장</button>     <% }%>
   </div>  
   
   
   <div class="container signin">
   <% if(isLogin) {%> 
-    <a href="<%=request.getContextPath()%>/estimate/bath.jsp"><p>재견적하러가기</p></a>
-     <a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"><p>나의견적보기</p></a> <% } else { %>
-       <a href="<%=request.getContextPath()%>/estimate/bath.jsp"><p>재견적하러가기</p></a><% } %>
-  </div> 
-  
+  	
+   <span class="barr">  <a href="<%=request.getContextPath()%>/estimate/bath.jsp">재견적하러가기</a> </span>
+  <span class="barr">  <a href="<%=request.getContextPath()%>/estimate/bath-list.jsp">나의견적보기</a></span> <% } else { %>
+    <span class="barr">   <a href="<%=request.getContextPath()%>/estimate/bath.jsp">재견적하러가기</a></span> <%} %>
+   
+ </div> 
+
+    
 </form>
+    <div class="roww"> </div>
+    <div class="roww"> </div>
+<div align="center">
+    <div class="roww"> </div>
+        <div class="roww"> </div>
+               <img width="70%"
+               src="<%=request.getContextPath()%>/img/kit.PNG" style="margin-top:-15px"> 
+                    
+</div>
 </body>
 </html>
 
-   <jsp:include page="/template/footer.jsp"></jsp:include>
+<jsp:include page="/template/footer.jsp"></jsp:include>
