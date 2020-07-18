@@ -10,7 +10,7 @@
 
 </script>
 </head>
-<form action="item_write.do" method="post">
+<form action="item_write.do" method="post" enctype="multipart/form-data">
 <%if(request.getParameter("item_no") != null){ %>
 <input type="hidden" name="item_no" value="<%=request.getParameter("item_no")%>">
 <%} %>
@@ -64,7 +64,7 @@
 			</tr>
 			<tr>
 			<th>상품이미지</th>
-				<td><input type="file" name="item_image" multiple accept=".jpg, .png, .gif"></td>
+				<td><input type="file" name="item_file" multiple accept=".jpg, .png, .gif"></td>
 			</tr>
 			<tr>
 			<th>상품설명</th>

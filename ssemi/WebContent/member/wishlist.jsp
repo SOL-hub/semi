@@ -1,3 +1,5 @@
+<%@page import="home.beans.dto.ItemFileDto"%>
+<%@page import="home.beans.dao.ItemFileDao"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="home.beans.dto.WishDto"%>
 <%@page import="home.beans.dao.WishDao"%>
@@ -87,38 +89,32 @@
 		}
 	}
 	
-	function button_event(){
-		
-		var result2="";
-		
-		   //선택된것 갯수 체크
-		   for (i=0; i<document.select_check.wish_no.length; i++ ){
-		    if (document.select_check.wish_no[i].checked==true){
-		      
-		    	result2 += select_check.wish_no[i].value+"\n";
+	 function button_event(){												
 
-		     }
-		   } 
-		   //체크박스 선택개수가 3보다 크면
-		   if (result2 == ""){
-		    //경고문을 띄우고
-		    alert("상품을 한개이상 선택하세요");
-		    return false;
-		    }
-		   
-			 else{
+		 var wish_no = document.getElementsByName("wish_no");
+			var count = 0;
+			for(var i=0;i<wish_no.length;i++){
+			    if(wish_no[i].checked == true){
+			        count++;
+			    }
+			}
+			if(count<=0){
+			    alert("상품을 선택하세요");
+			    return false;
+			}
+			else{
 				 var result = confirm("선택하신 상품을 삭제하시겠습니까??");
 			   if (!result){ 
-//		             document.form.submit();
+//				             document.form.submit();
 		        	return false;
 		        }
 		        else{  
 
-//		             return;
+//				             return;
 		            document.form.submit();
 		        	}
 		        }
-		  	 }
+		 }
 </script>
 
 	<div class="img-wrap">
@@ -164,11 +160,13 @@
 									</tr>
 								</thead>
 								
-								<%
+								<%if(list.size() != 0){
 									for (WishDto wdto : list) {
 
 										ItemDao idao = new ItemDao();
 										ItemDto idto = idao.item_get(wdto.getWish_item_name());
+										ItemFileDao ifdao = new ItemFileDao();
+										List<ItemFileDto> file_list = ifdao.getList(idto.getItem_no());
 								%>
 								<tbody>
 									<tr style="height: 90px; background-color: #fff;">
@@ -177,17 +175,29 @@
 											<input type="checkbox" name="wish_no"
 											value="<%=wdto.getWish_no()%>">
 										</td>
-										<td style="border-left: none; border-right: none;"><%=idto.getItem_name()%><img
-											style="width: 80%;" src="/img/의자.png"></td>
+										<td style="border-left: none; border-right: none;"><%=idto.getItem_name()%><br>
+										<%for(ItemFileDto ifdto : file_list){%>
+											<img src="download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100px" height="100px">
+							
+										<%} %>
+										</td>
 
 										<td
-											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=idto.getItem_info()%></td>
-										<td><span style="padding-left: 10px;"><%=formatter.format(idto.getItem_price())%></span>원</td>
+											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=idto.getItem_info()%>
+										</td>
+										<td>
+											<span style="padding-left: 10px;"><%=formatter.format(idto.getItem_price())%></span>원
+										</td>
 									</tr>
 								</tbody>
 								<%
 									}
-								%>													
+								}else{
+								%>	
+								<tr>
+								<td colspan="4" class="cart_content" style="background-color: white; height: 90px;">등록한 상품이 없습니다.</td>
+								</tr>
+								<%} %>												
 							</table>
 							</form>
 						</div>

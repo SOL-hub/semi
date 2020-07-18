@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import home.beans.dao.ItemDao;
 import home.beans.dto.ItemDto;
 
-@WebServlet(urlPatterns="/shop/item_write.do")
+//@WebServlet(urlPatterns="/shop/item_write.do")
 public class ItemWriteServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
