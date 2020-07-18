@@ -286,6 +286,8 @@ padding-top:5px;
 		} else {
 			list = qdao.getList2(start, finish);
 		}
+
+		MemberDto mdto =(MemberDto) session.getAttribute("userinfo");
 %>
 
 <body>
@@ -295,14 +297,14 @@ padding-top:5px;
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
 					<p class="qna"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
-					<p class="delivery"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
+					<p class="delivery"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">공지사항</a></p>
 					<p class="cs_row"><a href="<%=request.getContextPath()%>/event/event.jsp">이벤트</a></p>
 				</div>
 
 				<p class="title">
-					<b>배송문의</b>
+					<b>공지사항</b>
 				</p>
-				<p class="title_content" style="font-size:18px">배송에 대해 궁금한 사항을 문의하세요</p>
+				<p class="title_content" style="font-size:18px">HOU U DOIN 이용에 참고하세요</p>
 			</div>
 
 
@@ -329,30 +331,18 @@ padding-top:5px;
 						// qna작성자를 표기하고 싶다면 회원 정보 필요
 						
 						MemberDao mdao = new MemberDao();
-						MemberDto mdto = mdao.get(qmdto2.getQna_writer()); // qna_no로 회원아이디 조회
+						MemberDto mdto2 = mdao.get(qmdto2.getQna_writer()); // qna_no로 회원아이디 조회
 					
 					%>
 						<tr>
 							<td class="qna_box_content"><%=qmdto2.getQna_no() %></td>
 							<td class="qna_box_content">
-							
-												<!-- 
-						답글은 띄어쓰기 구현
-						- 답글인 경우는 super_no > 0 , depth > 0 
-					-->
-					<%if(qmdto2.getDepth() > 0){ %>
-						<%for(int i=0; i < qmdto2.getDepth(); i++){ %>
-							&emsp;
-						<%} %>
-						<img src="<%=request.getContextPath()%>/img/reply.png" width="20" height="15">
-					<%} %>
+					
 						<a href="Qna_content.jsp?qna_no=<%=qmdto2.getQna_no()%>"><%=qmdto2.getQna_title() %>
 						</a></td>
-												<%if(mdto.getMember_id()!=null) { %>
-							<td class="qna_box_content"><%=mdto.getMember_id()%></td>
-							<%} else { %>
-							<font color="grey">Undefined User</font>
-						<%} %>
+								
+							<td class="qna_box_content">관리자</td>
+	
 
 							<td class="qna_box_content"><%=qmdto2.getQna_autotime() %></td> <!-- 컴퓨터에서 Qna_date()로 확인하기 -->
 						</tr>
@@ -360,12 +350,14 @@ padding-top:5px;
 					</tbody>
 
 				</table>
+				<%if(mdto.getMember_auth().equals("관리자")) {%>
 				<div>
 						<span colspan="8" align="right" >
 						<a href="Qna_write2.jsp"> <input type="button" value="WRITE"  class="write_button">
 							</a>
 						</span>
 				</div>
+				<%} %>
 
 
 				<!-- 검색창 -->

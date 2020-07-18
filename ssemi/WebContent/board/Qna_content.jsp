@@ -307,9 +307,16 @@ String go = request.getParameter("go");
 
 				<div class="button_box">				
 				<%if(isAdmin || isMine)  {%>
+					<%if(isAdmin) {%>
+					<a href="Qna_edit2.jsp?qna_no=<%=qna_no%>">
+					<input class="button"  type="button" value="EDIT">
+					</a>			
+					<%} else { %>		
 					<a href="Qna_edit.jsp?qna_no=<%=qna_no%>">
 					<input class="button"  type="button" value="EDIT">
 					</a>
+					
+					<%} %>
 
 					<a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=<%=request.getContextPath()%>/board/Qna_delete.do?qna_no=<%=qna_no%>">
 					<input class="button"  type="button" value="DELETE">

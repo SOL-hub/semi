@@ -41,7 +41,7 @@ public class QnaDao {
 		String sql = "SELECT * FROM("
 				+ "SELECT  ROWNUM rn, T.* FROM("
 				+ "SELECT q.*, m.MEMBER_NO, m.MEMBER_ID "
-				+ "FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no and q.QNA_TITLE = '상품문의' CONNECT BY PRIOR qna_no=super_no "
+				+ "FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no and q.QNA_TITLE = '상품문의'  CONNECT BY PRIOR qna_no=super_no "
 				+ "START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC"
 				+ ")T"
 				+ " ) WHERE rn BETWEEN ? and ?";			
@@ -65,7 +65,7 @@ public class QnaDao {
 		Connection con = getConnection();
 
 		String sql = "SELECT * FROM(SELECT  ROWNUM rn, T.* FROM(SELECT q.*, m.MEMBER_NO, m.MEMBER_ID "
-				+ "FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no and q.QNA_TITLE = '배송문의' CONNECT BY PRIOR qna_no=super_no "
+				+ "FROM qna q INNER JOIN MEMBER m ON q.QNA_WRITER = m.MEMBER_no and q.QNA_TITLE ='공지사항' CONNECT BY PRIOR qna_no=super_no "
 				+ "START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, qna_no ASC)T ) WHERE rn BETWEEN ? and ?";			
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, start);

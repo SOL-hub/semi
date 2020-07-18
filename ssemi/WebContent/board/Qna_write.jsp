@@ -5,41 +5,34 @@
     pageEncoding="UTF-8"%>
     
     <%
-
-		MemberDto mdto =(MemberDto) session.getAttribute("userinfo");
-    QnaDto qdto = new QnaDto();
-    // 관리자일때
-    boolean isAdmin = mdto.getMember_auth().equals("관리자");
-    // 일반회원일때
-    int member_no = mdto.getMember_no();
-    boolean isMine = member_no == qdto.getQna_writer();
+      MemberDto mdto =(MemberDto) session.getAttribute("userinfo");
     %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 <link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+   rel="stylesheet">
 
  <style>
  * {
-	box-sizing: border-box;
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Noto Sans KR', sans-serif;
-	letter-spacing: -1.5px;
+   box-sizing: border-box;
+   margin: 0px;
+   padding: 0px;
+   font-family: 'Noto Sans KR', sans-serif;
+   letter-spacing: -1.5px;
 }
  /* 전체 제목 */
  .container {
 padding-top:150px;
 }
 .writer_title {
-	text-align: center;
-	font-size: 20px;
-	color:#333333
-	padding: 15px 0 14px 0;
+   text-align: center;
+   font-size: 20px;
+   color:#333333
+   padding: 15px 0 14px 0;
     border-right: 0;
     border-left: 0;
-	}
+   }
 
 .row {
 font-size:13px;
@@ -92,56 +85,53 @@ padding: 15px 0 14px 0;
 </style>
 
 <div align="center" class="container">
-	<span class="write_title">상품문의</span>
-	<form class="write_box" action="QnaWrite.do" method="post"  enctype="multipart/form-data">
-	
-		<!-- 회원번호 히든으로 넘기기 -->
-	<input type="hidden" value="<%=mdto.getMember_no() %>" name="member_no">
-		
-		
-		<!-- 원본 글 번호가 넘어온다면 (즉, 답글이라면) 원본글번호를 hidden으로 첨부 -->
-		<%if(request.getParameter("qna_no")!=null) {%>
-		<input type="hidden" name="qna_no" value="<%=request.getParameter("qna_no")%>">
-		<%} %>
+   <span class="write_title">상품문의</span>
+   <form class="write_box" action="QnaWrite.do" method="post"  enctype="multipart/form-data">
+   
+      <!-- 회원번호 히든으로 넘기기 -->
+   <input type="hidden" value="<%=mdto.getMember_no() %>" name="member_no">
+      
+      
+      <!-- 원본 글 번호가 넘어온다면 (즉, 답글이라면) 원본글번호를 hidden으로 첨부 -->
+      <%if(request.getParameter("qna_no")!=null) {%>
+      <input type="hidden" name="qna_no" value="<%=request.getParameter("qna_no")%>">
+      <%} %>
 
-		<table class="write_table">
-			<tbody>
+      <table class="write_table">
+         <tbody>
 
-				<tr>
-						<th class="row">SUBJECT</th>
-						<td class="select_subject">
-							<select  name="qna_title"  required>
-								<%if(!isAdmin)  {%>
-							<option value="상품문의">상품문의</option>
-							<%} else {%>
-								<option value="답변입니다">답변입니다</option>
-								<%} %>
-							</select>
-						</td>
-				</tr>
-				<tr>
-						<th class="row">CONTENT</th>
-						<td><textarea name="qna_content" cols="70" rows="15" required class="textarea">					
-						
-						</textarea></td>
-				</tr>
-				
-				<!--  첨부파일  -->
-				<tr>
-					<th class="row">FILE</th>
-					<td>
-						<input type="file" name="qna_file" multiple accept=".jpg,.png,.gif"  class="row_file">
-					</td>
-				</tr>
-				
-				</tbody>
-			</table>
-			<div style="padding-top:15px;">
-			<input type="submit" value="OK" class="button">
-			<a href="Qna_list.jsp"><input type="button" value="CANCEL" class="button"></a>		
-			</div>
-		</form>
+            <tr>
+                  <th class="row">SUBJECT</th>
+                  <td class="select_subject"><select  name="qna_title"   required>
+                  <option value="상품문의">상품문의</option>
+                  <%if(mdto.getMember_auth().equals("관리자")){ %>
+                  	<option value="답변입니다">답변입니다</option>	
+                  <%} %>
+                  </select>
+                  </td>
+            </tr>
+            <tr>
+                  <th class="row">CONTENT</th>
+                  <td><textarea name="qna_content" cols="70" rows="15" required class="textarea"></textarea></td>
+            </tr>
+            
+            <!--  첨부파일  -->
+            <tr>
+               <th class="row">FILE</th>
+               <td>
+                  <input type="file" name="qna_file" multiple accept=".jpg,.png,.gif"  class="row_file">
+               </td>
+            </tr>
+            
+            </tbody>
+         </table>
+         <div style="padding-top:15px;">
+         <input type="submit" value="OK" class="button">
+         <a href="Qna_list2.jsp"><input type="button" value="CANCEL" class="button"></a>      
+         </div>
+      </form>
 </div>
 </html>
 <jsp:include page="/template/footer.jsp"></jsp:include>
+
     
