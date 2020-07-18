@@ -1,3 +1,5 @@
+<%@page import="home.beans.dto.ItemFileDto"%>
+<%@page import="home.beans.dao.ItemFileDao"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="home.beans.dto.CartDto"%>
@@ -95,28 +97,20 @@
 				}
 				
 				function check_item_checkbox() {
-					   var result="";
-					   //선택된것 갯수 체크
-					   for (i=0; i<document.select_check.cart_no.length; i++ )
-					   {
-					    if (document.select_check.cart_no[i].checked==true)
-					     {
-					      result += select_check.cart_no[i].value+"\n";
 
-					      
-					     }
-					   } 
-					   //체크박스 선택개수가 3보다 크면
-					   if (result=="")
-					   {
-					    //경고문을 띄우고
-					    alert("상품을 한개이상 선택하세요");
-					    return false;
+		
+					var cart_no = document.getElementsByName("cart_no");
+					var count = 0;
+					for(var i=0;i<cart_no.length;i++){
+					    if(cart_no[i].checked == true){
+					        count++;
 					    }
-					   else{
-						   document.form.submit();
-					  	 }
-					   }
+					}
+					if(count<=0){
+					    alert("상품을 선택하세요");
+					    return false;
+					}
+			}
 					  
 
 		
@@ -142,39 +136,32 @@
 					
 					
 					
-				 function button_event(){
-						
-						
-						var result2="";
-						
-						   //선택된것 갯수 체크
-						   for (i=0; i<document.select_check.cart_no.length; i++ ){
-						    if (document.select_check.cart_no[i].checked==true){
-						      
-						    	result2 += select_check.cart_no[i].value+"\n";
+				 function button_event(){												
 
-						     }
-						   } 
-						   //체크박스 선택개수가 3보다 크면
-						   if (result2 == ""){
-						    //경고문을 띄우고
-						    alert("상품을 한개이상 선택하세요");
-						    return false;
+					 var cart_no = document.getElementsByName("cart_no");
+						var count = 0;
+						for(var i=0;i<cart_no.length;i++){
+						    if(cart_no[i].checked == true){
+						        count++;
 						    }
-						   
-							 else{
-								 var result = confirm("선택하신 상품을 삭제하시겠습니까??");
-							   if (!result){ 
-//						             document.form.submit();
-						        	return false;
-						        }
-						        else{  
+						}
+						if(count<=0){
+						    alert("상품을 선택하세요");
+						    return false;
+						}
+						else{
+							 var result = confirm("선택하신 상품을 삭제하시겠습니까??");
+						   if (!result){ 
+// 						             document.form.submit();
+					        	return false;
+					        }
+					        else{  
 
-//						             return;
-						            document.form.submit();
-						        	}
-						        }
-						  	 }
+// 						             return;
+					            document.form.submit();
+					        	}
+					        }
+					 }
 						   
 						
 				        
@@ -203,7 +190,7 @@
 						<%--상품정보 테이블--%>
 
 						<div>
-							<form method="get" name="select_check">
+							<form method="get">
 							<table class="calculation1">
 								<thead>
 									<tr>
@@ -239,7 +226,9 @@
 										// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출
 										ItemDao idao = new ItemDao();
 										ItemDto itemName = idao.item_get(cdto.getCart_item_name());
-					
+										ItemFileDao ifdao = new ItemFileDao();
+										List<ItemFileDto> file_list = ifdao.getList(itemName.getItem_no());
+										
 										int item_cnt_change_price = itemName.getItem_price() * cdto.getCart_cnt();
 										
 										 total_price += item_cnt_change_price;
@@ -251,9 +240,11 @@
 											style="text-align: left; text-align: center; border-right: none; width: 3%">
 											<input type="checkbox" name="cart_no" value="<%=cdto.getCart_no()%>">
 										</td>
-										<td style="border-left: none; border-right: none;"><%=itemName.getItem_name()%><img
-											style="width: 80%;" src="/img/의자.png"></td>
-
+										<td style="border-left: none; border-right: none;"><%=itemName.getItem_name()%><br>
+										<%for(ItemFileDto ifdto : file_list){%>
+											<img src="download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100px" height="100px">
+							
+										<%} %>
 										<td
 											style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;"><%=itemName.getItem_info()%></td>
 
