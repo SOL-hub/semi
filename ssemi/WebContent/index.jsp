@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 
 
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
-	rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/main.css">
-	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+   href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+   rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/main.css">
+   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-	
-	<style>
-	    * {
+   
+   <style>
+       * {
         box-sizing: border-box;
         margin: 0px;
         padding: 0px;
@@ -52,14 +52,14 @@
         }
         
         .main_img {
-        	width:100%;
+           width:100%;
         
-        	margin-top:100px;
+           margin-top:100px;
         }
         
     
 
-	.swiper-pagination > .swiper-pagination-bullet {
+   .swiper-pagination > .swiper-pagination-bullet {
     opacity: 1;
     border: white solid 1px;
     background-color: transparent;
@@ -70,18 +70,18 @@
 }
 
 .imgdiv-wrap{
-	margin-left: 250px;
-	width:467px; height: 570px;
-	display:inline;
-	
+   margin-left: 250px;
+   width:467px; height: 570px;
+   display:inline;
+   
 }
 
 
 .maindiv{
-	
-	display:inline-block; 
-	overflow:hidden;
-	
+   
+   display:inline-block; 
+   overflow:hidden;
+   
 
 }
 
@@ -92,11 +92,11 @@
 
 
 transform: scale(1.0);
-	transition: all 0.5s linear;
-	
+   transition: all 0.5s linear;
+   
 }
 
-.maindiv a img:hover {	
+.maindiv a img:hover {   
 transform: scale(1.1);
 -webkit-transform: scale(1.1);
 
@@ -104,15 +104,15 @@ transform: scale(1.1);
 }
 
 #a-img{
-	margin-left:10px;
-	margin-right:10px;
+   margin-left:10px;
+   margin-right:10px;
 }
 
 
-	
-	</style>
-	
-	    <script>
+   
+   </style>
+   
+       <script>
         // 창의 로딩이 완료되었을 때 실행할 코드를 예약 
         window.onload = function() {
             // swiper 관련 코드를 이곳에 작성
@@ -154,10 +154,10 @@ transform: scale(1.1);
         }
     </script>
 <article class="w-100">
-	<div class="row">
-		<h2 class="center"></h2>
-	</div>
-	<div class="row center">
+   <div class="row">
+      <h2 class="center"></h2>
+   </div>
+   <div class="row center">
 
 
     <!-- 이미지 슬라이더 영역 -->
@@ -181,25 +181,27 @@ transform: scale(1.1);
 
     </div>
 
-	</div>
+   </div>
 </article>
 
 
 <div class ="imgdiv-wrap">
 <div class="maindiv">    
-	<a href="<%=request.getContextPath()%>/event/event.jsp"><img src="<%=request.getContextPath()%>/img/event.PNG" ></a>
-	</div>
-	<div class="maindiv">
-	<a href="<%=request.getContextPath()%>/shop/alist.jsp" id="a-img"><img src="<%=request.getContextPath()%>/img/liftstyle.PNG"  ></a>
-	</div>
-	<div class="maindiv">
-	<a href="<%=request.getContextPath()%>/"><img src="<%=request.getContextPath()%>/img/review.PNG"></a>
-	</div>
+   <a href="<%=request.getContextPath()%>/event/event.jsp"><img src="<%=request.getContextPath()%>/img/event.PNG" ></a>
+   </div>
+   <div class="maindiv">
+   <a href="<%=request.getContextPath()%>/shop/alist.jsp" id="a-img"><img src="<%=request.getContextPath()%>/img/liftstyle.PNG"  ></a>
+   </div>
+   <div class="maindiv">
+   <a href="<%=request.getContextPath()%>/"><img src="<%=request.getContextPath()%>/img/review.PNG"></a>
+   </div>
 </div>
 
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
+
+
 
 
 

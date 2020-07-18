@@ -11,8 +11,7 @@
     <ul class="footer_inner">
 
         <!-- 위 footer -->
-        <li>
-            <div class="footer_inner_separator_line"></div>
+
           
         
             <ul class="footer_inner_box">
@@ -24,13 +23,13 @@
                         <li class="info_title">ABOUT</li>
                         <li class="info_title">회사소개</li>
                         <li class="info_title">매장안내</li>
-                        <li class="info_title">인재채용</li>
+                        <li class="info_title"><a href="https://www.saramin.co.kr/zf_user/">인재채용</a></li>
                     </ul>
                 </li>
                 <li class="footer_inner_item">
                     <ul id="footer1">
                         <li class="info_title">SUPPORT</li>
-                        <li class="info_title"><a href=<%=request.getContextPath()%>/board/cs.jsp>고객센터</a></li>
+                        <li class="info_title"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
                     </ul>
                 </li>
 
