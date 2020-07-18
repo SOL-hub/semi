@@ -46,7 +46,7 @@ MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
 <main>
 <article>
     
- <div align="center">
+ <div align="center" style="padding-top: 100px;">
  
     <h2>작성글 상세보기</h2>
     

@@ -12,8 +12,51 @@
 	<link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
-	<div style=padding-top:150px;>
+	
+	
+	       <!-- <script>
+   
+        function check(){
+            
+            
+          var ok = document.querySelector(".modal-wrap on");
+           ok.classList.remove("on");
+           location.href = "<%=request.getContextPath()%>/member/user_out.jsp";
+           
+          ok.classList.add("on");
+           
+        }
+            
+    </script>-->
+
+	
+	
+	
+	<div style=padding-top:50px;>
 	 <main>
+	
+	 
+	 
+	 <!--  모달의 시작 -->
+ 
+    <!-- <div class="modal-wrap on">
+        <div class="modal">
+        <h2>고객님, 정말로
+        <br>탈퇴하시겠습니까?</h2>
+        
+        확인버튼을 누르시면 탈퇴와 함께
+        <br>그동안 적립한 포인트를 잃게 됩니다.
+        <br><br>
+         <button onclick="check();">확인</button>
+       
+       
+        <!--<input type="submit"  value="확인" class="확인" onclick="check();">-->
+       <!--<input class="login-submit" type="submit" value="확인">-->
+            
+            <!-- </div></div>-->
+<!--  모달의 끝-->
+
+
     <form action="check_pw.do" method="post">
       
             <div class="find-wrap">

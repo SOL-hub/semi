@@ -53,7 +53,7 @@ else{
 
 
 <link rel=stylesheet type="text/css"
-   href="<%=request.getContextPath()%>/css/login.css">
+   href="<%=request.getContextPath()%>/css/event_event1.css">
 
 <link
    href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
@@ -61,36 +61,37 @@ else{
 
 
 <!--<form action="event1.do" method="post">-->
-<body class="Body">
+
+<body>
+
    <!--<div class="img-wrap">-->
 
       <main>
          <article>
 
 
-            <div style="padding-top: 150px;" align="center">
+            <div style="padding-top: 100px;" align="center">
                <h1 style="font-size: 50px;">EVENT</h1>
                <br>
                <h1 style="font-size: 45px;">
-                  여름상품여기 다있다.<br>종합세트 선착순10명 할인 판매실시!
+                  여름상품여기 다있다.<br>종합세트 선착순10명 할인 판매실시
                </h1>
-               <h6 style="font-width: bold font-size:38pt;">2020-07-12 ~
-                  2020-08-31</h6>
-               <br> <br>
+             <h1 style=font-width:bold;
+                       >2020-07-21(화) 10시 START</h1>
+               
               
                <br> <br> 곧 여름도 다가오는데 언제다 이거사고 저거사? 여름에 필요한 거 여기 다 있어! <br>
                선착순 10명에게만 여름에 사려했던 제품이 무엇인지, 어떤 것을 갖고 싶으신지와 그 이유를 적어주시면 <br>선착순으로
                내용을 달아주신 고객님께 제품을 세트로 할인판매하는 이벤트를 진행하고 있습니다. <br>골라서 세트할인으로
                즐거운 쇼핑하세요.</div> 
                
-               <br> <br>
-               <br> <br>
                <br> 
+               <br> <br> 
                
                <hr class="hr-twolow">
                <!--제품관련 스타일-->
 
-               <h3 style="text-align: left" font-size=38pt;>이밴트 진행 소개</h3>
+               <h3 style="text-align: left" font-size=55pt;>>이벤트 진행 소개</h3>
 
 
                <!-- 여기부터 이벤트 소개 시작 -->
@@ -103,26 +104,24 @@ else{
                         골라서 세트할인으로 즐거운 쇼핑하세요.
                      </h6>
 
-                     <h6 style= font-width:bold;>2020-07-12 ~ 2020-08-31</h6>
-                    
+                      
           
-                     
                      <!-- 선착순 이벤트 게시판  -->
 
-                     <table border="1" width="90%">
+                     <table class= "table" border="1" width="80%">
                      
                       <form action="event_event1.jsp" method="get">
                       
-                       <div class= "eventtable">
-                     <h2>선착순 게시판</h2>
+                       <div class= "table-ssideopen">
+                     <h1>선착순 게시판</h1>
                        
-                        <thead>
+                        <thead style= background-color: #3333;">
                            <tr>
-                              <th>번호</th>
-                              <th width="40%">제목</th>
+                              <th width="5%" >번호</th>
+                              <th width="50%"> 제목</th>
                               <th>작성자</th>
-                              <th>작성일</th>
-                              <th>조회수</th>
+                              <th width="20%">작성일</th>
+                              <th idth="5%">비고</th>
                            </tr>
                         </thead>
                         
@@ -159,6 +158,7 @@ else{
                        <tr>
                        <td colspan="5" align ="right">
                        <a href="event1_writer.jsp">
+   <!-- style = text-align: "center";-->
                        <input type ="button" value="글쓰기"></a>
                        </tr> 
                         </form>
@@ -172,21 +172,19 @@ else{
                          
                         <!-- 검색창 -->
 
-
-<br>
  <br>
  <!-- 검색불류 -->
- <select name= "type">
+ <!--  <select name= "type">
  <option>제목만</option>
  <option>글 작성자</option>
  </select>
  
 
  <!-- 검색어 -->
- <input type ="text" name="keyword" required>
+ <!--<input type ="text" name="keyword" required>
  
  <!-- 전송버튼 -->
- <input type ="submit" value="검색">
+<!-- <input type ="submit" value="검색">-->
 
  
  
@@ -202,7 +200,9 @@ else{
    
                        </article>
                        </main>
+                       <script src="js/jquery-3.1.1.js"></script>
+<script src="js/bootstrap.js"></script>
                        </body>
-                       
+                       </html>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

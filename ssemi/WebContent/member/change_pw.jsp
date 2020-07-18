@@ -23,7 +23,7 @@ session.removeAttribute("member_pw");
 
 <input class="form-change-pw" type="password" name="member_pw" placeholder="비밀번호입력" required> 
 <input class="form-change-pw" type="password" name="member_pw" placeholder="비밀번호확인" required>
-			<br>
+			<br><br>
 			</div>
 
 
