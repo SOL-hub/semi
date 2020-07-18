@@ -204,11 +204,11 @@ margin: 20px 0 20px 0;
 
  	 <div class="row-emptyy"></div>
 <img width="60%"
-               src="<%=request.getContextPath()%>/img/shoo.PNG" style="margin-top:-15px"> 
+               src="<%=request.getContextPath()%>/image/shoo.PNG" style="margin-top:-15px"> 
                <img width="60%"
-               src="<%=request.getContextPath()%>/img/kit.PNG" style="margin-top:-15px"> 
+               src="<%=request.getContextPath()%>/image/kit.PNG" style="margin-top:-15px"> 
                      <img width="60%"
-               src="<%=request.getContextPath()%>/img/kit2.PNG" style="margin-top:-15px"> 
+               src="<%=request.getContextPath()%>/image/kit2.PNG" style="margin-top:-15px"> 
 
 </body>
 

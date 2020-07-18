@@ -328,23 +328,23 @@ var d = document.querySelector("input[name=brand]:checked").getAttribute("data-p
 						<p ><span class="half"> 시공할 마루 종류를 선택해주세요 </span></p>
 						<input class="checkbox-tools" type="radio" data-price="200000" name="type" checked id="type-1" value="강마루" >
 						<label class="for-checkbox-tools" for="type-1"> <img width="100%"
-               src="<%=request.getContextPath()%>/img/maruu.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/maruu.PNG" style="margin-bottom:10px;">	
 							강마루
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="300000" name="type" id="type-2" value="원목마루">
 						<label class="for-checkbox-tools" for="type-2"><img width="100%"
-               src="<%=request.getContextPath()%>/img/maruu.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/maruu.PNG" style="margin-bottom:10px;">	
 							원목마루
 						</label><!--
 						--><input class="checkbox-tools" value="강화마루" data-price="400000" type="radio" name="type" id="type-3">
 						<label class="for-checkbox-tools" for="type-3"><img width="100%"
-               src="<%=request.getContextPath()%>/img/maruu.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/maruu.PNG" style="margin-bottom:10px;">	
 						강화마루
 						</label><!--
 						--><input class="checkbox-tools" value="온돌마루" data-price="500000" type="radio" name="type" id="type-4">
 						<label class="for-checkbox-tools" for="type-4"><img width="100%"
-               src="<%=request.getContextPath()%>/img/maruu.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/maruu.PNG" style="margin-bottom:10px;">	
 						온돌마루
 						</label> <div class="row-emptyy"></div>
   
