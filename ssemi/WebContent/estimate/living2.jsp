@@ -207,9 +207,9 @@ height:20px;
 <div align="center">  
 <div class="roww"> </div>
                <img width="70%"
-               src="<%=request.getContextPath()%>/img/kit.PNG" style="margin-top:-15px"> 
+               src="<%=request.getContextPath()%>/image/kit.PNG" style="margin-top:-15px"> 
                      <img width="70%"
-               src="<%=request.getContextPath()%>/img/kit2.PNG" style="margin-top:-15px"> 
+               src="<%=request.getContextPath()%>/image/kit2.PNG" style="margin-top:-15px"> 
 </div>
 </body>
 </html>

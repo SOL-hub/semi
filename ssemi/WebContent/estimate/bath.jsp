@@ -398,19 +398,19 @@ for(var i=0; i < edata.length; i++){
   	<input class="checkbox-tools" type="radio" data-price="500000" name="tools" checked id="tools-1" value="욕조형" >
 						<label class="for-checkbox-tools" for="tools-1">
 						       <img width="100%"
-               src="<%=request.getContextPath()%>/img/exex.PNG" style="margin-bottom:10px;"> 
+               src="<%=request.getContextPath()%>/image/exex.PNG" style="margin-bottom:10px;"> 
 							욕조형
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="400000" name="tools" id="tools-2" value="샤워부스형">
 						<label class="for-checkbox-tools" for="tools-2">  <img width="100%"
-               src="<%=request.getContextPath()%>/img/exex2.PNG" style="margin-bottom:10px;"> 
+               src="<%=request.getContextPath()%>/image/exex2.PNG" style="margin-bottom:10px;"> 
 							샤워부스형
 						</label><!--
 						--><input class="checkbox-tools" value="파우더형" data-price="800000" type="radio" name="tools" id="tools-3">
 						<label class="for-checkbox-tools" for="tools-3">
 						  <img width="100%"
-               src="<%=request.getContextPath()%>/img/exex3.PNG" style="margin-bottom:10px;"> 
+               src="<%=request.getContextPath()%>/image/exex3.PNG" style="margin-bottom:10px;"> 
 						파우더형
 						</label>
 							
@@ -440,32 +440,32 @@ for(var i=0; i < edata.length; i++){
 						<input class="checkbox-tools" value="젠다이" data-price="250000" type="checkbox" name="chutools" id="chutools-1" checked >
 						<label class="for-checkbox-tools" for="chutools-1">
 						  <img width="100%"
-               src="<%=request.getContextPath()%>/img/exex5.PNG" style="margin-bottom:10px;"> 
+               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;"> 
 					<span class="text">젠다이</span>
 						</label>
                         <!--
 						--><input class="checkbox-tools" value="거울수납장" data-price="150000" type="checkbox" name="chutools" id="chutools-2">
 						<label class="for-checkbox-tools" for="chutools-2">		
 												  <img width="100%"
-               src="<%=request.getContextPath()%>/img/exex5.PNG" style="margin-bottom:10px;">					
+               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;">					
 							<span class="text">거울수납장</span>
 						</label><!--
 						--><input class="checkbox-tools" value="선반" data-price="100000" type="checkbox" name="chutools" id="chutools-3">
 						<label class="for-checkbox-tools" for="chutools-3">		
 												  <img width="100%"
-               src="<%=request.getContextPath()%>/img/exex5.PNG" style="margin-bottom:10px;">					
+               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;">					
 							<span class="text">선반</span>
 						</label><!--
 						--><input class="checkbox-tools" value="비데" data-price="300000" type="checkbox" name="chutools" id="chutools-4">
 						<label class="for-checkbox-tools" for="chutools-4">		
 												  <img width="100%"
-               src="<%=request.getContextPath()%>/img/exex5.PNG" style="margin-bottom:10px;">					
+               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;">					
 							<span class="text">비데</span>
 						</label><!--
 						--><input class="checkbox-tools" value="환풍기" data-price="400000" type="checkbox" name="chutools" id="chutools-5">
 						<label class="for-checkbox-tools" for="chutools-5">			
 												  <img width="100%"
-               src="<%=request.getContextPath()%>/img/exex5.PNG" style="margin-bottom:10px;">				
+               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;">				
 					<span class="text">환풍기</span>
 						</label>
 					

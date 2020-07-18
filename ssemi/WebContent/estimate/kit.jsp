@@ -335,18 +335,18 @@ for(var i=0; i < fa.length; i++){
 						<p><span class="half"> 어떤 형태의 싱크대를 시공하실 생각이세요?</span></p>
 						<input class="checkbox-tools" type="radio" data-price="1600000" name="shape" checked id="shape-1" value="ㅡ형" >
 						<label class="for-checkbox-tools" for="shape-1">		  <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit3.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/kit3.PNG" style="margin-bottom:10px;">	
 							ㅡ형
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="1800000" name="shape" id="shape-2" value="ㄱ형">
 						<label class="for-checkbox-tools" for="shape-2">	  <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit3.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/kit3.PNG" style="margin-bottom:10px;">	
 							ㄱ형
 						</label><!--
 						--><input class="checkbox-tools" value="ㄷ형" data-price="2000000" type="radio" name="shape" id="shape-3">
 						<label class="for-checkbox-tools" for="shape-3">	  <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit3.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/kit3.PNG" style="margin-bottom:10px;">	
 						ㄷ형
 						</label>
 								       <div class="row-emptyy"></div>
@@ -375,13 +375,13 @@ for(var i=0; i < fa.length; i++){
 					
 						<input class="checkbox-tools" type="radio" data-price="200000" name="toptype" checked id="toptype-1" value="PT" >
 						<label class="for-checkbox-tools" for="toptype-1">		 <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit6.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/kit6.PNG" style="margin-bottom:10px;">	
 							PT
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="400000" name="toptype" id="toptype-2" value="인조대리석">
 						<label class="for-checkbox-tools" for="toptype-2">		 <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit6.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/kit6.PNG" style="margin-bottom:10px;">	
 							인조대리석
 						</label>
 					
@@ -441,27 +441,27 @@ for(var i=0; i < fa.length; i++){
 						<input class="checkbox-tools" value="아일랜드 식탁" data-price="350000" type="checkbox" name="optionn" id="optionn-1" checked >
 						<label class="for-checkbox-tools" for="optionn-1">
 																		  <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit5.PNG" style="margin-bottom:10px;">	
+               src="<%=request.getContextPath()%>/image/kit5.PNG" style="margin-bottom:10px;">	
 					<span class="text">아일랜드 식탁</span>
 						</label><!--
 						--><input class="checkbox-tools" value="냉장고장" data-price="280000" type="checkbox" name="optionn" id="optionn-2">
 						<label class="for-checkbox-tools" for="optionn-2">					  <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit5.PNG" style="margin-bottom:10px;">					
+               src="<%=request.getContextPath()%>/image/kit5.PNG" style="margin-bottom:10px;">					
 							<span class="text">냉장고장</span>
 						</label><!--
 						--><input class="checkbox-tools" value="키큰장" data-price="300000" type="checkbox" name="optionn" id="optionn-3">
 						<label class="for-checkbox-tools" for="optionn-3">						  <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit5.PNG" style="margin-bottom:10px;">				
+               src="<%=request.getContextPath()%>/image/kit5.PNG" style="margin-bottom:10px;">				
 							<span class="text">키큰장</span>
 						</label><!--
 						--><input class="checkbox-tools" value="뒷선반" data-price="290000" type="checkbox" name="optionn" id="optionn-4">
 						<label class="for-checkbox-tools" for="optionn-4">					  <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit5.PNG" style="margin-bottom:10px;">					
+               src="<%=request.getContextPath()%>/image/kit5.PNG" style="margin-bottom:10px;">					
 							<span class="text">뒷선반</span>
 						</label><!--
 						--><input class="checkbox-tools" value="쿡탑" data-price="360000" type="checkbox" name="optionn" id="optionn-5">
 						<label class="for-checkbox-tools" for="optionn-5">					  <img width="100%"
-               src="<%=request.getContextPath()%>/img/kit5.PNG" style="margin-bottom:10px;">					
+               src="<%=request.getContextPath()%>/image/kit5.PNG" style="margin-bottom:10px;">					
 					<span class="text">쿡탑</span>
 						</label>
 				
