@@ -51,50 +51,13 @@ ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
                 //,effect:'slide'//기본값
             });
         };
-//     	// 곱하기
-//       function calcNow(){
-//     	calc.result_multiply.value = calc_multiply(calc.left.value, calc.right.value);
-// 		}
-// 		function calc_multiply(left, right){
-//     	return left * right;
-// }
-
-var sell_price;
-var amount;
-
-function init () {
-	sell_price = document.form.sell_price.value;
-	amount = document.form.amount.value;
-	document.form.sum.value = sell_price;
-	change();
-}
-
-function add () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-	hm.value ++ ;
-
-	sum.value = parseInt(hm.value) * sell_price;
-}
-
-function del () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-		if (hm.value > 1) {
-			hm.value -- ;
-			sum.value = parseInt(hm.value) * sell_price;
+    	// 곱하기
+      function calcNow(){
+    	calc.result_multiply.value = calc_multiply(calc.left.value, calc.right.value);
 		}
+		function calc_multiply(left, right){
+    	return left * right;
 }
-
-function change () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-
-		if (hm.value < 0) {
-			hm.value = 0;
-		}
-	sum.value = parseInt(hm.value) * sell_price;
-}  
            </script>
 </head>
 
@@ -105,7 +68,7 @@ function change () {
 <br>
 <br>
 <br>
-<form method="get" name="form">
+<form method="post" name="calc">
  <main>
    <div>
     <div class="section-box">
@@ -157,9 +120,8 @@ function change () {
                              <div>
                 				     <input class="anboim" type="text" name="left" value="<%=idto.getItem_price()%>"/>
         <div class="goway">    
-            수량:<input type=hidden name="sell_price" value="<%=idto.getItem_price()%>"/>
-<input type="text" name="amount" value="1" size="3" onchange="change();">
-<input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
+            수량:<input type="number" name="right" value="1"/>
+            <input type="button" value="계산하기" onClick="calcNow()"/>
             </div>
                               </div>
                         </div>
@@ -168,8 +130,8 @@ function change () {
 
                         <div class="total_price">
                             <b>총구매가</b>
-<!--                             <span class="f-right colorred"><input type="text" name="result_multiply" readonly /></span> -->
-            				금액 : <input type="text" name="sum" size="11" readonly>원
+                            <span class="f-right colorred"><input type="text" name="result_multiply" readonly /></span>
+            				
                         </div>
                         <br>
                     <div class="shop-btn">
