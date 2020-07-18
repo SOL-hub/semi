@@ -2,24 +2,24 @@
 
 
 * {
-	box-sizing: border-box;
-	font-family: 'Noto Sans KR', sans-serif;
+   box-sizing: border-box;
+   font-family: 'Noto Sans KR', sans-serif;
 }
 
 .out-main {
-	width:500px;
-	text-align: center;
-	height: 430px;
-	margin: auto;
-	margin-top: 150px;
-	border:1px solid #3333;
-	padding:50px 50px;
+   width:500px;
+   text-align: center;
+   height: 430px;
+   margin: auto;
+   margin-top: 150px;
+   border:1px solid #3333;
+   padding:50px 50px;
 }
 
 .out-wrap{
-	width: 350px;
-	text-align: center;
-	margin: auto;
+   width: 350px;
+   text-align: center;
+   margin: auto;
 }
 
  /*대표버튼*/
@@ -54,7 +54,7 @@
             right: 0;
             bottom: 0;
            background-color: rgba(0, 0, 0, 0.5);
-            opacity: 0.5;
+            opacity: 1;
             
            
         }

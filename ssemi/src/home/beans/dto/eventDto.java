@@ -5,8 +5,8 @@ import java.sql.SQLException;
 
 public class eventDto {
 
-	private int event_no, event_read;
-	private String event_head, event_title, event_writer, event_content, event_date;
+	private int event_no, event_read , event_writer;
+	private String event_head, event_title, event_content, event_date;
 	public eventDto() {
 		super();
 	}
@@ -16,7 +16,7 @@ public class eventDto {
 		this.setEvent_no(rs.getInt("event_no"));
 		this.setEvent_head(rs.getString("event_head"));
 		this.setEvent_title(rs.getString("event_title"));
-		this.setEvent_writer(rs.getString("event_writer"));
+		this.setEvent_writer(rs.getInt("event_writer"));
 		this.setEvent_content(rs.getString("event_content"));
 		this.setEvent_date(rs.getString("event_date"));
 		this.setEvent_read(rs.getInt("event_read"));
@@ -47,12 +47,15 @@ public class eventDto {
 	public void setEvent_title(String event_title) {
 		this.event_title = event_title;
 	}
-	public String getEvent_writer() {
+	
+	public int getEvent_writer() {
 		return event_writer;
 	}
-	public void setEvent_writer(String event_writer) {
+
+	public void setEvent_writer(int event_writer) {
 		this.event_writer = event_writer;
 	}
+
 	public String getEvent_content() {
 		return event_content;
 	}

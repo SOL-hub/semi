@@ -25,13 +25,11 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		String member_id = mdto.getMember_id();
 		int member_no = mdto.getMember_no();
 		
-		int member_point = Integer.parseInt(req.getParameter("member_point"));
-		
 		eventDto edto = new eventDto();
 		edto.setEvent_head(req.getParameter("event_head"));
 		edto.setEvent_title(req.getParameter("event_title"));
 		edto.setEvent_content(req.getParameter("event_content"));
-		edto.setEvent_writer(member_id);
+		edto.setEvent_writer(member_no);
 		
 		
 		eventDao edao = new eventDao();
@@ -40,26 +38,22 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		
 		edao.write(edto); //등록
 		
-		
-		MemberDto mdto2 = new MemberDto();
-		mdto2.setMember_point(member_point);
-		mdto2.setMember_no(member_no);
-		
+	
 		MemberDao mdao= new MemberDao();
-		mdao.pointadd(mdto2);
+		mdao.pointadd(member_no);
 		
 		
 		//출력
 
 		
-			if(event_no<=10) {//만약에 등록한 글이 10개 이하라면? 목록에 보여주기   //if(event_no>=10)
+			//if(event_no<=10) {//만약에 등록한 글이 10개 이하라면? 목록에 보여주기   //if(event_no>=10)
        resp.sendRedirect("event1_content.jsp?event_no="+event_no);
-		}
+	//	}
 	
 	
-	else { //11부터는 목록에서 안보이게 삭제할거임
-		
-		resp.sendRedirect("event.jsp"); 
+	//else { //11부터는 목록에서 안보이게 삭제할거임
+
+	//	resp.sendRedirect("event.jsp"); 
 		//이벤트 어머, 선착순이 마감되었어요 ㅠ0ㅠ , 다른 이벤트들을 참여해보세요!  모달달기. 
 		
 		//삭제 서블릿과 DAO는 만들었는데 어떻게 보낼까? 
@@ -67,7 +61,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		//resp.sendRedirect("event_event1.jsp");
         //resp.sendRedirect("event1_tenover_do");
 				
-	}
+	//}
 	}
 		
 	//}

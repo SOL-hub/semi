@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+
+* {
+   box-sizing: border-box;
+   font-family: 'Noto Sans KR', sans-serif;
+}
+
+.login-main {
+   width:500px;
+   text-align: center;
+   height: 430px;
+   margin: auto;
+   margin-top: 150px;
+   border:1px solid #3333;
+   padding:50px 50px;
+}
+
+
+
+.login-wrap {
+   width: 350px;
+   text-align: center;
+   margin: auto;
+}
+
+/*아이디, 비번입력창*/
+.input-wrap {
+   text-align: center;
+   margin: 0px auto;
+}
+
+.login-id{
+      
+   background-image: url("../img/id.jpg");
+   background-repeat: no-repeat;
+   background-size: 30px;
+   background-position: 3px 3px;
+   
+   font-size: 14px;
+   color: #AAAAAA;
+   width: 100%;
+   margin: 5px;
+   padding:  10px 10px 10px 40px;
+   border: 1px solid #3333;
+}
+
+
+.login-pw{ /*.form-input*/
+
+
+   background-image: url("../img/pw.png");
+   background-repeat: no-repeat;
+   background-size: 30px;
+   background-position: 3px 3px;
+   
+   
+   font-size: 14px;
+   color: #AAAAAA;
+   width: 100%;
+   margin: 5px;
+   padding:  10px 10px 10px 40px;
+   border: 1px solid #3333;
+   
+}
+
+.login-pw{
+   margin-bottom:15px;
+}
+
+.loginT{
+   text-align :left;
+   color: #C80A1E;
+   margin: 0px 0px 10px 0px;
+   
+}
+
+.login-submit{
+   text-align: center;
+   font-size: 16px;
+   color: white;
+   background-color: #C80A1E;
+   width: 255px;
+   padding: 1rem;
+   margin-top: 23px;
+   margin-bottom: 15px;
+   margin-left: 50px;
+   margin-right: 50px;;
+   border: 1px solid transparent;
+   cursor: pointer;
+}
+
+.login2-submit{
+   text-align: left;
+   font-size: 12px;
+   color: white;
+   background-color: #3333;
+   width: 155px;
+   padding: 0.5rem;
+   margin-top: 23px;
+   margin-bottom: 15px;
+   margin-left: 50px;
+   margin-right: 50px;;
+   border: 1px solid transparent;
+   cursor: pointer;
+}
+
+/*체크박스*/
+input[id="cb1"], input[id="cb2"], input[id="cb3"], input[id="cd4"],
+input[id="cb5"], input[id="cb6"], input[id="cb7"] {
+   display: none;
+}
+
+
+input[id="cb1"]+label, input[id="cb2"]+label, input[id="cb3"]+label,
+   input[id="cb4"]+label, input[id="cb5"]+label, input[id="cb6"]+label,
+   input[id="cb7"]+label {
+   
+   width: 10%;
+   height: 20px;
+   padding-left: 30px;
+   height: 20px;
+   background: url("/ssemi/img/nonCheck.png") 4px no-repeat;
+   background-size: 20px;
+   text-align: left;
+   color: #AAAAAA;
+}
+
+
+input[id="cb1"]+label :after, input[id="cb2"]+label :after, input[id="cb3"]+label :after,
+   input[id="cb4"]+label :after, input[id="cb5"]+label :after, input[id="cb6"]+label :after,
+   input[id="cb7"]+label :after {
+   content: "";
+   display: block;
+}
+
+
+input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:checked+label,
+   input[id="cb4"]:checked+label, input[id="cb5"]:checked+label, input[id="cb6"]:checked+label,
+   input[id="cb7"]:checked+label {
+   background: url("/ssemi/img/checked.png") 4px no-repeat;
+   background-size: 20px;
+}
+
+
+.login-memory {
+   font-size: 13px;
+}
+
+.thead{
+	background-color:  antiquewhite;
+}
+
+        
+        .table > thead > tr > th,
+        .table > thead > tr > td,
+        .table > tbody > tr > th,
+        .table > tbody > tr > td,
+        .table > tfoot > tr > th,
+        .table > tfoot > tr > td {
+            padding:0.5rem;
+            text-align: center;
+        }
+        
+
+
+    /* 확장 스타일 3번 : .table-sideopen 으로 옆트임 테이블 구현 */
+.table.table-sideopen {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    border-collapse: collapse;
+}
+.table.table-sideopen > tbody {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+.table.table-sideopen > tbody > tr {
+    border-bottom: 1px solid black;
+}
+
+/* 확장 스타일 4번 : .table-hover 로 마우스 감지 테이블 구현 */
+.table.table-hover > tbody > tr:hover {
+    background-color: #dfe6e9;
+}
+        

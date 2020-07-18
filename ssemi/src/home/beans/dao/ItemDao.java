@@ -38,12 +38,6 @@ private static DataSource src;
 
 	public Connection getConnection() throws Exception{		
 
-//		Class.forName("oracle.jdbc.OracleDriver");
-//		
-//		Connection con = DriverManager.getConnection(
-//				"jdbc:oracle:thin:@localhost:1521:xe" , "C##PROJECT","C##PROJECT");
-//				
-//		return con;//동휘(수정_이유:product_bed_list적용이안되서)(결과:이렇게바꿧는데 됨)
 		return src.getConnection();
 
 	}
@@ -152,6 +146,7 @@ private static DataSource src;
 			ps.setString(4, idto.getItem_type());
 			ps.setString(5, idto.getItem_info());
 			ps.setInt(6, idto.getItem_stock());
+			
 			ps.execute();
 
 			con.close();
@@ -253,7 +248,7 @@ private static DataSource src;
 	 			con.close();
 	 			return list;
 	 		}
-	 //동휘_목록메소드2_1
+	 //동휘_목록메소드2_1(주방)
 		public List<ItemDto> getList1(int start, int finish) throws Exception{
 			Connection con = getConnection();
 			
@@ -261,7 +256,7 @@ private static DataSource src;
 			String sql = 
 					"SELECT * FROM("//T의 모든 항목
 						+ "SELECT ROWNUM rn, T.* FROM("
-							+ "SELECT * FROM item WHERE ITEM_TYPE='욕실'"
+							+ "SELECT * FROM item WHERE ITEM_KINGTYPE='주방'"
 						+ ")T"//T의 모든 항목
 				+ ") WHERE rn BETWEEN ? and ?";
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -278,7 +273,7 @@ private static DataSource src;
 			con.close();
 			return list;
 		}
-		//동휘_목록메소드2_2
+		//동휘_목록메소드2_2(마루)
 				public List<ItemDto> getList2(int start, int finish) throws Exception{
 					Connection con = getConnection();
 					
@@ -286,7 +281,7 @@ private static DataSource src;
 					String sql = 
 							"SELECT * FROM("//T의 모든 항목
 								+ "SELECT ROWNUM rn, T.* FROM("
-									+ "SELECT * FROM item WHERE ITEM_TYPE='책상'"
+									+ "SELECT * FROM item WHERE ITEM_KINGTYPE='마루'"
 								+ ")T"//T의 모든 항목
 						+ ") WHERE rn BETWEEN ? and ?";
 					PreparedStatement ps = con.prepareStatement(sql);
@@ -303,7 +298,7 @@ private static DataSource src;
 					con.close();
 					return list;
 				}
-				//동휘_목록메소드2_3
+				//동휘_목록메소드2_3(욕실)
 				public List<ItemDto> getList3(int start, int finish) throws Exception{
 					Connection con = getConnection();
 					
@@ -311,7 +306,7 @@ private static DataSource src;
 					String sql = 
 							"SELECT * FROM("//T의 모든 항목
 								+ "SELECT ROWNUM rn, T.* FROM("
-									+ "SELECT * FROM item WHERE ITEM_TYPE='소파'"
+									+ "SELECT * FROM item WHERE ITEM_KINGTYPE='욕실'"
 								+ ")T"//T의 모든 항목
 						+ ") WHERE rn BETWEEN ? and ?";
 					PreparedStatement ps = con.prepareStatement(sql);
@@ -328,7 +323,8 @@ private static DataSource src;
 					con.close();
 					return list;
 				}
-				//동휘_목록메소드2_4
+				
+				//동휘_목록메소드3_1(욕실_젠다이)
 				public List<ItemDto> getList4(int start, int finish) throws Exception{
 					Connection con = getConnection();
 					
@@ -336,7 +332,7 @@ private static DataSource src;
 					String sql = 
 							"SELECT * FROM("//T의 모든 항목
 								+ "SELECT ROWNUM rn, T.* FROM("
-									+ "SELECT * FROM item WHERE ITEM_TYPE='의자'"
+									+ "SELECT * FROM item WHERE ITEM_KINGTYPE='욕실'"
 								+ ")T"//T의 모든 항목
 						+ ") WHERE rn BETWEEN ? and ?";
 					PreparedStatement ps = con.prepareStatement(sql);

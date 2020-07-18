@@ -134,22 +134,22 @@ public class eventDao {
    }
    //등록
    public void write(eventDto edto)throws Exception{
-	   Connection con = getConnection();
-	   
-	   String sql="INSERT INTO event"
-	   		+ "(event_no, event_head, event_title, event_writer, event_content) VALUES(?, ?, ?, ?, ?)";
-	   PreparedStatement ps = con.prepareStatement(sql);
-	   ps.setInt(1, edto.getEvent_no());
-	   ps.setString(2, edto.getEvent_head());
-	   ps.setString(3, edto.getEvent_title());
-	   ps.setString(4, edto.getEvent_writer());
-	   ps.setString(5, edto.getEvent_content());
-	 
-	   
-	   ps.execute();
-	   
-	   con.close();
-	   
+      Connection con = getConnection();
+      
+      String sql="INSERT INTO event"
+            + "(event_no, event_head, event_title, event_writer, event_content) VALUES(?, ?, ?, ?, ?)";
+      PreparedStatement ps = con.prepareStatement(sql);
+      ps.setInt(1, edto.getEvent_no());
+      ps.setString(2, edto.getEvent_head());
+      ps.setString(3, edto.getEvent_title());
+      ps.setInt(4, edto.getEvent_writer());
+      ps.setString(5, edto.getEvent_content());
+    
+      
+      ps.execute();
+      
+      con.close();
+      
    }
    
    //선착순 10명만 뽑는 

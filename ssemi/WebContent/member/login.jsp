@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<main class="login-main" style=padding-top:200px;>
+<main class="login-main">
  <form action="login.do" method="post">
  <div class = "login-wrap">
   <div class="loginT">로그인</div>

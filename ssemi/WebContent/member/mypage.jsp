@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="home.beans.dto.ItemDto"%>
 <%@page import="home.beans.dao.ItemDao"%>
 <%@page import="java.util.List"%>
@@ -15,7 +16,7 @@
 	MemberDto user = mdao.get(member_no);
 	CartDao cdao = new CartDao();
 	
-	
+	DecimalFormat formatter = new DecimalFormat("###,###");
 	//////////////////////////////////////////////////////////////////
 	// 페이지 목록계산 코드
 	//////////////////////////////////////////////////////////////////
@@ -66,7 +67,7 @@
 				<li><a style="color: red" href="mypage.jsp"> 마이페이지 </a></li>
 				<li><a href="user_info.jsp"> 회원정보 </a></li>
 				<li><a href="check_pw.jsp?go=user_info_update.jsp"> 회원정보수정 </a></li>
-				<li><a href="check_pw.jsp?go=user_pw_change.jsp"> 비밀번호변경 </a></li>
+				<li><a href="check_pw.jsp?go=change_pw.jsp"> 비밀번호변경 </a></li>
 				<li><a href="check_pw.jsp?go=user_out.do"> 회원탈퇴 </a></li>
 				<li><a href="shopBarket3.jsp"> 장바구니 </a></li>
 				<li><a href="wishlist.jsp">위시리스트</a></li>
@@ -123,7 +124,7 @@
 						<tr>
 							<td style="width: 10%" class="cart_content"><%=itemName.getItem_name()%></td>
 							<td style="width: 50%" class="cart_content_left"><%=itemName.getItem_info()%></td>
-							<td style="width: 10%" class="cart_content"><%=item_cnt_change_price%></td>
+							<td style="width: 10%" class="cart_content"><%=formatter.format(item_cnt_change_price)%>원</td>
 							<td style="width: 10%" class="cart_content"><%=cdto.getCart_cnt()%></td>
 							<br>
 						</tr>
@@ -174,7 +175,7 @@
 						<tr>
 							<td style="width: 10%" class="cart_content"><%=itemName.getItem_name()%></td>
 							<td style="width: 50%" class="cart_content_left"><%=itemName.getItem_info()%></td>
-							<td style="width: 10%" class="cart_content"><%=itemName.getItem_price()%></td>
+							<td style="width: 10%" class="cart_content"><%=formatter.format(itemName.getItem_price())%></td>
 							<td style="width: 10%" class="cart_content"><%=cdto.getCart_cnt()%></td>
 							<br>
 						</tr>

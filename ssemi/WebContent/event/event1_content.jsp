@@ -12,7 +12,7 @@
 
 eventDao edao = new eventDao();
 eventDto edto = edao.get(event_no);
-
+ MemberDao mdao= new MemberDao();
 %>
 
 <%
@@ -26,7 +26,7 @@ MemberDto user = (MemberDto)session.getAttribute("userinfo");
 boolean isMine = user.getMember_id().equals(edto.getEvent_writer());
 
 
-MemberDao mdao = new MemberDao();
+MemberDao mdao2 = new MemberDao();
 MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
 
 
@@ -46,7 +46,7 @@ MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
 <main>
 <article>
     
- <div align="center">
+ <div align="center" style="padding-top: 100px;">
  
     <h2>작성글 상세보기</h2>
     
@@ -56,7 +56,10 @@ MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
     <tr>
     <td>
     <font size="6">
-    <%if(edto.getEvent_head()!=null){ %>
+    <%
+    if(edto.getEvent_head()!=null){ 
+    
+    %>
     [<%=edto.getEvent_head()%>]
     <%}%>
     </font>
@@ -73,8 +76,11 @@ MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
     <!--작성자 -->
    
     
-     <%if(edto.getEvent_writer()!=null) {%>
-     <%=edto.getEvent_writer()%>
+     <%if(edto.getEvent_writer()!= 0) {
+    	 MemberDto mdto2 = mdao2.get(edto.getEvent_writer());
+    	 
+     %>
+     <%=mdto2.getMember_id()%>
  <%}else{%>
     <font color ="gray"> 탈퇴한 사용자</font>
        <%}%>
