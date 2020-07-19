@@ -77,40 +77,22 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>일룸</title>
+    <title>욕실</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bed_list.css">
     <style>
  
-        
+        .row{
+        height:150px;}
     </style>
 </head>
 
 <body>
    
    <main>
+   <div class="row"> </div>
         <div>
             <p class="subject middle-font"> 욕실 </p>
-            <div class="selected subject">
-                <ul class="main_menu">
-                    <li>
-                        <a href=#>전체</a>
-                    </li>
-                    <li>
-                        <a href=#>일반침대</a>
-                        <ul>
-                            <li><a href="#">싱글</a></li>
-                            <li><a href="#">듀얼</a></li>
-                        </ul> 
-                    </li>  
-                    <li>
-                        <a href=#>매트리스</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">싱글</a></li>
-                            <li><a href="#">듀얼</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            
             <div class="border">
                 <div class="ssmall-font xyz
        main_menu frt selected sort">
