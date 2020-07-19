@@ -32,7 +32,9 @@
             <div align="center">
                <button class="btn default " id="productClear">진행중 이벤트</button>
 
-               <button class="btn default " id="productClear">종료된 이벤트</button>
+<a href="<%=request.getContextPath()%>/event/event_finish.jsp"> <button class="btn default " id="productClear" style="font-color: red;">
+              종료된 이벤트</button></a>
+            
                <br> <br>
             
                <hr class="hr-twolow">
@@ -46,9 +48,9 @@
                   <a href="event_event1.jsp">
                   <img src="<%=request.getContextPath()%>/img/sale1.jpg" width="880" height="570" alt="event"/>
                   <h5 style="font-size: 13pt;">
-                        타이밍을 잘 잡아야, 실속있게 산다! <br>종합세트 할인 판매실시</h5>
+                        여름 더우시죠? 시~원하게 쏘겠습니다.<br>단 10명의 고객님들에게만 드리는 1000포인트 적립이벤트 실시</h5>
                      <h5 style="font-color: grey;">
-                        곧 여름도 다가오는데 언제다 이거사고 저거사? 여름에 필요한 거 여기 다 있어! <br> 제품 하나씩 맘껏
+                        올 여름에 사야했던 가구들, 포인트 받아서 실속있게 구매하도록! <br> 제품 하나씩 맘껏
                         골라서 세트할인으로 즐거운 쇼핑하세요.</h5>
                      <h4 style=font-width:bold;>2020-07-21(화) 10시 START</h4>
                      </a>
@@ -63,7 +65,7 @@
                       출석체크
                      </h5>
                      <h6 style="font-color: grey;">
-                       매일매일 100포인트 증정!
+                       매일매일 200원씩 즉시 적립!
                      </h6>
                      
                      <br><br><br><br>

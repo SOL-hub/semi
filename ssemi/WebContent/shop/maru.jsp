@@ -72,21 +72,18 @@
 %> 
     
     <jsp:include page="/template/header.jsp"></jsp:include>
-    
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>일룸</title>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bed_list.css">
-    <style>
- 
-        
-    </style>
-</head>
 
+    <meta charset="UTF-8">
+    <title>마루마루</title>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bed_list.css">
+  
+
+  
+  
+
+  
+</head>
 <body>
-   
    <main>
         <div>
             <p class="subject middle-font"> 마루 </p>
@@ -137,7 +134,8 @@
             </article>
  
     </main>
-</body></html> 
+</body>
+</html> 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
 
