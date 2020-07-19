@@ -15,7 +15,7 @@ import home.beans.dto.CartDto;
 import home.beans.dto.ItemDto;
 import home.beans.dto.MemberDto;
 
-@WebServlet(urlPatterns = "/member/cart_add.do")
+@WebServlet(urlPatterns = "/shop/cart_add.do")
 public class CartAddServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,7 +31,9 @@ public class CartAddServlet extends HttpServlet{
 			
 			CartDto cdto = new CartDto();
 			cdto.setCart_item_name(item_no);
+			cdto.setCart_cnt(Integer.parseInt(req.getParameter("cart_cnt")));
 			cdto.setCart_member(member_no);
+			
 			
 			CartDao cdao = new CartDao();
 			List<CartDto> list = cdao.getList(member_no);		
@@ -50,7 +52,7 @@ public class CartAddServlet extends HttpServlet{
 //			}
 //			
 			
-			resp.sendRedirect("itemInfo.jsp");
+			resp.sendRedirect("product_detail2.jsp");
 				
 		}
 		catch(Exception e) {

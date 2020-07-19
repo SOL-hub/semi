@@ -47,8 +47,12 @@ div > p {
     margin-left: 10%;
     padding: 0.5rem;
     color: black;
-    border: 1px solid;
+/*     border: 1px solid; */
     width: 50%;
+    border-top: solid 1px #aaa;
+    border-left: solid 1px #aaa;
+    border-bottom: solid 5px #ff8000;	
+    border-right: solid 5px #ff8000;
 }
 
 aside > ul > li {

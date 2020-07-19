@@ -60,7 +60,9 @@
 					<%if(!file_list.isEmpty()) {%>
 					<%for(ItemFileDto ifdto : file_list){%>
 					<td>
-						<img src="download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100" height="100">
+<%-- 					<a href="item_info.do?item_no=<%=idto.getItem_no() %>"> --%>
+						<img src="<%=request.getContextPath()%>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100" height="100">
+<!-- 					</a> -->
 					</td>
 					<%} %>
 					<%} %>
@@ -74,6 +76,14 @@
 				<%
 					}
 				%>				
+				
+				<tr>
+					<td>
+						<a href="<%=request.getContextPath()%>/shop/item_write.jsp">
+						<input type="button" value="상품등록하기">
+						</a>
+					</td>
+				</tr>
 			</tbody>	
 		</table>
 	</div>

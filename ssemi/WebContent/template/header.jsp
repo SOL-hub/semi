@@ -53,7 +53,7 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                </li>
                <li class="menu_left">스토어
                   <ul class="menu_left_innerMenu">
-                     <li><a href="#">욕실</a>
+                     <li><a href="<%=request.getContextPath()%>/shop/itemList.jsp">욕실</a>
                        	<ul class="inner-inner">
                      		<li><a href="<%=request.getContextPath()%>">젠다이</a></li>
                      		<li><a href="<%=request.getContextPath()%>">선반</a></li>
