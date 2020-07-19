@@ -5,14 +5,12 @@
     font-family: 'NotoSansKR-Regular';
     src: url("../font/NotoSansKR-Regular.otf");
 }
-
 * {
-    box-sizing: border-box;
-    font-family: 'NotoSansKR-Regular';
+	box-sizing: border-box;
 
+	font-family: 'Noto Sans KR', sans-serif;
 
 }
-
 
 
 /* test 상태일 때 테두리를 설정 */

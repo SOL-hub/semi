@@ -144,12 +144,6 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                      }
                   %>
 
-                  <div id="search">
-                     <form  class="search_set" action="<%=request.getContextPath()%>/search/search_result.jsp"  method="get" style="float: left;">
-                        <input class="search_box" type="text" placeholder="검색" name="keyword" required> 
-                        <input type="image"  src="<%=request.getContextPath()%>/img/search.png" style="width: 20px;">
-                     </form>
-                  </div>
                </div>
             </div>
          </div>

@@ -22,13 +22,16 @@
 	font-family: 'Noto Sans KR', sans-serif;
 	letter-spacing: -1.5px;
 }
+#main_box {
+margin-top :150px; 
+}
     </style>
     <script>
     
     </script>
 </head>
 <body>
-    <main>
+    <main id="main_box">
         <article>
            <div class="row-empty"></div>
            <div class="row-empty"></div>
