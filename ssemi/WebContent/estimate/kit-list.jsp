@@ -51,8 +51,10 @@
   padding: 40px 0 0 0;
   text-align:center;
 
-  
+
 }
+
+
 
 	    .line {
         position: relative;
@@ -148,6 +150,10 @@ text-align:center;
 margin: 20px 0 20px 0;
 }
 
+		.row-emptt{
+	height: 25px;
+	}
+	
 	</style>
 </head>
 <body>
@@ -163,11 +169,17 @@ margin: 20px 0 20px 0;
 <div class="main"> 
 				
 						
-    
-    <h2>주방 견적 내역</h2>
-<span class="half"><b>내일의집 견적서비스에서 깐깐한 기준으로 인증한 맞춤상품들을 추천해드릴게요!</b></span>
- <div class="row-emptyy"></div>
+ <h2>주방 견적 내역</h2>
+<span><b>인테리어 코디가 상담부터 시공까지 1:1 밀착 관리합니다.<br>
+고객님에게 딱 맞는 인증된 전문가와 함께 인테리어를 완성하세요.
+</b></span>
+ <div class="row-emptt"></div>
+<img align="center" width="50px" height="50px"
+               src="<%=request.getContextPath()%>/image/kaka.PNG" style="margin-bottom:10px; border-radius: 5px;"> 
+<br>
+<span class="half"><b> 자세한 시공 견적 상담은 카카오톡 채널추가 후 문의 부탁드립니다. </b></span>
 
+ <div class="row-emptyy"></div>
 <div align="center">
 <table>
   <tr>
@@ -199,17 +211,12 @@ margin: 20px 0 20px 0;
 						<input class="btn" type="button" value="주방 견적 받으러 가볼까요?"> </a></div> </td>
   </tr>
 </table>
+
 	</div>
 					
 
  	 <div class="row-emptyy"></div>
-     
-<img width="60%"
-               src="<%=request.getContextPath()%>/image/shoo.PNG" style="margin-top:-15px"> 
-               <img width="60%"
-               src="<%=request.getContextPath()%>/image/kit.PNG" style="margin-top:-15px"> 
-                     <img width="60%"
-               src="<%=request.getContextPath()%>/image/kit2.PNG" style="margin-top:-15px"> 
 </body>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
+

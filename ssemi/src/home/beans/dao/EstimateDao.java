@@ -106,5 +106,25 @@ public class EstimateDao {
 		}
 
 
+		//목록 메소드
+		public List<EstimateDto> getList() throws Exception{
+			Connection con = getConnection();
+			
+			String sql = "SELECT * FROM bath ORDER BY bath_no DESC";
+		
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ResultSet rs = ps.executeQuery();
+			
+			List<EstimateDto> list = new ArrayList<>();
+			while(rs.next()) {
+	EstimateDto edto = new EstimateDto(rs);
+				list.add(edto);
+			}
+			
+			con.close();
+			return list;
+		}
+		
 	
 }
