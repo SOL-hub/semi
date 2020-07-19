@@ -100,8 +100,8 @@
                         <ul>
                             <li><a href="#">싱글</a></li>
                             <li><a href="#">듀얼</a></li>
-                        </ul>
-                    </li>
+                        </ul> 
+                    </li>  
                     <li>
                         <a href=#>매트리스</a>
                         <ul class="sub_menu">
