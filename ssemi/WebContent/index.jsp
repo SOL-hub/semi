@@ -22,7 +22,7 @@
         padding: 0px;
         font-family: 'Noto Sans KR', sans-serif;
     }
-        #container {
+        #container { 
         width: 100%;
         display: flex;
         
