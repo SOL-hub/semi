@@ -37,7 +37,7 @@
 			<tbody>
 				<%-- list의 데이터를 하나하나 idto라는 이름으로 접근하여 출력 --%>
 			
-				
+				<%if(list.size() != 0){ %>
 				<%
 					for(ItemDto idto : list) {
 						ItemFileDao ifdao = new ItemFileDao();
@@ -76,6 +76,12 @@
 				<%
 					}
 				%>				
+				
+				<%}else{ %>
+				<tr>
+					<td>등록된 상품이 없습니다.</td>
+				</tr>
+				<%} %>
 				
 				<tr>
 					<td>

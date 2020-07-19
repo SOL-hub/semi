@@ -35,11 +35,9 @@
     </style>
     <div class="center">	
 	<h2>게시글 등록에 성공 하였습니다</h2>
-	<div class="qwe">
-	<img src="<%=request.getContextPath()%>/img/shopping.png" width="20px"></div><a class="zip"href="<%=request.getContextPath()%>/shop/allist.jsp">쇼핑하러가기</a>
 	<br></br>
 	<div class="qwer">
-	<img src="<%=request.getContextPath()%>/img/emoji.png" width="25px"></div><a href="<%=request.getContextPath()%>/member/itemList.jsp">내가등록한 글로가기</a>
+	<img src="<%=request.getContextPath()%>/img/emoji.png" width="25px"></div><a href="<%=request.getContextPath()%>/shop/itemList.jsp">아이템 리스트로 가기</a>
 	</div>
 	<br>
 <br>
