@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import home.beans.dto.EstimateDto;
 import home.beans.dto.KitDto;
 
 public class KitDao {
@@ -104,7 +105,26 @@ public class KitDao {
 				
 				con.close();
 			}
+			
+			//목록 메소드
+			public List<KitDto> getList() throws Exception{
+				Connection con = getConnection();
+				
+				String sql = "SELECT * FROM kit ORDER BY kit_no DESC";
+			
+				PreparedStatement ps = con.prepareStatement(sql);
 
+				ResultSet rs = ps.executeQuery();
+				
+				List<KitDto> list = new ArrayList<>();
+				while(rs.next()) {
+					KitDto kdto = new KitDto(rs);
+					list.add(kdto);
+				}
+				
+				con.close();
+				return list;
+			}
 	
 
 }

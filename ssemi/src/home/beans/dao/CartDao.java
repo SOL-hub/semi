@@ -47,10 +47,11 @@ public class CartDao {
 	public void cart_add(CartDto cdto) throws Exception{
 		Connection con = getConnection();
 		
-		String sql="insert into cart values(cart_seq.nextval,?,1,null,?)";
+		String sql="insert into cart values(cart_seq.nextval,?,?,null,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, cdto.getCart_item_name());
-		ps.setInt(2, cdto.getCart_member());
+		ps.setInt(2, cdto.getCart_cnt());
+		ps.setInt(3, cdto.getCart_member());
 		ps.execute();
 		
 		con.close();
@@ -61,7 +62,7 @@ public class CartDao {
 	public List<CartDto> getList(int cart_member) throws Exception {
 		Connection con = getConnection();
 		
-		String sql = "SELECT * FROM cart WHERE cart_member=? ORDER BY cart_no ASC";
+		String sql = "SELECT * FROM cart WHERE cart_member=? ORDER BY cart_no DESC";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, cart_member);

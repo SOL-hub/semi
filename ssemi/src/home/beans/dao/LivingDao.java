@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import home.beans.dto.EstimateDto;
 import home.beans.dto.LivingDto;
 
 
@@ -105,5 +106,23 @@ public class LivingDao {
 			}
 
 	
+			//목록 메소드
+			public List<LivingDto> getList() throws Exception{
+				Connection con = getConnection();
+				
+				String sql = "SELECT * FROM living ORDER BY living_no DESC";
+			
+				PreparedStatement ps = con.prepareStatement(sql);
 
+				ResultSet rs = ps.executeQuery();
+				
+				List<LivingDto> list = new ArrayList<>();
+				while(rs.next()) {
+					LivingDto ldto = new LivingDto(rs);
+					list.add(ldto);
+				}
+				
+				con.close();
+				return list;
+			}
 }

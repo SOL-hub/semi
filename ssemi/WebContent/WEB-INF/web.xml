@@ -33,5 +33,53 @@
 		<error-code>500</error-code>
 		<location>/error/500.jsp</location>
 	</error-page>
- 	 	 
+	
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>home.filter.EncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+ 	 <filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>home.filter.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>/member/wishlist.jsp</url-pattern>
+		<url-pattern>/member/user_out.jsp</url-pattern>
+		<url-pattern>/member/user_info.jsp</url-pattern>
+		<url-pattern>/member/user_info_update.jsp</url-pattern>
+		<url-pattern>/member/user_info_update.do</url-pattern>
+		<url-pattern>/member/shopedit.jsp</url-pattern>
+		<url-pattern>/member/shopedit.do</url-pattern>
+		<url-pattern>/member/shopBarket3.jsp</url-pattern>
+		<url-pattern>/member/shopBarket3.jsp</url-pattern>
+		<url-pattern>/member/barket_delete.do</url-pattern>
+		<url-pattern>/member/cart_cnt_change.do</url-pattern>
+		<url-pattern>/member/mypage.jsp</url-pattern>
+		<url-pattern>/member/change_pw.jsp</url-pattern>
+		<url-pattern>/member/change_pw.do</url-pattern>
+		<url-pattern>/member/change_pw_result.jsp</url-pattern>
+		<url-pattern>/shop/product_detail.jsp</url-pattern>
+		<url-pattern>/shop/item_write.jsp</url-pattern>
+		<url-pattern>/shop/item_write.do</url-pattern>
+		<url-pattern>/shop/cart_add.do</url-pattern>
+		<url-pattern>/shop/wish_add.do</url-pattern>
+		<url-pattern>/event/event1_writer.jsp</url-pattern>
+		<url-pattern>/event/event1_content.jsp</url-pattern>
+		<url-pattern>/event/event1_edit.jsp</url-pattern>
+		<url-pattern>/estimate/bath-content.jsp</url-pattern>
+		<url-pattern>/estimate/bath-list.jsp</url-pattern>
+		<url-pattern>/estimate/kit-content.jsp</url-pattern>
+		<url-pattern>/estimate/kit-list.jsp</url-pattern>
+		<url-pattern>/estimate/living-content.jsp</url-pattern>
+		<url-pattern>/estimate/living-list.jsp</url-pattern>
+		<url-pattern>/buypage/*</url-pattern>
+		<url-pattern>/board/*</url-pattern>
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>	 
  </web-app>

@@ -11,26 +11,72 @@
 	pageEncoding="UTF-8"%>
 
 <%
-	
 
-
-	
 	ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");//idto애들 불러오기위해 필요
 	ItemFileDao ifdao = new ItemFileDao();
 	List<ItemFileDto> file_list = ifdao.getList(idto.getItem_no());
 
 %>
+<jsp:include page="/template/header.jsp"></jsp:include>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>일룸</title>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/product_detail.css">
+<style>
+.center {
+	text-align: center;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.ggim {
+	width: 50px;
+	height: 50px;
+	margin: 0 5px 0px 0px;
+	background-color: orange;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+.item-img{
+  
+ }
+</style>
+	
 <script>
 	function checkAdd() {
 		
-// 		alert("추가되었습니다.");
+		alert("추가되었습니다.");
 	}
 </script>
-<html>
+
 <body>
+	<main>
 	<!-- 제목 -->
+		<section>
+		<article>
+			<%
+				for (ItemFileDto ifdto : file_list) {
+			%>
+			<div class="item-img">
+				<img src="<%=request.getContextPath()%>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>">
+			</div>
+			<%
+				}
+			%>
 	
-		<h2>상품리스트</h2>
+		</article>
+		</section>
 	<div>
 		<table>
 			<thead>
@@ -48,9 +94,7 @@
 			
 			<tbody>
 				<%-- list의 데이터를 하나하나 idto라는 이름으로 접근하여 출력 --%>
-			
-				
-				
+
 				<form method="post">
 				<tr>
 					<td><%=idto.getItem_no()%></td>
@@ -61,7 +105,7 @@
 					<td><%=idto.getItem_stock()%></td>
 					<%for(ItemFileDto ifdto : file_list){%>
 					<td>
-						<img src="download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100" height="100">
+						<img src="<%=request.getContextPath() %>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100" height="100">
 					</td>
 					<%} %>
 					<td><%=idto.getItem_time()%></td>
@@ -83,5 +127,6 @@
 			</tbody>	
 		</table>
 	</div>
+	</main>
 </body>
 </html>

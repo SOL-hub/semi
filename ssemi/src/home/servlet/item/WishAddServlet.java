@@ -16,7 +16,7 @@ import home.beans.dto.ItemDto;
 import home.beans.dto.MemberDto;
 import home.beans.dto.WishDto;
 
-@WebServlet(urlPatterns = "/member/wish_add.do")
+@WebServlet(urlPatterns = "/shop/wish_add.do")
 public class WishAddServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,7 +36,7 @@ public class WishAddServlet extends HttpServlet{
 			wdao.wish_add(wdto);
 
 			
-			resp.sendRedirect("itemInfo.jsp");
+			resp.sendRedirect("product_detail2.jsp");
 			
 		}
 		catch(Exception e) {

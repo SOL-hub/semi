@@ -36,9 +36,11 @@
         flex: 10;
     }
 
+
     .container {
         width: 100%;
         padding-top: 150px;
+      
     }
 
     div>p {
@@ -47,9 +49,13 @@
         margin-left: 10%;
         padding: 0.5rem;
         color: black;
-        border: none;
+/*         border: solid 1px #aaa; */
         width: 50%;
-        background-color: antiquewhite;
+        
+        border-left: solid 1px #aaa;
+        border-bottom: solid 5px #ff8000;	
+        border-right: solid 5px #ff8000;
+        
     }
 
     aside>ul>li {
@@ -76,7 +82,7 @@
         font-size: 16px;
         color: dimgray;
         border: none;
-
+		
     }
 
     div>p>span {
@@ -86,7 +92,8 @@
     
     .content{
         margin-left: 10%;
-        border-bottom: solid 1px black;
+        border-bottom: solid 1px #aaa;
+        
         width: 50%
     }
     

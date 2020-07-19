@@ -2,6 +2,7 @@ package home.servlet.user;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,10 +19,10 @@ import home.beans.dto.ItemFileDto;
 public class ItemDownloadServlet extends HttpServlet{
 	@Override
 //	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 //	}
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			int item_file_no = Integer.parseInt(req.getParameter("item_file_no"));
 			
@@ -34,7 +35,7 @@ public class ItemDownloadServlet extends HttpServlet{
 			}
 			
 			resp.setHeader("Content-Type", "application/octet-stream; charset=UTF-8");
-			resp.setHeader("Content-filename", "attachment; filename="+ifdto.getItem_file_name());
+			resp.setHeader("Content-filename", "attachment; filename=\""+URLEncoder.encode(ifdto.getItem_file_name(), "UTF-8")+"\"");
 			resp.setHeader("Content-Length", String.valueOf(ifdto.getItem_file_size()));
 			
 			File target = new File("D:/upload/item_file", String.valueOf(ifdto.getItem_file_no()));

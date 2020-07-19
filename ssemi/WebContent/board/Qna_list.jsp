@@ -185,7 +185,7 @@ padding-top:5px;
     padding: 2px 4px;
     border: 1px solid #eaeaea;
     color: #333;
-  margin: 10px 0 10px 700px;   
+  margin: 20px 0 10px 0;   
        display: inline-block;
     font-size: 11px;
     letter-spacing: 1px;
@@ -226,10 +226,14 @@ padding-top:5px;
     width: 72px;
     cursor:pointer;
     }
-    .search_keyword,
+
+          .search_keyword,
     .search_box,
     .search_submit {
-   margin: 0 20px;
+   margin: 20px 0 30px 0;
+      }
+      .search_container {
+      padding-left:780px;
       }
 </style>
 <script>

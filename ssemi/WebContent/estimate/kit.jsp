@@ -260,6 +260,16 @@ font-size:14px;
 
 }
 
+.overl{
+background-color: var(--red);
+font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 18px;
+	line-height: 40px;
+	font-weight: 600;
+	color: var(--white);
+    	letter-spacing: -0.2px;
+}
+
 .standard:hover {
 text-decoration:underline; 
 color: var(--red);
@@ -280,6 +290,31 @@ cursor:pointer;
     font-size: 14px;
     line-height: 1.3;
     color: var(--black);}
+    
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#textt{
+  position: absolute;
+  top:50%;
+  left:50%;
+  text-align:center;
+  font-size: 18px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
 
 </style>
     
@@ -302,9 +337,14 @@ for(var i=0; i < fa.length; i++){
    
    document.querySelector("input[name=pricek]").value=sum;
   
-    
 }
-    
+    function on() {
+  	  document.getElementById("overlay").style.display = "block";
+  	}
+
+  	function off() {
+  	  document.getElementById("overlay").style.display = "none";
+  	}
     </script>
   
 
@@ -334,19 +374,19 @@ for(var i=0; i < fa.length; i++){
    	    
 						<p><span class="half"> 어떤 형태의 싱크대를 시공하실 생각이세요?</span></p>
 						<input class="checkbox-tools" type="radio" data-price="1600000" name="shape" checked id="shape-1" value="ㅡ형" >
-						<label class="for-checkbox-tools" for="shape-1">		  <img width="100%"
+						<label class="for-checkbox-tools" for="shape-1">		  <img width="110px" height="110px"
                src="<%=request.getContextPath()%>/image/kit3.PNG" style="margin-bottom:10px;">	
 							ㅡ형
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="1800000" name="shape" id="shape-2" value="ㄱ형">
-						<label class="for-checkbox-tools" for="shape-2">	  <img width="100%"
-               src="<%=request.getContextPath()%>/image/kit3.PNG" style="margin-bottom:10px;">	
+						<label class="for-checkbox-tools" for="shape-2">	  <img width="110px" height="110px"
+               src="<%=request.getContextPath()%>/image/kit2.PNG" style="margin-bottom:10px;">	
 							ㄱ형
 						</label><!--
 						--><input class="checkbox-tools" value="ㄷ형" data-price="2000000" type="radio" name="shape" id="shape-3">
-						<label class="for-checkbox-tools" for="shape-3">	  <img width="100%"
-               src="<%=request.getContextPath()%>/image/kit3.PNG" style="margin-bottom:10px;">	
+						<label class="for-checkbox-tools" for="shape-3">	  <img width="110px" height="110px"
+               src="<%=request.getContextPath()%>/image/kit.PNG" style="margin-bottom:10px;">	
 						ㄷ형
 						</label>
 								       <div class="row-emptyy"></div>
@@ -374,14 +414,14 @@ for(var i=0; i < fa.length; i++){
        	    	<p><span class="half">상판 유형은 어떤걸로 할까요? </span></p>
 					
 						<input class="checkbox-tools" type="radio" data-price="200000" name="toptype" checked id="toptype-1" value="PT" >
-						<label class="for-checkbox-tools" for="toptype-1">		 <img width="100%"
+						<label class="for-checkbox-tools" for="toptype-1">		 <img width="110px" height="110px"
                src="<%=request.getContextPath()%>/image/kit6.PNG" style="margin-bottom:10px;">	
 							PT
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="400000" name="toptype" id="toptype-2" value="인조대리석">
-						<label class="for-checkbox-tools" for="toptype-2">		 <img width="100%"
-               src="<%=request.getContextPath()%>/image/kit6.PNG" style="margin-bottom:10px;">	
+						<label class="for-checkbox-tools" for="toptype-2">		 <img width="110px" height="110px"
+               src="<%=request.getContextPath()%>/image/kit7.PNG" style="margin-bottom:10px;">	
 							인조대리석
 						</label>
 					
@@ -436,7 +476,7 @@ for(var i=0; i < fa.length; i++){
 					
 <!--옵션6-->
 							
-						<p ><span class="half"> 추가옵션 (중복선택가능) </span></p>
+						<p><span class="half"> 추가옵션 (중복선택가능) </span></p>
 	
 						<input class="checkbox-tools" value="아일랜드 식탁" data-price="350000" type="checkbox" name="optionn" id="optionn-1" checked >
 						<label class="for-checkbox-tools" for="optionn-1">
@@ -469,17 +509,28 @@ for(var i=0; i < fa.length; i++){
 </div>
 
 <div class="foott"> 
-<button class="bubu" type="button">
-<span class="standard">견적 계산 기준이 뭔가요? </span></button>
 		 <input type="submit" class="submit_button fott" value="가격 확인 ">
-            
     <input class="reset_button" type='reset' value="초기화" > 
 		  <input type="hidden" name="pricek" value="">   
-		
-</div>
 
 </form>
+<button class="bubu" onclick="on()">
+<span class="standard" >견적 계산 기준이 뭔가요? </span></button>
 
+
+<div id="overlay" onclick="off()">
+  <div id="textt">
+  <p class="overl" > <b> 견적 계산 기준이 뭔가요? </b> </p>
+  
+							<div class="row-emptyy"></div>
+					
+  보편적인 계산법을 활용하였습니다. <br>
+  시공 현장의 상태, 자재 및 인건비 차이, 시장 상황 변동 등으로 인해<br> 실제 견적과 다소 차이가 날 수 있습니다.<br>
+  보다 정확한 견적은 카카오톡 채널에서 직접 상담신청을 통해 문의하실 수 있습니다.<br>
+  견적계산 기능이 더욱 정확할 수 있게 지속해서 개선해 나가겠습니다.<br>
+  </div>
+</div>
+</div>
 </body>
 </html> 
 <jsp:include page="/template/footer.jsp"></jsp:include>
