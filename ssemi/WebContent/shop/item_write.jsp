@@ -4,7 +4,25 @@
  <jsp:include page="/template/header.jsp"></jsp:include>   
  <head>
 <style>
-
+    *{
+     box-sizing: border-box;
+     font-family: 'Noto Sans KR', sans-serif;
+    }
+.hello{
+    border-collapse: collapse;
+    }
+.itsme td{
+    
+   width: auto;
+    
+    }
+    th{
+        background-color: #F6F6F6;   
+    }
+    input { width:100%; } 
+  .noresize{
+     resize: none; 
+    }
 </style>
 <script>
 
@@ -22,7 +40,7 @@
 <div align="center">
 	<h2>상품등록</h2>
 	<!-- 테이블에 글 정보를 출력 -->
-	<table border="1" width="60%">
+	<table border="1" class="hello itsme">
 		<tbody>
 			<tr>
 			<th>상품명</th>
@@ -68,11 +86,11 @@
 			</tr>
 			<tr>
 			<th>상품설명</th>
-				<td><textarea name="item_info" required rows="20" cols="100"></textarea></td>
-			</tr>
+				<td><textarea class="noresize"name="item_info" required rows="20" cols="100"></textarea></td>
+			
 		</tbody>
 		<tfoot>
-			<tr>
+			<tr class="mi">
 				<td colspan="2" align="right">
 				<input type="submit" value="작성">
 			</tr>
