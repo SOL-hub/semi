@@ -27,8 +27,8 @@
 }
 /* 오류 텍스트 +줄긋기*/
 .error_box {
-	margin-left: 800px;
-padding-top:120px;
+	margin-left: 600px;
+padding-top:90px;
 	float: left;
 	border-right: 1px solid #3333;
 	
