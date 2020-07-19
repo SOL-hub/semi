@@ -6,7 +6,7 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
 	
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,6 +131,7 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
 	color: var(--white);
     	letter-spacing: -0.2px;
 }
+
 .titlee{
 padding-bottom:15px;
 text-align:center;
@@ -300,7 +301,7 @@ cursor:pointer;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.7;
+  background-color: rgba(0,0,0,0.7);
   z-index: 2;
   cursor: pointer;
 }
@@ -315,6 +316,8 @@ cursor:pointer;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
 }
+
+
 </style>
     
     <script>
