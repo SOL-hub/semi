@@ -41,18 +41,7 @@
                <!--제품관련 스타일-->
                <br>
 
-                  <div class = "img-inline">
-                  <!-- 여기다 event1 선착순-->
-             <br><br>
-                 
-                  <img src="<%=request.getContextPath()%>/img/event3.png" width="500" height="470" alt="event"/>
-               
-                     <h3 style="font-color: grey;">
-                        종료된 이벤트입니다</h3>
-                    
-                    
-                 
-
+           
 
 <!-- 이벤트2 출석체크-->
                
