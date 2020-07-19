@@ -188,7 +188,7 @@ height: 100px;}
 			%>
    
     <hr>
-      <label for="title"> <b>이 견적서의 제목을 만들어 주세요</b> </label>
+      <label for="title"> <b>이 견적서의 제목을 만들어 주세요</b> </label><br> 
     <input type="text" placeholder=" 예) 마루 견적서 " name="living_title" id="title" > <br> 
     <button type="submit" class="registerbtn">저장</button>     <% }%>
   </div>  

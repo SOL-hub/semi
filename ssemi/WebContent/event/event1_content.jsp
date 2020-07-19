@@ -1,4 +1,3 @@
-
 <%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="home.beans.dto.eventDto"%>
@@ -25,7 +24,6 @@ MemberDto user = (MemberDto)session.getAttribute("userinfo");
 
 boolean isMine = user.getMember_id().equals(edto.getEvent_writer());
 
-
 MemberDao mdao2 = new MemberDao();
 MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
 
@@ -33,49 +31,123 @@ MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
 %> 
 
 
-     <jsp:include page="/template/header.jsp"></jsp:include>
+<!-- 선착순 게시글 작성 -->
+    <jsp:include page="/template/header.jsp"></jsp:include>
     
-    
-    <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/event.css?ver=1">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  
+  text-align:center;
+}
+
+* {
+  box-sizing: border-box;
+  
+}
+
+
+.container {
+ width:70%;
+  padding: 16px;
+  background-color: white;
+}
+
+textarea{
+  width: 70%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+  width: 70%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.bar{
+ width: 70%;
+  display: inline-block;
+  padding: 15px;
+  margin: 15px;
+  border: none;
+  background: #f1f1f1;
+  }
+  
+  
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+  width:70%:
+}
+
+.registerbtn {
+  background-color: #BA3028;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 70%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+.roww{
+height:10px;
+}
+
+.rowww{
+height:150px;
+}
 
 
 
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div align="center">
+  <div class="rowww"></div>
 
 <form action="event1_content.do" method="post">
-<main>
-<article>
-    
- <div align="center" style="padding-top: 100px;">
- 
-    <h2>작성글 상세보기</h2>
-    
-    <table border="1" width="60%">
-    <tbody>
-    
-    <tr>
-    <td>
-    <font size="6">
+ <div class="container">
+    <h1>EVENT</h1>
+
+    <hr>
+
+  <div class="roww"></div>
+  
+      <label for="event_title"><b>제 목</b></label> <span class="bar">
     <%
     if(edto.getEvent_head()!=null){ 
     
     %>
     [<%=edto.getEvent_head()%>]
     <%}%>
-    </font>
-    
-    <%=edto.getEvent_title()%><!-- 제목 -->
-     </font>
-    </td>
-    </tr>
-    
-    
-    <tr>
-    <td>
-    
-    <!--작성자 -->
-   
-    
+
+    <%=edto.getEvent_title()%></span>
+  
+  
+      <div class="roww"></div>
+      
+        <label for="event_writer"><b>작성자</b></label> <span class="bar">
+
      <%if(edto.getEvent_writer()!= 0) {
     	 MemberDto mdto2 = mdao2.get(edto.getEvent_writer());
     	 
@@ -91,30 +163,21 @@ MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
     <%=mdto.getMember_auth()%>
     </font>
     <%}%>
-    </td>
-    </tr>
+    </span>
     
-    <tr>
-    <td>
-   <%=edto.getEvent_date()%>
-    <%=edto.getEvent_read()%>
-    </td>
-    </tr>
-    
-    
-     <tr height="300">
-    <td valign ="top">
-  <%=edto.getEvent_content()%>
-    </td>
-    </tr>
+    <div class="roww"></div>
 
-    
+     <label for="event_date"><b>작성일</b></label> <span class="bar">
+   <%=edto.getEvent_date()%></span>
+  
+  <div class="roww"></div>
+
+   <label for="event_content"><b>내용</b></label><span class="bar">
+  <%=edto.getEvent_content()%>
+</span>
+
+     <div class="roww"></div>
    
-    <tr>
-    <td colspan ="2" align ="right">
-    
-    <a href= event_writer.jsp>
-    <input type = "button" value="글쓰기"></a>
     
     
     <%if(isMine){%>
@@ -128,16 +191,13 @@ MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
           <%} %>
            <a href= event_event1.jsp>
             <input type = "button" value="목록"></a>
-    
-    </td>
-    
-    </tr>
-   </tbody>
-    </table>
     </div>
-    </article>
-    </main>
-   </form>
-   
+
+</form>
+</div>
+
+</body>
+</html>
+
     
     <jsp:include page="/template/footer.jsp"></jsp:include>
