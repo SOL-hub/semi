@@ -32,11 +32,15 @@
             color: #C80A1E;
         }
 
+
+
         .edittable {
 
             text-align: center;
             width: 500px;
             height: 500px;
+            
+           
         }
 
         .editdiv {
@@ -51,8 +55,10 @@
         }
         
        .listbtn{
-       		margin-top: 10px;
-        	margin-left: 420px;  	
+       		
+       		margin-top: 15px;
+        	margin-left: 280px;  	
+        	
         }
      
    
@@ -122,7 +128,7 @@
     <div class="editdiv">
         <h1 id="edith1"> 회원 정보 수정</h1>
         <form action="admin_edit.do" method="post">
-            <table border="1" class="edittable">
+            <table class="edittable">
                 <tr>
                     <th>아이디</th>
                     <td><%=mdto.getMember_id() %>
@@ -179,6 +185,7 @@
         </form>
     </div>
 
+<br><br><br><br><br><br>
     
                
   

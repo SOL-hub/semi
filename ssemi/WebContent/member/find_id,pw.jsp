@@ -55,7 +55,7 @@
 			if (request.getParameter("error") != null) {
 		%>
 		<h5>
-			<font color="red">해당하는 정보로 아이디를 찾지 못했습니다.</font>
+			<font color="#C80A1E">해당하는 정보로 아이디를 찾지 못했습니다.</font>
 		</h5>
 		<%
 			}

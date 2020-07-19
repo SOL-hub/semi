@@ -60,23 +60,28 @@
 <title>Insert title here</title>
 
 <link rel=stylesheet type="text/css"
-	href="<%=request.getContextPath()%>/css/base.css?ver=1">
+	href="<%=request.getContextPath()%>/css/base.css?ver=3">
 <link rel=stylesheet type="text/css"
-	href="<%=request.getContextPath()%>/css/mypage.css?ver=1">
+	href="<%=request.getContextPath()%>/css/mypage.css?ver=3">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
+<style>
+
+
+
+</style>
 </head>
 <body>
 	<main>
 		<aside class="sidebar">
 			<ul>
-				<li><a style="color: red" href="mypage.jsp"> 마이페이지 </a></li>
+				<li><a style="color: #C80A1E" href="mypage.jsp"> 마이페이지 </a></li>
 				<li><a href="user_info.jsp"> 회원정보 </a></li>
 				<li><a href="check_pw.jsp?go=user_info_update.jsp"> 회원정보수정 </a></li>
 				<li><a href="check_pw.jsp?go=change_pw.jsp"> 비밀번호변경 </a></li>
 				<li><a href="shopBarket3.jsp"> 장바구니 </a></li>
 				<li><a href="wishlist.jsp">위시리스트</a></li>
 				<li><a href="<%=request.getContextPath()%>/buypage/buy_list.jsp"> 구매내역 </a></li>
-				<li><a href="#"> 게시판내역 </a></li>
 				<li><a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 견적내역 </a></li>
 				<li><a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=user_out2.do">회원탈퇴</a></li>
 			</ul>
@@ -160,6 +165,9 @@
 							<td class="row-empty"></td>
 						</tr>
 						
+						
+						
+						
 						<tr>
 							<td  class="cart_title center">나의 구매내역</td>
 						</tr>
@@ -181,14 +189,13 @@
 							for (CartDto cdto : list) {
 								// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출
 								ItemDao idao = new ItemDao();
-								ItemDto itemName = idao.item_get(cdto.getCart_item_name());						
-						%>
+								ItemDto itemName = idao.item_get(cdto.getCart_item_name());%>
 						<tr>
 							<td style="width: 10%" class="cart_content"><%=itemName.getItem_name()%></td>
 							<td style="width: 50%" class="cart_content_left"><%=itemName.getItem_info()%></td>
 							<td style="width: 10%" class="cart_content"><%=formatter.format(itemName.getItem_price())%></td>
 							<td style="width: 10%" class="cart_content"><%=cdto.getCart_cnt()%></td>
-							<br>
+						
 						</tr>
 						<tr>
 							<td colspan="4" class="cart_line"></td>

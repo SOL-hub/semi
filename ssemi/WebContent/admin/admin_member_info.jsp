@@ -23,13 +23,17 @@
   .edittable tr th {
             width: 150px;
             color: #C80A1E;
+             
         }
-
+.edittable tr td{
+			border-bottom: 1px solid #3333;
+}
         .edittable {
 
             text-align: center;
             width: 500px;
             height: 500px;
+           
         }
 
         .editdiv {
@@ -70,7 +74,7 @@
  <div class="editdiv">
                  <h1 id="edith1"> 회원 정보</h1>
               
-                  <table border="1" class="edittable">
+                  <table  class="edittable">
                   <tr>
                   	<th>아이디</th>
                   	<td><%=mdto.getMember_id() %></td>
