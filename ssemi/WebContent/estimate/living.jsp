@@ -6,7 +6,7 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
 	
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,6 +122,15 @@ font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Got
     font-size: 15px;
 }
 
+.overl{
+background-color: var(--red);
+font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 18px;
+	line-height: 40px;
+	font-weight: 600;
+	color: var(--white);
+    	letter-spacing: -0.2px;
+}
 
 .titlee{
 padding-bottom:15px;
@@ -282,6 +291,32 @@ cursor:pointer;
     font-size: 14px;
     line-height: 1.3;
     color: var(--black);}
+    
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#textt{
+  position: absolute;
+  top:50%;
+  left:50%;
+  text-align:center;
+  font-size: 18px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
 
 </style>
     
@@ -300,6 +335,15 @@ var d = document.querySelector("input[name=brand]:checked").getAttribute("data-p
     
 }
     
+    
+    function on() {
+  	  document.getElementById("overlay").style.display = "block";
+  	}
+
+  	function off() {
+  	  document.getElementById("overlay").style.display = "none";
+  	}
+  	
     </script>
   
 
@@ -327,23 +371,23 @@ var d = document.querySelector("input[name=brand]:checked").getAttribute("data-p
    	    
 						<p ><span class="half"> 시공할 마루 종류를 선택해주세요 </span></p>
 						<input class="checkbox-tools" type="radio" data-price="200000" name="type" checked id="type-1" value="강마루" >
-						<label class="for-checkbox-tools" for="type-1"> <img width="100%"
+						<label class="for-checkbox-tools" for="type-1"> <img width="110px" height="110px"
                src="<%=request.getContextPath()%>/image/maruu.PNG" style="margin-bottom:10px;">	
 							강마루
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="300000" name="type" id="type-2" value="원목마루">
-						<label class="for-checkbox-tools" for="type-2"><img width="100%"
+						<label class="for-checkbox-tools" for="type-2"><img width="110px" height="110px"
                src="<%=request.getContextPath()%>/image/maruu.PNG" style="margin-bottom:10px;">	
 							원목마루
 						</label><!--
 						--><input class="checkbox-tools" value="강화마루" data-price="400000" type="radio" name="type" id="type-3">
-						<label class="for-checkbox-tools" for="type-3"><img width="100%"
+						<label class="for-checkbox-tools" for="type-3"><img width="110px" height="110px"
                src="<%=request.getContextPath()%>/image/maruu.PNG" style="margin-bottom:10px;">	
 						강화마루
 						</label><!--
 						--><input class="checkbox-tools" value="온돌마루" data-price="500000" type="radio" name="type" id="type-4">
-						<label class="for-checkbox-tools" for="type-4"><img width="100%"
+						<label class="for-checkbox-tools" for="type-4"><img width="110px" height="110px"
                src="<%=request.getContextPath()%>/image/maruu.PNG" style="margin-bottom:10px;">	
 						온돌마루
 						</label> <div class="row-emptyy"></div>
@@ -356,16 +400,22 @@ var d = document.querySelector("input[name=brand]:checked").getAttribute("data-p
 				
 						<input class="checkbox-tools" type="radio" data-price="100000" name="pattern" checked id="pattern-1" value="벽돌(Brick)" >
 						<label class="for-checkbox-tools" for="pattern-1">
+						<img width="110px" height="110px"
+               src="<%=request.getContextPath()%>/image/maru2.PNG" style="margin-bottom:10px;">
 							벽돌<br>(Brick)
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="150000" name="pattern" id="pattern-2" value="헤링본(Herringbone)">
 						<label class="for-checkbox-tools" for="pattern-2">
+						<img width="110px" height="110px"
+               src="<%=request.getContextPath()%>/image/maru2.PNG" style="margin-bottom:10px;">
 							헤링본<br>(Herringbone)
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="250000" name="pattern" id="pattern-3" value="파케이(Parquet)">
 						<label class="for-checkbox-tools" for="pattern-3">
+						<img width="110px" height="110px"
+               src="<%=request.getContextPath()%>/image/maru2.PNG" style="margin-bottom:10px;">
 							파케이<br>(Parquet)
 						</label>
 					
@@ -430,17 +480,31 @@ var d = document.querySelector("input[name=brand]:checked").getAttribute("data-p
 				</div>
 
 <div class="foott"> 
-<button class="bubu" type="button">
-<span class="standard">견적 계산 기준이 뭔가요? </span></button>
+
 		 <input type="submit" class="submit_button fott" value="가격 확인 ">
             
     <input class="reset_button" type='reset' value="초기화" > 
 		  <input type="hidden" name="pricee" value="">   
-		
-</div>
+
 
 </form>
+<button class="bubu" onclick="on()">
+<span class="standard" >견적 계산 기준이 뭔가요? </span></button>
 
+
+<div id="overlay" onclick="off()">
+  <div id="textt">
+  <p class="overl" > <b> 견적 계산 기준이 뭔가요? </b> </p>
+  
+							<div class="row-emptyy"></div>
+					
+  보편적인 계산법을 활용하였습니다. <br>
+  시공 현장의 상태, 자재 및 인건비 차이, 시장 상황 변동 등으로 인해<br> 실제 견적과 다소 차이가 날 수 있습니다.<br>
+  보다 정확한 견적은 카카오톡 채널에서 직접 상담신청을 통해 문의하실 수 있습니다.<br>
+  견적계산 기능이 더욱 정확할 수 있게 지속해서 개선해 나가겠습니다.<br>
+  </div>
+</div>
+</div>
 </body>
 </html> 
 <jsp:include page="/template/footer.jsp"></jsp:include>

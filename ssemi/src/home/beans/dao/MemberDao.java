@@ -464,7 +464,19 @@ public class MemberDao {
 
 		}
 		
-		
+		//진빈 구매 포인트 차감
+		public void buy_point_min(int member_no, int member_point) throws Exception{
+			Connection con = getConnection();
+			
+			String sql = "update member set member_point = (member_point - ?) where member_no=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, member_point);
+			ps.setInt(2, member_no);
+			ps.execute();
+			
+			con.close();
+		}
 		
 		
 		

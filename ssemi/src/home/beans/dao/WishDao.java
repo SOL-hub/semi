@@ -59,7 +59,7 @@ public class WishDao {
 	public List<WishDto> get_wishList(int wish_member) throws Exception{
 		Connection con = getConnection();
 		
-		String sql="select * from wish where wish_member=?";
+		String sql="select * from wish where wish_member=? ORDER BY wish_no DESC";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, wish_member);
 		
@@ -81,7 +81,7 @@ public class WishDao {
 	public List<WishDto> get_wishList(int wish_member, int start, int finish) throws Exception{
 		Connection con = getConnection();
 		
-		String sql="SELECT * FROM (SELECT rownum rn, T.* from(select * from wish where wish_member=?)T )where rn between ? and ?";
+		String sql="SELECT * FROM (SELECT rownum rn, T.* from(select * from wish where wish_member=?)T )where rn between ? and ? ORDER BY wish_no DESC";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, wish_member);
 		ps.setInt(2, start);

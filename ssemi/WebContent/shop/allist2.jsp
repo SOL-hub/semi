@@ -8,13 +8,6 @@
     
  
     <%
-    
-    ItemDao idao = new ItemDao();
-    List<ItemDto> list = idao.getList(start, finish);
-    
-    
-    
-    
     MemberDao mdao = new MemberDao();
     String type = request.getParameter("type");
     String keyword = request.getParameter("keyword");
@@ -52,7 +45,6 @@
    int blockSize = 10;//이 페이지에는 네비게이터 블록을 10개씩 배치하겠다!
    int startBlock = (pageNo - 1) / blockSize * blockSize + 1;
    int finishBlock = startBlock + blockSize - 1;
-
    ItemDao idao = new ItemDao();
    
    //(주의!) 다음 버튼의 경우 계산을 통하여 페이지 개수를 구해야 출력 여부 판단이 가능
@@ -71,13 +63,13 @@
    }
    
    
- // List<BoardDto> list = 목록 or 검색;
- // List<ItemDto> list;
- //if(isSearch){
- //  list = idao(type, keyword, start, finish); 
- // }
- else{
-     list = idao.getList(start, finish); 
+//    List<BoardDto> list = 목록 or 검색;
+   List<ItemDto> list;
+   if(isSearch){
+      list = idao.search(type, keyword, start, finish); 
+   }
+   else{
+      list = idao.getList(start, finish);  
    }
 %> 
  
@@ -228,5 +220,3 @@
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
 </div>
-
-

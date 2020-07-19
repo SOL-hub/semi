@@ -14,16 +14,13 @@
     
     <%
       	MemberDto mdto = (MemberDto)request.getSession().getAttribute("userinfo");
-   		int cart_member = mdto.getMember_no();
+   		int member_member = mdto.getMember_no();
+   		
    		MemberDao mdao = new MemberDao();
-   		MemberDto user = mdao.get(cart_member);
-   		
-   		
-   		CartDto cdto = new CartDto();
-   		cdto.setCart_no(Integer.parseInt(request.getParameter("cart_no")));
-   		CartDao cdao = new CartDao();
-   		
-   		String [] setCart= request.getParameterValues("cart_no");
+   		MemberDto user = mdao.get(member_member);
+		
+   		ItemDto idto = (ItemDto)request.getSession().getAttribute("iteminfo");
+   		int item_no = idto.getItem_no();
    		DecimalFormat formatter = new DecimalFormat("###,###");
     %>
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -35,7 +32,7 @@
     <meta charset="UTF-8">
     <title>ordersheet</title>
 
-    <style> 
+    <style>
         * {
 /*            font-size: 20px  */
         }
@@ -253,7 +250,6 @@
             font-size:20pt;
             font-weight:bold;
         }
-        
         .addr-btn2 {
             padding: 0.5rem;
             font-size: 16px;
@@ -264,7 +260,6 @@
             cursor: pointer;
             margin-right: 25px
         }
-        
         .selectbox { 
         width: 200px; /* 원하는 너비설정 */ 
         padding: .8em .5em; /* 여백으로 높이 설정 */ 
@@ -378,34 +373,33 @@
         }
         
         function button_event(){
-        var now_point = document.querySelector("#now_point").value;
-        var buy_point = document.querySelector("#buy_point").value;
-       	
-        console.log(now_point);
-        console.log(buy_point);
-               	
-        	var result = confirm("정말 결제하시겠습니까??");
-            if (!result){ 
-//                 document.form.submit();
-            	return false;
+            var now_point = document.querySelector("#now_point").value;
+            var buy_point = document.querySelector("#buy_point").value;
+           	
+            console.log(now_point);
+            console.log(buy_point);
+                   	
+            	var result = confirm("정말 결제하시겠습니까??");
+                if (!result){ 
+//                     document.form.submit();
+                	return false;
 
-            }
-            else{  
-					if(parseInt(now_point) >= parseInt(buy_point)){
-// 						return;
-		                document.form.submit();
-					}
-					else{
-						
-						confirm("잔여 포인트가 부족합니다.");
-						return false;
+                }
+                else{  
+    					if(parseInt(now_point) >= parseInt(buy_point)){
+//     						return;
+    		                document.form.submit();
+    					}
+    					else{
+    						
+    						confirm("잔여 포인트가 부족합니다.");
+    						return false;
 
-					}
+    					}
 
-            }
-        	
-      }
-
+                }
+            	
+          }
     </script>
 </head>
 
@@ -446,20 +440,18 @@
 									
 						
 								
-				for(int i=0; i<setCart.length; i++) {
-					int cart_no = Integer.parseInt(setCart[i]);
-					CartDto cdto2 = cdao.get_cart2(cart_no);
-
-				ItemDao idao = new ItemDao();
-				ItemDto itemName = idao.item_get(cdto2.getCart_item_name());
 				
+				ItemDao idao = new ItemDao();
+				CartDto cdto = new CartDto();
+				
+				cdto.setCart_cnt(Integer.parseInt(request.getParameter("cart_cnt")));
 				ItemFileDao ifdao = new ItemFileDao();
-				List<ItemFileDto> file_list = ifdao.getList(itemName.getItem_no());
+				List<ItemFileDto> file_list = ifdao.getList(idto.getItem_no());
 					
-				int item_cnt_change_price = itemName.getItem_price() * cdto2.getCart_cnt();
+				int item_cnt_change_price = idto.getItem_price() * cdto.getCart_cnt();
 										
 				total_price = item_cnt_change_price + delivery_cost ;
-				total_cnt += cdto2.getCart_cnt();	
+				total_cnt += cdto.getCart_cnt();	
 				real_total_price += total_price;
 				%>
 				
@@ -476,17 +468,17 @@
 						<%} %>   
                     </td>
                     <td class="center" style="width: 5%">
-                    	<input class="input_text_style" type="text" readonly value="<%=itemName.getItem_name()%>">
-                    	<input type="hidden" name="shopping_item_name" value="<%=itemName.getItem_no() %>">
+                    	<input class="input_text_style" type="text" readonly value="<%=idto.getItem_name()%>">
+                    	<input type="hidden" name="shopping_item_name" value="<%=idto.getItem_no() %>">
                     </td>
                     <td class="center" style="width: 5%">
-                    	<textarea  readonly class="text_textarea"><%=itemName.getItem_info()%></textarea>
+                    	<textarea  readonly class="text_textarea"><%=idto.getItem_info()%></textarea>
                     </td> 
                     <td class="center" style="width: 5%">
                     	<input style=" width: 40%;" class="input_text_style" type="text" value="2,500">원
                     </td>
                     <td class="center" style="width: 5%">
-                    	<input style=" width: 40%;" class="input_text_style" type="text" value="<%=cdto2.getCart_cnt() %>" name="shopping_item_cnt">
+                    	<input style=" width: 40%;" class="input_text_style" type="text" value="<%=cdto.getCart_cnt() %>" name="shopping_item_cnt">
                     </td>
                     <td class="center" style="width: 5%;">
                     	<input style= "text-align: right; width: 70%;" class="input_text_style" type="text" value="<%=formatter.format(total_price)%>">원
@@ -497,7 +489,7 @@
 <!--                     <td colspan="6"class="center bottomline"></td> -->
 <!--                 </tr> -->
                 
-                <%}
+                <%
 				int real_total = total_price + delivery_cost;					
 				%> 
 									
@@ -563,9 +555,8 @@
                     <div>
                         <input class="recive-addr1" type="text" name="shopping_recive_post" required
                         value="<%=mdto.getMember_post()%>">
-                        <input type="button" class="addr-btn2" value="주소찾기" onclick="findAddress();">
+                        <input class="addr-btn2" type="button" value="주소찾기" onclick="findAddress();">
                     </div>
- 
                     <div>
                         <input class="recive-addr2" type="text" name="shopping_recive_base_addr" required
                         value="<%=mdto.getMember_base_addr()%>">
@@ -600,8 +591,10 @@
 
                 </div>
                      <div class="row-empty"></div>
+<!--                      111 -->
                     <div class="area on" id="cb1-area">
                     	<select name="shopping_paybank" class="selectbox">
+                    	
                         <option>카드선택</option>
                         <option>국민카드</option>
                         <option>신한카드</option>
@@ -617,7 +610,7 @@
                             카드번호 입력 <input class="input-number" type="text" name="shopping_paybank_num">
                         </div>
                     </div>
-                    
+<!--                     222 -->
                     <div class="area" id="cb2-area">
                     <select name="shopping_paybank" class="selectbox">
                         <option>은행선택</option>
@@ -638,7 +631,7 @@
                             내 계좌번호 입력 <input class="input-number" type="text" name="shopping_paybank_num">
                         </div>
                     </div>
-                    
+<!--                     333 -->
                     <div class="area" id="cb3-area">
                    	
                    	 	<div class="row-empty">
@@ -652,7 +645,6 @@
                            	 
                         </div>
                     </div>
-                    
                 <div class="row-empty"></div>
                 <div class="row-empty">
                     <hr>

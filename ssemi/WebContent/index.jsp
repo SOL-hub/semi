@@ -193,7 +193,7 @@ transform: scale(1.1);
    <a href="<%=request.getContextPath()%>/shop/alist.jsp" id="a-img"><img src="<%=request.getContextPath()%>/img/liftstyle.PNG"  ></a>
    </div>
    <div class="maindiv">
-   <a href="<%=request.getContextPath()%>/"><img src="<%=request.getContextPath()%>/img/review.PNG"></a>
+   <a href="<%=request.getContextPath()%>/"><img src="<%=request.getContextPath()%>/img/notice.PNG" width="464px" ></a>
    </div>
 </div>
 

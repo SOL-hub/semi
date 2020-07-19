@@ -108,6 +108,7 @@
                         </thead>
 							<%
 							int total_price = 0;
+							int total_price_total = 0;
 							int real_total_price = 0;
 							int delivery_cost = list.size() * 2500;
 							
@@ -120,8 +121,8 @@
 						ItemFileDao ifdao = new ItemFileDao();
 						List<ItemFileDto> file_list = ifdao.getList(idto.getItem_no());
 						
-						total_price += idto.getItem_price();
-							
+						total_price = idto.getItem_price() * sdto.getShopping_item_cnt();
+						total_price_total += total_price;	
 						%>
 						
                         <tbody>
@@ -130,7 +131,9 @@
                               <td style="width: 280px; height: 50px;">
                               <span>
 									<%for(ItemFileDto ifdto : file_list){%>
-											<img src="<%=request.getContextPath() %>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100px" height="100px">
+											<a href="<%=request.getContextPath()%>/shop/item_info.do?item_no=<%=ifdto.getItem_origin()%>">
+												<img src="<%=request.getContextPath() %>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100px" height="100px">
+											</a>
 							
 										<%} %>                              
 								</span></td>
@@ -138,13 +141,17 @@
                               <td style="width: 450px; text-align: left; padding-left: 20px;">
                               	<span><%=idto.getItem_info() %></span>
                               </td>
-                              <td style="width: 100px;"><%=formatter.format(idto.getItem_price())%>원</td>
+                              <td style="width: 100px;"><%=formatter.format(total_price)%>원</td>
                               <td style="width: 60px;"><%=sdto.getShopping_item_cnt() %></td>
 		                      <td style="width: 100px;">2,500원</td>
 		                       <td style="width: 100px;">
+		                       		<%if(sdto.getShopping_payment().equals("포인트 결제")){ %>
+		                       		<%=sdto.getShopping_payment() %><br>
+		                       		<%}else{ %>
 		                       		<%=sdto.getShopping_payment() %><br>
 		                       		<%=sdto.getShopping_paybank()%><br>
 		                       		<%=sdto.getShopping_paybank_num() %>
+		                       		<%} %>
 		                       </td>
                               <td>
                               <form action="buy_list_delete.do">
@@ -169,7 +176,7 @@
 					</tr>						
 				
 				<%}
-					real_total_price = total_price + delivery_cost;
+					real_total_price = total_price_total + delivery_cost;
 				%>
 
                         <tfoot>
@@ -209,7 +216,7 @@
                      </tr>
 
                      <tr style="background-color: #fff;">
-                        <td style="padding: 22px 0;"><span class="price"><%=formatter.format(total_price) %></span>원</td>
+                        <td style="padding: 22px 0;"><span class="price"><%=formatter.format(total_price_total) %></span>원</td>
                         <td><span class="price"><%=formatter.format(delivery_cost) %></span>원
                         </td>
                         <td><span class="price"><%=formatter.format(real_total_price) %></span>원

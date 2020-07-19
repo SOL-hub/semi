@@ -7,10 +7,48 @@
 <br>
 <br>
 <br>
-<br> 	
+<br>
+<br>
+<br>
+<br>
+   <style>
+   *{
+   box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+   }
+    .center{
+        text-align:center;
+       }
+       .qwe{
+       position:absolute;
+       margin: -1px 0px 0px 660px;
+      
+       }
+       .qwer{
+       position:absolute;
+       margin: -1px 0px 0px 655px;
+       }
+       .zip{
+       position: relative;
+       margin: 0px 35px 0px 0px;
+       }
+    </style>
+    <div class="center">	
 	<h2>게시글 등록에 성공 하였습니다</h2>
-	<a href="allist.jsp">쇼핑하러가기</a>
-	<a href="<%=request.getContextPath()%>/member/itemList.jsp">내가등록한 글로가기</a>
-</body>
-</html> 
+	<div class="qwe">
+	<img src="<%=request.getContextPath()%>/img/shopping.png" width="20px"></div><a class="zip"href="<%=request.getContextPath()%>/shop/allist.jsp">쇼핑하러가기</a>
+	<br></br>
+	<div class="qwer">
+	<img src="<%=request.getContextPath()%>/img/emoji.png" width="25px"></div><a href="<%=request.getContextPath()%>/member/itemList.jsp">내가등록한 글로가기</a>
+	</div>
+	<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <jsp:include page="/template/footer.jsp"></jsp:include>  

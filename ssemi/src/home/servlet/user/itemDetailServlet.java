@@ -20,7 +20,7 @@ public class itemDetailServlet extends HttpServlet{
 			ItemDto idto = idao.item_get(item_no);
 			
 			req.getSession().setAttribute("iteminfo", idto);
-			resp.sendRedirect("product_detail.jsp");
+			resp.sendRedirect("product_detail2.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

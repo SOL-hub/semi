@@ -13,7 +13,7 @@ import home.beans.dto.CartDto;
 import home.beans.dto.ItemDto;
 import home.beans.dto.MemberDto;
 
-@WebServlet(urlPatterns = "/member/item_info.do")
+@WebServlet(urlPatterns = "/shop/item_info.do")
 public class ItemInfoServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,10 +26,11 @@ public class ItemInfoServlet extends HttpServlet{
 			
 			ItemDao idao = new ItemDao();
 			ItemDto idto = idao.item_get(item_no);
+			
 		
 			req.getSession().setAttribute("iteminfo", idto);
 			
-			resp.sendRedirect("itemInfo.jsp");
+			resp.sendRedirect("product_detail2.jsp");
 			
 			
 			

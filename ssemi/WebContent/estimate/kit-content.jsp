@@ -198,15 +198,7 @@ font-size:18px;
   </div> 
   <div class="roww"> </div>
     
-<div align="center">
-     <div class="roww"> </div>
-     
-<img width="70%"
-               src="<%=request.getContextPath()%>/image/shoo.PNG" style="margin-top:-15px"> 
-               <img width="70%"
-               src="<%=request.getContextPath()%>/image/kit.PNG" style="margin-top:-15px"> 
-                     
-               </div>
+
 </body>
 </html>
 
