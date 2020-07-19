@@ -19,11 +19,12 @@
 	
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-
+<div style=padding-top:150px;>
 <main>
 
         <div class="find-wrap">
-            <h1>내 계정 찾기</h1>
+           <br>
+           <br> <h1>내 계정 찾기</h1>
 
             <div class="center">
 
@@ -44,9 +45,9 @@
                 <div class="change_after">
                     <a href="<%=request.getContextPath()%>/member/check.jsp?go=change_pw.jsp"> <input class="click-btn2" type="submit" value="비밀번호 변경"></a>
                 </div>
-
+</div>
             </div>
-        </div>
+       
     </main>
-
+</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
