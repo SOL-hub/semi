@@ -6,7 +6,6 @@
     pageEncoding="UTF-8"%>
     
    <%
-
 	String type = request.getParameter("type");
 	String keyword = request.getParameter("keyword");
 	
@@ -42,7 +41,6 @@
 	int blockSize = 10;//이 페이지에는 네비게이터 블록을 10개씩 배치하겠다!
 	int startBlock = (pageNo - 1) / blockSize * blockSize + 1;
 	int finishBlock = startBlock + blockSize - 1;
-
 	ItemDao idao = new ItemDao();
 	
 	//(주의!) 다음 버튼의 경우 계산을 통하여 페이지 개수를 구해야 출력 여부 판단이 가능

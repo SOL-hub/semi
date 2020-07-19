@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import home.beans.dao.MemberDao;
 import home.beans.dto.MemberDto;
 
-@WebServlet (urlPatterns = "/member/user_out.do")
+@WebServlet (urlPatterns = "/member/user_out2.do")
 public class MemberOutServlet extends HttpServlet{
 
    @Override
@@ -30,7 +30,7 @@ public class MemberOutServlet extends HttpServlet{
          req.getSession().removeAttribute("userinfo");
          
          //출력
-         resp.sendRedirect("user_out.jsp");
+         resp.sendRedirect("user_out2.jsp");
       }
       
       catch(Exception e) {
