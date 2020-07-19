@@ -77,11 +77,15 @@ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
   display: inline-block;
   
   border-radius:5px;
-  background: black;
+  background: #6A89B2;
   color: white;
   }
   
   
+  .row-emptyy {
+height: 100px; }
+
+
 input[type=text]{
  border: 3px outset #DDD4CB ;
   width: 80%;
@@ -182,7 +186,7 @@ height:25px;
      <input type ="hidden" name="kit_tile" value="<%=tile %>" id="tile">
       <div class="roww"></div>
      
-         <label for="option"><b> 추가 옵션: <span class="bar"><%for(int i=0; i<optionn.length; i++){out.println(" " + optionn[i]);}%></span></b>
+         <span class="half">  추가 옵션: </span><b> <span class="bar"><%for(int i=0; i<optionn.length; i++){out.println(" " + optionn[i]);}%></span></b>
      <input type ="hidden" name="kit_option" value="<%for(int i=0; i<optionn.length; i++){out.println(" " + optionn[i]);}%>" id="optionn">
   <div class="roww"></div>
      
@@ -192,8 +196,8 @@ height:25px;
 			%>
    
     <hr>
-      <label for="title"> <b>이 견적서의 제목을 만들어 주세요</b> </label>
-    <input type="text" placeholder=" 예) 주방 견적서 " name="kit_title" id="title" > 
+      <label for="title"> <b>이 견적서의 제목을 만들어 주세요</b> </label> 
+    <input type="text" placeholder=" 예) 주방 견적서 " name="kit_title" id="title" > <br>
     <button type="submit" class="registerbtn">저장</button>     <% }%>
   </div>  
   
@@ -208,19 +212,22 @@ height:25px;
  </div> 
   
 </form>
-<div class="roww"> </div>
-    <div class="roww"> </div>
-<div align="center">
-    <div class="roww"> </div>
-        <div class="roww"> </div>
-               <img width="70%"
-               src="<%=request.getContextPath()%>/image/kit.PNG" style="margin-top:-15px"> 
-                     <img width="70%"
-               src="<%=request.getContextPath()%>/image/kit2.PNG" style="margin-top:-15px"> 
+
+
+
+ <div class="row-emptyy"></div>
+ 
+ 	 <div align="center">
+<img width="50px" height="50px"
+               src="<%=request.getContextPath()%>/image/kaka.PNG" style="margin-bottom:10px; border-radius: 5px;"> 
+<br>
+<span class="half"><b> 자세한 시공 견적 상담은 카카오톡 채널추가 후 문의 부탁드립니다. </b></span>
 </div>
+
+ <div class="roww"></div>
+
 </body>
 </html>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
     
- 

@@ -37,7 +37,7 @@ public class LivingSaveServlet extends HttpServlet{
 			
 			LivingDao ldao = new LivingDao();
 			ldao.save(ldto);
-			resp.sendRedirect("living.jsp");
+			resp.sendRedirect("living-list.jsp");
 			
 		}
 		catch(Exception e) {

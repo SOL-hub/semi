@@ -173,7 +173,7 @@ font-size:18px;
     <hr>
     
 
-     <button id="myBtn">공용거실</button>   <b> <span class="bar"><%=edto.getBath_cnt() %></span> </b>
+    <span class="half"> 공용거실</span>  <b> <span class="bar"><%=edto.getBath_cnt() %></span> </b>
      <div class="roww"></div>
      
         <span class="half"> 소형(안방) </span>  <b>  <span class="bar"><%=edto.getBath_cntt()%></span></b>
@@ -202,16 +202,7 @@ font-size:18px;
      
      <div class="roww"> </div>
     
-<div align="center">
-     <div class="roww"> </div>
-     
-<img width="70%"
-               src="<%=request.getContextPath()%>/image/shoo.PNG" style="margin-top:-15px"> 
-               <img width="70%"
-               src="<%=request.getContextPath()%>/image/kit.PNG" style="margin-top:-15px"> 
-                     
-               </div>
-               
+
    
 
 </body>
