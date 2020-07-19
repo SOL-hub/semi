@@ -61,7 +61,7 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                      		<li><a href="<%=request.getContextPath()%>">환풍기</a></li>
                      	</ul>
                      	</li>
-                     <li><a href="#">마루</a>
+                     <li><a href="<%=request.getContextPath()%>/shop/maru.jsp">마루</a>
               	       </li>
                      <li><a href="#">주방</a>
                    	  	<ul class="inner-inner">
