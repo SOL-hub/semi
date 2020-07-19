@@ -76,7 +76,7 @@ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
   display: inline-block;
   
   border-radius:5px;
-  background: black;
+  background:#6A89B2;
   color: white;
   }
   
@@ -125,6 +125,8 @@ height:200px;
 height:20px;
 }
 
+.row-emptyy{
+height: 100px;}
 
 .signin {
   background-color: #f1f1f1;
@@ -187,7 +189,7 @@ height:20px;
    
     <hr>
       <label for="title"> <b>이 견적서의 제목을 만들어 주세요</b> </label>
-    <input type="text" placeholder=" 예) 마루 견적서 " name="living_title" id="title" > 
+    <input type="text" placeholder=" 예) 마루 견적서 " name="living_title" id="title" > <br> 
     <button type="submit" class="registerbtn">저장</button>     <% }%>
   </div>  
   
@@ -195,22 +197,24 @@ height:20px;
   <div class="container signin">
   <% if(isLogin) {%> 
   	
-   <span class="barr">  <a href="<%=request.getContextPath()%>/estimate/kit.jsp">재견적하러가기</a> </span>
-  <span class="barr">  <a href="<%=request.getContextPath()%>/estimate/kit-list.jsp">나의견적보기</a></span> <% } else { %>
-   <span class="barr">   <a href="<%=request.getContextPath()%>/estimate/kit.jsp">재견적하러가기</a></span> <%} %>
+   <span class="barr">  <a href="<%=request.getContextPath()%>/estimate/living.jsp">재견적하러가기</a> </span>
+  <span class="barr">  <a href="<%=request.getContextPath()%>/estimate/kit-living.jsp">나의견적보기</a></span> <% } else { %>
+   <span class="barr">   <a href="<%=request.getContextPath()%>/estimate/living.jsp">재견적하러가기</a></span> <%} %>
    
  </div> 
-  
 </form>
-<div class="roww"> </div>
-    
-<div align="center">  
-<div class="roww"> </div>
-               <img width="70%"
-               src="<%=request.getContextPath()%>/image/kit.PNG" style="margin-top:-15px"> 
-                     <img width="70%"
-               src="<%=request.getContextPath()%>/image/kit2.PNG" style="margin-top:-15px"> 
+
+ <div class="row-emptyy"></div>
+ 
+ 	 <div align="center">
+<img width="50px" height="50px"
+               src="<%=request.getContextPath()%>/image/kaka.PNG" style="margin-bottom:10px; border-radius: 5px;"> 
+<br>
+<span class="half"><b> 자세한 시공 견적 상담은 카카오톡 채널추가 후 문의 부탁드립니다. </b></span>
 </div>
+
+ <div class="roww"></div>
+
 </body>
 </html>
 

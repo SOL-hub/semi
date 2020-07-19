@@ -39,7 +39,7 @@ public class KitSaveServlet extends HttpServlet{
 			
 			KitDao kdao = new KitDao();
 			kdao.save(kdto);
-			resp.sendRedirect("kit.jsp");
+			resp.sendRedirect("kit-list.jsp");
 			
 		}
 		catch(Exception e) {

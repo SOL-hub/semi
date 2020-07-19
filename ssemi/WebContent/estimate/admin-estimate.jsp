@@ -1,18 +1,26 @@
 <%@page import="home.beans.dao.LivingDao"%>
+<%@page import="home.beans.dto.LivingDto"%>
+<%@page import="home.beans.dto.KitDto"%>
+<%@page import="home.beans.dao.KitDao"%>
+<%@page import="home.beans.dao.EstimateDao"%>
 <%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="java.util.List"%>
-<%@page import="home.beans.dto.LivingDto"%>
+<%@page import="home.beans.dto.EstimateDto"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%
 	MemberDto mdto = (MemberDto)session.getAttribute("userinfo");
-	String living_member = mdto.getMember_id();
-
+ 
+	EstimateDao edao = new EstimateDao();
+	List<EstimateDto> list = edao.getList();
+	KitDao kdao = new KitDao();
+	List<KitDto> listt = kdao.getList();
 	LivingDao ldao = new LivingDao();
-	List<LivingDto> list = ldao.getList(living_member); 
+	List<LivingDto> listl = ldao.getList();
+	
 	%>
 	
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -21,7 +29,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title> 마루 견적 내역</title>
+<title> 욕실 견적 내역</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
@@ -148,47 +156,113 @@ text-align:center;
 margin: 20px 0 20px 0;
 }
 
-		.row-emptt{
-	height: 25px;
-	}
-	
+
+
 	</style>
 </head>
 <body>
 <div class="roww"></div>
 
 <div class="menuu" align="center">
-<a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 욕실</a> 
- <a href="<%=request.getContextPath()%>/estimate/kit-list.jsp">주방</a>
- <a href="<%=request.getContextPath()%>/estimate/living-list.jsp"> <font color=#1778ba>마루</font></a>
 </div>
 
 <div class="line">
 <div class="main"> 
 				
 						
+    
     <h2>욕실 견적 내역</h2>
-<span><b>인테리어 코디가 상담부터 시공까지 1:1 밀착 관리합니다.<br>
-고객님에게 딱 맞는 인증된 전문가와 함께 인테리어를 완성하세요.
-</b></span>
-
- 	 <div class="row-emptt"></div>
-<img align="center" width="50px" height="50px"
-               src="<%=request.getContextPath()%>/image/kaka.PNG" style="margin-bottom:10px; border-radius: 5px;"> 
-<br>
-<span class="half"><b> 자세한 시공 견적 상담은 카카오톡 채널추가 후 문의 부탁드립니다. </b></span>
-
-
  <div class="row-emptyy"></div>
 
 <div align="center">
 <table>
   <tr>
     <th>Title</th>
+    <th>Writer</th>
     <th>Price</th>
     <th>Date</th>
   </tr>
-  <%for(LivingDto ldto : list ){ %>
+  
+  <%for(EstimateDto edto : list ){ %>
+			<tr>
+			<td>
+					
+			<% if( edto.getBath_title()==null) { %>		
+			<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
+			 욕실견적서	 
+			<%} else { %>
+				<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
+				<%=edto.getBath_title()%>  <%} %>  </td>
+ 
+ <td>	<a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>"> <%=edto.getBath_member()%></td>
+    <td><a href="bath-content.jsp?bath_no=<%= edto.getBath_no()%>">
+						<%=edto.getBath_price()%>
+					</a> </td>
+                    <td>
+                    <%=edto.getBath_autotime()%></td>
+			</tr>
+			<%} %>
+ 
+</table>
+	</div>
+	 <div class="row-emptyy"></div>
+
+<div class="line">
+<div class="main"> 
+				
+						
+    
+    <h2>주방 견적 내역</h2>
+ <div class="row-emptyy"></div>
+<div align="center">
+<table>
+ <tr>
+ <th>Title</th>
+    <th>Writer</th>
+    <th>Price</th>
+    <th>Date</th>
+  </tr>
+  <%for(KitDto kdto : listt ){ %> 
+			<tr>
+			<td>
+			<% if( kdto.getKit_title()==null) { %>		
+			<a href="kit-content.jsp?kit_no=<%= kdto.getKit_no()%>">
+			 욕실견적서	 
+			<%} else { %>
+				<a href="kit-content.jsp?kit_no=<%= kdto.getKit_no()%>">
+				<%=kdto.getKit_title()%>  <%} %>  </td>
+   <td><a href="kit-content.jsp?kit_no=<%= kdto.getKit_no()%>">
+						<%=kdto.getKit_member()%>
+ </td>
+    <td><a href="kit-content.jsp?kit_no=<%= kdto.getKit_no()%>">
+						<%=kdto.getKit_price()%>
+					</a> </td>
+                    <td>
+                    <%=kdto.getKit_autotime()%></td>
+			</tr>
+			<%} %>
+ 
+</table>
+	</div>
+				 <div class="row-emptyy"></div>	
+	
+					<div class="line">
+<div class="main"> 
+				
+						
+    
+    <h2>마루 견적 내역</h2>
+ <div class="row-emptyy"></div>
+
+<div align="center">
+<table>
+ <tr>
+ <th>Title</th>
+    <th>Writer</th>
+    <th>Price</th>
+    <th>Date</th>
+  </tr>
+  <%for(LivingDto ldto : listl ){ %> 
 			<tr>
 			<td>
 					
@@ -198,6 +272,9 @@ margin: 20px 0 20px 0;
 			<%} else { %>
 				<a href="living-content.jsp?living_no=<%= ldto.getLiving_no()%>">
 				<%=ldto.getLiving_title()%>  <%} %>  </td>
+				   <td><a href="living-content.jsp?living_no=<%= ldto.getLiving_no()%>">
+						<%=ldto.getLiving_member()%>
+					</a> </td>
  
     <td><a href="living-content.jsp?living_no=<%= ldto.getLiving_no()%>">
 						<%=ldto.getLiving_price()%>
@@ -207,16 +284,14 @@ margin: 20px 0 20px 0;
 			</tr>
 			<%} %>
  
-  <tr>
-    <td colspan="3">  <div class="bttn" ><a href="living.jsp">
-						<input class="btn" type="button" value="마루 견적 받으러 가볼까요?"> </a></div> </td>
-  </tr>
 </table>
 
 	</div>
 					
+					
 
- 	 <div class="row-emptyy"></div>
+
+
 </body>
-
+</html>
 <jsp:include page="/template/footer.jsp"></jsp:include>

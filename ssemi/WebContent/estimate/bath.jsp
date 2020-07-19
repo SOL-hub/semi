@@ -90,6 +90,31 @@ height:130px;
     cursor: pointer;
 }
 
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#textt{
+  position: absolute;
+  top:50%;
+  left:50%;
+  text-align:center;
+  font-size: 18px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
   .half {
   background: linear-gradient(to top, #EAE2E5 40%, transparent 50%);
 }
@@ -269,6 +294,16 @@ cursor:pointer;
 }
 
 
+.overl{
+background-color: var(--red);
+font-family: "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 18px;
+	line-height: 40px;
+	font-weight: 600;
+	color: var(--white);
+    	letter-spacing: -0.2px;
+}
+
 .bubu
 {flex: 0 1 auto;
  float: left;
@@ -282,6 +317,8 @@ cursor:pointer;
     font-size: 14px;
     line-height: 1.3;
     color: var(--black);}
+    
+        
 
 </style>
     <script>
@@ -347,7 +384,14 @@ for(var i=0; i < edata.length; i++){
     }
     }
 
-    
+    function on() {
+  	  document.getElementById("overlay").style.display = "block";
+  	}
+
+  	function off() {
+  	  document.getElementById("overlay").style.display = "none";
+  	}
+  	
     </script>
 </head>
 <body>
@@ -397,20 +441,20 @@ for(var i=0; i < edata.length; i++){
  	<p><span class="half"> 어떤 욕실 유형을 선호하세요?</span></p> 
   	<input class="checkbox-tools" type="radio" data-price="500000" name="tools" checked id="tools-1" value="욕조형" >
 						<label class="for-checkbox-tools" for="tools-1">
-						       <img width="100%"
-               src="<%=request.getContextPath()%>/image/exex.PNG" style="margin-bottom:10px;"> 
+						       <img width="110px" height="110px"
+               src="<%=request.getContextPath()%>/image/bath1.PNG"" style="margin-bottom:10px;"> 
 							욕조형
 						</label>
 						<!--
 						--><input class="checkbox-tools" type="radio" data-price="400000" name="tools" id="tools-2" value="샤워부스형">
-						<label class="for-checkbox-tools" for="tools-2">  <img width="100%"
-               src="<%=request.getContextPath()%>/image/exex2.PNG" style="margin-bottom:10px;"> 
+						<label class="for-checkbox-tools" for="tools-2">  <img width="110px" height="110px"
+               src="<%=request.getContextPath()%>/image/bath2.PNG" style="margin-bottom:10px;"> 
 							샤워부스형
 						</label><!--
 						--><input class="checkbox-tools" value="파우더형" data-price="800000" type="radio" name="tools" id="tools-3">
 						<label class="for-checkbox-tools" for="tools-3">
-						  <img width="100%"
-               src="<%=request.getContextPath()%>/image/exex3.PNG" style="margin-bottom:10px;"> 
+						  <img width="110px" height="110px"
+               src="<%=request.getContextPath()%>/image/bath3.PNG"" style="margin-bottom:10px;"> 
 						파우더형
 						</label>
 							
@@ -440,32 +484,32 @@ for(var i=0; i < edata.length; i++){
 						<input class="checkbox-tools" value="젠다이" data-price="250000" type="checkbox" name="chutools" id="chutools-1" checked >
 						<label class="for-checkbox-tools" for="chutools-1">
 						  <img width="100%"
-               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;"> 
+               src="<%=request.getContextPath()%>/image/bath5.PNG" style="margin-bottom:10px;"> 
 					<span class="text">젠다이</span>
 						</label>
                         <!--
 						--><input class="checkbox-tools" value="거울수납장" data-price="150000" type="checkbox" name="chutools" id="chutools-2">
 						<label class="for-checkbox-tools" for="chutools-2">		
 												  <img width="100%"
-               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;">					
+               src="<%=request.getContextPath()%>/image/bath5.PNG" style="margin-bottom:10px;">					
 							<span class="text">거울수납장</span>
 						</label><!--
 						--><input class="checkbox-tools" value="선반" data-price="100000" type="checkbox" name="chutools" id="chutools-3">
 						<label class="for-checkbox-tools" for="chutools-3">		
 												  <img width="100%"
-               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;">					
+               src="<%=request.getContextPath()%>/image/bath5.PNG" style="margin-bottom:10px;">					
 							<span class="text">선반</span>
 						</label><!--
 						--><input class="checkbox-tools" value="비데" data-price="300000" type="checkbox" name="chutools" id="chutools-4">
 						<label class="for-checkbox-tools" for="chutools-4">		
 												  <img width="100%"
-               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;">					
+               src="<%=request.getContextPath()%>/image/bath5.PNG" style="margin-bottom:10px;">					
 							<span class="text">비데</span>
 						</label><!--
 						--><input class="checkbox-tools" value="환풍기" data-price="400000" type="checkbox" name="chutools" id="chutools-5">
 						<label class="for-checkbox-tools" for="chutools-5">			
 												  <img width="100%"
-               src="<%=request.getContextPath()%>/image/exex5.PNG" style="margin-bottom:10px;">				
+               src="<%=request.getContextPath()%>/image/bath5.PNG" style="margin-bottom:10px;">				
 					<span class="text">환풍기</span>
 						</label>
 					
@@ -473,17 +517,30 @@ for(var i=0; i < edata.length; i++){
 </div>
 
 <div class="foott"> 
-<button class="bubu" type="button">
-<span class="standard">견적 계산 기준이 뭔가요? </span></button>
+
 		 <input type="submit" class="submit_button fott" value="가격 확인 ">
             
     <input class="reset_button" type='reset' value="초기화" > 
 		  <input type="hidden" name="pricee" value="">   
-		
-</div>
 
 </form>
+<button class="bubu" onclick="on()">
+<span class="standard" >견적 계산 기준이 뭔가요? </span></button>
 
+
+<div id="overlay" onclick="off()">
+  <div id="textt">
+  <p class="overl" > <b> 견적 계산 기준이 뭔가요? </b> </p>
+  
+							<div class="row-emptyy"></div>
+					
+  보편적인 계산법을 활용하였습니다. <br>
+  시공 현장의 상태, 자재 및 인건비 차이, 시장 상황 변동 등으로 인해<br> 실제 견적과 다소 차이가 날 수 있습니다.<br>
+  보다 정확한 견적은 카카오톡 채널에서 직접 상담신청을 통해 문의하실 수 있습니다.<br>
+  견적계산 기능이 더욱 정확할 수 있게 지속해서 개선해 나가겠습니다.<br>
+  </div>
+</div>
+</div>
 </body>
 </html> 
 <jsp:include page="/template/footer.jsp"></jsp:include>
