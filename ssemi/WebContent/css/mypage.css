@@ -8,10 +8,10 @@ main {
 }
 
 * {
-    box-sizing: border-box;
-    font-family: 'NanumBarunGothic';
-    src: url("../font/NanumBarunGothic.ttf");
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
 }
+
 
 .sidebar {
     /*
@@ -42,7 +42,7 @@ section {
 
 .container {
     width: 100%;
-    padding-top: 150px;
+    padding-top: 200px;
 }
 
 div > p {
@@ -67,7 +67,7 @@ aside li:nth-child(2) {
     margin-top: 30px;
     margin-right: 45px;
     list-style: none;
-    color: red;
+    color: #C80A1E;
     font-size: 16px;
 }
 
@@ -193,31 +193,31 @@ div.row-empty {
 
 
 .cart_title{
-	border-top: 3px solid  #aaa;
-	border-bottom: 3px solid  black;
-	border-left: 3px solid  #aaa;
-	border-right: 3px solid  black;
+
 	width: 15%;
 	font-size: 22px;
 	font-weight: bold;
 	min-width: 200px; 
+	color:#C80A1E;
 	
 }
 .cart_title>a{
 
 }
 .cart_line{
-	border-bottom: 2px solid  #aaa;
+	border-bottom: 1px solid  #aaa;
 }
 
 .cart_list{
 	
 	text-align: center;
-	font-size: 20px;
+	font-size: 15px;
 	font-weight: bold;
+	
 }
 .cart_content{
 	text-align: center;
+	color:#AAAAAA;
 	
 }
 .cart_content_left{

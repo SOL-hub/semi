@@ -29,11 +29,7 @@ else{
 
 
 <div align = "center">
-<h3>
-		type = <%=type%>,
-		keyword = <%=keyword%>,
-		isSearch = <%=isSearch%>
-	</h3>
+
 	
 	
 <%
@@ -72,8 +68,8 @@ else{
                        >2020-07-21(화) 10시 START</h1>
                
               
-               <br> <br> 곧 여름도 다가오는데 언제다 이거사고 저거사? 여름에 필요한 거 여기 다 있어! <br>
-               선착순 10명에게만 여름에 사려했던 제품이 무엇인지, 어떤 것을 갖고 싶으신지와 그 이유를 적어주시면 <br>선착순으로
+               <br> <br> 여름 더우시죠? 시~원하게 1000포인트 쏘겠습니다! <br>
+               여름에 사려했던 제품이 무엇인지, 어떤 것을 갖고 싶으신지와 그 이유를 적어주시면 <br>선착순으로
                내용을 달아주신 고객님께 제품을 세트로 할인판매하는 이벤트를 진행하고 있습니다. <br>골라서 세트할인으로
                즐거운 쇼핑하세요.</div> 
                
@@ -83,7 +79,7 @@ else{
                <hr class="hr-twolow">
                <!--제품관련 스타일-->
 
-               <h3 style="text-align: left" font-size=55pt;>>이벤트 진행 소개</h3>
+               <h3 style="text-align: left" font-size=55pt;>이벤트 진행 소개</h3>
 
 
                <!-- 여기부터 이벤트 소개 시작 -->
@@ -100,20 +96,24 @@ else{
           
                      <!-- 선착순 이벤트 게시판  -->
 
-                     <table class= "table" border="1" width="80%">
+           
                      
                       <form action="event_event1.jsp" method="get">
                       
-                       <div class= "table-ssideopen">
+                       <div class= "table-ssideopen">    
+                        <br>
+                     <br>
                      <h1>선착순 게시판</h1>
-                       
-                        <thead style= background-color: #3333;">
+                     <hr width="80%">
+                
+                       <table>
+                        <thead>
                            <tr>
                               <th width="5%" >번호</th>
                               <th width="50%"> 제목</th>
                               <th>작성자</th>
                               <th width="20%">작성일</th>
-                              <th idth="5%">비고</th>
+                           
                            </tr>
                         </thead>
                         
@@ -142,7 +142,7 @@ else{
                               <%} %>
                               </td>
                               <td><%=edto.getEvent_date() %></td>
-                              <td><%=edto.getEvent_read() %></td>
+                       
                            </tr>
                            <%} %>
                            
@@ -151,9 +151,10 @@ else{
                        <td colspan="5" align ="right">
                        <a href="event1_writer.jsp">
    <!-- style = text-align: "center";-->
-                       <input type ="button" value="글쓰기"></a>
+                       <input class="login2-submit" type ="button" value="글쓰기"> </a>
                        </tr> 
                         </form>
+                        
                         <%}else{ %>
                         
                         <%} %>
@@ -161,7 +162,7 @@ else{
                        </tbody>
                        
                          </table>
-                         
+                         <hr width="80%">
                         <!-- 검색창 -->
 
  <br>

@@ -83,7 +83,7 @@
             
             <%if(request.getParameter("error")!=null) {%>
    
-    <h4><font color = "red">비밀번호가 일치하지 않습니다.</font></h4>
+    <h4><font color = "#C80A1E">비밀번호가 일치하지 않습니다.</font></h4>
 <%} %>
 
             <!--비밀번호변경 버튼-->

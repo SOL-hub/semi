@@ -33,17 +33,17 @@
 
 
 			<div class="change_after">
-				<a href="<%=request.getContextPath()%>/member/shopBarket2.jsp"> <input
+				<a href="<%=request.getContextPath()%>/member/shopBarket3.jsp"> <input
 					class="click-btn2" type="submit" value="내 장바구니"></a>
 			</div>
 
 			<div class="change_after">
-				<a href="<%=request.getContextPath()%>"> <input
+				<a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> <input
 					class="click-btn2" type="submit" value="내견적보러가기"></a>
 			</div>
 			
 			<div class="change_after">
-				<a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=user_out.jsp"> 
+				<a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=user_out2.jsp"> 
 				<input class="click-btn2" type="submit" value="회원탈퇴"></a>
 			</div>
 

@@ -3,7 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="home.beans.dao.ItemDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
-
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 
@@ -53,22 +53,13 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                </li>
                <li class="menu_left">스토어
                   <ul class="menu_left_innerMenu">
-                     <li><a href="<%=request.getContextPath()%>/shop/itemList.jsp">욕실</a>
-                       	<ul class="inner-inner">
-                     		<li><a href="<%=request.getContextPath()%>">젠다이</a></li>
-                     		<li><a href="<%=request.getContextPath()%>">선반</a></li>
-                     		<li><a href="<%=request.getContextPath()%>">비데</a></li>
-                     		<li><a href="<%=request.getContextPath()%>">환풍기</a></li>
-                     	</ul>
+                     <li><a href="<%=request.getContextPath()%>/shop/bathh.jsp">욕실</a>
                      	</li>
-                     <li><a href="#">마루</a>
+                     <li><a href="<%=request.getContextPath()%>/shop/maru.jsp">마루</a>
               	       </li>
-                     <li><a href="#">주방</a>
-                   	  	<ul class="inner-inner">
-                     		<li><a href="<%=request.getContextPath()%>">테이블</a></li>
-                     		<li><a href="<%=request.getContextPath()%>">냉장고</a></li>
-                     		<li><a href="<%=request.getContextPath()%>">선반</a></li>
-                    	 	</ul>
+                     <li><a href="<%=request.getContextPath()%>/shop/kitt.jsp">주방</a>
+                     	</li>
+                     	    <li><a href="<%=request.getContextPath()%>/shop/item_write.jsp">등록</a>
                      	</li>
                   </ul>
                </li>
@@ -144,12 +135,7 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                      }
                   %>
 
-                  <div id="search">
-                     <form  class="search_set" action="<%=request.getContextPath()%>/search/search_result.jsp"  method="get" style="float: left;">
-                        <input class="search_box" type="text" placeholder="검색" name="keyword" required> 
-                        <input type="image"  src="<%=request.getContextPath()%>/img/search.png" style="width: 20px;">
-                     </form>
-                  </div>
+               
                </div>
             </div>
          </div>

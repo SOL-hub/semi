@@ -85,13 +85,14 @@
    margin-top: 23px;
    margin-bottom: 15px;
    margin-left: 50px;
-   margin-right: 50px;;
+   margin-right: 50px;
    border: 1px solid transparent;
    cursor: pointer;
 }
 
+	
 .login2-submit{
-   text-align: left;
+   text-align: center;
    font-size: 12px;
    color: white;
    background-color: #3333;
@@ -100,7 +101,7 @@
    margin-top: 23px;
    margin-bottom: 15px;
    margin-left: 50px;
-   margin-right: 50px;;
+   margin-right: 50px;
    border: 1px solid transparent;
    cursor: pointer;
 }
@@ -147,39 +148,22 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
    font-size: 13px;
 }
 
-.thead{
-	background-color:  antiquewhite;
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  
 }
 
-        
-        .table > thead > tr > th,
-        .table > thead > tr > td,
-        .table > tbody > tr > th,
-        .table > tbody > tr > td,
-        .table > tfoot > tr > th,
-        .table > tfoot > tr > td {
-            padding:0.5rem;
-            text-align: center;
-        }
-        
+
+th, td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ffffff;
+}
 
 
-    /* 확장 스타일 3번 : .table-sideopen 으로 옆트임 테이블 구현 */
-.table.table-sideopen {
-    border-top: 3px solid black;
-    border-bottom: 3px solid black;
-    border-collapse: collapse;
-}
-.table.table-sideopen > tbody {
-    border-top: 3px solid black;
-    border-bottom: 3px solid black;
-}
-.table.table-sideopen > tbody > tr {
-    border-bottom: 1px solid black;
-}
+	
+tr:hover {background-color: #f5f5f5;}
 
-/* 확장 스타일 4번 : .table-hover 로 마우스 감지 테이블 구현 */
-.table.table-hover > tbody > tr:hover {
-    background-color: #dfe6e9;
-}
         
