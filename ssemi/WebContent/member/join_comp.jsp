@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
     
 <jsp:include page="/template/header.jsp"></jsp:include>  
-    
+    <link
+
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+
+	rel="stylesheet">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +15,13 @@
     <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/base.css">
     <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/join_comp.css">
     <style>
-
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Noto Sans KR', sans-serif;
+	letter-spacing: -1.5px;
+}
     </style>
     <script>
     

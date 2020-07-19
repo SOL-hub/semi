@@ -56,6 +56,11 @@
 
 
 <jsp:include page="/template/header.jsp"></jsp:include>
+<link
+
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+
+	rel="stylesheet">
 
 <!DOCTYPE html>
 <html>
@@ -69,6 +74,16 @@
 	href="<%=request.getContextPath()%>/css/mypage.css?ver=1">
 
 </head>
+<style>
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Noto Sans KR', sans-serif;
+	letter-spacing: -1.5px;
+}
+
+</style>
 <body>
 	<main>
 		<aside class="sidebar">

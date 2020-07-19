@@ -246,7 +246,7 @@ String go = request.getParameter("go");
 				<div class="navi">
 					<p class="cs">커뮤니티</p>
 					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list.jsp">상품문의</a></p>
-					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">배송문의</a></p>
+					<p class="cs_row"><a href="<%=request.getContextPath()%>/board/Qna_list2.jsp">공지사항</a></p>
 					<p class="cs_row"><a href="<%=request.getContextPath()%>/event/event.jsp">이벤트</a></p>
 				</div>
 				<p class="title">
