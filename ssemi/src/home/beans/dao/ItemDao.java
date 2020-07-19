@@ -225,14 +225,14 @@ private static DataSource src;
 			
 			return count;
 		}
-	 //동휘_목록메소드2_5_모두조회
+	 //동휘_목록메소드2_5_모두조회_DESC추가_allist조회시 최신등록순
 	 		public List<ItemDto> getList5(int start, int finish) throws Exception{
 	 			Connection con = getConnection();
 	 			
 	 			//결과의 순서를 정해준다
 	 			String sql = "SELECT * FROM("//T의 모든 항목
 						+ "SELECT ROWNUM rn, T.* FROM("
-						+ "SELECT * FROM item"
+						+ "SELECT * FROM item ORDER BY item_price DESC"
 					+ ")T"//T의 모든 항목
 			+ ") WHERE rn BETWEEN ? and ?";
 	 			PreparedStatement ps = con.prepareStatement(sql);
