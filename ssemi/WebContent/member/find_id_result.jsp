@@ -29,7 +29,7 @@
 
                 <br>
 
-                <h3>소중한 <%=member_name%>양의 아이디는 
+                <h3>소중한 <%=member_name%>님의 아이디는 
                 <P></P>
                 <span><%=member_id%></span>입니다</h3>
                 <br>

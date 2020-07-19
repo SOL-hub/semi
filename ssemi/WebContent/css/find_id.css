@@ -6,15 +6,13 @@
 	
 }
 
-. find-main{
-	width: 500px;
-	text-align: center;
-	height: 430px;
-	margin: auto;
-	border: 1px solid #aaa;
-	margin-top: 150px;
-	padding:50px 50px;
-	   border:1px solid #3333;
+.find-main{
+width:500px;
+   text-align: center;
+   height: 430px;
+   margin: auto;
+   margin-top: 150px;
+   border:1px solid #3333;
    padding:50px 50px;
 }
 
@@ -37,8 +35,7 @@ h1 {
 }
 
 
-.find-id{
-		
+.find-name{
 	
 	background-size: 30px;
 	font-size: 14px;
@@ -50,15 +47,14 @@ h1 {
 }
 
 
-.find-pw{ /*.form-input*/
+.find-phone{ /*.form-input*/
 
-	background-size: 30px;
-	font-size: 14px;
-	color: #AAAAAA;
-	width: 100%;
-	margin: 5px;
-	padding:  10px 10px 10px 40px;
-	border: 1px solid #3333;
+	 font-size: 14px;
+   color: #AAAAAA;
+   width: 100%;
+   margin: 5px;
+   padding:  10px 10px 10px 40px;
+   border: 1px solid #3333;
 	
 
 
@@ -98,10 +94,6 @@ h1 {
 
 
 
-.find-wrap{
-	display:inline-block;
-	padding : 
-}
 
 }
 .font-find_id {
@@ -111,7 +103,7 @@ h1 {
 
 
 .font-find_pw {
-	text-align: left;
+	text-align: center;
 	width: 50%;
 	border: none;
 	color: #C80A1E;
@@ -120,6 +112,4 @@ h1 {
 	padding: 10px;
 }
 
-.find-pw{
-	margin-bottom:15px;
-}
+

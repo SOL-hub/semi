@@ -8,6 +8,13 @@
     
  
     <%
+    
+    ItemDao idao = new ItemDao();
+    List<ItemDto> list = idao.getList(start, finish);
+    
+    
+    
+    
     MemberDao mdao = new MemberDao();
     String type = request.getParameter("type");
     String keyword = request.getParameter("keyword");
@@ -64,13 +71,13 @@
    }
    
    
-//    List<BoardDto> list = 목록 or 검색;
-   List<ItemDto> list;
-   if(isSearch){
-      list = idao.search(type, keyword, start, finish); 
-   }
-   else{
-      list = idao.getList(start, finish); 
+ // List<BoardDto> list = 목록 or 검색;
+ // List<ItemDto> list;
+ //if(isSearch){
+ //  list = idao(type, keyword, start, finish); 
+ // }
+ else{
+     list = idao.getList(start, finish); 
    }
 %> 
  

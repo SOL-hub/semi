@@ -1,4 +1,3 @@
-
 <%@page import="home.beans.dto.eventDto"%>
 <%@page import="home.beans.dao.eventDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,12 +6,53 @@
 
 <%
 int event_no = Integer.parseInt(request.getParameter("event_no"));
-
 eventDao edao = new eventDao();
 eventDto edto = edao.get(event_no);
-
 %>
 
+
+<style>
+
+ * {
+   box-sizing: border-box;
+   font-family: 'Noto Sans KR', sans-serif;
+  
+}
+.write-wrap{
+ border: 1px solid #3333;
+ 
+    margin-top: 25px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 60%;
+  
+}
+
+th {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+ td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+tr:hover {background-color:#f5f5f5;}
+
+.bttn{
+text-align:center;
+margin: 20px 0 20px 0;
+}
+
+	</style>
+	
+	
 <!-- 선착순 게시글 작성 -->
     <jsp:include page="/template/header.jsp"></jsp:include>
     

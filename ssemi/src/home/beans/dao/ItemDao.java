@@ -46,12 +46,15 @@ private static DataSource src;
 	//이름 : getList
 	//결과 : 상품 목록 == search<ProductDto>
 	//준비물 : X
-	public List<ItemDto> search(String keyword) throws Exception {
+	public List<ItemDto> search(int type, String keyword) throws Exception {
 		Connection con = getConnection();
 		
 		String sql = "SELECT * FROM item WHERE instr(item_name,?)>0 ORDER BY item_no ASC";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, keyword);
+		ps.setInt(1, type);
+		ps.setString(2, keyword);
+		
+		
 		ResultSet rs = ps.executeQuery();
 	
 		List<ItemDto> list = new ArrayList<>();//데이터들을 보관할 목록 저장소 생성
@@ -64,20 +67,7 @@ private static DataSource src;
 		return list;
 	}
 	
-	// 목록 메소드
-	public List<ItemDto> getList() throws Exception {
-		Connection con = getConnection();		
-		String sql = "SELECT * FROM item ORDER BY item_no ASC";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ResultSet rs = ps.executeQuery();
-		List<ItemDto> list = new ArrayList<>();
-		while(rs.next()) {			
-			ItemDto idto = new ItemDto(rs);
-			list.add(idto);
-		}	
-		con.close();		
-		return list;	
-	}
+
 	
 	// 지민 - 검색 메소드( 높은 가격순)
 	public List<ItemDto> getListD() throws Exception {
@@ -600,4 +590,74 @@ private static DataSource src;
 					con.close();
 					return list;
 }
+				
+				
+				// 상품검색--7월19일
+				   
+				   public List<ItemDto> search(String type, String keyword, int start, int finish) throws Exception {
+				      Connection con = getConnection();
+
+				      String sql = "SELECT * FROM(SELECT ROWNUM rn, T.*FROM("
+				            + "SELECT*FROM item WHERE instr(#1, ?) > 0 CONNECT BY PRIOR item_no=item_no "
+				            + "START WITH super_no IS NULL ORDER SIBLINGS BY group_no DESC, item_no ASC) T ) WHERE rn BETWEEN ? and? ";
+				      sql = sql.replace("#1", type);
+				      PreparedStatement ps = con.prepareStatement(sql);
+				      ps.setString(1, keyword);
+				      ps.setInt(2, start);
+				      ps.setInt(3, finish);
+				      ResultSet rs = ps.executeQuery();
+
+				      List<ItemDto> list = new ArrayList<ItemDto>();
+				      while (rs.next()) {
+				         ItemDto idto = new ItemDto();
+				         list.add(idto);
+				      }
+
+				      con.close();
+				      return list;
+				   }
+				   
+				   
+				   
+					// 목록 메소드
+				//	public List<ItemDto> getList() throws Exception {
+				//		Connection con = getConnection();		
+				//		String sql = "SELECT * FROM item ORDER BY item_no ASC";
+				//		PreparedStatement ps = con.prepareStatement(sql);
+				//		ResultSet rs = ps.executeQuery();
+				//		List<ItemDto> list = new ArrayList<>();
+				//		while(rs.next()) {			
+				//			ItemDto idto = new ItemDto(rs);
+				//			list.add(idto);
+				//		}	
+				//		con.close();		
+				//		return list;	
+				//	}
+				   
+				   
+				   
+
+				   // 목록 메소드
+				   public List<ItemDto> getList(int start, int finish) throws Exception{
+				      Connection con = getConnection();
+				      
+				      String sql = "SELECT*FROM(SELECT ROWNUM rn, T.*FROM("
+				            + "SELECT*FROM item CONNECT BY PRIOR item_no=super_no START WITH super_no IS NULL " 
+				                  + "ORDER SIBLINGS BY group_no DESC, item_no ASC) T ) WHERE rn BETWEEN ? and? ";
+				      PreparedStatement ps = con.prepareStatement(sql);
+				      ps.setInt(1, start);
+				      ps.setInt(2, finish);
+				      ResultSet rs = ps.executeQuery();
+				      
+				      List<ItemDto> list = new ArrayList<>();
+				      while(rs.next()) {
+				         ItemDto idto = new ItemDto(rs);
+				         list.add(idto);
+				      }
+				      
+				      con.close();
+				      return list;
+				   }
+				   
+				   
 }				

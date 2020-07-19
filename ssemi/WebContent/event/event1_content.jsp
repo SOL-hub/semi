@@ -1,4 +1,3 @@
-
 <%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.MemberDto"%>
 <%@page import="home.beans.dto.eventDto"%>
@@ -9,27 +8,18 @@
 
 
 <% int event_no = Integer.parseInt(request.getParameter("event_no"));
-
 eventDao edao = new eventDao();
 eventDto edto = edao.get(event_no);
  MemberDao mdao= new MemberDao();
 %>
 
 <%
-
 //관리자이면 세션에 있는 userinfo 권한 정보
-
 MemberDto user = (MemberDto)session.getAttribute("userinfo");
-
 // 내글이(게시글edto)의 작성자와 로그인 된 사용자(user)의 아이디가 같아야함.
-
 boolean isMine = user.getMember_id().equals(edto.getEvent_writer());
-
-
 MemberDao mdao2 = new MemberDao();
 MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
-
-
 %> 
 
 
@@ -113,8 +103,8 @@ MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
     <tr>
     <td colspan ="2" align ="right">
     
-    <a href= event_writer.jsp>
-    <input type = "button" value="글쓰기"></a>
+   <!--  <a href= event_writer.jsp>
+    <input type = "button" value="글쓰기"></a> --> 
     
     
     <%if(isMine){%>
@@ -139,5 +129,46 @@ MemberDto mdto = mdao.get(edto.getEvent_no());//작성자로 회원조회
     </main>
    </form>
    
+   
+   <style>
+
+ * {
+   box-sizing: border-box;
+   font-family: 'Noto Sans KR', sans-serif;
+  
+}
+.write-wrap{
+ border: 1px solid #3333;
+ 
+    margin-top: 25px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 60%;
+  
+}
+
+th {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+ td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+tr:hover {background-color:#f5f5f5;}
+
+.bttn{
+text-align:center;
+margin: 20px 0 20px 0;
+}
+
+	</style>
     
     <jsp:include page="/template/footer.jsp"></jsp:include>

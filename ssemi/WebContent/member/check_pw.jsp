@@ -62,6 +62,7 @@
             <div class="find-wrap">
                 <h1>비밀번호 확인</h1>
             </div>
+            <br>
             
             
             
@@ -87,6 +88,8 @@
 <%} %>
 
             <!--비밀번호변경 버튼-->
+            <br>
+            
             <input class="click-btn" type="submit" value="확인"> <br>
   
     
