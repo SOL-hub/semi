@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
     
    <%
+
 	String type = request.getParameter("type");
 	String keyword = request.getParameter("keyword");
 	
@@ -41,6 +42,7 @@
 	int blockSize = 10;//이 페이지에는 네비게이터 블록을 10개씩 배치하겠다!
 	int startBlock = (pageNo - 1) / blockSize * blockSize + 1;
 	int finishBlock = startBlock + blockSize - 1;
+
 	ItemDao idao = new ItemDao();
 	
 	//(주의!) 다음 버튼의 경우 계산을 통하여 페이지 개수를 구해야 출력 여부 판단이 가능
@@ -75,22 +77,22 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>거실</title>
+    <title>욕실</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bed_list.css">
     <style>
  
-        
         .row{
         height:150px;}
     </style>
 </head>
 
 <body>
-     <div class="row"> </div>
+   
    <main>
+   <div class="row"> </div>
         <div>
-            <p class="subject middle-font"> 마루 </p>
-           
+            <p class="subject middle-font"> 욕실 </p>
+            
             <div class="border">
                 <div class="ssmall-font xyz
        main_menu frt selected sort">
@@ -120,3 +122,4 @@
 </body></html> 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
+
