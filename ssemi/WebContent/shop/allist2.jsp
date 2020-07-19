@@ -70,7 +70,7 @@
       list = idao.search(type, keyword, start, finish); 
    }
    else{
-      list = idao.getList(start, finish); 
+      list = idao.getList(start, finish);  
    }
 %> 
  
