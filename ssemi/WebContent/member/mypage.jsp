@@ -65,6 +65,11 @@
 	href="<%=request.getContextPath()%>/css/mypage.css?ver=3">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
+<style>
+
+
+
+</style>
 </head>
 <body>
 	<main>
@@ -78,7 +83,6 @@
 				<li><a href="shopBarket3.jsp"> 장바구니 </a></li>
 				<li><a href="wishlist.jsp">위시리스트</a></li>
 				<li><a href="<%=request.getContextPath()%>/buypage/buy_list.jsp"> 구매내역 </a></li>
-				<li><a href="#"> 게시판내역 </a></li>
 				<li><a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 견적내역 </a></li>
 				<li><a href="<%=request.getContextPath()%>/member/check_pw.jsp?go=user_out2.do">회원탈퇴</a></li>
 			</ul>
@@ -161,6 +165,9 @@
 						<tr>
 							<td class="row-empty"></td>
 						</tr>
+						
+						<tr id ="transTR"></tr>
+						
 						
 						<tr>
 							<td  class="cart_title center">나의 구매내역</td>

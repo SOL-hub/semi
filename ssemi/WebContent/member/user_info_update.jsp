@@ -102,11 +102,7 @@
                         구매내역
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        게시판내역
-                    </a>
-                </li>
+              
                 <li>
                 	<a href=href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 
                 		견적내역 
