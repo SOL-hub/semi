@@ -19,9 +19,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/base.css">
-<link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/user_info_update.css?ver=1">
+<link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/base.css?ver=1">
+<link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/admin.css?ver=2">
+<link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/user_info.css?ver=2">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<style>
+ #edith1{
+			margin-left: 450px;  	margin-bottom:50px;
+        }
+        
+        .edittable tr td{
+			
+			width: 200px;
+			color:#333333;
+	}
+	
+  .edittable {
 
+            text-align: center;
+            width: 500px;
+            height: 500px;
+            margin-left:180px;
+           
+        }
+        
+        .join-btn{
+        	background-color: #C80A1E;
+        	color:white;
+        	margin-top:30px;
+        }
+</style>
 </head>
 <body>
     <main>
@@ -42,7 +69,7 @@
                     <!--
                     진빈군, 이것도 수정하려면 먼저 비번검사하게 바꿨어요. 혹시나해서 오빠가 작성한 거 남길게용
                     <a style="color: red" href="user_info_update.jsp">-->
-                    <a style="color: red" href="user_info_update.jsp">
+                    <a style="color:#C80A1E" href="user_info_update.jsp">
                         회원정보수정
                     </a>
                 </li>
@@ -90,89 +117,61 @@
         <section>
             <article class="container">
             <form action="user_info_update.do" method="post">
-                <div class="center font-head margin-down">
-                    회 원 정 보 수 정
-                </div>
-                <div class="left">
-                    <p>
-                        <%=user.getMember_id() %>
-
-                    </p>
-                </div>
-                
-                <div class="left">
-                    <p>
-                        <%=user.getMember_name() %>
-                        <span>
-                            
-                        </span>
-                    </p>
-                </div>
-                <div class="left">
-                    <p>
-                        <input name="member_nick" type="text" class="id-input" placeholder="닉네임" required value="<%=user.getMember_nick() %>">
-                        <span>
-                            닉네임
-                        </span>
-                    </p>
-                </div>
-                <div class="left">
-                    <p>
-                        <input name="member_birth" type="date" class="input-calendar" max="9999-12-31" value="<%=user.getMember_birth() %>">
-                        <span>
-                            생년월일
-                        </span>
-                    </p>
-                </div>
-                <div class="left">
-                    <p>
-                        <input name="member_phone" class="phone-input" type="text" placeholder="핸드폰번호( - 제외입력)" value="<%=user.getMember_phone() %>">
-                        <span>
-                            핸드폰번호
-                        </span>
-                    </p>
-                </div>
-                <div class="left">
-                    <p>
-                        <input name="member_email" class="phone-input" type="email" placeholder="이메일" value="<%=user.getMember_email() %>">
-                        <span>
-                            이메일
-                        </span>
-                    </p>
-                </div>
-                <div class="left">
-                    <p>
-                        <input name="member_post" class="addr-input" type="text" placeholder="우편번호" value="<%=user.getMember_post() %>">
-                        <span>
-                            우편번호
-                        </span>
-                    </p>
-                </div>
-                <div class="left">
-
-                </div>
-                <div class="left">
-                    <p>
-                        <input name="member_base_addr" class="addr-input" type="text" placeholder="주소입력" value="<%=user.getMember_base_addr() %>">
-                        <span>
-                            주소
-                        </span>
-                    </p>
-                </div>
-                <div class="left margin-down">
-                    <p>
-                        <input name="member_extra_addr" class="addr-input" type="text" placeholder="상세주소입력" value="<%=user.getMember_extra_addr() %>">
-                        <span>
-                            상세주소
-                        </span>
-                    </p>
-                </div>
+             <div class="editdiv">
+        <h1 id="edith1"> 회원 정보 수정</h1>
+                <table class="edittable">
+                <tr>
+                    <th>아이디</th>
+                    <td><%=mdto.getMember_id() %>
+                     <input type="hidden" name="member_no" value="<%=mdto.getMember_no() %>">
+                      </td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td><input name="member_pw" type="password" value="<%=mdto.getMember_pw() %>"></td>
+                </tr>
+                <tr>
+                    <th>닉네임</th>
+                    <td>
+                        <input name="member_nick" type="text" placeholder="닉네임" required value="<%=mdto.getMember_nick() %>">
+                    </td>
+                </tr>
+                <tr>
+                    <th>생년월일</th>
+                    <td> <%=mdto.getMember_birth_year()%>
+                    	<input type="hidden" name="member_birth" value="<%=mdto.getMember_birth_year()%>">
+                    </td>
+                </tr>
+                <tr>
+                    <th>핸드폰 번호</th>
+                    <td><input name="member_phone" type="text" placeholder="핸드폰번호( - 제외입력)" value="<%=mdto.getMember_phone() %>"></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td><input name="member_email" type="email" placeholder="이메일" value="<%=mdto.getMember_email() %>"></td>
+                </tr>
+                <tr>
+                    <th>우편번호</th>
+                    <td><input name="member_post" type="text" placeholder="우편번호" value="<%=mdto.getMember_post() %>"></td>
+                </tr>
+                <tr>
+                    <th>주소</th>
+                    <td><input name="member_base_addr" type="text" placeholder="주소입력" value="<%=mdto.getMember_base_addr() %>"></td>
+                </tr>
+                <tr>
+                    <th>상세주소</th>
+                    <td><input name="member_extra_addr" type="text" placeholder="상세주소입력" value="<%=mdto.getMember_extra_addr() %>"></td>
+                </tr>
+               
+               </table>
+               </div>
                 <div class="row-empty center">
                
               <a href="check_pw.jsp?go=user_info.jsp">
                         <input class="join-btn" type="submit" value="정보수정"></a>
                     
                 </div>
+                <br><br>
                 </form>
             </article>
         </section>

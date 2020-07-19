@@ -60,16 +60,17 @@
 <title>Insert title here</title>
 
 <link rel=stylesheet type="text/css"
-	href="<%=request.getContextPath()%>/css/base.css?ver=1">
+	href="<%=request.getContextPath()%>/css/base.css?ver=3">
 <link rel=stylesheet type="text/css"
-	href="<%=request.getContextPath()%>/css/mypage.css?ver=1">
+	href="<%=request.getContextPath()%>/css/mypage.css?ver=3">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
 </head>
 <body>
 	<main>
 		<aside class="sidebar">
 			<ul>
-				<li><a style="color: red" href="mypage.jsp"> 마이페이지 </a></li>
+				<li><a style="color: #C80A1E" href="mypage.jsp"> 마이페이지 </a></li>
 				<li><a href="user_info.jsp"> 회원정보 </a></li>
 				<li><a href="check_pw.jsp?go=user_info_update.jsp"> 회원정보수정 </a></li>
 				<li><a href="check_pw.jsp?go=change_pw.jsp"> 비밀번호변경 </a></li>

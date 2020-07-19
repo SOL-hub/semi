@@ -236,7 +236,7 @@
                 <div class="row-empty"></div>
                 <div class="row-empty"></div>
                 <div class="row-empty explan right">
-                    <font color="red">※ 비밀번호는 8~15자의 영문, 숫자, 특수문자 조합</font>
+                    <font color="#C80A1E">※ 비밀번호는 8~15자의 영문, 숫자, 특수문자 조합</font>
                 </div>
                 <div class="row-empty"></div>
                 <div class="row-empty"></div>
