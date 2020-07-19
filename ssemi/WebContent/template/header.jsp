@@ -53,7 +53,7 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                </li>
                <li class="menu_left">스토어
                   <ul class="menu_left_innerMenu">
-                     <li><a href="<%=request.getContextPath()%>/shop/itemList.jsp">욕실</a>
+                     <li><a href="<%=request.getContextPath()%>/shop/bathh.jsp">욕실</a>
                        	<ul class="inner-inner">
                      		<li><a href="<%=request.getContextPath()%>">젠다이</a></li>
                      		<li><a href="<%=request.getContextPath()%>">선반</a></li>
@@ -63,12 +63,14 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                      	</li>
                      <li><a href="<%=request.getContextPath()%>/shop/maru.jsp">마루</a>
               	       </li>
-                     <li><a href="#">주방</a>
+                     <li><a href="<%=request.getContextPath()%>/shop/kitt.jsp">주방</a>
                    	  	<ul class="inner-inner">
                      		<li><a href="<%=request.getContextPath()%>">테이블</a></li>
                      		<li><a href="<%=request.getContextPath()%>">냉장고</a></li>
                      		<li><a href="<%=request.getContextPath()%>">선반</a></li>
                     	 	</ul>
+                     	</li>
+                     	    <li><a href="<%=request.getContextPath()%>/shop/item_write.jsp">등록</a>
                      	</li>
                   </ul>
                </li>

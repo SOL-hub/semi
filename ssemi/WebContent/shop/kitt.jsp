@@ -67,7 +67,7 @@
 		list = idao.search(keyword); 
 	}
 	else{
-		list = idao.getList3(start, finish); 
+		list = idao.getList1(start, finish); 
 	}
 %> 
     

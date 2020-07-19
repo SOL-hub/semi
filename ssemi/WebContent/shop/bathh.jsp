@@ -89,7 +89,7 @@
    
    <main>
         <div>
-            <p class="subject middle-font"> 주방 </p>
+            <p class="subject middle-font"> 욕실 </p>
             <div class="selected subject">
                 <ul class="main_menu">
                     <li>
