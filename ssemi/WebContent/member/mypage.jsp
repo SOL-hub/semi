@@ -166,7 +166,7 @@
 							<td class="row-empty"></td>
 						</tr>
 						
-						<tr id ="transTR"></tr>
+						
 						
 						
 						<tr>
@@ -190,14 +190,13 @@
 							for (CartDto cdto : list) {
 								// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출
 								ItemDao idao = new ItemDao();
-								ItemDto itemName = idao.item_get(cdto.getCart_item_name());						
-						%>
+								ItemDto itemName = idao.item_get(cdto.getCart_item_name());%>
 						<tr>
 							<td style="width: 10%" class="cart_content"><%=itemName.getItem_name()%></td>
 							<td style="width: 50%" class="cart_content_left"><%=itemName.getItem_info()%></td>
 							<td style="width: 10%" class="cart_content"><%=formatter.format(itemName.getItem_price())%></td>
 							<td style="width: 10%" class="cart_content"><%=cdto.getCart_cnt()%></td>
-							<br>
+						
 						</tr>
 						<tr>
 							<td colspan="4" class="cart_line"></td>

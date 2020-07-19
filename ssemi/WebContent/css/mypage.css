@@ -70,9 +70,7 @@ aside li:nth-child(2) {
     color: #C80A1E;
     font-size: 16px;
 }
-#transTR{
-  border: 1px solid transparent;
-}
+
 .id-input,
 .pw-input,
 .input-calendar,
