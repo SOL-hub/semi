@@ -35,7 +35,7 @@
     <meta charset="UTF-8">
     <title>ordersheet</title>
 
-    <style>
+    <style> 
         * {
 /*            font-size: 20px  */
         }
