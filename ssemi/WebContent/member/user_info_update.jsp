@@ -20,7 +20,7 @@
 <title>Insert title here</title>
 
 <link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/base.css">
-<link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/user_info_update.css">
+<link rel=stylesheet type="text/css" href="<%=request.getContextPath() %>/css/user_info_update.css?ver=1">
 
 </head>
 <body>

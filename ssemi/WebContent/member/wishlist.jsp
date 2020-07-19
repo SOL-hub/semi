@@ -177,7 +177,9 @@
 										</td>
 										<td style="border-left: none; border-right: none;"><%=idto.getItem_name()%><br>
 										<%for(ItemFileDto ifdto : file_list){%>
+											<a href="<%=request.getContextPath()%>/shop/item_info.do?item_no=<%=idto.getItem_no()%>">
 											<img src="download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100px" height="100px">
+											</a>
 							
 										<%} %>
 										</td>

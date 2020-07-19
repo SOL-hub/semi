@@ -203,6 +203,9 @@ div.row-empty {
 	min-width: 200px; 
 	
 }
+.cart_title>a{
+
+}
 .cart_line{
 	border-bottom: 2px solid  #aaa;
 }

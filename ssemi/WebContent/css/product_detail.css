@@ -126,6 +126,7 @@
             background-color: #c80a1e;
             color: white;
             border: none;
+            cursor: pointer;
         }
         /*장바구니_버튼*/
         .bagit{
@@ -135,6 +136,7 @@
             background-color: gray;
             border: none;
             color: white;
+            cursor: pointer;
         }
         /*border_1*/
         .border_1{

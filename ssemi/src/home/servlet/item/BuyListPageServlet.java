@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import home.beans.dao.CartDao;
+import home.beans.dao.MemberDao;
 import home.beans.dao.ShoppingDao;
 import home.beans.dto.MemberDto;
 import home.beans.dto.shoppingDto;
@@ -44,9 +45,12 @@ public class BuyListPageServlet extends HttpServlet{
 			ShoppingDao sdao = new ShoppingDao();
 
 			sdao.buy_list_add(sdto);
-				
-			}
 			
+			}
+			MemberDao mdao = new MemberDao();
+			mdao.buy_point_min(member_no, Integer.parseInt(req.getParameter("member_point")));
+			
+//			resp.getWriter().println("dsfsdf");
 			resp.sendRedirect("buy_result.jsp");
 		}
 		catch(Exception e) {
