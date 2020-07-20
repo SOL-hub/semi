@@ -19,10 +19,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
     <style>
-        *{
-            box-sizing: border-box;
-        }
+        * {
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
         main{
             width: 1250px;
             height: 4000px;
