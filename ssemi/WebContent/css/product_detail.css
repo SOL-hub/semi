@@ -1,11 +1,8 @@
 @charset "UTF-8";
 /*공통*/
-        * {
- box-sizing: border-box;
- font-family: NotoSansKR-Light;
- /*NotoSansKR-Black or NotoSansKR-Bold or NotoSansKR-Medium or NotoSansKR-Regular or NotoSansKR-Thin*/
-    color: #333
-        
+  * {
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
 }
         main {
             text-align: center;

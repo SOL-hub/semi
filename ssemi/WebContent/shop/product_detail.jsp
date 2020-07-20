@@ -20,7 +20,12 @@
 	href="<%=request.getContextPath()%>/css/product_detail.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/swiper.min.css">
+	<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
 <script src="<%=request.getContextPath()%>/js/swiper.min.js"></script>
+
+
 <style>
 .center {
 	text-align: center;
