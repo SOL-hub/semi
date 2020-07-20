@@ -67,7 +67,7 @@
 		list = idao.search(keyword); 
 	}
 	else{
-		list = idao.getList3(start, finish); 
+		list = idao.getList2(start, finish); 
 	}
 %> 
     
@@ -115,8 +115,7 @@
                         <li>
                             <%for(ItemFileDto ifdto : file_list){%>
 								<a href="<%=request.getContextPath()%>/shop/item_info.do?item_no=<%=idto.getItem_no()%>">
-								<img src="<%=request.getContextPath() %>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100px" height="100px">
-								</a>
+								<img src="<%=request.getContextPath() %>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="200px" height="200px">								</a>
 							
 								<%} %>
                             <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info()%></span><br><span class="price"><%=idto.getItem_price()%></span></p>
