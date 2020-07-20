@@ -2,12 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <jsp:include page="/template/header.jsp"></jsp:include>   
- <head>
-<style>
-    *{
-     box-sizing: border-box;
-     font-family: 'Noto Sans KR', sans-serif;
-    }
+     <link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
+	<head>
+    <style>
+  * {
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
 .hello{
     border-collapse: collapse;
     }

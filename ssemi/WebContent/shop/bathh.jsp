@@ -81,10 +81,14 @@
     <meta charset="UTF-8">
     <title>욕실</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bed_list.css">
+    <link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
     <style>
  
         .row{
         height:150px;}
+        
     </style>
 </head>
 
