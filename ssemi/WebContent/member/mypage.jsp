@@ -1,3 +1,5 @@
+<%@page import="home.beans.dao.ShoppingDao"%>
+<%@page import="home.beans.dto.shoppingDto"%>
 <%@page import="home.beans.dao.ItemFileDao"%>
 <%@page import="home.beans.dto.ItemFileDto"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -47,7 +49,11 @@
 	int start = finish - (pageSize - 1);
 	
 	List<CartDto> list = cdao.getList(member_no, start, finish);
+	
 // 	List<EstimateDto> E_list=
+
+	ShoppingDao sdao = new ShoppingDao();
+	List<shoppingDto> slist= sdao.getList(member_no, start, finish);
 %>
 
 
@@ -186,15 +192,18 @@
 
 						<%
 						if(list.size() != 0){
-							for (CartDto cdto : list) {
+							for (shoppingDto sdto : slist) {
 								// cdto.getCar_item() 으로 상품 테이블을 조회해서 이름을 반환하는 메소드를 여기서 호출
 								ItemDao idao = new ItemDao();
-								ItemDto itemName = idao.item_get(cdto.getCart_item_name());%>
+								ItemDto itemName = idao.item_get(sdto.getShopping_item_name());
+								
+					
+								%>
 						<tr>
 							<td style="width: 10%" class="cart_content"><%=itemName.getItem_name()%></td>
 							<td style="width: 50%" class="cart_content_left"><%=itemName.getItem_info()%></td>
-							<td style="width: 10%" class="cart_content"><%=formatter.format(itemName.getItem_price())%></td>
-							<td style="width: 10%" class="cart_content"><%=cdto.getCart_cnt()%></td>
+							<td style="width: 10%" class="cart_content"><%=sdto.getShopping_total()%></td>
+							<td style="width: 10%" class="cart_content"><%=sdto.getShopping_item_cnt()%></td>
 						
 						</tr>
 						<tr>
@@ -209,7 +218,7 @@
 									
 							%>
 							<tr>
-								<td colspan="4" class="cart_content">장바구니가 비어있습니다</td>
+								<td colspan="4" class="cart_content">구매내역이 비어있습니다</td>
 							</tr>
 						<%
 							}

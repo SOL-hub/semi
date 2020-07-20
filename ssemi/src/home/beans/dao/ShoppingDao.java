@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import home.beans.dto.CartDto;
 import home.beans.dto.MemberDto;
 import home.beans.dto.shoppingDto;
 
@@ -80,6 +81,28 @@ public class ShoppingDao {
 		}
 		con.close();
 		
+		return list;
+	}
+	
+	
+	public List<shoppingDto> getList(int shopping_member,int start, int finish) throws Exception{
+		Connection con = getConnection();
+		
+
+		String sql = "SELECT rownum rn, shopping.* from shopping where shopping_member=? and rownum between ? and ?";	
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, shopping_member);
+		ps.setInt(2, start);
+		ps.setInt(3, finish);
+		ResultSet rs = ps.executeQuery();
+		
+		List<shoppingDto> list = new ArrayList<>();
+		while(rs.next()) {
+			shoppingDto sdto = new shoppingDto(rs);
+			list.add(sdto);
+		}
+		
+		con.close();
 		return list;
 	}
 
