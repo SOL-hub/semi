@@ -146,7 +146,7 @@ else{
                            </tr>
                            <%} %>
                            
-                         <%if(list.size() <10){ %>  
+                         <%if(list.size() <5){ %>  
                        <tr>
                        <td colspan="5" align ="right">
                        <a href="event1_writer.jsp">
