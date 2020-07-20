@@ -86,7 +86,7 @@ padding: 15px 0 14px 0;
 
 <div align="center" class="container">
 	<span class="write_title">공지사항
-	<br>제목은 '공지사항'으로 통일해주세요
+	<br>제목은 '공지사항'으로 통일해주세요 
 	</span>
 	<form class="write_box" action="QnaWrite.do" method="post"  enctype="multipart/form-data">
 	
