@@ -113,7 +113,7 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                   href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a></li>
                <li class="menu_right"><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
                <li class="menu_right"><a href="<%=request.getContextPath()%>/member/shopBarket3.jsp">장바구니</a></li>
-               <li class="menu_right"><a href="<%=request.getContextPath()%>/member/.jsp">주문/배송</a></li>
+               <li class="menu_right"><a href="<%=request.getContextPath()%>/buypage/buy_list.jsp">주문/배송</a></li>
                <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
             </ul>
 
