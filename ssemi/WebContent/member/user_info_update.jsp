@@ -25,15 +25,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <style>
  #edith1{
-			margin-left: 450px;  	margin-bottom:50px;
+         margin-left: 450px;     margin-bottom:50px;
         }
         
         .edittable tr td{
-			
-			width: 200px;
-			color:#333333;
-	}
-	
+         
+         width: 200px;
+         color:#333333;
+   }
+   
   .edittable {
 
             text-align: center;
@@ -44,9 +44,9 @@
         }
         
         .join-btn{
-        	background-color: #C80A1E;
-        	color:white;
-        	margin-top:30px;
+           background-color: #C80A1E;
+           color:white;
+           margin-top:30px;
         }
 </style>
 </head>
@@ -78,11 +78,7 @@
            비밀번호변경                      
                     </a>
                 </li>
-             <li>
-                    <a href="check_pw.jsp?go=user_out.jsp">
-           회원탈퇴                      
-                    </a>
-                </li>     
+             
                 <li>
                     <a href="shopBarket3.jsp">
                         장바구니
@@ -104,10 +100,16 @@
                 </li>
               
                 <li>
-                	<a href=href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 
-                		견적내역 
-                	</a>
+                   <a href=href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 
+                      견적내역 
+                   </a>
                 </li>
+                
+                    <li>
+                    <a href="check_pw.jsp?go=user_out.jsp">
+           회원탈퇴                      
+                    </a>
+                </li> 
             </ul>
         </aside>
         <section>
@@ -122,10 +124,10 @@
                      <input type="hidden" name="member_no" value="<%=mdto.getMember_no() %>">
                       </td>
                 </tr>
-                <tr>
-                    <th>비밀번호</th>
-                    <td><input name="member_pw" type="password" value="<%=mdto.getMember_pw() %>"></td>
-                </tr>
+<!--                 <tr> -->
+<!--                     <th>비밀번호</th> -->
+<%--                     <td><input name="member_pw" type="password" value="<%=mdto.getMember_pw() %>"></td> --%>
+<!--                 </tr> -->
                 <tr>
                     <th>닉네임</th>
                     <td>
@@ -135,7 +137,7 @@
                 <tr>
                     <th>생년월일</th>
                     <td> <%=mdto.getMember_birth_year()%>
-                    	<input type="hidden" name="member_birth" value="<%=mdto.getMember_birth_year()%>">
+                       <input type="hidden" name="member_birth" value="<%=mdto.getMember_birth_year()%>">
                     </td>
                 </tr>
                 <tr>

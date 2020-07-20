@@ -1,3 +1,4 @@
+<%@page import="home.beans.dao.MemberDao"%>
 <%@page import="home.beans.dto.ItemDto"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -21,6 +22,9 @@ if (keyword == null) {
 } else {
    List<ItemDto> list = idao.search(keyword);
 }
+
+
+
 %>
 
 <!DOCTYPE html>
@@ -59,8 +63,8 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
               	       </li>
                      <li><a href="<%=request.getContextPath()%>/shop/kitt.jsp">주방</a>
                      	</li>
-                     	    <li><a href="<%=request.getContextPath()%>/shop/item_write.jsp">등록</a>
-                     	</li>
+                     
+                     	
                   </ul>
                </li>
                <li class="menu_left">인테리어 시공
@@ -99,7 +103,9 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                   <li class="menu_right"><a href="<%=request.getContextPath()%>/admin/admin_search.jsp">관리메뉴</a></li>
                   <li class="menu_right"><a href="<%=request.getContextPath()%>/admin/total_before_pay.jsp">주문/배송</a></li>
                    <li class="menu_right"><a href="<%=request.getContextPath()%>/estimate/admin-estimate.jsp">견적메뉴</a></li>
-                  <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
+<%--                 <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li> --%>
+                   <li class="menu_right"><a href="<%=request.getContextPath()%>/shop/item_write.jsp">+</a>
+                     	</li>
                </ul>
           
             <%

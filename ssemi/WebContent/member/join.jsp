@@ -214,8 +214,9 @@
                 <div class="row-empty"></div>
                 <div class="row-empty"></div>
                 <div class="right">
-                    <input class="overlap-btn" type="button" value="중복확인">
+<!--                     <input class="overlap-btn" type="button" value="중복확인"> -->
                 </div>
+                 <div class="row-empty"></div>
                 <div class="row-empty">
                     <p>
                         <input name="member_pw" class="pw-input" type="password" placeholder="비밀번호" required oninput="check_pw();">
@@ -236,7 +237,7 @@
                 <div class="row-empty"></div>
                 <div class="row-empty"></div>
                 <div class="row-empty explan right">
-                    <font color="#C80A1E">※ 비밀번호는 8~15자의 영문, 숫자, 특수문자 조합</font>
+                    <font color="#C80A1E">※ 비밀번호는 8~15자의 영문, 숫자 조합</font>
                 </div>
                 <div class="row-empty"></div>
                 <div class="row-empty"></div>
