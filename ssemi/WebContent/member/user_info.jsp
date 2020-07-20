@@ -17,24 +17,24 @@
 
 <style>
 * {
-	box-sizing: border-box;
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Noto Sans KR', sans-serif;
-	letter-spacing: -1.5px;
+   box-sizing: border-box;
+   margin: 0px;
+   padding: 0px;
+   font-family: 'Noto Sans KR', sans-serif;
+   letter-spacing: -1.5px;
 }
 
 
  #edith1{
-			margin-left: 450px;  	margin-bottom:50px;
+         margin-left: 450px;     margin-bottom:50px;
         }
         
         .edittable tr td{
-			border-bottom: 1px solid #3333;
-			width: 200px;
-			color:#333333;
-	}
-	
+         border-bottom: 1px solid #3333;
+         width: 200px;
+         color:#333333;
+   }
+   
   .edittable {
 
             text-align: center;
@@ -80,11 +80,7 @@
            비밀번호변경                      
                     </a>
                 </li>
-             <li>
-                    <a href="check_pw.jsp?go=user_out.do">
-           회원탈퇴                     
-                    </a>
-                </li>     
+                 
                 <li>
                     <a href="shopBarket3.jsp">
                         장바구니
@@ -102,10 +98,15 @@
                 </li>
              
                 <li>
-                	<a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 
-                		견적내역 
-                	</a>
+                   <a href="<%=request.getContextPath()%>/estimate/bath-list.jsp"> 
+                      견적내역 
+                   </a>
                 </li>
+                <li>
+                    <a href="check_pw.jsp?go=user_out.do">
+           회원탈퇴                     
+                    </a>
+                </li> 
             </ul>
         </aside>
         <section>
@@ -117,44 +118,44 @@
               
                   <table  class="edittable">
                   <tr>
-                  	<th>아이디</th>
-                  	<td><%=mdto.getMember_id() %></td>
+                     <th>아이디</th>
+                     <td><%=user.getMember_id() %></td>
                   </tr>
                   <tr>
-                  	<th> 이름</th>
-                  	<td> <%=mdto.getMember_name() %></td>
+                     <th> 이름</th>
+                     <td> <%=user.getMember_name() %></td>
                   </tr>
                   <tr>
-                  	<th>닉네임</th>
-                  	<td> <%=mdto.getMember_nick() %></td>
+                     <th>닉네임</th>
+                     <td> <%=user.getMember_nick() %></td>
                   </tr>
                   <tr>
-                  	<th>생년월일</th>
-                  	<td> <%=mdto.getMember_birth_year() %></td>
+                     <th>생년월일</th>
+                     <td> <%=user.getMember_birth_year() %></td>
                   </tr>
                   <tr>
-                  	<th>핸드폰번호</th>
-                  	<td><%=mdto.getMember_phone() %></td>
+                     <th>핸드폰번호</th>
+                     <td><%=user.getMember_phone() %></td>
                   </tr>
                   <tr>
-                  	<th>이메일</th>
-                  	<td><%=mdto.getMember_email() %></td>
+                     <th>이메일</th>
+                     <td><%=user.getMember_email() %></td>
                   </tr>
                   <tr>
-                  	<th>우편번호</th>
-                  	<td><%=mdto.getMember_post() %></td>
+                     <th>우편번호</th>
+                     <td><%=user.getMember_post() %></td>
                   </tr>
                   <tr>
-                  	<th>주소</th>
-                  	<td><%=mdto.getMember_base_addr() %></td>
+                     <th>주소</th>
+                     <td><%=user.getMember_base_addr() %></td>
                   </tr>
                   <tr>
-                  	<th>상세주소</th>
-                  	<td><%=mdto.getMember_extra_addr() %></td>
+                     <th>상세주소</th>
+                     <td><%=user.getMember_extra_addr() %></td>
                   </tr>
                   <tr>
-                  	<th>포인트</th>
-                  	<td><%=mdto.getMember_point() %></td>
+                     <th>포인트</th>
+                     <td><%=user.getMember_point() %></td>
                   </tr>       
                   </table>
                   

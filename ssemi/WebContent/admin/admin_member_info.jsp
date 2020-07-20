@@ -117,7 +117,7 @@
                   </tr>       
                   </table>
                   <div id="infobutton">
-                  <a href="<%=request.getContextPath()%>/admin/admin_search.jsp?type=member_name&keyword=%EA%B9%80&start=&finish="><input type="button" value="관리메뉴" class="listbtn"></a>
+                  <a href="<%=request.getContextPath()%>/admin/admin_search.jsp"><input type="button" value="관리메뉴" class="listbtn"></a>
                   <a href= "<%=request.getContextPath()%>/admin/admin_check_pw.jsp?go=<%=request.getContextPath()%>/admin/admin_edit.jsp?member_no=<%=mdto.getMember_no()%>"><input  class="listbtn"  type="button" value="정보수정"></a>
                	</div>
                </div>

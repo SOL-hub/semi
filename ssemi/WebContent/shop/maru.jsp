@@ -99,9 +99,9 @@
             <div class="border">
                 <div class="ssmall-font xyz
        main_menu frt selected sort">
-                    <span><a href=#>조회순</a></span>
-                    <span><a href=#>높은가격순</a></span>
-                    <span><a href=#>낮은가격순</a></span>
+<!--                     <span><a href=#>조회순</a></span> -->
+<!--                     <span><a href=#>높은가격순</a></span> -->
+<!--                     <span><a href=#>낮은가격순</a></span> -->
                 </div>
             </div>
             

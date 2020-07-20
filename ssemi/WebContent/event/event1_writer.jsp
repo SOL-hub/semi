@@ -14,6 +14,9 @@
     <jsp:include page="/template/header.jsp"></jsp:include>
     
 <!DOCTYPE html>
+    <link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,8 +27,11 @@ body {
 }
 
 * {
-  box-sizing: border-box;
-  
+   box-sizing: border-box;
+   margin: 0px;
+   padding: 0px;
+   font-family: 'Noto Sans KR', sans-serif;
+   letter-spacing: -1.5px;
 }
 
 
