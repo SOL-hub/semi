@@ -27,8 +27,8 @@
 }
 /* 오류 텍스트 +줄긋기*/
 .error_box {
-	margin-left: 800px;
-padding-top:120px;
+	margin-left: 250px;
+padding-top:100px;
 	float: left;
 	border-right: 1px solid #3333;
 	
@@ -45,7 +45,7 @@ padding-top:120px;
 
 #go_main {
 	text-align: center;
-	padding-top: 50px;
+	padding-top: 100px;
 }
 
 /* 메인 페이지로 이동 버튼*/
