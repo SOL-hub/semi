@@ -190,10 +190,10 @@ transform: scale(1.1);
    <a href="<%=request.getContextPath()%>/event/event.jsp"><img src="<%=request.getContextPath()%>/img/event.PNG" ></a>
    </div>
    <div class="maindiv">
-   <a href="<%=request.getContextPath()%>/shop/alist.jsp" id="a-img"><img src="<%=request.getContextPath()%>/img/liftstyle.PNG"  ></a>
+   <a href="<%=request.getContextPath()%>/shop/bathh.jsp" id="a-img"><img src="<%=request.getContextPath()%>/img/liftstyle.PNG"  ></a>
    </div>
    <div class="maindiv">
-   <a href="<%=request.getContextPath()%>/"><img src="<%=request.getContextPath()%>/img/notice.PNG" width="464px" ></a>
+   <a href="<%=request.getContextPath()%>/board/Qna_list2.jsp"><img src="<%=request.getContextPath()%>/img/notice.PNG" width="464px" ></a>
    </div>
 </div>
 
