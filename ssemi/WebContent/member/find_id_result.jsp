@@ -43,7 +43,9 @@
 
 
                 <div class="change_after">
+
 <%--                     <a href="<%=request.getContextPath()%>/member/check.jsp?go=change_pw.jsp"> <input class="click-btn2" type="submit" value="비밀번호 변경"></a> --%>
+
                 </div>
 </div>
             </div>

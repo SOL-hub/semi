@@ -61,9 +61,9 @@
 		<url-pattern>/member/barket_delete.do</url-pattern>
 		<url-pattern>/member/cart_cnt_change.do</url-pattern>
 		<url-pattern>/member/mypage.jsp</url-pattern>
-		<url-pattern>/member/change_pw.jsp</url-pattern>
-		<url-pattern>/member/change_pw.do</url-pattern>
-		<url-pattern>/member/change_pw_result.jsp</url-pattern>
+<!-- 		<url-pattern>/member/change_pw.jsp</url-pattern> -->
+<!-- 		<url-pattern>/member/change_pw.do</url-pattern> -->
+<!-- 		<url-pattern>/member/change_pw_result.jsp</url-pattern> -->
 		<url-pattern>/shop/product_detail.jsp</url-pattern>
 		<url-pattern>/shop/item_write.jsp</url-pattern>
 		<url-pattern>/shop/item_write.do</url-pattern>
