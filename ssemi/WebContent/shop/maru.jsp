@@ -1,3 +1,5 @@
+<%@page import="home.beans.dto.ItemFileDto"%>
+<%@page import="home.beans.dao.ItemFileDao"%>
 <%@page import="java.util.List"%>
 <%@page import="home.beans.dto.ItemDto"%>
 <%@page import="home.beans.dao.ItemDao"%>
@@ -106,9 +108,17 @@
             <article>
                 <div class="ln4">
                     <ul>
-<% for(ItemDto idto : list) { %>
+					<% for(ItemDto idto : list) { 
+						ItemFileDao ifdao = new ItemFileDao();
+						List<ItemFileDto> file_list = ifdao.getList(idto.getItem_no());
+					%>
                         <li>
-                            <p><img src="https://placeimg.com/274/274" width="100%"></p>
+                            <%for(ItemFileDto ifdto : file_list){%>
+								<a href="<%=request.getContextPath()%>/shop/item_info.do?item_no=<%=idto.getItem_no()%>">
+								<img src="<%=request.getContextPath() %>/member/download2.do?item_file_no=<%=ifdto.getItem_file_no()%>" width="100px" height="100px">
+								</a>
+							
+								<%} %>
                             <p><span><%=idto.getItem_name()%></span><br><span><%=idto.getItem_info()%></span><br><span class="price"><%=idto.getItem_price()%></span></p>
                             <p class="icon"><a onclick="changeimg()">
                                     <img src="../img/heart_none.png" id="img1" width="17" height="16">
