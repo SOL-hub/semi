@@ -48,11 +48,11 @@
                   <a href="event_event1.jsp">
                   <img src="<%=request.getContextPath()%>/img/sale1.jpg" width="880" height="570" alt="event"/>
                   <h5 style="font-size: 13pt;">
-                        여름 더우시죠? 시~원하게 쏘겠습니다.<br>단 10명의 고객님들에게만 드리는 1000포인트 적립이벤트 실시</h5>
+                        여름 더우시죠? 시~원하게 쏘겠습니다.<br>단 10명의 고객님들에게만 드리는 1000포인트 적립이벤트 실시(중복참여가능)</h5>
                      <h5 style="font-color: grey;">
                         올 여름에 사야했던 가구들, 포인트 받아서 실속있게 구매하도록! <br> 제품 하나씩 맘껏
                         골라서 세트할인으로 즐거운 쇼핑하세요.</h5>
-                     <h4 style=font-width:bold;>2020-07-21(화) 10시 START</h4>
+                     <h4 style=font-width:bold;>2020-07-20(월) 10시 START</h4>
                      </a>
                  
 

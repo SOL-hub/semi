@@ -42,48 +42,7 @@
 			<h1 style="font-size: 50px;">장바구니</h1>
 			<br>
 
-			<h5 style="font-size: 30px;"width:1000px;>함께 사면 좋은 제품 추천</h5>
-			<hr class="hr-twolow">
-			<!--제품관련 스타일-->
-			<div class="item_recom">
-			<ul>
-				<li><img class="img-shadow"
-					src="https://placehold.it/180x180?text=TEST1">
-					<h5>
-						넘편해소파<br>130,000
-					</h5></li>
-
-				<li><img class="img-shadow"
-					src="https://placehold.it/180x180?text=TEST2">
-					<h5>
-						2인용인듯한침대<br>26,000,000
-					</h5></li>
-
-				<li><img class="img-shadow"
-					src="https://placehold.it/180x180?text=TEST3">
-					<h5>
-						계속앉고파의자<br>4,560,000
-					</h5></li>
-
-				<li><img class="img-shadow"
-					src="https://placehold.it/180x180?text=TEST4">
-					<h5>
-						세상포근쿠션<br>25,000
-					</h5></li>
-
-				<li><img class="img-shadow"
-					src="https://placehold.it/180x180?text=TEST4">
-					<h5>
-						우리아들책상<br>95,000
-					</h5></li>
-
-				<li><img class="img-shadow"
-					src="https://placehold.it/180x180?text=TEST4">
-					<h5>
-						이가격에이가죽소파<br>670,000,000
-					</h5></li>
-			</ul>
-			</div>
+			
 			<!-- 테이블 시작!> -->
 
 			<script>
@@ -218,7 +177,7 @@
 								<tbody>			
 									<%										
 										int total_price = 0;
-										int delivery_cost = list.size() * 2500;	
+										int delivery_cost = list.size() * 0;	
 										
 										if(list.size()!=0){		
 											
@@ -262,7 +221,7 @@
 											
 										</td>
 										
-										<td>2,500원<br />고정
+										<td>0원<br />
 										</td>
 
 									</tr>

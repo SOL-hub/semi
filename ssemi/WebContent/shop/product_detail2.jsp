@@ -19,13 +19,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
     <style>
-        *{
-            box-sizing: border-box;
-        }
+        * {
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
         main{
             width: 1250px;
-            height: 4000px;
+            height: 1000px;
             margin: auto;
             
         }
@@ -248,28 +252,9 @@
                     <div class="row-empty"></div>
                     <div class="row-empty">
                         
-                        <ul class="item-haha center">
-                            <li style="font-size: 25px">↓↓↓</li>
-                            <li style="font-size: 25px">상품 상세 이미지</li>
-                            <li style="font-size: 25px">크아악 흑화한다!!</li>
-                            <li style="font-size: 25px">↓↓↓</li>
-                        </ul>
+                        
                     </div>
-                    <div class="row-empty"></div>
-                    
-                    <div class="row-empty"></div>
-                    <div class="bottom-outline"></div>
-                    <div class="row-empty"></div>
-                    <div class="row-empty"></div>
-                    <div class="row-empty"></div>
-                    <div class="row-empty center">
-                        <img src="https://placeimg.com/600/676/tech" width="900">
-                        <div class="row-empty"></div>
-                        <img src="https://placeimg.com/600/676/tech" width="900">
-                        <div class="row-empty"></div>
-                        <img src="https://placeimg.com/600/676/tech" width="900">
-                    </div>
-                    <div class="row-empty"></div>
+                   
                    
                 </div>
             </article>

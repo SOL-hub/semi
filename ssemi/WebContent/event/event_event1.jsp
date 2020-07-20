@@ -62,10 +62,10 @@ else{
                <h1 style="font-size: 50px;">EVENT</h1>
                <br>
                <h1 style="font-size: 45px;">
-                  여름상품여기 다있다.<br>종합세트 선착순10명 할인 판매실시
+                  여름상품여기 다있다.<br>종합세트 선착순10명 할인 판매실시(중복참여가능)
                </h1>
              <h1 style=font-width:bold;
-                       >2020-07-21(화) 10시 START</h1>
+                       >2020-07-20(월) 10시 START</h1>
                
               
                <br> <br> 여름 더우시죠? 시~원하게 1000포인트 쏘겠습니다! <br>
@@ -187,7 +187,7 @@ else{
    </a>--> 
    
    <a href="<%=request.getContextPath()%>/member/user_info.jsp">
-   <input class="login-submit" type="submit" value="내 포인트보기">
+   <input class="login-submit" type="button" value="내 포인트보기">
     </a></div> </div>
    
                        </article>

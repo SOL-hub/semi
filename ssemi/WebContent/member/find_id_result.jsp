@@ -30,7 +30,7 @@
 
                 <br>
 
-                <h3>소중한 <%=member_name%>양의 아이디는 
+                <h3>소중한 <%=member_name%>님의 아이디는 
                 <P></P>
                 <span><%=member_id%></span>입니다</h3>
                 <br>
@@ -43,7 +43,9 @@
 
 
                 <div class="change_after">
-                    <a href="<%=request.getContextPath()%>/member/change_pw.jsp"> <input class="click-btn2" type="submit" value="비밀번호 변경"></a>
+
+<%--                     <a href="<%=request.getContextPath()%>/member/check.jsp?go=change_pw.jsp"> <input class="click-btn2" type="submit" value="비밀번호 변경"></a> --%>
+
                 </div>
 </div>
             </div>

@@ -24,6 +24,9 @@
    		DecimalFormat formatter = new DecimalFormat("###,###");
     %>
 <jsp:include page="/template/header.jsp"></jsp:include>
+<link
+   href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@300&display=swap"
+   rel="stylesheet">
 
 <!DOCTYPE html>
 <html>
@@ -33,9 +36,13 @@
     <title>ordersheet</title>
 
     <style>
-        * {
-/*            font-size: 20px  */
-        }
+ * {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Noto Sans KR', sans-serif;
+/* 	letter-spacing: -1.5px; */
+}
 
         main {
             text-align: left;
@@ -436,7 +443,7 @@
                 int total_cnt=0;
 				int total_price = 0;
 				int real_total_price=0;
-				int delivery_cost = 2500;	
+				int delivery_cost = 0;	
 									
 						
 								
@@ -475,7 +482,7 @@
                     	<textarea  readonly class="text_textarea"><%=idto.getItem_info()%></textarea>
                     </td> 
                     <td class="center" style="width: 5%">
-                    	<input style=" width: 40%;" class="input_text_style" type="text" value="2,500">원
+                    	<input style=" width: 40%;" class="input_text_style" type="text" value="0">원
                     </td>
                     <td class="center" style="width: 5%">
                     	<input style=" width: 40%;" class="input_text_style" type="text" value="<%=cdto.getCart_cnt() %>" name="shopping_item_cnt">
@@ -505,7 +512,7 @@
                 <tr class="center">
                 	<td colspan="4" style="background-color: white;"></td>
                 	<td><%=total_cnt %></td>
-                	<td><%=formatter.format(real_total_price) %></td>
+                	<td><%=formatter.format(real_total_price) %>원</td>
                 </tr>
                 <tr>
                     <td colspan="6"class="center bottomline"></td>
@@ -578,12 +585,12 @@
             </div>
             <div>
                 <div>
-                    <label for="cb1"><input type="radio" name="shopping_payment" id="cb1" onchange="toggleTabAutomation(this);" checked value="카드">
-                        <span>카드</span>
-                    </label>
-                    <label for="cb2"><input type="radio" name="shopping_payment" id="cb2" onchange="toggleTabAutomation(this);" value="계좌이체">
-                        <span>실시간 계좌이체</span>
-                    </label>
+<!--                     <label for="cb1"><input type="radio" name="shopping_payment" id="cb1" onchange="toggleTabAutomation(this);" checked value="카드"> -->
+<!--                         <span>카드</span> -->
+<!--                     </label> -->
+<!--                     <label for="cb2"><input type="radio" name="shopping_payment" id="cb2" onchange="toggleTabAutomation(this);" value="계좌이체"> -->
+<!--                         <span>실시간 계좌이체</span> -->
+<!--                     </label> -->
                     <label for="cb3"><input type="radio" name="shopping_payment" id="cb3" onchange="toggleTabAutomation(this);" value="포인트 결제">
                         <span>포인트 결제</span>
                     </label>
@@ -591,49 +598,50 @@
 
                 </div>
                      <div class="row-empty"></div>
+                     
 <!--                      111 -->
-                    <div class="area on" id="cb1-area">
-                    	<select name="shopping_paybank" class="selectbox">
+<!--                     <div class="area on" id="cb1-area"> -->
+<!--                     	<select name="shopping_paybank" class="selectbox"> -->
                     	
-                        <option>카드선택</option>
-                        <option>국민카드</option>
-                        <option>신한카드</option>
-                        <option>BC카드</option>
-                   		 </select>
-                   		 <div class="row-empty"></div>
-                        <div>
-                            <img src="https://placeimg.com/274/274">
-                        </div>
-                        <div class="row-empty"></div>
-                        <div class="row-empty"></div>
-                        <div>
-                            카드번호 입력 <input class="input-number" type="text" name="shopping_paybank_num">
-                        </div>
-                    </div>
+<!--                         <option>카드선택</option> -->
+<!--                         <option>국민카드</option> -->
+<!--                         <option>신한카드</option> -->
+<!--                         <option>BC카드</option> -->
+<!--                    		 </select> -->
+<!--                    		 <div class="row-empty"></div> -->
+<!--                         <div> -->
+<!--                             <img src="https://placeimg.com/274/274"> -->
+<!--                         </div> -->
+<!--                         <div class="row-empty"></div> -->
+<!--                         <div class="row-empty"></div> -->
+<!--                         <div> -->
+<!--                             카드번호 입력 <input class="input-number" type="text" name="shopping_paybank_num"> -->
+<!--                         </div> -->
+<!--                     </div> -->
 <!--                     222 -->
-                    <div class="area" id="cb2-area">
-                    <select name="shopping_paybank" class="selectbox">
-                        <option>은행선택</option>
-                        <option>국민은행</option>
-                        <option>신한은행</option>
-                        <option>기업은행</option>
-                    </select>
-                    <div class="row-empty"></div>
-                    <div>
-                    	입금 하실 계좌번호<br><br>          
-                    	국민은행 : 111-111-11111<br>
-                    	신한은행 : 222-222-22222<br>
-                    	기업은행 : 333-333-33333
-                    </div>
-                    <div class="row-empty"></div>
-                    <div class="row-empty"></div>
-                        <div>
-                            내 계좌번호 입력 <input class="input-number" type="text" name="shopping_paybank_num">
-                        </div>
-                    </div>
+<!--                     <div class="area" id="cb2-area"> -->
+<!--                     <select name="shopping_paybank" class="selectbox"> -->
+<!--                         <option>은행선택</option> -->
+<!--                         <option>국민은행</option> -->
+<!--                         <option>신한은행</option> -->
+<!--                         <option>기업은행</option> -->
+<!--                     </select> -->
+<!--                     <div class="row-empty"></div> -->
+<!--                     <div> -->
+<!--                     	입금 하실 계좌번호<br><br>           -->
+<!--                     	국민은행 : 111-111-11111<br> -->
+<!--                     	신한은행 : 222-222-22222<br> -->
+<!--                     	기업은행 : 333-333-33333 -->
+<!--                     </div> -->
+<!--                     <div class="row-empty"></div> -->
+<!--                     <div class="row-empty"></div> -->
+<!--                         <div> -->
+<!--                             내 계좌번호 입력 <input class="input-number" type="text" name="shopping_paybank_num"> -->
+<!--                         </div> -->
+<!--                     </div> -->
 <!--                     333 -->
                     <div class="area" id="cb3-area">
-                   	
+                   		
                    	 	<div class="row-empty">
                     		현재 내 잔여 포인트 : <input class="input-number right now-point" type="text" id="now_point" value="<%=user.getMember_point() %>" readonly> 포인트
                     		
@@ -641,7 +649,7 @@
                     		<div class="row-empty"></div>
                     		<div class="row-empty"></div>
                         <div>
-                           	 결제할 포인트: <input class="input-number right buy-point" type="text" id="buy_point" name="member_point" value="<%=real_total_price%>" >포인트
+                           	 결제할 포인트: <input  class="input-number right buy-point" type="text" id="buy_point" name="member_point" value="<%=real_total_price%>"  readonly>포인트
                            	 
                         </div>
                     </div>

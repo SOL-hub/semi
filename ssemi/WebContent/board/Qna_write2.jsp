@@ -85,7 +85,9 @@ padding: 15px 0 14px 0;
 </style>
 
 <div align="center" class="container">
-	<span class="write_title">공지사항</span>
+	<span class="write_title">공지사항
+	<br>제목은 '공지사항'으로 통일해주세요 
+	</span>
 	<form class="write_box" action="QnaWrite.do" method="post"  enctype="multipart/form-data">
 	
 		<!-- 회원번호 히든으로 넘기기 -->
