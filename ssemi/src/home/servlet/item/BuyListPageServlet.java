@@ -46,6 +46,11 @@ public class BuyListPageServlet extends HttpServlet{
 
 			sdao.buy_list_add(sdto);
 			
+			CartDao cdao = new CartDao();
+			
+			cdao.cartDelete_buy(Integer.parseInt(buy_add[i]));
+			
+			System.out.println(buy_add[i]);
 			}
 			MemberDao mdao = new MemberDao();
 			mdao.buy_point_min(member_no, Integer.parseInt(req.getParameter("member_point")));

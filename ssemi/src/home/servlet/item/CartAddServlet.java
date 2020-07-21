@@ -36,16 +36,16 @@ public class CartAddServlet extends HttpServlet{
 			
 			
 			CartDao cdao = new CartDao();
-			List<CartDto> list = cdao.getList(member_no);		
+			CartDto cdto_add = cdao.get_cart(member_no);		
 			
+//			System.out.println(list.contains(item_no));
 			
-			
-			
-			
-//			if(list.isEmpty() && !list.contains(cdto.getCart_item_name())) {
+							
+			if(cdto_add == null || cdto_add.getCart_item_name() != item_no) {
 //				
 				cdao.cart_add(cdto);
-//			}
+				
+			}
 			
 //			else {
 //				System.out.println("ddd");
