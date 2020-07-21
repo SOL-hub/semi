@@ -591,7 +591,7 @@
 <!--                     <label for="cb2"><input type="radio" name="shopping_payment" id="cb2" onchange="toggleTabAutomation(this);" value="계좌이체"> -->
 <!--                         <span>실시간 계좌이체</span> -->
 <!--                     </label> -->
-                    <label for="cb3"><input type="radio" name="shopping_payment" id="cb3" onchange="toggleTabAutomation(this);" value="포인트 결제">
+                    <label for="cb3"><input type="radio" name="shopping_payment" id="cb3" onchange="toggleTabAutomation(this);" value="포인트 결제" checked>
                         <span>포인트 결제</span>
                     </label>
                 </div>
@@ -640,7 +640,7 @@
 <!--                         </div> -->
 <!--                     </div> -->
 <!--                     333 -->
-                    <div class="area" id="cb3-area">
+                    <div class="area on" id="cb3-area">
                    		
                    	 	<div class="row-empty">
                     		현재 내 잔여 포인트 : <input class="input-number right now-point" type="text" id="now_point" value="<%=user.getMember_point() %>" readonly> 포인트

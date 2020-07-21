@@ -133,7 +133,7 @@ href="<%=request.getContextPath()%>/css/main.css?ver=1">
                         href="<%=request.getContextPath()%>/member/login.jsp">로그인</a></li>
                      <li class="menu_right">
                      <a href="<%=request.getContextPath()%>/member/join_main.jsp">회원가입</a></li>
-                     <li class="menu_right"><a href="#">주문/배송</a></li>
+                     <li class="menu_right"><a href="<%=request.getContextPath()%>/member/shopBarket3.jsp">주문/배송</a></li>
                      <li class="menu_right"><a href="<%=request.getContextPath()%>/board/cs.jsp">고객센터</a></li>
                   </ul>
 

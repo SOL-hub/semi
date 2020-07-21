@@ -52,7 +52,7 @@
          function button_event() {
 			
 		
-         var result = confirm("선택하신 상품을 삭제하시겠습니까??");
+         var result = confirm("선택하신 상품을 주문취소 하시겠습니까??");
 		   if (!result){ 
 //	             document.form.submit();
 	        	return false;
@@ -110,7 +110,7 @@
 							int total_price = 0;
 							int total_price_total = 0;
 							int real_total_price = 0;
-							int delivery_cost = list.size() * 2500;
+							int delivery_cost = list.size() * 0;
 							
 							if(list.size() != 0){
 							
@@ -143,7 +143,7 @@
                               </td>
                               <td style="width: 100px;"><%=formatter.format(total_price)%>원</td>
                               <td style="width: 60px;"><%=sdto.getShopping_item_cnt() %></td>
-		                      <td style="width: 100px;">2,500원</td>
+		                      <td style="width: 100px;">0원</td>
 		                       <td style="width: 100px;">
 		                       		<%if(sdto.getShopping_payment().equals("포인트 결제")){ %>
 		                       		<%=sdto.getShopping_payment() %><br>
@@ -158,6 +158,7 @@
                               <input type="submit" class="btn default"
                                style="width: 90px; padding: 10px; margin-bottom: 2.5px; font-size: 13px;" value="주문취소"
                                onclick="return button_event();">
+                               <input type="hidden" name="member_point" value="<%=formatter.format(idto.getItem_price())%>">
                                <input type="hidden" name="shopping_no" value="<%=sdto.getShopping_no()%>">
                                </form>
                               </td>
