@@ -136,6 +136,21 @@ public class CartDao {
 	
 	}
 	
+	// 선택구매시 장바구니 리스트삭제
+		public void cartDelete_buy(int cart_item_name)throws Exception{
+			Connection con = getConnection();
+			
+			String sql = "delete from cart where cart_item_name=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, cart_item_name);
+			ps.execute();
+			
+			
+			con.close();
+		
+		}
+	
+	
 	// 장바구니 단일조회(아이디별)
 		public CartDto get_cart(int cart_member)throws Exception{
 			Connection con = getConnection();

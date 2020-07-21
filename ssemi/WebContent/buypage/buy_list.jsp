@@ -158,7 +158,7 @@
                               <input type="submit" class="btn default"
                                style="width: 90px; padding: 10px; margin-bottom: 2.5px; font-size: 13px;" value="주문취소"
                                onclick="return button_event();">
-                               <input type="hidden" name="member_point" value="<%=formatter.format(idto.getItem_price())%>">
+                               <input type="hidden" name="member_point" value="<%=formatter.format(total_price)%>">
                                <input type="hidden" name="shopping_no" value="<%=sdto.getShopping_no()%>">
                                </form>
                               </td>
