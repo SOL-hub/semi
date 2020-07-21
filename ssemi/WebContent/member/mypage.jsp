@@ -1,3 +1,5 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.text.NumberFormat"%>
 <%@page import="home.beans.dto.shoppingDto"%>
 <%@page import="home.beans.dao.ShoppingDao"%>
 <%@page import="home.beans.dao.ItemFileDao"%>
@@ -25,6 +27,7 @@
    
    
    DecimalFormat formatter = new DecimalFormat("###,###");
+   NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.KOREA);
    //////////////////////////////////////////////////////////////////
    // 페이지 목록계산 코드
    //////////////////////////////////////////////////////////////////
@@ -147,7 +150,7 @@
                      <div>[상품이름] <%=itemName.getItem_name()%></div>
                      <p>[상품정보]</p><div><%=itemName.getItem_info()%></div>
                      </td>
-                     <td style="width: 10%" class="cart_content"><%=formatter.format(item_cnt_change_price)%>원</td>
+                     <td style="width: 10%" class="cart_content"><%=nf.format(item_cnt_change_price)%></td>
                      <td style="width: 20%" class="cart_content"><%=cdto.getCart_cnt()%></td>
                      <br>
                   </tr>
@@ -217,7 +220,7 @@
                      <p>[상품정보]</p><div><%=itemName.getItem_info()%></div>
                      
                      </td>
-                     <td style="width: 10%" class="cart_content"><%=formatter.format(itemName.getItem_price())%></td>
+                     <td style="width: 10%" class="cart_content"><%=nf.format(itemName.getItem_price())%></td>
                      <td style="width: 10%" class="cart_content"><%=sdto.getShopping_item_cnt()%></td>
                      <br>
                   </tr>

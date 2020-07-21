@@ -92,6 +92,20 @@ public class ItemFileDao {
 			con.close();
 		}
 		
+		public void save2(ItemFileDto ifdto) throws Exception{
+			Connection con = getConnection();
+			
+			String sql = "insert into item_file values(?,?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, ifdto.getItem_file_no());
+			ps.setLong(2, ifdto.getItem_file_size());
+			ps.setInt(3, ifdto.getItem_origin());
+			ps.execute();
+			
+			
+			con.close();
+		}
+		
 		public List<ItemFileDto> getList(int item_no) throws Exception{
 			Connection con = getConnection();
 			

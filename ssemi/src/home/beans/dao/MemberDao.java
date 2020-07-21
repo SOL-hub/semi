@@ -478,7 +478,19 @@ public class MemberDao {
 			con.close();
 		}
 		
-		
+		//진빈 구매 취소시 포인트 되돌리기
+				public void buy_point_cancle(int member_no, int member_point) throws Exception{
+					Connection con = getConnection();
+					
+					String sql = "update member set member_point = (member_point + ?) where member_no=?";
+					PreparedStatement ps = con.prepareStatement(sql);
+					
+					ps.setInt(1, member_point);
+					ps.setInt(2, member_no);
+					ps.execute();
+					
+					con.close();
+				}
 		
 		
 	
